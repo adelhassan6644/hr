@@ -17,6 +17,13 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
+  late final PageController _pageController;
+  @override
+  void initState() {
+    _pageController = PageController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<DashProvider>(builder: (context, dashProvider, widget) {
@@ -44,12 +51,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           type: BottomNavigationBarType.fixed,
           currentIndex: dashProvider.selectedIndex,
           onTap: (index) {
-            dashProvider.selectPage(index: index);
+            dashProvider.selectPage(index: index,pageController: _pageController);
           },
           showSelectedLabels: true,
 
         ),
-        body: PageView(controller: dashProvider.pageController,
+        body: PageView(controller:_pageController,
             physics: const NeverScrollableScrollPhysics(),
             children: const [
           HomeScreen(),

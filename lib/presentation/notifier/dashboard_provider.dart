@@ -7,7 +7,7 @@ class DashProvider extends ChangeNotifier {
   final PageController _pageController = PageController();
   PageController get pageController => _pageController;
 
-  selectPage({required int index}) {
+  selectPage({required int index, required PageController pageController}) {
     _selectedIndex = index;
     pageController.animateToPage(index,
         curve: Curves.linear,
