@@ -40,7 +40,7 @@ class CustomCheckBoxListTile extends StatelessWidget {
             fontFamily: AppStrings.fontFamily,
             fontWeight: FontWeight.w600)
             : const TextStyle(
-            color: ColorResources.DISABLE_COLOR,
+            color: ColorResources.disabledColor,
             fontSize: 11,
             fontFamily: AppStrings.fontFamily,
             fontWeight: FontWeight.w600),

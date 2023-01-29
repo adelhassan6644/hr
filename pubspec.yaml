@@ -55,6 +55,8 @@ dependencies:
   flutter_native_splash:
   cupertino_icons: ^1.0.2
   flutter_form_builder:
+  persistent_bottom_nav_bar: ^5.0.2
+
 
 
 dev_dependencies:
@@ -93,10 +95,17 @@ flutter:
 
 
   fonts:
-    - family: Baloo
+    - family: Raleway
       fonts:
-        - asset: assets/fonts/BalooBhaijaan2-Regular.ttf
-        - asset: assets/fonts/BalooBhaijaan2-Medium.ttf
-          weight: 700
-        - asset: assets/fonts/BalooBhaijaan2-Bold.ttf
+        - asset: assets/fonts/Raleway-ExtraBold.ttf
+          weight: 900
+        - asset: assets/fonts/Raleway-Bold.ttf
           weight: 800
+        - asset: assets/fonts/Raleway-SemiBold.ttf
+          weight: 700
+        - asset: assets/fonts/Raleway-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/Raleway-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Raleway-Light.ttf
+          weight: 400

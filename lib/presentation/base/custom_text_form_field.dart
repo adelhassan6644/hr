@@ -24,7 +24,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool? removePIcon;
   final VoidCallback? edit;
   final bool? isEdit;
-  final bool isHeightSmall;
+
   final List<TextInputFormatter>? formatter;
   final double? hor;
   final int? maxLength;
@@ -34,7 +34,7 @@ class CustomTextFormField extends StatefulWidget {
 
   const CustomTextFormField({super.key,
     this.error=false,
-    this.isHeightSmall=false,
+
     this.maxLine=1,
     this.hint,
     this.onSave,
@@ -119,8 +119,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                         color: ColorResources.primary,
                         height: 25,
                       ),
-              )
-            : Icon(
+              ) : Icon(
                 widget.icon,
                 color: Colors.grey,
                 size: 20,
@@ -130,8 +129,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         disabledBorder: outLineInputBorderStyle,
         focusedErrorBorder: errorOutLineInputBorderStyle,
         errorBorder: errorOutLineInputBorderStyle,
-        contentPadding:!widget.isHeightSmall? const EdgeInsets.symmetric(vertical: 28, horizontal: 24):
-        const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        contentPadding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
         border: outLineInputBorderStyle,
         isDense: true,
         alignLabelWithHint: true,

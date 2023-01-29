@@ -27,7 +27,7 @@ loadingDialog(BuildContext context)
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
-                color: ColorResources.DISABLE_COLOR,
+                color: ColorResources.disabledColor,
               ),
             ),
           ),

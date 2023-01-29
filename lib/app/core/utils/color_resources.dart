@@ -43,18 +43,15 @@ class ColorResources {
     return Color(0xFF25282B);
   }
 
-  static const Color COLOR_GREY = Color(0xFFA4ACAB);
-  static const Color primary = Color(0xFF7338A4);
+  static const Color primary = Color(0xFF202053);
   static const Color primaryLight = Color(0xFFA256E2);
-  static const Color cahtColor = Color(0xFF43908A);
-  static const Color lightPrimary = Color(0xFFCFE2E1);
-  static const Color COLOR_BLACK = Color(0xFF000000);
-  static const Color COLOR_NERO = Color(0xFF1F1F1F);
-  static const Color COLOR_WHITE = Color(0xFFFFFFFF);
-  static const Color COLOR_HINT = Color(0xFF52575C);
-  static const Color SEARCH_BG = Color(0xFFF4F7FC);
-  static const Color COLOR_GRAY = Color(0xffA7A7A7);
-  static const Color COLOR_GRAY_LIGHT = Color(0xffE4E4E4);
+  static const Color hintColor = Color(0xFF52575C);
+  static const Color chatColor = Color(0xFF43908A);
+  static const Color blackColor = Color(0xFF000000);
+  static const Color neroColor = Color(0xFF1F1F1F);
+  static const Color whiteColor = Color(0xFFFFFFFF);
+  static const Color grayColor = Color(0xffA7A7A7);
+  static const Color lightGrayColor = Color(0xffE4E4E4);
   static const Color COLOR_OXFORD_BLUE = Color(0xff282F39);
   static const Color COLOR_GAINSBORO = Color(0xffE8E8E8);
   static const Color COLOR_NIGHER_RIDER = Color(0xff303030);
@@ -62,11 +59,15 @@ class ColorResources {
   static const Color COLOR_GREY_BUNKER = Color(0xff25282B);
   static const Color COLOR_GREY_CHATEAU = Color(0xffF5F5F5);
   static const Color goldColor = Color(0xffF8CA78);
-  static const Color DISABLE_COLOR = Color(0xFF979797);
+  static const Color disabledColor = Color(0xFF979797);
   static const Color fillColor = Color(0xFFF9F9FA);
   static const Color transparentColor = Color(0xFF0000FFFF);
   static Color shadowColor = const Color(0xFFEEEEEE);
+
+  static const Color redColor = Color(0xFFE24F4F);
   static const Color errorBorderColor = Color(0xFFE24F4F);
+  static const Color borderColor = Color(0xffD5D5D5);
+  static const Color errorHintColor = Color(0xFFE24F4F);
 
 
 
