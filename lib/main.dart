@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const DashBoardScreen(),
+      home: const LoginScreen(),
     );
   }
 }

@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       shadowColor: ColorResources.primary,
       backgroundColor: ColorResources.whiteColor,
-      elevation: 0,
+      elevation: 1,
 
       shape: const Border(bottom: BorderSide(width: 0, color: ColorResources.transparentColor)),
       actions: [Padding(
@@ -34,11 +34,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             fontWeight: FontWeight.w800,
           )),
       leading: Padding(
-        padding:  const EdgeInsets.only(left:Dimensions.PADDING_SIZE_DEFAULT),
+        padding:  const EdgeInsets.symmetric(horizontal:Dimensions.PADDING_SIZE_DEFAULT),
         child: leadingAction?? InkWell(
           onTap: () {Navigator.pop(context);},
-          child: SvgPicture.asset(
-            Images.arrowRightIcon,
+          child: const Icon(
+            Icons.arrow_back_ios,
+            size: 20,
             color: ColorResources.primary,
           )
         ),

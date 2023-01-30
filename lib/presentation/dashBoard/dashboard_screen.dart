@@ -18,6 +18,7 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   late final PageController _pageController;
+
   @override
   void initState() {
     _pageController = PageController();

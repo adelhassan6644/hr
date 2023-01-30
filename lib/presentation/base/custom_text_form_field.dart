@@ -93,7 +93,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       onChanged: widget.onChanged,
       decoration: InputDecoration(
         prefixIcon:widget.removePIcon == true ? null:Padding(
-          padding: const EdgeInsets.only(right: 1),
+          padding:  const EdgeInsets.only(right: 12, left: 12),
           child: widget.tIcon != null
               ? Padding(
                   padding: const EdgeInsets.only(right: 15, left: 15),
@@ -110,7 +110,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 onPressed: _visibility,
                 alignment: Alignment.center,
                 icon: _isHidden
-                    ? Image.asset(
+                    ?
+                Image.asset(
                         Images.eyeLockIcon,
                         height: 25,
                       )
@@ -124,19 +125,19 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 color: Colors.grey,
                 size: 20,
               ),
-        focusedBorder: outLineInputBorderStyle,
-        enabledBorder: outLineInputBorderStyle,
-        disabledBorder: outLineInputBorderStyle,
+        focusedBorder: focusBorderStyle,
+        enabledBorder: disableBorderStyle,
+        disabledBorder: disableBorderStyle,
         focusedErrorBorder: errorOutLineInputBorderStyle,
         errorBorder: errorOutLineInputBorderStyle,
         contentPadding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
-        border: outLineInputBorderStyle,
+        border: disableBorderStyle,
         isDense: true,
         alignLabelWithHint: true,
         hintText: widget.hint,
         hintStyle: widget.error!?errorHintTextStyle: hintTextStyle,
         // labelText: widget.label? widget.hint : null,
-        fillColor: ColorResources.fillColor,
+        fillColor: ColorResources.BACKGROUND_COLOR,
         // labelStyle: widget.error!?errorHintPoppinsTextStyle: hintPoppinsTextStyle,
         filled: true,
         // errorText: "${widget.hint}*",

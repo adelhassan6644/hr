@@ -1,6 +1,6 @@
 class AppStrings {
-  static const String appName = 'HR';
-  static const String fontFamily = 'Raleway';
+  static const String appName = 'Hr';
+  static const String fontFamily = 'URWDINArabic';
   static const String noRouteFound = 'No Route Found';
   static const String cachedRandomQuote = 'CACHED_RANDOM_QUOTE';
   static const String contentType = 'Content-Type';

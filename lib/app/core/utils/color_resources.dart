@@ -43,7 +43,7 @@ class ColorResources {
     return Color(0xFF25282B);
   }
 
-  static const Color primary = Color(0xFF202053);
+  static const Color primary = Color(0xFF2c80d5);
   static const Color primaryLight = Color(0xFFA256E2);
   static const Color hintColor = Color(0xFF52575C);
   static const Color chatColor = Color(0xFF43908A);

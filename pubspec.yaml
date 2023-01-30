@@ -56,6 +56,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_form_builder:
   persistent_bottom_nav_bar: ^5.0.2
+  pinput: ^2.2.23
 
 
 
@@ -95,17 +96,17 @@ flutter:
 
 
   fonts:
-    - family: Raleway
+    - family: URWDINArabic
       fonts:
-        - asset: assets/fonts/Raleway-ExtraBold.ttf
+        - asset: assets/fonts/URWDINArabic-Black.ttf
           weight: 900
-        - asset: assets/fonts/Raleway-Bold.ttf
+        - asset: assets/fonts/URWDINArabic-Bold.ttf
           weight: 800
-        - asset: assets/fonts/Raleway-SemiBold.ttf
+        - asset: assets/fonts/URWDINArabic-Demi.ttf
           weight: 700
-        - asset: assets/fonts/Raleway-Medium.ttf
+        - asset: assets/fonts/URWDINArabic-Medium.ttf
           weight: 600
-        - asset: assets/fonts/Raleway-Regular.ttf
+        - asset: assets/fonts/URWDINArabic-Regular.ttf
           weight: 500
-        - asset: assets/fonts/Raleway-Light.ttf
+        - asset: assets/fonts/URWDINArabic-Light.ttf
           weight: 400

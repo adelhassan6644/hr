@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/media_query_values.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
+import 'package:hr_project/presentation/settings/change_password_screen.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/images.dart';
@@ -36,7 +37,9 @@ class SettingsScreen extends StatelessWidget {
         settingCard(
             name: getTranslated("change_password", context),
             iconAsset: Images.lockIcon,
-            onTap: () {}),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const ChangePasswordScreen()));
+            }),
         Container(
           width: context.width,
           height: 1,

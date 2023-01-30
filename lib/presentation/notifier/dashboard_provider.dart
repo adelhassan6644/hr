@@ -4,8 +4,7 @@ class DashProvider extends ChangeNotifier {
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
 
-  final PageController _pageController = PageController();
-  PageController get pageController => _pageController;
+
 
   selectPage({required int index, required PageController pageController}) {
     _selectedIndex = index;

@@ -1,16 +1,27 @@
 
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 import 'app_strings.dart';
 import 'color_resources.dart';
 import 'dimensions.dart';
 
- const OutlineInputBorder outLineInputBorderStyle =   OutlineInputBorder(
+ const OutlineInputBorder disableBorderStyle =   OutlineInputBorder(
   borderRadius: BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
     color: ColorResources.borderColor,
+  ),
+);
+
+ const OutlineInputBorder focusBorderStyle =   OutlineInputBorder(
+  borderRadius: BorderRadius.all(
+    Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
+  ),
+  borderSide: BorderSide(
+    style: BorderStyle.solid,
+    color: ColorResources.primary,
   ),
 );
 
@@ -36,7 +47,7 @@ const TextStyle hintTextStyle = TextStyle(
 
 const TextStyle titleTextStyle = TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.w800);
+    fontWeight: FontWeight.w700);
 
 const TextStyle headLineTextStyle = TextStyle(
     fontSize: 26,
@@ -78,6 +89,24 @@ const TextStyle unSelectTextStyle = TextStyle(
         color: ColorResources.transparentColor,
         style: BorderStyle.solid),
     color: ColorResources.fillColor);
+
+final defaultPinTheme = PinTheme(
+  width: 56,
+  height: 56,
+  textStyle: const TextStyle(fontSize: 20,
+      color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
+  decoration: BoxDecoration(
+    border: Border.all(color: const Color.fromRGBO(114, 178, 238, 1)),
+    borderRadius: BorderRadius.circular(8),
+  ),
+);
+
+
+final submittedPinTheme = defaultPinTheme.copyWith(
+  decoration: defaultPinTheme.decoration?.copyWith(
+    color: const Color.fromRGBO(234, 239, 243, 1),
+  ),
+);
 
 
  Widget hSpace = const SizedBox(
