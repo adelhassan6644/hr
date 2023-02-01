@@ -15,6 +15,7 @@ class AuthProvider extends ChangeNotifier {
 
    bool _isLoading = false;
   bool get isLoading=>_isLoading;
+   bool samePassword = false;
 
   late String _otp;
   String get otp=>_otp;

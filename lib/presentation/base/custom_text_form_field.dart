@@ -89,7 +89,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       keyboardType: widget.type,
       inputFormatters: widget.formatter ?? [],
       onSaved: (widget.onSave),
-      style:hintTextStyle,
+      style:widget.error!? hintTextStyle.copyWith(color: ColorResources.redColor):hintTextStyle,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
         prefixIcon:widget.removePIcon == true ? null:Padding(

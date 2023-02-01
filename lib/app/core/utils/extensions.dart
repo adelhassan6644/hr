@@ -18,6 +18,21 @@ extension DataExtention on DateTime {
     // return DateFormat("dd-MMMM ").format(this);
   }
 }
+extension DayExtention on DateTime {
+  String dayFormat() {
+    return DateFormat("EEEEEEEEEE",
+        Provider.of<LocalizationProvider>(MyApp.navigatorKey.currentContext!,listen: false).isLtr?'en_US' : 'ar_SA'
+    ).format(this);
+  }
+}
+
+extension DataMainExtention on DateTime {
+  String dataMainFormat() {
+    return DateFormat(" d  MMM  yyyy",
+        Provider.of<LocalizationProvider>(MyApp.navigatorKey.currentContext!,listen: false).isLtr?'en_US' : 'ar_SA'
+    ).format(this);
+  }
+}
 
 extension DataExtention2 on DateTime {
 
@@ -26,6 +41,15 @@ extension DataExtention2 on DateTime {
         Provider.of<LocalizationProvider>(MyApp.navigatorKey.currentContext!,).isLtr?'en_US':'ar_SA'
     ).format(this);
     // return DateFormat("dd-MMMM ").format(this);
+  }
+}
+
+extension MonthExtention on DateTime {
+
+  String monthFormat() {
+    return DateFormat("MMM  yyyy",
+        Provider.of<LocalizationProvider>(MyApp.navigatorKey.currentContext!,listen: false).isLtr?'en_US' : 'ar_SA'
+    ).format(this);
   }
 }
 

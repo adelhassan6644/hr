@@ -45,6 +45,14 @@ class CustomButton extends StatelessWidget {
        child:  Row(
          mainAxisAlignment: MainAxisAlignment.center,
          children: [
+           Text(
+             text,
+             style: titleTextStyle.copyWith(
+                 color: textColor
+             ),
+           ),
+           if( icon != null || assetIcon != null )
+             wSpace,
           if( icon != null )
            Icon(icon,color: iconColor ,size:iconSize ),
            if(assetIcon != null)
@@ -54,14 +62,8 @@ class CustomButton extends StatelessWidget {
                width: iconSize,
                color: iconColor,
              ),
-           if( icon != null || assetIcon != null )
-           wSpace,
-           Text(
-            text,
-             style: titleTextStyle.copyWith(
-               color: textColor
-             ),
-           ),
+
+
          ],
        ),
      ),

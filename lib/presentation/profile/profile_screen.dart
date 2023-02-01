@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hr_project/app/core/utils/constant.dart';
 import 'package:hr_project/app/core/utils/media_query_values.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/notifier/profile_provider.dart';
+import 'package:hr_project/presentation/profile/units/salary/salary_screen.dart';
 import 'package:hr_project/presentation/profile/units/profile_units.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
@@ -58,7 +56,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           settingCard(
               name: getTranslated("salary_&_financial", context),
               iconAsset: Images.salaryIcon,
-              onTap: () {}),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SalaryScreen()));
+              }),
           Container(
             width: context.width,
             height: 1,

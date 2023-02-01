@@ -10,7 +10,6 @@ import '../base/custom_app_bar.dart';
 import '../base/custom_button.dart';
 import '../notifier/auth_provider.dart';
 
-
 class VerificationScreen extends StatelessWidget {
   const VerificationScreen({Key? key}) : super(key: key);
 
@@ -19,8 +18,8 @@ class VerificationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       appBar: CustomAppBar(
-        title:getTranslated("verify_the_email", context),
-        titleCenter:true ,
+        title: getTranslated("verify_the_email", context),
+        titleCenter: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
@@ -28,7 +27,7 @@ class VerificationScreen extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               SizedBox(
+              SizedBox(
                 height: context.height * 0.05,
               ),
               // Text(getTranslated("enter_verification_code", context),
@@ -42,7 +41,8 @@ class VerificationScreen extends StatelessWidget {
               Text(getTranslated("please_enter_verification_code", context),
                   style: titleTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
-                      color: ColorResources.blackColor,fontSize: 16)),
+                      color: ColorResources.blackColor,
+                      fontSize: 16)),
               const SizedBox(
                 height: 20,
               ),
@@ -56,27 +56,29 @@ class VerificationScreen extends StatelessWidget {
                 submittedPinTheme: submittedPinTheme,
                 pinputAutovalidateMode: PinputAutovalidateMode.disabled,
                 showCursor: true,
-                onCompleted: (code){
-                  // authProvidergetOTP
-                },
               ),
               const SizedBox(
                 height: 10,
               ),
-              TextButton(onPressed: (){}, child:
-              Text(getTranslated("send_the_code_again", context),
-                  style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: ColorResources.primary)),),
+              TextButton(
+                onPressed: () {},
+                child: Text(getTranslated("send_the_code_again", context),
+                    style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: ColorResources.primary)),
+              ),
               SizedBox(
                 height: context.height * 0.07,
               ),
 
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_LARGE),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: Dimensions.PADDING_SIZE_EXTRA_LARGE),
                 child: CustomButton(
-                    onTap: () { authProvider.sendOTP(context: context);},
+                    onTap: () {
+                      authProvider.sendOTP(context: context);
+                    },
                     textColor: ColorResources.whiteColor,
                     text: getTranslated("send_otp", context),
                     backgroundColor: ColorResources.primary),

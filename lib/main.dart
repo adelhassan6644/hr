@@ -1,14 +1,10 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
-import 'package:hr_project/presentation/dashBoard/dashboard_screen.dart';
-import 'package:hr_project/presentation/home/home_Screen.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
-import 'package:hr_project/presentation/notifier/dashboard_provider.dart';
 import 'package:hr_project/presentation/notifier/language_provider.dart';
 import 'package:hr_project/presentation/notifier/localization_provider.dart';
 import 'package:hr_project/presentation/notifier/profile_provider.dart';
 import 'package:hr_project/presentation/notifier/theme_provider.dart';
-import 'package:hr_project/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
@@ -36,7 +32,6 @@ Future<void> main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => di.sl<ThemeProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<DashProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<ProfileProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LanguageProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),

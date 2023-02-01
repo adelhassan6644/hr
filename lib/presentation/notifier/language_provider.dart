@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../app/core/utils/app_storage_keys.dart';
+import '../../main.dart';
 
 
 class LanguageProvider with ChangeNotifier {
@@ -8,6 +8,10 @@ class LanguageProvider with ChangeNotifier {
   int _selectIndex = 0;
 
   int get selectIndex => _selectIndex;
+
+  LanguageProvider(){
+    initializeAllLanguages();
+  }
 
   void setSelectIndex(int index) {
     _selectIndex = index;
@@ -19,9 +23,8 @@ class LanguageProvider with ChangeNotifier {
   List<LanguageModel> get languages => _languages;
 
 
-  void initializeAllLanguages(BuildContext context) {
+  void initializeAllLanguages() {
     if (_languages.isEmpty) {
-      // _languages.clear();
       _languages = AppStorageKey.languages;
       notifyListeners();
     }

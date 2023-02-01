@@ -24,7 +24,8 @@ class ChangePasswordScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-        child: Column(
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
           children: [
             Consumer<AuthProvider>(builder: (child, authProvider, _) {
               return Column(

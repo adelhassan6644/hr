@@ -74,13 +74,14 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
     padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
     child: Container(
       padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: ColorResources.fillColor,
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
-          border: Border.all(
-              color: ColorResources.borderColor,
-              style: BorderStyle.solid,
-              width: 1)),
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          // border: Border.all(
+          //     color: ColorResources.borderColor,
+          //     style: BorderStyle.solid,
+          //     width: 1)
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -145,20 +146,13 @@ profileCard({File? profileImage,required String name,required String description
           Container(
             width: 100,
             height: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: ColorResources.primary,
-                width: 1,
-              ),
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: ColorResources.fillColor
             ),
             child: ClipOval(
               child: profileImage == null
-                  ? Image.asset(
-                Images.profileIcon,
-                height: 25,
-                color: ColorResources.primary,
-              )
+                  ? const Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)
                   : Image.file(profileImage!, fit: BoxFit.cover,),
             ),
           ),

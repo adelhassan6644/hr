@@ -110,7 +110,7 @@ final submittedPinTheme = defaultPinTheme.copyWith(
 
 
  Widget hSpace = const SizedBox(
-   height: Dimensions.PADDING_SIZE_DEFAULT,
+   height: Dimensions.PADDING_SIZE_LARGE,
  );
 
 Widget wSpace = const SizedBox(

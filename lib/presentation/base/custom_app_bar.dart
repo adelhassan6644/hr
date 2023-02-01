@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/dimensions.dart';
-import '../../app/core/utils/images.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -37,10 +35,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding:  const EdgeInsets.symmetric(horizontal:Dimensions.PADDING_SIZE_DEFAULT),
         child: leadingAction?? InkWell(
           onTap: () {Navigator.pop(context);},
-          child: const Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-            color: ColorResources.primary,
+          child: const SizedBox(
+            width: 60,
+            height: 60,
+            child: Icon(
+              Icons.arrow_back_ios,
+              size: 20,
+              color: ColorResources.primary,
+            ),
           )
         ),
       ),

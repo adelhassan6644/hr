@@ -7,6 +7,10 @@ class Images {
   static const String plane = 'assets/icons/plane.svg';
   static const String ticket = 'assets/icons/ticket.svg';
   static const String user = 'assets/icons/user.svg';
+  static const String notification = 'assets/icons/notifications.png';
+  static const String expenses = 'assets/icons/expenses.png';
+  static const String vacations = 'assets/icons/vacation.png';
+  static const String salaries = 'assets/icons/salary (2).png';
   static const String save = 'assets/icons/bookmark.svg';
   static const String arrowRightIcon = 'assets/icons/arrow-right.svg';
   static const String saved = 'assets/icons/savedbookmark.svg';

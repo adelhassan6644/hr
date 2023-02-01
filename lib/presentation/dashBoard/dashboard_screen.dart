@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/constant.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/dashBoard/units/nav_bar_item.dart';
 import 'package:hr_project/presentation/home/home_Screen.dart';
 import 'package:hr_project/presentation/profile/profile_screen.dart';
-import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/images.dart';
-import '../notifier/dashboard_provider.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -17,55 +14,83 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
-  late final PageController _pageController;
+  late final PageController _pageController= PageController();
+  late int _selectedIndex ;
+  _setPage(int index) {
+    setState(() {
+      _selectedIndex=index;
+      _pageController.jumpToPage(index,);
+    });
+  }
 
   @override
   void initState() {
-    _pageController = PageController();
+    _selectedIndex = 0;
+    _pageController.initialPage;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<DashProvider>(builder: (context, dashProvider, widget) {
-      return Scaffold(
-        backgroundColor: ColorResources.BACKGROUND_COLOR,
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            // navigationBarItems(
-            //     icon: Images.home, title: getTranslated("request_type", context)),
-            navigationBarItems(
-                iconSvg: Images.home, title: getTranslated("home", context)),
-            navigationBarItems(
-                iconAsset: Images.attendanceIcon, title: getTranslated("attendance", context)),
-            navigationBarItems(
-                iconAsset: Images.requestsIcon, title: getTranslated("requests", context)),
-            navigationBarItems(
-                iconAsset: Images.profileIcon, title: getTranslated("profile", context)),
-          ],
-          elevation: 1,
-          showUnselectedLabels: true,
-          unselectedLabelStyle: unSelectTextStyle,
-          selectedLabelStyle: selectTextStyle,
-          selectedItemColor: ColorResources.primary,
-          unselectedItemColor: ColorResources.disabledColor,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: dashProvider.selectedIndex,
-          onTap: (index) {
-            dashProvider.selectPage(index: index,pageController: _pageController);
-          },
-          showSelectedLabels: true,
+  return  Scaffold(
+      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(bottom: 20,right: 25,left: 25),
+          child: Container(
+            height: 55,
+              decoration:BoxDecoration(
+            color: const Color(0xfff7f7f7),
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: BottomNavItem(
+                      svgIcon: Images.home,
+                    isSelected: _selectedIndex ==0 ,
+                    onTap: () => _setPage(0),
+                    name: getTranslated("home", context),
+                  ),
+                ),
+                Expanded(
+                  child: BottomNavItem(
+                      imageIcon: Images.requestsIcon,
+                      isSelected: _selectedIndex ==1 ,
+                      onTap: () => _setPage(1),
+                    name: getTranslated("requests", context),
+                  ),
+                ),
+                Expanded(
+                  child: BottomNavItem(
+                      imageIcon: Images.attendanceIcon,
+                      isSelected: _selectedIndex ==2 ,
+                      onTap: () => _setPage(2),
+                    name: getTranslated("attendance", context),
 
-        ),
-        body: PageView(controller:_pageController,
-            physics: const NeverScrollableScrollPhysics(),
-            children: const [
-          HomeScreen(),
-          HomeScreen(),
-          HomeScreen(),
-          ProfileScreen(),
-        ]),
-      );
-    });
+                  ),
+                ),
+                Expanded(
+                  child:BottomNavItem(
+                      imageIcon: Images.profileIcon,
+                      isSelected: _selectedIndex ==3 ,
+                      onTap: () => _setPage(3),
+                    name: getTranslated("profile", context),
+
+                  ),
+                ),
+              ]))
+    ),
+      body: PageView(
+          controller: _pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
+            HomeScreen(),
+            HomeScreen(),
+            HomeScreen(),
+            ProfileScreen(),
+          ]),
+    );
   }
 }
