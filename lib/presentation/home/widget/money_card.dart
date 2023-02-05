@@ -7,10 +7,10 @@ import '../../../app/core/utils/text_styles.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../notifier/localization_provider.dart';
 
-class SalaryCard extends StatelessWidget {
+class MoneyCard extends StatelessWidget {
   final String price;
   final bool isSalary;
-  const SalaryCard({required this.price, this.isSalary=true ,Key? key}) : super(key: key);
+  const MoneyCard({required this.price, this.isSalary=true ,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

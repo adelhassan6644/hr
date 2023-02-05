@@ -5,7 +5,7 @@ import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:hr_project/presentation/base/custom_tab_bar.dart';
-import 'package:hr_project/presentation/home/widget/salary_card.dart';
+import 'package:hr_project/presentation/home/widget/money_card.dart';
 import '../../navigation/custom_navigation.dart';
 
 class SalariesScreen extends StatefulWidget {
@@ -68,16 +68,16 @@ class _SalariesScreenState extends State<SalariesScreen> {
                   Center(
                       child: Column(
                         children: const [
-                          SalaryCard(price:"5000" ,),
-                          SalaryCard(price:"4000" ,),
+                          MoneyCard(price:"5000" ,),
+                          MoneyCard(price:"4000" ,),
 
                         ],
                       )),
                   Center(
                       child: Column(
                         children: const [
-                          SalaryCard(price:"555000" ,),
-                          SalaryCard(price:"400530" ,),
+                          MoneyCard(price:"555000" ,),
+                          MoneyCard(price:"400530" ,),
                         ],
                       )),
                 ],

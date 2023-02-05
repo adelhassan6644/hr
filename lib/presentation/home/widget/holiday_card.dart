@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../navigation/custom_navigation.dart';
