@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
@@ -11,8 +11,8 @@ import '../base/custom_button.dart';
 import '../base/custom_text_form_field.dart';
 import '../notifier/auth_provider.dart';
 
-class ChangePasswordScreen extends StatelessWidget {
-  const ChangePasswordScreen({Key? key}) : super(key: key);
+class EditPasswordScreen extends StatelessWidget {
+  const EditPasswordScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

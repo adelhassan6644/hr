@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/presentation/auth/verification_screen.dart';
+import '../../navigation/custom_navigation.dart';
+import '../../navigation/routes.dart';
 import '../auth/reset_password_screen.dart';
 import '../dashBoard/dashboard_screen.dart';
 
@@ -24,7 +26,9 @@ class AuthProvider extends ChangeNotifier {
   logIn(context){
     _isLoading = true;
     notifyListeners();
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const DashBoardScreen()));
+    // CustomNavigator.push(Routes.DASHBOARD);
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const DashBoardScreen()));
+
     _isLoading = false;
     notifyListeners();
   }

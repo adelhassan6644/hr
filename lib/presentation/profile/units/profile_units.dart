@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../app/core/utils/color_resources.dart';
 import '../../../app/core/utils/constant.dart';
 import '../../../app/core/utils/dimensions.dart';
-import '../../../app/core/utils/images.dart';
 import '../../../domain/localization/language_constant.dart';
 
 settingCard(
@@ -77,10 +75,6 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
       decoration: const BoxDecoration(
           color: ColorResources.fillColor,
           borderRadius: BorderRadius.all(Radius.circular(15)),
-          // border: Border.all(
-          //     color: ColorResources.borderColor,
-          //     style: BorderStyle.solid,
-          //     width: 1)
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -153,7 +147,7 @@ profileCard({File? profileImage,required String name,required String description
             child: ClipOval(
               child: profileImage == null
                   ? const Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)
-                  : Image.file(profileImage!, fit: BoxFit.cover,),
+                  : Image.file(profileImage, fit: BoxFit.cover,),
             ),
           ),
           const SizedBox(height: 8,),

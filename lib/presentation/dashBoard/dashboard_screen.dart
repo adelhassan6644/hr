@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/dashBoard/units/nav_bar_item.dart';
 import 'package:hr_project/presentation/home/home_Screen.dart';
@@ -37,7 +38,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(bottom: 20,right: 25,left: 25),
           child: Container(
-            height: 55,
+            height: 60.h,
               decoration:BoxDecoration(
             color: const Color(0xfff7f7f7),
             borderRadius: BorderRadius.circular(100),

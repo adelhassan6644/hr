@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import '../utils/app_colors.dart';
 
 class ErrorWidget extends StatelessWidget {

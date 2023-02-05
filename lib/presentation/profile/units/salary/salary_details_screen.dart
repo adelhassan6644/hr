@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
-import 'package:hr_project/presentation/base/custom_button.dart';
-import 'package:hr_project/presentation/notifier/auth_provider.dart';
-import 'package:provider/provider.dart';
 import '../../../../app/core/utils/color_resources.dart';
 import '../../../../app/core/utils/constant.dart';
 import '../../../../app/core/utils/dimensions.dart';

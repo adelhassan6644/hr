@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';

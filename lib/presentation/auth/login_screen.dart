@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/presentation/auth/forget_password_screen.dart';
 import 'package:hr_project/presentation/base/custom_button.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
@@ -12,9 +12,7 @@ import '../../domain/localization/language_constant.dart';
 import '../base/custom_text_form_field.dart';
 
 class LoginScreen extends StatelessWidget {
-  static const route = "/logInScreen";
   const LoginScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

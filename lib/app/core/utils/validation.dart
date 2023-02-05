@@ -1,13 +1,14 @@
 
 import '../../../domain/localization/language_constant.dart';
 import '../../../main.dart';
+import '../../../navigation/custom_navigation.dart';
 
 class Validations {
   static String? email(String? value) {
     if (value!.isEmpty) {
-      return getTranslated ("required", MyApp.navigatorKey.currentContext!);
+      return getTranslated ("required",  CustomNavigator.scaffoldState.currentContext!);
     } else if (!value.contains('@') || !value.contains('.')) {
-      return getTranslated ( "must_be_like_this_example@mail.com", MyApp.navigatorKey.currentContext!);
+      return getTranslated ( "must_be_like_this_example@mail.com",  CustomNavigator.scaffoldState.currentContext!);
     } else {
       return null;
     }
@@ -15,7 +16,7 @@ class Validations {
 
   static String? any(String? value) {
     if (value!.isEmpty) {
-      return getTranslated ("required", MyApp.navigatorKey.currentContext!);
+      return getTranslated ("required",  CustomNavigator.scaffoldState.currentContext!);
     } else {
       return null;
     }
@@ -23,9 +24,9 @@ class Validations {
 
   static String? phone(String? value) {
     if (value!.isEmpty) {
-      return getTranslated ("required", MyApp.navigatorKey.currentContext!);
+      return getTranslated ("required", CustomNavigator.scaffoldState.currentContext!);
     } else if (value.length < 8) {
-      return  getTranslated ("wrong_phone_number", MyApp.navigatorKey.currentContext!);
+      return  getTranslated ("wrong_phone_number", CustomNavigator.scaffoldState.currentContext!);
     } else {
       return null;
     }
@@ -33,9 +34,9 @@ class Validations {
 
   static String? password(String? value) {
     if (value!.isEmpty) {
-      return  getTranslated ("required", MyApp.navigatorKey.currentContext!);
+      return  getTranslated ("required", CustomNavigator.scaffoldState.currentContext!);
     } else if (value.length < 6) {
-      return getTranslated ("6_characters_minimum", MyApp.navigatorKey.currentContext!);
+      return getTranslated ("6_characters_minimum",  CustomNavigator.scaffoldState.currentContext!);
     } else {
       return null;
     }
@@ -55,9 +56,9 @@ class Validations {
     String? value,
   ) {
     if (value!.isEmpty) {
-      return  getTranslated ("required", MyApp.navigatorKey.currentContext!);
+      return  getTranslated ("required", CustomNavigator.scaffoldState.currentContext!);
     } else if (value.isEmpty) {
-      return getTranslated ( "must_be_more_than_one_character", MyApp.navigatorKey.currentContext!);
+      return getTranslated ( "must_be_more_than_one_character",  CustomNavigator.scaffoldState.currentContext!);
     } else {
       return null;
     }

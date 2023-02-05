@@ -1,19 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:provider/provider.dart';
 
 import '../../../presentation/notifier/theme_provider.dart';
 
-class ColorResources {
+abstract class ColorResources {
   static Color getGreyColor(BuildContext context) {
-    return Color(0xFF6f7275);
+    return const Color(0xFF6f7275);
   }
 
   static Color getGrayColor(BuildContext context) {
-    return Color(0xFF6E6E6E);
+    return const Color(0xFF6E6E6E);
   }
 
   static Color getSearchBg(BuildContext context) {
-    return Color(0xFFF5F5F5);
+    return const Color(0xFFF5F5F5);
+  }
+
+  static Color getStatusColorOfVacation(String status) {
+  switch (status) {
+    case "accepted":
+      return GREEN_COLOR;
+      case "pending":
+      return goldColor;
+      case "rejected":
+      return redColor;
+    default:
+      return GREEN_COLOR;
+  }
+
   }
 
   static Color getBackgroundColor(context) {
@@ -55,12 +70,13 @@ class ColorResources {
   static const Color COLOR_OXFORD_BLUE = Color(0xff282F39);
   static const Color COLOR_GAINSBORO = Color(0xffE8E8E8);
   static const Color COLOR_NIGHER_RIDER = Color(0xff303030);
-  static const Color BACKGROUND_COLOR = Colors.white;
+  static const Color BACKGROUND_COLOR = Color(0xfffcfdfe);
   static const Color COLOR_GREY_BUNKER = Color(0xff25282B);
   static const Color COLOR_GREY_CHATEAU = Color(0xffF5F5F5);
   static const Color goldColor = Color(0xffF8CA78);
+  static const Color GREEN_COLOR = Colors.green;
   static const Color disabledColor = Color(0xFF979797);
-  static const Color fillColor = Color(0xFFF9F9FA);
+  static const Color fillColor = Color(0xfff7f8fc);
   static const Color transparentColor = Color(0xFF0000FFFF);
   static Color shadowColor = const Color(0xFFEEEEEE);
 

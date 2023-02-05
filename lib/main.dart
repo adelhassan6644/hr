@@ -1,4 +1,5 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:hr_project/presentation/notifier/language_provider.dart';
@@ -44,23 +45,27 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static final navigatorKey = GlobalKey<NavigatorState>();
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    List<Locale> _locals = [];
+    List<Locale> locals = [];
     for (var language in AppStorageKey.languages) {
-      _locals.add(Locale(language.languageCode!, language.countryCode));
+      locals.add(Locale(language.languageCode!, language.countryCode));
     }
     return MaterialApp(
-      key: navigatorKey,
+      // routerConfig: route,
+      // initialRoute: Routes.SPLASH,
+    navigatorKey: CustomNavigator.navigatorState,
       title: AppStrings.appName,
-      supportedLocales: _locals,
+      supportedLocales: locals,
+      scaffoldMessengerKey: CustomNavigator.scaffoldState,
       debugShowCheckedModeBanner: false,
-      theme: Provider.of<ThemeProvider>(context,).darkTheme ? dark : light,
-      locale: Provider.of<LocalizationProvider>(context,).locale,
-      localizationsDelegates:  const [
+      theme: Provider.of<ThemeProvider>(
+        context,
+      ).darkTheme ? dark : light,
+      locale: Provider.of<LocalizationProvider>(
+        context,
+      ).locale,
+      localizationsDelegates: const [
         AppLocalization.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

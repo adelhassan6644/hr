@@ -1,6 +1,6 @@
 class Images {
   static const String logo = 'assets/icons/logo.png';
-  static const String splash = 'assets/icons/splash.png';
+  static const String splash = 'assets/icons/hr.png';
   static const String authHeader = 'assets/icons/auth_hederl.png';
   static const String banner = 'assets/icons/banner.svg';
   static const String home = 'assets/icons/home.svg';

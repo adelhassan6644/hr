@@ -41,6 +41,7 @@ Future<void> init() async {
    sl.registerLazySingleton(() => LanguageProvider());
 
   // External
+  // sl.registerLazySingleton(() => Go(sharedPreferences: sl()));
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => Dio());

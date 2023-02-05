@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/presentation/settings/widget/language_widget.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/app_storage_keys.dart';

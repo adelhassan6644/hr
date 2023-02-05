@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
+import 'package:hr_project/presentation/home/holidays_screen.dart';
+import 'package:hr_project/presentation/home/my_vacations_screen.dart';
+import 'package:hr_project/presentation/home/salaries_screen.dart';
+import 'package:hr_project/presentation/home/attendance_leaving_screen.dart';
 import 'package:hr_project/presentation/home/widget/type_card.dart';
 import '../../../app/core/utils/constant.dart';
 import '../../app/core/utils/images.dart';
+import 'expenses_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const route = "/homeScreen";
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -34,8 +37,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   onPressed: () {},
                 ),
-                Row(
-                  children: [
+                Row(children: [
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -68,10 +70,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ],
-                )
-              ],
-            ),
+                  ],)
+              ],),
             const SizedBox(height: 30),
             Container(
               padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
@@ -173,7 +173,9 @@ class HomeScreen extends StatelessWidget {
               ),
               title: getTranslated("attendance_leaving", context),
               iconColor: ColorResources.primary,
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder:  (context) => const AttendanceLeavingScreen(),));
+              },
             ),
             const SizedBox(height: 20),
             Wrap(
@@ -188,7 +190,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                   title: getTranslated("salaries", context),
                   iconColor: const Color(0xff8fc44b),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SalariesScreen()));},
                 ),
                 SizedBox(
                   width: context.width * 0.03,
@@ -203,7 +206,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                   title: getTranslated("my_vacations", context),
                   iconColor: const Color(0xfff6b854),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyVacationScreen()));
+                  },
                 ),
               ],
             ),
@@ -217,7 +222,10 @@ class HomeScreen extends StatelessWidget {
                       color: Color(0xff9e0318), size: 25),
                   title: getTranslated("holidays", context),
                   iconColor: const Color(0xff9e0318),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HolidaysScreen(),));
+
+                  },
                 ),
                 SizedBox(
                   width: context.width * 0.03,
@@ -232,7 +240,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                   title: getTranslated("expenses", context),
                   iconColor: const Color(0xfff1cf6e),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ExpensesScreen(),));
+                  },
                 ),
               ],
             ),
