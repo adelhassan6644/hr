@@ -252,12 +252,12 @@ class SalaryDetailsScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      TextButton(onPressed: (){}, child: Text(getTranslated("more_details", context),
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: ColorResources.primary
-                      ),),)
+                      // TextButton(onPressed: (){}, child: Text(getTranslated("more_details", context),
+                      // style: const TextStyle(
+                      //   fontSize: 14,
+                      //   fontWeight: FontWeight.w500,
+                      //   color: ColorResources.primary
+                      // ),),)
                     ],
                   ),
                 ),

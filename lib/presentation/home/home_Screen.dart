@@ -10,6 +10,7 @@ import 'package:hr_project/presentation/home/attendance_leaving_screen.dart';
 import 'package:hr_project/presentation/home/widget/type_card.dart';
 import '../../../app/core/utils/constant.dart';
 import '../../app/core/utils/images.dart';
+import '../profile/units/salary/salary_screen.dart';
 import 'expenses_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             horizontal: Dimensions.PADDING_SIZE_DEFAULT),
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.of(context).systemGestureInsets.top),
+            SizedBox(height: MediaQuery.of(context).padding.top),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +38,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                   onPressed: () {},
                 ),
-                Row(children: [
+                Row(
+                  children: [
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -58,20 +60,24 @@ class HomeScreen extends StatelessWidget {
                           width: 40,
                           height: 40,
                           decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          color: ColorResources.fillColor
-                          ),
+                              shape: BoxShape.circle,
+                              color: ColorResources.fillColor),
                           child: const ClipOval(
                               child:
                                   // profileImage == null ?
-                                 Icon(Icons.person,color: ColorResources.disabledColor,)
+                                  Icon(
+                            Icons.person,
+                            color: ColorResources.disabledColor,
+                          )
                               // : Image.file(profileImage!, fit: BoxFit.cover,),
                               ),
                         ),
                       ],
                     ),
-                  ],)
-              ],),
+                  ],
+                )
+              ],
+            ),
             const SizedBox(height: 30),
             Container(
               padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
@@ -157,7 +163,6 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   )
                 ],
@@ -174,25 +179,31 @@ class HomeScreen extends StatelessWidget {
               title: getTranslated("attendance_leaving", context),
               iconColor: ColorResources.primary,
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder:  (context) => const AttendanceLeavingScreen(),));
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const AttendanceLeavingScreen(),
+                ));
               },
             ),
             const SizedBox(height: 20),
             Wrap(
               children: [
                 TypeCard(
-                  width: context.width * 0.45,
-                  height: 80,
-                  icon: Image.asset(
-                    Images.salaries,
-                    height: 25,
-                    color: const Color(0xff8fc44b),
-                  ),
-                  title: getTranslated("salaries", context),
-                  iconColor: const Color(0xff8fc44b),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SalariesScreen()));},
-                ),
+                    width: context.width * 0.45,
+                    height: 80,
+                    icon: Image.asset(
+                      Images.salaries,
+                      height: 25,
+                      color: const Color(0xff8fc44b),
+                    ),
+                    title: getTranslated("salaries", context),
+                    iconColor: const Color(0xff8fc44b),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SalaryScreen()));
+                    }
+
+                    // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SalariesScreen()));},
+                    ),
                 SizedBox(
                   width: context.width * 0.03,
                 ),
@@ -207,7 +218,8 @@ class HomeScreen extends StatelessWidget {
                   title: getTranslated("my_vacations", context),
                   iconColor: const Color(0xfff6b854),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyVacationScreen()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const MyVacationScreen()));
                   },
                 ),
               ],
@@ -223,8 +235,9 @@ class HomeScreen extends StatelessWidget {
                   title: getTranslated("holidays", context),
                   iconColor: const Color(0xff9e0318),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HolidaysScreen(),));
-
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const HolidaysScreen(),
+                    ));
                   },
                 ),
                 SizedBox(
@@ -241,7 +254,9 @@ class HomeScreen extends StatelessWidget {
                   title: getTranslated("expenses", context),
                   iconColor: const Color(0xfff1cf6e),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ExpensesScreen(),));
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ExpensesScreen(),
+                    ));
                   },
                 ),
               ],

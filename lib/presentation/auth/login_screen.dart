@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height:MediaQuery.of(context).systemGestureInsets.top),
+                SizedBox(height:MediaQuery.of(context).padding.top),
                 Text(getTranslated("welcome", context),
                     style: headLineTextStyle.copyWith(color: Colors.white)),
                 const SizedBox(
