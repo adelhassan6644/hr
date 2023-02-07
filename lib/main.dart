@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
 import 'app/core/utils/app_storage_keys.dart';
+import 'app/core/utils/un_focus.dart';
 import 'app/theme/dark_theme.dart';
 import 'app/theme/light_theme.dart';
 import 'di.dart' as di;
@@ -54,6 +55,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // routerConfig: route,
       // initialRoute: Routes.SPLASH,
+      builder: (context, child) => MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: Unfocus(child: child!)),
     navigatorKey: CustomNavigator.navigatorState,
       title: AppStrings.appName,
       supportedLocales: locals,

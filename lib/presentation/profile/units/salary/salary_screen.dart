@@ -25,7 +25,7 @@ class SalaryScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
               decoration: const BoxDecoration(
-                color: ColorResources.fillColor,
+                color: ColorResources.FILL,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
               child: Row(
@@ -55,7 +55,7 @@ class SalaryScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    progressColor: ColorResources.primary,
+                    progressColor: ColorResources.PRIMARY,
                     backgroundColor: ColorResources.goldColor,
                   ),
                   const SizedBox(
@@ -69,7 +69,7 @@ class SalaryScreen extends StatelessWidget {
                         getTranslated("base_salary", context),
                         style: const TextStyle(
                             fontSize: 14,
-                            color: ColorResources.primary,
+                            color: ColorResources.PRIMARY,
                             fontWeight: FontWeight.w500),
                       ),
                       const Text(
@@ -130,7 +130,7 @@ class SalaryScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_LARGE),
                 decoration: const BoxDecoration(
-                  color: ColorResources.fillColor,
+                  color: ColorResources.FILL,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
                 child: Column(
@@ -148,9 +148,9 @@ class SalaryScreen extends StatelessWidget {
                       height: 10,
                     ),
                     CustomButton(
-                      textColor: ColorResources.whiteColor,
+                      textColor: ColorResources.WHITE,
                       text: getTranslated("details", context),
-                      backgroundColor: ColorResources.primary,
+                      backgroundColor: ColorResources.PRIMARY,
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SalaryDetailsScreen()));
                       },
@@ -159,10 +159,10 @@ class SalaryScreen extends StatelessWidget {
                       height: 10,
                     ),
                     CustomButton(
-                        textColor: ColorResources.primary,
+                        textColor: ColorResources.PRIMARY,
                         text: getTranslated("download", context),
                         icon: Icons.download,
-                        backgroundColor: ColorResources.whiteColor),
+                        backgroundColor: ColorResources.WHITE),
                   ],
                 )),
           ],

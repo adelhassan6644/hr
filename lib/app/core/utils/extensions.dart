@@ -65,6 +65,14 @@ extension DataTimeExtention on DateTime {
   }
 }
 
+extension Format on DateTime {
+  String format(String format) {
+    return DateFormat(format,
+        Provider.of<LocalizationProvider>( CustomNavigator.scaffoldState.currentContext!,listen: false).isLtr?'en_US':'ar_SA'
+    ).format(this);
+  }
+}
+
 extension IsoDataTimeExtention on DateTime {
 
   String isoDateTimeFormat() {
@@ -115,16 +123,6 @@ int daysBetween(DateTime from, DateTime to) {
 }
 
 
-extension ScreenScale on num {
-  double get w =>
-      MediaQuery.of( CustomNavigator.scaffoldState.currentContext!,).size.width *
-          (toDouble() / 390);
-  double get h =>
-      MediaQuery.of( CustomNavigator.scaffoldState.currentContext!,)
-          .size
-          .height *
-          (toDouble() / 844);
-}
 int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;
 }
@@ -169,3 +167,16 @@ extension MediaQueryValues on BuildContext {
 
   double get bottom => MediaQuery.of(this).viewInsets.bottom;
 }
+
+extension ScreenScale on num {
+  double get w =>
+      MediaQuery.of(CustomNavigator.navigatorState.currentContext!).size.width *
+          (toDouble() / 390);
+  double get h =>
+      MediaQuery.of(CustomNavigator.navigatorState.currentContext!)
+          .size
+          .height *
+          (toDouble() / 844);
+}
+
+

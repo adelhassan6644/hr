@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/dimensions.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
-  final Widget? actionChild;
+  final List<Widget>? actionChild;
   final bool showLeading ;
   final Widget? leadingAction;
   final bool titleCenter;
@@ -14,38 +15,39 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      shadowColor: ColorResources.primary,
-      backgroundColor: ColorResources.whiteColor,
-      elevation: 1,
-
+      shadowColor: ColorResources.PRIMARY,
+      backgroundColor: ColorResources.WHITE,
+      elevation: 0.5,
       shape: const Border(bottom: BorderSide(width: 0, color: ColorResources.transparentColor)),
-      actions: [Padding(
-        padding: const EdgeInsets.only(right:Dimensions.PADDING_SIZE_DEFAULT),
-        child: actionChild??const SizedBox(),
-      )],
+      actions: actionChild,
       automaticallyImplyLeading: false,
       centerTitle:titleCenter,
-      leadingWidth: 39,
-      title: Text(title ??'',
-          style:  const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w800,
-          )),
-      leading: Padding(
+      leadingWidth: 39.w,
+      title: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: 24.w),
+        child: Text(title ??'',
+            style:  const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            )),
+      ),
+      leading: Navigator.canPop(context)?Padding(
         padding:  const EdgeInsets.symmetric(horizontal:Dimensions.PADDING_SIZE_DEFAULT),
         child: leadingAction?? InkWell(
-          onTap: () {Navigator.pop(context);},
+          onTap: () {
+
+            Navigator.pop(context);},
           child: const SizedBox(
             width: 60,
             height: 60,
             child: Icon(
               Icons.arrow_back_ios,
               size: 20,
-              color: ColorResources.primary,
+              color: ColorResources.PRIMARY,
             ),
           )
         ),
-      ),
+      ):null,
     );
   }
 

@@ -27,7 +27,7 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
     // CustomNavigator.push(Routes.DASHBOARD);
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const DashBoardScreen()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const DashBoardScreen()));
 
     _isLoading = false;
     notifyListeners();

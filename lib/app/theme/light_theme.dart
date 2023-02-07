@@ -30,12 +30,12 @@ ThemeData light = ThemeData(
     backgroundColor: Colors.white,
     elevation: 0,
     titleTextStyle: TextStyle(
-        color: ColorResources.primary,
+        color: ColorResources.PRIMARY,
         fontSize: 25,
         fontFamily: AppStrings.fontFamily),
   ),
   textTheme: const TextTheme(
-    button: TextStyle(color: ColorResources.primary),
+    button: TextStyle(color: ColorResources.PRIMARY),
     headline1: TextStyle(
       fontWeight: FontWeight.w300,
       fontSize: Dimensions.FONT_SIZE_DEFAULT,

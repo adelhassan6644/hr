@@ -89,7 +89,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       keyboardType: widget.type,
       inputFormatters: widget.formatter ?? [],
       onSaved: (widget.onSave),
-      style:widget.error!? hintTextStyle.copyWith(color: ColorResources.redColor):hintTextStyle,
+      style:widget.error!? hintTextStyle.copyWith(color: ColorResources.WARNING_COLOR):hintTextStyle,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
         prefixIcon:widget.removePIcon == true ? null:Padding(
@@ -117,7 +117,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       )
                     : Image.asset(
                         Images.unlockEyeLockIcon,
-                        color: ColorResources.primary,
+                        color: ColorResources.PRIMARY,
                         height: 25,
                       ),
               ) : Icon(

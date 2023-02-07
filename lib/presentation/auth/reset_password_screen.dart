@@ -35,7 +35,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   ),
                   Text(getTranslated("new_password", context),
                       style: titleTextStyle.copyWith(
-                          color: ColorResources.primary)),
+                          color: ColorResources.PRIMARY)),
                   const SizedBox(
                     height: 5,
                   ),
@@ -50,7 +50,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   ),
                   Text(getTranslated("confirm_password", context),
                       style: titleTextStyle.copyWith(
-                          color: ColorResources.primary)),
+                          color: ColorResources.PRIMARY)),
                   const SizedBox(
                     height: 5,
                   ),
@@ -69,9 +69,9 @@ class ResetPasswordScreen extends StatelessWidget {
                         onTap: () {
                           authProvider.resetPassword(context: context);
                         },
-                        textColor: ColorResources.whiteColor,
+                        textColor: ColorResources.WHITE,
                         text: getTranslated("confirm", context),
-                        backgroundColor: ColorResources.primary),
+                        backgroundColor: ColorResources.PRIMARY),
                   ),
                 ],
               );

@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: ColorResources.primary,
+        backgroundColor: ColorResources.PRIMARY,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -36,14 +36,14 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
                     text: const TextSpan(text: "HR App",  style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
-                        color: ColorResources.whiteColor)),
+                        color: ColorResources.WHITE)),
                   ),
                 )),
             Expanded(
               child: Center(
                 child:Image.asset(
                   Images.splash,
-                  color: ColorResources.whiteColor,
+                  color: ColorResources.WHITE,
                   height: 158.0,
                   width: 180.0,
                 ),
@@ -62,7 +62,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
                   ],  style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: ColorResources.whiteColor)),
+                      color: ColorResources.WHITE)),
                 )),
           ],
         ));

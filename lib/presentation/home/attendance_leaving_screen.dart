@@ -150,10 +150,10 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
                 
                 // Use `CalendarStyle` to customize the UI
                 outsideDaysVisible: true,
-                selectedDecoration:                 BoxDecoration(color:ColorResources.primary,shape: BoxShape.circle ),
+                selectedDecoration:                 BoxDecoration(color:ColorResources.PRIMARY,shape: BoxShape.circle ),
 
                   markerDecoration:
-                BoxDecoration(color:ColorResources.primary,shape: BoxShape.circle ),
+                BoxDecoration(color:ColorResources.PRIMARY,shape: BoxShape.circle ),
                 rangeHighlightColor: Theme.of(context).primaryColor
               ),
               onDaySelected: _onDaySelected,

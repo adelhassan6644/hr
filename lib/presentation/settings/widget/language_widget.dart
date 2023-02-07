@@ -19,7 +19,7 @@ Widget languageWidget(
         padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
         decoration: BoxDecoration(
           color: languageProvider.selectIndex == index
-              ? ColorResources.primary.withOpacity(.15)
+              ? ColorResources.PRIMARY.withOpacity(.15)
               : null,
           borderRadius: BorderRadius.circular(15),
         ),
@@ -38,7 +38,7 @@ Widget languageWidget(
               ],
             ),
             languageProvider.selectIndex == index
-                ? const Icon(Icons.done, color: ColorResources.primary)
+                ? const Icon(Icons.done, color: ColorResources.PRIMARY)
                 : const SizedBox.shrink()
           ],
         ),

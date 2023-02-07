@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 
 import '../../../app/core/utils/color_resources.dart';
 import '../../../app/core/utils/dimensions.dart';
@@ -18,8 +19,8 @@ class TypeCard extends StatelessWidget {
     return InkWell(
       onTap: onTap ,
       child: Container(
-        width: width,
-        height: height??100,
+        width: width??context.width,
+        height: height??80.h,
         padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT),
         decoration:  BoxDecoration(
             boxShadow: [
@@ -31,7 +32,7 @@ class TypeCard extends StatelessWidget {
               )
             ],
             borderRadius: const BorderRadius.all(Radius.circular(12)),
-            color: ColorResources.fillColor),
+            color: ColorResources.FILL),
         child:  Row(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -44,8 +45,10 @@ class TypeCard extends StatelessWidget {
               child: icon,
             ),
             const SizedBox(width: 10),
-            Text(title, style: const TextStyle(
-                  fontSize: 13, fontWeight: FontWeight.w600),),
+            Expanded(
+              child: Text(title, style: const TextStyle(
+                    fontSize: 13, fontWeight: FontWeight.w600),),
+            ),
           ],
         ),
       ),
