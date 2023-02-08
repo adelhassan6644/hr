@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../../../domain/localization/language_constant.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../presentation/notifier/localization_provider.dart';
 
@@ -180,3 +181,37 @@ extension ScreenScale on num {
 }
 
 
+///Extension to return date type
+extension Difference on DateTime{
+  String diff(String format){
+    if (DateTime.now().toLocal().isBefore(toLocal())) {
+      return DateFormat.jm().format(toLocal()).toString();
+    }
+   var dur=DateTime.now().toLocal().difference(this);
+  if(dur.inDays ==0){
+    return getTranslated("today",CustomNavigator.navigatorState.currentContext!);
+  }
+  else if(dur.inDays == 1){
+    return getTranslated("yesterday",CustomNavigator.navigatorState.currentContext!);
+  }
+  else if(dur.inDays > 1){
+    return"${dur.inDays} ${getTranslated("days",CustomNavigator.navigatorState.currentContext!)}";
+  }
+  else if(dur.inHours==1){
+    return getTranslated("hour",CustomNavigator.navigatorState.currentContext!);
+  }
+  else if(dur.inHours>1){
+    return "${dur.inHours} ${getTranslated("hour",CustomNavigator.navigatorState.currentContext!)}";
+  }
+  else if(dur.inMinutes == 1){
+    return "1 min" ;
+  }
+  else if(dur.inSeconds == 0){
+    return "now" ;
+  }
+  else{
+        return DateFormat(format).format(this);
+  }
+  }
+
+}

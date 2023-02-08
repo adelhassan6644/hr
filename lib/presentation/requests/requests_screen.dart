@@ -7,6 +7,8 @@ import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/requests/widgets/title_container.dart';
 
+import '../../app/core/utils/text_styles.dart';
+
 
 class RequestsScreen extends StatelessWidget {
   const RequestsScreen({Key? key}) : super(key: key);
@@ -19,8 +21,15 @@ class RequestsScreen extends StatelessWidget {
       ),
       body: Padding(
         padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-        child: Column(children: [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
           SizedBox(height:24.h),
+          Text("2 ${getTranslated("results", context)}",style: AppTextStyles.w600.copyWith(
+            fontSize: 12,
+            color: ColorResources.HEADER
+          ),),
+          SizedBox(height:15.h),
           InkWell(
             onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  RequestFlowScreen(
               requestType: getTranslated("loan", context),
@@ -43,7 +52,7 @@ class RequestsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       titleContainer(title:getTranslated("rejected", context).replaceAll("ال", "").replaceAll("ة", ""),color: ColorResources.WARNING_COLOR.withOpacity(0.2)),
-                      titleContainer(title:DateTime.now().format("EEEE dd MMMM"),),
+                      titleContainer(title:DateTime.now().diff("EEEE dd MMMM"),),
                     ],
                   ),
                 ),
@@ -150,7 +159,6 @@ class RequestsScreen extends StatelessWidget {
                 ),
               ],),),
           )
-
         ],),
       ),
     );

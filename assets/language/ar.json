@@ -209,6 +209,11 @@
   "loan_amount": "قيمة السٌلفة",
   "monthly_deduction": "القسط الشهري",
   "period_of_deduction": "فترة السداد",
+  "results":"النتائج",
+  "today": "اليوم",
+  "yesterday": "الامس",
+
+  "sec": "ثانية",
   "permission": "إستئذان",
   "vacation": "إجازة",
   "business_trip": "رحلة عمل",
@@ -231,6 +236,7 @@
   "documents": "مستندات",
   "contract": "العقود",
   "days": "ايام",
+  "day": "يوم",
   "available_to_use": "متاحة للاستخدام",
   "annual_leave_balance": "رصيد الإجازة السنوية",
   "attendance": "الحضور"
