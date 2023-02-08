@@ -25,7 +25,7 @@ class SalaryDetailsScreen extends StatelessWidget {
             height: context.height * 0.25,
             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
             decoration: const BoxDecoration(
-              color: ColorResources.primary,
+              color: ColorResources.PRIMARY,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(30),
                 bottomLeft: Radius.circular(30),
@@ -44,7 +44,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   DateTime.now().monthFormat(),
                   style: const TextStyle(
                       fontSize: 18,
-                      color: ColorResources.whiteColor,
+                      color: ColorResources.WHITE,
                       fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(
@@ -54,7 +54,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   getTranslated("pay_by", context),
                   style: const TextStyle(
                       fontSize: 14,
-                      color: ColorResources.whiteColor,
+                      color: ColorResources.WHITE,
                       fontWeight: FontWeight.w600),
                 ),
 
@@ -70,7 +70,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                   decoration: const BoxDecoration(
-                    color: ColorResources.fillColor,
+                    color: ColorResources.FILL,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
@@ -85,7 +85,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                                 "total_salary_and_allowances", context),
                             style: const TextStyle(
                                 fontSize: 16,
-                                color: ColorResources.primary,
+                                color: ColorResources.PRIMARY,
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(
@@ -177,7 +177,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   padding:
                   const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                   decoration: const BoxDecoration(
-                    color: ColorResources.fillColor,
+                    color: ColorResources.FILL,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
@@ -192,7 +192,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                                 "deductions", context),
                             style: const TextStyle(
                                 fontSize: 16,
-                                color: ColorResources.primary,
+                                color: ColorResources.PRIMARY,
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(

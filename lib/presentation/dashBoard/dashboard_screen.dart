@@ -6,6 +6,8 @@ import 'package:hr_project/presentation/home/home_Screen.dart';
 import 'package:hr_project/presentation/profile/profile_screen.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/images.dart';
+import '../home/attendance_leaving_screen.dart';
+import '../requests/requests_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -88,8 +90,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           physics: const NeverScrollableScrollPhysics(),
           children: const [
             HomeScreen(),
-            HomeScreen(),
-            HomeScreen(),
+            RequestsScreen(),
+            AttendanceLeavingScreen(),
             ProfileScreen(),
           ]),
     );

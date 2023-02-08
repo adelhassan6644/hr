@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
             height: context.height*0.25,
             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
             decoration: const BoxDecoration(
-              color: ColorResources.primary,
+              color: ColorResources.PRIMARY,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(30),
                 bottomLeft: Radius.circular(30),
@@ -64,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Text(getTranslated("email_or_id", context),
                             style: titleTextStyle.copyWith(
-                                color: ColorResources.primary)),
+                                color: ColorResources.PRIMARY)),
                         const SizedBox(
                           height: 5,
                         ),
@@ -79,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Text(getTranslated("password", context),
                             style: titleTextStyle.copyWith(
-                                color: ColorResources.primary)),
+                                color: ColorResources.PRIMARY)),
                         const SizedBox(
                           height: 5,
                         ),
@@ -100,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                               child: Text(
                                   getTranslated("forget_password", context),
                                   style: titleTextStyle.copyWith(
-                                      color: ColorResources.primary)),
+                                      color: ColorResources.PRIMARY)),
                             ),
                           ],
                         ),
@@ -115,9 +115,9 @@ class LoginScreen extends StatelessWidget {
                           onTap: () {
                             authProvider.logIn(context);
                           },
-                          textColor: ColorResources.whiteColor,
+                          textColor: ColorResources.WHITE,
                           text: getTranslated("sign_in", context),
-                          backgroundColor: ColorResources.primary),
+                          backgroundColor: ColorResources.PRIMARY),
                     ),
                   ],
                 ),

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../../../domain/localization/language_constant.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../presentation/notifier/localization_provider.dart';
 
@@ -65,6 +66,14 @@ extension DataTimeExtention on DateTime {
   }
 }
 
+extension Format on DateTime {
+  String format(String format) {
+    return DateFormat(format,
+        Provider.of<LocalizationProvider>( CustomNavigator.scaffoldState.currentContext!,listen: false).isLtr?'en_US':'ar_SA'
+    ).format(this);
+  }
+}
+
 extension IsoDataTimeExtention on DateTime {
 
   String isoDateTimeFormat() {
@@ -115,16 +124,6 @@ int daysBetween(DateTime from, DateTime to) {
 }
 
 
-extension ScreenScale on num {
-  double get w =>
-      MediaQuery.of( CustomNavigator.scaffoldState.currentContext!,).size.width *
-          (toDouble() / 390);
-  double get h =>
-      MediaQuery.of( CustomNavigator.scaffoldState.currentContext!,)
-          .size
-          .height *
-          (toDouble() / 844);
-}
 int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;
 }
@@ -168,4 +167,51 @@ extension MediaQueryValues on BuildContext {
   double get toPadding => MediaQuery.of(this).viewPadding.top;
 
   double get bottom => MediaQuery.of(this).viewInsets.bottom;
+}
+
+extension ScreenScale on num {
+  double get w =>
+      MediaQuery.of(CustomNavigator.navigatorState.currentContext!).size.width *
+          (toDouble() / 390);
+  double get h =>
+      MediaQuery.of(CustomNavigator.navigatorState.currentContext!)
+          .size
+          .height *
+          (toDouble() / 844);
+}
+
+
+///Extension to return date type
+extension Difference on DateTime{
+  String diff(String format){
+    if (DateTime.now().toLocal().isBefore(toLocal())) {
+      return DateFormat.jm().format(toLocal()).toString();
+    }
+   var dur=DateTime.now().toLocal().difference(this);
+  if(dur.inDays ==0){
+    return getTranslated("today",CustomNavigator.navigatorState.currentContext!);
+  }
+  else if(dur.inDays == 1){
+    return getTranslated("yesterday",CustomNavigator.navigatorState.currentContext!);
+  }
+  else if(dur.inDays > 1){
+    return"${dur.inDays} ${getTranslated("days",CustomNavigator.navigatorState.currentContext!)}";
+  }
+  else if(dur.inHours==1){
+    return getTranslated("hour",CustomNavigator.navigatorState.currentContext!);
+  }
+  else if(dur.inHours>1){
+    return "${dur.inHours} ${getTranslated("hour",CustomNavigator.navigatorState.currentContext!)}";
+  }
+  else if(dur.inMinutes == 1){
+    return "1 min" ;
+  }
+  else if(dur.inSeconds == 0){
+    return "now" ;
+  }
+  else{
+        return DateFormat(format).format(this);
+  }
+  }
+
 }

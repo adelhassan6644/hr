@@ -51,7 +51,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
         isDense: true,
         validator: widget.validation,
         isExpanded: true,
-        dropdownColor: ColorResources.fillColor,
+        dropdownColor: ColorResources.FILL,
         itemHeight: 50,
         icon: widget.icon ?? const Icon(Icons.arrow_drop_down),
         iconSize: widget.iconSize,
@@ -62,7 +62,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
         borderRadius:  const BorderRadius.all(
             Radius.circular(Dimensions.PADDING_SIZE_DEFAULT)),
         decoration: InputDecoration(
-          fillColor: ColorResources.fillColor,
+          fillColor: ColorResources.FILL,
           filled: true,
           contentPadding:
               const EdgeInsets.symmetric(vertical: 22, horizontal: 24),

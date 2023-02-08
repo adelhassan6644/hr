@@ -66,7 +66,7 @@ class VerificationScreen extends StatelessWidget {
                     style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
-                        color: ColorResources.primary)),
+                        color: ColorResources.PRIMARY)),
               ),
               SizedBox(
                 height: context.height * 0.07,
@@ -79,9 +79,9 @@ class VerificationScreen extends StatelessWidget {
                     onTap: () {
                       authProvider.sendOTP(context: context);
                     },
-                    textColor: ColorResources.whiteColor,
+                    textColor: ColorResources.WHITE,
                     text: getTranslated("send_otp", context),
-                    backgroundColor: ColorResources.primary),
+                    backgroundColor: ColorResources.PRIMARY),
               ),
             ],
           );

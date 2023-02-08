@@ -27,7 +27,7 @@ class CustomCheckBoxListTile extends StatelessWidget {
       checkboxShape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
       ),
-      activeColor: ColorResources.primary,
+      activeColor: ColorResources.PRIMARY,
       title: Text(
         title,
         style: value ? selectTextStyle : hintTextStyle,
@@ -35,7 +35,7 @@ class CustomCheckBoxListTile extends StatelessWidget {
       subtitle:subTitle != null? Text(
         "(${subTitle??""})",
         style: value ? const TextStyle(
-            color: ColorResources.primary,
+            color: ColorResources.PRIMARY,
             fontSize: 11,
             fontFamily: AppStrings.fontFamily,
             fontWeight: FontWeight.w600)

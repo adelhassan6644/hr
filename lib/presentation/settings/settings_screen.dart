@@ -27,7 +27,7 @@ class SettingsScreen extends StatelessWidget {
           Container(
             width: context.width,
             height: 1,
-            color: ColorResources.borderColor,
+            color: ColorResources.BORDER_COLOR,
           ),
           Consumer<LocalizationProvider>(builder: (child, localizationProvider, _) {
             return settingCard(
@@ -63,7 +63,7 @@ class SettingsScreen extends StatelessWidget {
           Container(
             width: context.width,
             height: 1,
-            color: ColorResources.borderColor,
+            color: ColorResources.BORDER_COLOR,
           ),
           settingCard(
               name: getTranslated("change_password", context),
@@ -75,7 +75,7 @@ class SettingsScreen extends StatelessWidget {
           Container(
             width: context.width,
             height: 1,
-            color: ColorResources.borderColor,
+            color: ColorResources.BORDER_COLOR,
           ),
           const Spacer(),
           TextButton(
@@ -86,7 +86,7 @@ class SettingsScreen extends StatelessWidget {
               child: Text(
                 getTranslated("log_out", context),
                 style: titleTextStyle.copyWith(
-                    fontSize: 18, color: ColorResources.redColor),
+                    fontSize: 18, color: ColorResources.WARNING_COLOR),
               )),
           const SizedBox(
             height: 20,

@@ -31,7 +31,7 @@ class LanguageScreen extends StatelessWidget {
           Row(mainAxisAlignment: MainAxisAlignment.end,
             children: [
             IconButton(onPressed: (){ Navigator.pop(context);},
-                icon: const Icon(Icons.clear,size: 25,color: ColorResources.primary,))
+                icon: const Icon(Icons.clear,size: 25,color: ColorResources.PRIMARY,))
           ],),
           const SizedBox(height: 10),
           Consumer<LanguageProvider>(
@@ -72,7 +72,7 @@ class LanguageScreen extends StatelessWidget {
                                     .countryCode,
                               ));
                             }, textColor: Colors.white,
-                            backgroundColor: ColorResources.primary,
+                            backgroundColor: ColorResources.PRIMARY,
                           ),
                         ),
                     ],
