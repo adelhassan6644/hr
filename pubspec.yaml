@@ -51,12 +51,18 @@ dependencies:
   flutter_svg:
   upgrader:
   flutter_lints:
+
   url_strategy:
   flutter_native_splash:
   cupertino_icons: ^1.0.2
   flutter_form_builder:
   pinput: ^2.2.18
-  table_calendar:
+  syncfusion_flutter_calendar: ^20.4.49
+
+
+  flutter_calendar_week: ^3.0.0
+  simple_gesture_detector:
+#  table_calendar:
   platform: ^3.1.0
   flutter_staggered_animations:
   percent_indicator: ^4.2.2

@@ -8,8 +8,8 @@ import '../../../navigation/custom_navigation.dart';
 import '../../notifier/localization_provider.dart';
 
 class AttendanceCard extends StatelessWidget {
-  final String statues;
-  const AttendanceCard({required this.statues,Key? key}) : super(key: key);
+  final Event event;
+  const AttendanceCard({required this.event,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +64,10 @@ class AttendanceCard extends StatelessWidget {
                   children: [
                     Text(
                       "8 Hours",
-                      style: AppTextStyles.w600.copyWith(fontSize: 12, color: Colors.green),),
+                      style: AppTextStyles.w600.copyWith(fontSize: 12, color: event.color),),
                     Text(
-                      statues,
-                      style: AppTextStyles.w600.copyWith(fontSize: 12, color: Colors.green),),
+                      event.title,
+                      style: AppTextStyles.w600.copyWith(fontSize: 12, color: event.color),),
                   ],
                 ),
               ],
@@ -77,7 +77,7 @@ class AttendanceCard extends StatelessWidget {
             width: 5.h,
             height: 75.h,
             decoration: BoxDecoration(
-              color: ColorResources.PRIMARY,
+              color:  event.color,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
                       Provider.of<LocalizationProvider>(

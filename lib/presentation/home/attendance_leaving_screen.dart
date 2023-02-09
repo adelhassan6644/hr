@@ -1,14 +1,16 @@
 import 'dart:collection';
 
-
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:hr_project/presentation/calender/src/shared/utils.dart';
+import 'package:hr_project/presentation/calender/src/table_calendar.dart';
+
 import '../../navigation/custom_navigation.dart';
+import '../calender/src/customization/calendar_style.dart';
 import 'widget/attendance_card.dart';
 
 class AttendanceLeavingScreen extends StatefulWidget {
@@ -19,7 +21,6 @@ class AttendanceLeavingScreen extends StatefulWidget {
 }
 
 class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
-
   late TabController _tabController;
   int _selectedIndex = 1;
   RangeSelectionMode _rangeSelectionMode = RangeSelectionMode
@@ -34,13 +35,11 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
   @override
   void initState() {
     _tabController = TabController(
-        length:3,
+        length: 3,
         initialIndex: _selectedIndex,
         vsync: CustomNavigator.scaffoldState.currentState!);
     super.initState();
   }
-
-
 
   final Set<DateTime> _selectedDays = LinkedHashSet<DateTime>(
     equals: isSameDay,
@@ -84,26 +83,6 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
     }
   }
 
-  void _onRangeSelected(DateTime? start, DateTime? end, DateTime focusedDay) {
-    setState(() {
-      _selectedDay = null;
-      _focusedDay = focusedDay;
-      _rangeStart = start;
-      _rangeEnd = end;
-      _rangeSelectionMode = RangeSelectionMode.toggledOn;
-    });
-
-    // `start` or `end` could be null
-    if (start != null && end != null) {
-      _selectedEvents.value = _getEventsForRange(start, end);
-    } else if (start != null) {
-      _selectedEvents.value = _getEventsForDay(start);
-    } else if (end != null) {
-      _selectedEvents.value = _getEventsForDay(end);
-    }
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,52 +96,27 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
         padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT.h),
         child: Column(
           children: [
-            /*CustomTabBar(
-              myTabs: [
-                tab(isSelected: _selectedIndex==0,
-                    label: "weekly"),
-                tab(isSelected: _selectedIndex==1,
-                    label: "monthly"),
-                tab(isSelected: _selectedIndex==2,
-                    label: "yearly"),
-              ],
-              tabController: _tabController,
-              onTap: (int index) {
-                setState(() {_selectedIndex = index;});
-              },),*/
+
             TableCalendar<Event>(
               firstDay: kFirstDay,
               lastDay: kLastDay,
-
               focusedDay: _focusedDay,
               selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-
               rangeStartDay: _rangeStart,
               rangeEndDay: _rangeEnd,
               calendarFormat: _calendarFormat,
               rangeSelectionMode: _rangeSelectionMode,
-
               eventLoader: _getEventsForDay,
               startingDayOfWeek: StartingDayOfWeek.monday,
               calendarStyle: CalendarStyle(
-                // weekendDecoration:                BoxDecoration(color:ColorResources.primary.withOpacity(.5),shape: BoxShape.circle ),
-                
-                // Use `CalendarStyle` to customize the UI
-                outsideDaysVisible: true,
-                selectedDecoration:                 BoxDecoration(color:ColorResources.PRIMARY,shape: BoxShape.circle ),
-
-                  markerDecoration:
-                BoxDecoration(color:ColorResources.PRIMARY,shape: BoxShape.circle ),
-                rangeHighlightColor: Theme.of(context).primaryColor
-              ),
+                  outsideDaysVisible: true,
+                  selectedDecoration: const BoxDecoration(
+                      color: ColorResources.PRIMARY, shape: BoxShape.circle),
+                  markerDecoration: const BoxDecoration(
+                      color: ColorResources.PRIMARY, shape: BoxShape.circle),
+                  rangeHighlightColor: Theme.of(context).primaryColor),
               onDaySelected: _onDaySelected,
               weekendDays: [DateTime.friday, DateTime.thursday],
-
-              // holidayPredicate: (day) {
-              //   // Every 20th day of the month will be treated as a holiday
-              //   return day.day == 20;
-              // },
-              onRangeSelected: _onRangeSelected,
               onFormatChanged: (format) {
                 if (_calendarFormat != format) {
                   setState(() {
@@ -174,7 +128,6 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
                 _focusedDay = focusedDay;
               },
             ),
-
             const SizedBox(height: 8.0),
             Expanded(
               child: ValueListenableBuilder<List<Event>>(
@@ -183,14 +136,15 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
                   return ListView.builder(
                     itemCount: value.length,
                     itemBuilder: (context, index) {
-                      return                           AttendanceCard(statues: "");
-
+                      return AttendanceCard(
+                        event: value[index],
+                      );
                     },
                   );
                 },
               ),
             ),
-        /*    Expanded(
+            /*    Expanded(
               child: TabBarView(
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(),
@@ -224,5 +178,4 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
       ),
     );
   }
-
 }
