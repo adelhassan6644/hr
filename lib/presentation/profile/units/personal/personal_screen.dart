@@ -8,8 +8,8 @@ import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:hr_project/presentation/base/custom_text_form_field.dart';
 
 
-class Personal extends StatelessWidget {
-  const Personal({Key? key}) : super(key: key);
+class PersonalScreen extends StatelessWidget {
+  const PersonalScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

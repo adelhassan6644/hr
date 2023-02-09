@@ -41,9 +41,9 @@ class TabWidget extends StatelessWidget {
                     overflow: TextOverflow.fade,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 12,
                       overflow: TextOverflow.fade,
-                      fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                       color: isSelected ? ColorResources.PRIMARY : ColorResources.SUB_TEXT,
                     ),
                   ),

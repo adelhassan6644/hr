@@ -16,12 +16,26 @@ abstract class ColorResources {
     return const Color(0xFFF5F5F5);
   }
 
+  static Color getStatusColor(String status) {
+  switch (status) {
+    case "approved":
+      return GREEN_COLOR.withOpacity(0.3);
+      case "pending":
+        return GOLD_COLOR.withOpacity(0.3);
+      case "rejected":
+        return WARNING_COLOR.withOpacity(0.3);
+    default:
+      return GREEN_COLOR.withOpacity(0.3);
+  }
+
+  }
+
   static Color getStatusColorOfVacation(String status) {
   switch (status) {
     case "accepted":
       return GREEN_COLOR;
       case "pending":
-      return goldColor;
+      return GOLD_COLOR;
       case "rejected":
       return WARNING_COLOR;
     default:
@@ -72,7 +86,7 @@ abstract class ColorResources {
   static const Color BACKGROUND_COLOR = Color(0xfffcfdfe);
   static const Color COLOR_GREY_BUNKER = Color(0xff25282B);
   static const Color COLOR_GREY_CHATEAU = Color(0xffF5F5F5);
-  static const Color goldColor = Color(0xffF8CA78);
+  static const Color GOLD_COLOR = Color(0xffF8CA78);
   static const Color GREEN_COLOR = Colors.green;
   static const Color disabledColor = Color(0xFF979797);
   static const Color FILL = Color(0xfff7f8fc);

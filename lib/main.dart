@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app/core/utils/app_strings.dart';
 import 'domain/localization/app_localization.dart';
+import 'navigation/routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,12 +54,13 @@ class MyApp extends StatelessWidget {
       locals.add(Locale(language.languageCode!, language.countryCode));
     }
     return MaterialApp(
-      // routerConfig: route,
-      // initialRoute: Routes.SPLASH,
       builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: Unfocus(child: child!)),
-    navigatorKey: CustomNavigator.navigatorState,
+      initialRoute: Routes.SPLASH,
+      navigatorKey: CustomNavigator.navigatorState,
+      onGenerateRoute: CustomNavigator.onCreateRoute,
+      navigatorObservers: [CustomNavigator.routeObserver],
       title: AppStrings.appName,
       supportedLocales: locals,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,

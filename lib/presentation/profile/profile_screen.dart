@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/notifier/profile_provider.dart';
-import 'package:hr_project/presentation/profile/units/personal/personal_screen.dart';
-import 'package:hr_project/presentation/profile/units/salary/salary_screen.dart';
 import 'package:hr_project/presentation/profile/units/profile_units.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/images.dart';
-import '../settings/settings_screen.dart';
+import '../../navigation/routes.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -29,7 +28,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               name: profileProvider.name,
               description: profileProvider.description,
               profileImage: profileProvider.profileImage,
-              onTap: () {Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const SettingsScreen()));}),
+              onTap: () =>CustomNavigator.push(Routes.SETTINGS)
+          ),
           annualLeaveBalance(onTap: () {}, days: 33.5, context: context),
           Container(
             width: context.width,
@@ -39,9 +39,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           settingCard(
               name: getTranslated("personal", context),
               iconAsset: Images.personalCardIcon,
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Personal()));
-              }),
+              onTap: () =>CustomNavigator.push(Routes.PERSONAL)
+          ),
           Container(
             width: context.width,
             height: 1,
@@ -50,10 +49,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           settingCard(
               name: getTranslated("organization", context),
               iconAsset: Images.organizationIcon,
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SalaryScreen()));
-
-              }),
+              onTap: (){}
+          ),
           Container(
             width: context.width,
             height: 1,
@@ -62,9 +59,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           settingCard(
               name: getTranslated("salary_&_financial", context),
               iconAsset: Images.salaryIcon,
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SalaryScreen()));
-              }),
+              onTap: () => CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL)
+          ),
           Container(
             width: context.width,
             height: 1,
@@ -102,3 +98,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 }
+

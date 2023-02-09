@@ -7,7 +7,6 @@ import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
-import 'package:hr_project/presentation/base/custom_tab_bar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../navigation/custom_navigation.dart';
 import 'widget/attendance_card.dart';
@@ -111,8 +110,8 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("attendance_leaving", context),
-        showLeading: true,
-        titleCenter: true,
+        // showLeading: true,
+        // titleCenter: true,
       ),
       body: Padding(
         padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT.h),

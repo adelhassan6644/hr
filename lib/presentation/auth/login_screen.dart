@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/presentation/auth/forget_password_screen.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:hr_project/navigation/routes.dart';
 import 'package:hr_project/presentation/base/custom_button.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -94,9 +95,7 @@ class LoginScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextButton(
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ForgetPasswordScreen()));
-                              },
+                              onPressed: ()=>CustomNavigator.push(Routes.FORGET_PASSWORD),
                               child: Text(
                                   getTranslated("forget_password", context),
                                   style: titleTextStyle.copyWith(

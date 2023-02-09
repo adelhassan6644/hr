@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/dimensions.dart';
 
@@ -22,9 +23,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: actionChild,
       automaticallyImplyLeading: false,
       centerTitle:titleCenter,
-      leadingWidth: 39.w,
+      leadingWidth: Navigator.canPop(context)?60.w: 35.w,
       title: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 24.w),
+        padding:  EdgeInsets.symmetric(horizontal: Navigator.canPop(context)?0:24.w),
         child: Text(title ??'',
             style:  const TextStyle(
               fontSize: 16,
@@ -34,17 +35,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Navigator.canPop(context)?Padding(
         padding:  const EdgeInsets.symmetric(horizontal:Dimensions.PADDING_SIZE_DEFAULT),
         child: leadingAction?? InkWell(
-          onTap: () {
-
-            Navigator.pop(context);},
-          child: const SizedBox(
-            width: 60,
-            height: 60,
-            child: Icon(
-              Icons.arrow_back_ios,
-              size: 20,
-              color: ColorResources.PRIMARY,
-            ),
+          onTap: ()=> CustomNavigator.pop(),
+          child: Row(
+            children: [
+              SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w,),
+              const Icon(
+                Icons.arrow_back_ios,
+                size: 20,
+                color: ColorResources.PRIMARY,
+              ),
+            ],
           )
         ),
       ):null,

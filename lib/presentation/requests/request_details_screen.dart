@@ -3,13 +3,14 @@ import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/app/core/utils/text_styles.dart';
+import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/requests/widgets/title_container.dart';
 import '../../domain/localization/language_constant.dart';
 
 class RequestDetailsScreen extends StatelessWidget {
-  const RequestDetailsScreen({required this.status,required this.requestType, Key? key}) : super(key: key);
-  final String status;
-  final String requestType;
+  const RequestDetailsScreen({required this.model, Key? key}) : super(key: key);
+  final Model model;
+
 
 
   @override
@@ -35,7 +36,7 @@ class RequestDetailsScreen extends StatelessWidget {
                        fontSize: 14
                     ),),
                   ),
-                    titleContainer(title:requestType,color: ColorResources.PRIMARY.withOpacity(0.2)),
+                    titleContainer(title:model.requestType,color: ColorResources.PRIMARY.withOpacity(0.2)),
 
                 ],),
               ),
@@ -53,12 +54,13 @@ class RequestDetailsScreen extends StatelessWidget {
                           fontSize: 14
                       ),),
                     ),
-                    titleContainer(title:status,color: ColorResources.GREEN_COLOR.withOpacity(0.2)),
+                    titleContainer(title:model.status == "rejected"? getTranslated(model.status, context).replaceAll("ال", "").replaceAll("ة", ""):
+                    getTranslated(model.status, context) ,color: ColorResources.getStatusColor(model.status)),
                   ],),
               ),
               Container(height: 1.5.h,
                 color: ColorResources.BORDER_COLOR,),
-              if(requestType == getTranslated("asset_items",context))
+              if(model.requestType == getTranslated("asset_items",context))
               Padding(
                 padding:  EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                 child: Row(
@@ -71,10 +73,10 @@ class RequestDetailsScreen extends StatelessWidget {
                           fontSize: 14
                       ),),
                     ),
-                    titleContainer(title:status,color: ColorResources.GREEN_COLOR.withOpacity(0.2)),
+                    titleContainer(title:model.status,color: ColorResources.GREEN_COLOR.withOpacity(0.2)),
                   ],),
               ),
-              if(requestType == getTranslated("loan",context))
+              if(model.requestType == getTranslated("loan",context))
                 Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
