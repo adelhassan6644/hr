@@ -14,7 +14,6 @@ class SalaryDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       appBar: CustomAppBar(
-        titleCenter: true,
         title: getTranslated("salary_details", context),
       ),
 

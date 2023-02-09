@@ -1,6 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:hr_project/presentation/notifier/localization_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../app/core/utils/color_resources.dart';
 import '../../../app/core/utils/constant.dart';
 import '../../../app/core/utils/dimensions.dart';
@@ -49,9 +52,12 @@ settingCard(
             style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
           ),
           const Spacer(),
-          const Icon(
-            Icons.keyboard_arrow_right_sharp,
-            color: ColorResources.PRIMARY,
+          RotatedBox(
+            quarterTurns: Provider.of<LocalizationProvider>(CustomNavigator.navigatorState.currentContext!,listen: false).locale.languageCode == "ar" ?2:0,
+            child: const Icon(
+              Icons.keyboard_arrow_right_sharp,
+              color: ColorResources.PRIMARY,
+            ),
           )
         ],
       ),

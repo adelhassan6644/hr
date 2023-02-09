@@ -3,11 +3,11 @@ import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
-import 'package:hr_project/presentation/home/attendance_leaving_screen.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/home/widget/type_card.dart';
 import '../../../app/core/utils/constant.dart';
 import '../../app/core/utils/images.dart';
-import '../profile/units/salary/salary_screen.dart';
+import '../../navigation/routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -171,11 +171,7 @@ class HomeScreen extends StatelessWidget {
               ),
               title: getTranslated("attendance_leaving", context),
               iconColor: ColorResources.PRIMARY,
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const AttendanceLeavingScreen(),
-                ));
-              },
+              onTap: () =>CustomNavigator.push(Routes.ATTENDANCE_LEAVING),
             ),
              SizedBox(height: 20.h),
              TypeCard(
@@ -186,12 +182,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 title: getTranslated("salary_&_financial", context),
                 iconColor: const Color(0xff8fc44b),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SalaryScreen()));
-                }
+               onTap: () =>CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL),
 
-              // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SalariesScreen()));},
+
+               // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SalariesScreen()));},
             ),
             //  SizedBox(height: 20.h),
             //  TypeCard(

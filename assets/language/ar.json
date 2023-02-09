@@ -86,7 +86,6 @@
   "confirm_password": "تأكيد كلمة المرور الجديدة",
   "reset_password": "إعادة تعيين كلمة المرور",
   "passwords_do_not_match": " كلمتين المرور غير متطابقتان",
-  "hour": "ساعة",
   "pay": "دفع",
   "card_number": "رقم البطاقة",
   "card_information":"معلومات البطاقة",
@@ -211,8 +210,12 @@
   "period_of_deduction": "فترة السداد",
   "results":"النتائج",
   "today": "اليوم",
+  "now": "الأن",
+  "days": "ايام",
+  "day": "يوم",
   "yesterday": "الامس",
-
+  "hour": "ساعة",
+  "min": "دقيقة",
   "sec": "ثانية",
   "permission": "إستئذان",
   "vacation": "إجازة",
@@ -235,8 +238,7 @@
   "salary_&_financial": "الراتب والتفاصيل المالية",
   "documents": "مستندات",
   "contract": "العقود",
-  "days": "ايام",
-  "day": "يوم",
+
   "available_to_use": "متاحة للاستخدام",
   "annual_leave_balance": "رصيد الإجازة السنوية",
   "attendance": "الحضور"

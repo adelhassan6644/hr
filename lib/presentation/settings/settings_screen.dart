@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/presentation/auth/login_screen.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
-import 'package:hr_project/presentation/settings/edit_password_screen.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/images.dart';
 import '../../domain/localization/language_constant.dart';
+import '../../navigation/routes.dart';
 import '../notifier/localization_provider.dart';
 import '../profile/units/profile_units.dart';
 import 'language_screen.dart';
@@ -68,10 +68,8 @@ class SettingsScreen extends StatelessWidget {
           settingCard(
               name: getTranslated("change_password", context),
               iconAsset: Images.lockIcon,
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const EditPasswordScreen()));
-              }),
+              onTap: ()=> CustomNavigator.push(Routes.CHANGE_PASSWORD)
+          ),
           Container(
             width: context.width,
             height: 1,
@@ -79,10 +77,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           const Spacer(),
           TextButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const LoginScreen()));
-              },
+              onPressed: ()=> CustomNavigator.push(Routes.LOGIN,clean: true),
               child: Text(
                 getTranslated("log_out", context),
                 style: titleTextStyle.copyWith(

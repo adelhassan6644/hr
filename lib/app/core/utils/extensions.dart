@@ -194,20 +194,20 @@ extension Difference on DateTime{
   else if(dur.inDays == 1){
     return getTranslated("yesterday",CustomNavigator.navigatorState.currentContext!);
   }
-  else if(dur.inDays > 1){
-    return"${dur.inDays} ${getTranslated("days",CustomNavigator.navigatorState.currentContext!)}";
-  }
+  // else if(dur.inDays > 1){
+  //   return"${dur.inDays} ${getTranslated("days",CustomNavigator.navigatorState.currentContext!)}";
+  // }
   else if(dur.inHours==1){
     return getTranslated("hour",CustomNavigator.navigatorState.currentContext!);
   }
-  else if(dur.inHours>1){
-    return "${dur.inHours} ${getTranslated("hour",CustomNavigator.navigatorState.currentContext!)}";
-  }
+  // else if(dur.inHours>1){
+  //   return "${dur.inHours} ${getTranslated("hour",CustomNavigator.navigatorState.currentContext!)}";
+  // }
   else if(dur.inMinutes == 1){
-    return "1 min" ;
+    return "1 ${getTranslated("min",CustomNavigator.navigatorState.currentContext!)}" ;
   }
   else if(dur.inSeconds == 0){
-    return "now" ;
+    return getTranslated("now",CustomNavigator.navigatorState.currentContext!) ;
   }
   else{
         return DateFormat(format).format(this);

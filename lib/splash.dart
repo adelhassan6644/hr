@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/presentation/auth/login_screen.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 import 'app/core/utils/color_resources.dart';
 import 'app/core/utils/images.dart';
+import 'navigation/routes.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -15,10 +15,17 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> with WidgetsBindingObserver {
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     Future.delayed(const Duration(seconds: 5), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+    CustomNavigator.push(Routes.LOGIN,replace: true);
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
 
@@ -52,7 +59,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
             Padding(
                 padding: const EdgeInsets.symmetric(vertical: 40.0),
                 child: RichText(
-                  text: const TextSpan(text: "Powerd By", children: [
+                  text: const TextSpan(text: "Powered By", children: [
                     TextSpan(
                         text: " software cloud 2",
                         style: TextStyle(

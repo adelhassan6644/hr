@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:hr_project/presentation/base/custom_button.dart';
-import 'package:hr_project/presentation/profile/units/salary/salary_details_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../../app/core/utils/color_resources.dart';
 import '../../../../app/core/utils/dimensions.dart';
 import '../../../../domain/localization/language_constant.dart';
+import '../../../../navigation/routes.dart';
 
 class SalaryScreen extends StatelessWidget {
   const SalaryScreen({Key? key}) : super(key: key);
@@ -15,7 +16,6 @@ class SalaryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        titleCenter: true,
         title: getTranslated("salary_&_financial", context),
       ),
       body: Padding(
@@ -56,7 +56,7 @@ class SalaryScreen extends StatelessWidget {
                       ],
                     ),
                     progressColor: ColorResources.PRIMARY,
-                    backgroundColor: ColorResources.goldColor,
+                    backgroundColor: ColorResources.GOLD_COLOR,
                   ),
                   const SizedBox(
                     width: 20,
@@ -86,7 +86,7 @@ class SalaryScreen extends StatelessWidget {
                         getTranslated("health_insurance", context),
                         style: const TextStyle(
                             fontSize: 14,
-                            color: ColorResources.goldColor,
+                            color: ColorResources.GOLD_COLOR,
                             fontWeight: FontWeight.w500),
                       ),
                       const Text(
@@ -103,7 +103,7 @@ class SalaryScreen extends StatelessWidget {
                         getTranslated("family_allowance", context),
                         style: const TextStyle(
                             fontSize: 14,
-                            color: ColorResources.goldColor,
+                            color: ColorResources.GOLD_COLOR,
                             fontWeight: FontWeight.w500),
                       ),
                       const Text(
@@ -151,9 +151,7 @@ class SalaryScreen extends StatelessWidget {
                       textColor: ColorResources.WHITE,
                       text: getTranslated("details", context),
                       backgroundColor: ColorResources.PRIMARY,
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const SalaryDetailsScreen()));
-                      },
+                      onTap: ()=>CustomNavigator.push(Routes.SALARY_DETAILS),
                     ),
                     const SizedBox(
                       height: 10,

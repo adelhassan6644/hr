@@ -7,9 +7,8 @@ import 'package:hr_project/presentation/requests/request_details_screen.dart';
 import '../base/custom_tab_bar_2.dart';
 
 class RequestFlowScreen extends StatefulWidget {
-   const RequestFlowScreen({Key? key ,required this.status,required this.requestType,}) : super(key: key);
-  final String status;
-   final String requestType;
+   const RequestFlowScreen({Key? key ,required this.model,}) : super(key: key);
+  final Model model;
 
 
    @override
@@ -21,13 +20,12 @@ class _RequestFlowScreenState extends State<RequestFlowScreen> {
 
   final List<String> tabs = [getTranslated("request_details", CustomNavigator.navigatorState.currentContext!),getTranslated("workflow_comments", CustomNavigator.navigatorState.currentContext!)];
 
-  // List<Widget> contents = [ RequestDetailsScreen(status: status),SizedBox()];
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar:  CustomAppBar(
-        title: "${getTranslated("request", context)} ${widget.requestType}",
+        title: "${getTranslated("request", context)} ${widget.model.requestType}",
         showLeading: true,
       ),
       body: Column(
@@ -55,9 +53,16 @@ class _RequestFlowScreenState extends State<RequestFlowScreen> {
               ),
             ),
           ),
-          Expanded(child:currentIndex ==0? RequestDetailsScreen(status: widget.status, requestType: widget.requestType,):SizedBox()),
+          Expanded(child:currentIndex ==0?
+          RequestDetailsScreen(model:widget.model,):const SizedBox()),
         ],
       ),
     );
   }
+}
+
+class Model {
+  final String status;
+  final String requestType;
+  Model({required this.status,required this.requestType });
 }
