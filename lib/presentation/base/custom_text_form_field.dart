@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/images.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final String? hint;
+  final Widget? sufWidget;
   final bool label;
   final TextInputType? type;
   final Function(String?)? onSave;
@@ -18,6 +20,7 @@ class CustomTextFormField extends StatefulWidget {
   final void Function(String)? onChanged;
   final String? sIcon;
   final String? tIcon;
+  final Color? tIconColor;
   final FocusNode? focus;
   final bool? read;
   final bool? flag;
@@ -37,6 +40,7 @@ class CustomTextFormField extends StatefulWidget {
 
     this.maxLine=1,
     this.hint,
+    this.sufWidget,
     this.onSave,
     this.onTap,
     this.onChanged,
@@ -58,6 +62,7 @@ class CustomTextFormField extends StatefulWidget {
     this.formatter,
     this.maxLength,
     this.tIcon,
+    this.tIconColor,
     this.fieldColor,
   });
 
@@ -93,13 +98,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       onChanged: widget.onChanged,
       decoration: InputDecoration(
         prefixIcon:widget.removePIcon == true ? null:Padding(
-          padding:  const EdgeInsets.only(right: 12, left: 12),
+          padding:   EdgeInsets.symmetric(horizontal: 5.w, ),
           child: widget.tIcon != null
               ? Padding(
-                  padding: const EdgeInsets.only(right: 15, left: 15),
+                  padding:  EdgeInsets.symmetric(horizontal: 10.w,),
                   child: Image.asset(
                     widget.tIcon!,
                     height: 25,
+                    color: widget.tIconColor,
                   ),
                 )
               : null,
@@ -120,29 +126,30 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                         color: ColorResources.PRIMARY,
                         height: 25,
                       ),
-              ) : Icon(
-                widget.icon,
-                color: Colors.grey,
-                size: 20,
-              ),
-        focusedBorder: focusBorderStyle,
+              ) :widget.sufWidget != null? Padding(padding: EdgeInsets.symmetric(vertical: 25.w, horizontal: 25.w) ,
+            child: widget.sufWidget): Icon(
+    widget.icon,
+    color: Colors.grey,
+    size: 20,
+    ),
+        focusedBorder: widget.read ==true?disableBorderStyle: focusBorderStyle,
         enabledBorder: disableBorderStyle,
         disabledBorder: disableBorderStyle,
         focusedErrorBorder: errorOutLineInputBorderStyle,
         errorBorder: errorOutLineInputBorderStyle,
-        contentPadding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+        contentPadding:  EdgeInsets.symmetric(vertical: 25.w),
         border: disableBorderStyle,
         isDense: true,
         alignLabelWithHint: true,
         hintText: widget.hint,
         hintStyle: widget.error!?errorHintTextStyle: hintTextStyle,
-        // labelText: widget.label? widget.hint : null,
-        fillColor: ColorResources.BACKGROUND_COLOR,
+         labelText: widget.label? widget.hint : null,
+        fillColor: ColorResources.FILL,
         // labelStyle: widget.error!?errorHintPoppinsTextStyle: hintPoppinsTextStyle,
         filled: true,
         // errorText: "${widget.hint}*",
         errorStyle:errorHintTextStyle,
-        prefixIconConstraints: const BoxConstraints(minWidth: 0, maxHeight: 20),
+        prefixIconConstraints:  BoxConstraints(maxHeight: 20.h),
 
       ),
 

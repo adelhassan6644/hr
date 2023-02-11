@@ -9,6 +9,7 @@ class Routes {
   // static const HOME_PAGE = "/HOME_PAGE";
   // static const PROFILE_PAGE = "/PROFILE_PAGE";
   // static const REQUESTS_PAGE= "/REQUESTS_PAGE";
+   static const ADD_REQUEST= "/ADD_REQUEST";
   static const REQUESTS_FLOW= "/REQUESTS_FLOW";
   // static const ATTENDANCE_PAGE = "/ATTENDANCE_PAGE";
   static const ATTENDANCE_LEAVING = "/ATTENDANCE_LEAVING";

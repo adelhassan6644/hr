@@ -16,7 +16,6 @@ class SalaryDetailsScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: getTranslated("salary_details", context),
       ),
-
       body: Column(
         children: [
           Container(

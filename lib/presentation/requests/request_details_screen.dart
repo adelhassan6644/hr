@@ -5,6 +5,7 @@ import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/app/core/utils/text_styles.dart';
 import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/requests/widgets/title_container.dart';
+import '../../app/core/utils/images.dart';
 import '../../domain/localization/language_constant.dart';
 
 class RequestDetailsScreen extends StatelessWidget {
@@ -24,24 +25,30 @@ class RequestDetailsScreen extends StatelessWidget {
           padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
           child: Column(
             children: [
-              Padding(
-                padding:  EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                child: Row(
-                  children: [
-                    const Icon(Icons.description),
-                    SizedBox(width: 8.w,),
-                    Expanded(
-                    child: Text(getTranslated("request_type",context),style: AppTextStyles.w600.copyWith(
-                      color: ColorResources.HEADER,
-                       fontSize: 14
-                    ),),
-                  ),
-                    titleContainer(title:model.requestType,color: ColorResources.PRIMARY.withOpacity(0.2)),
+              Column(
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                    child: Row(
+                      children: [
+                        Image.asset(Images.document,height: 20.h,width: 20.w,color: ColorResources.PRIMARY,),
+                        SizedBox(width: 8.w,),
+                        Expanded(
+                        child: Text(getTranslated("request_type",context),style: AppTextStyles.w600.copyWith(
+                          color: ColorResources.HEADER,
+                           fontSize: 14
+                        ),),
+                      ),
+                        titleContainer(title:model.requestType,color: ColorResources.PRIMARY.withOpacity(0.2)),
+                        Container(height: 1.5.h,
+                          color: ColorResources.BORDER_COLOR,),
 
-                ],),
+
+                      ],),
+                  ),
+                ],
               ),
-              Container(height: 1.5.h,
-                color: ColorResources.BORDER_COLOR,),
+
               Padding(
                 padding:  EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                 child: Row(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_project/presentation/add_request/add_request_screen.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/dashBoard/dashboard_screen.dart';
 import 'package:hr_project/presentation/profile/units/personal/personal_screen.dart';
@@ -49,9 +50,11 @@ abstract class CustomNavigator {
       //   return _pageRoute(const ProfileScreen());
       //   case Routes.HOME_PAGE:
       //     return _pageRoute(const HomeScreen());
-          case Routes.REQUESTS_FLOW:
+      case Routes.REQUESTS_FLOW:
           return _pageRoute( RequestFlowScreen(model: settings.arguments as Model,));
-          case Routes.ATTENDANCE_LEAVING:
+      case Routes.ADD_REQUEST:
+          return _pageRoute( const AddRequestScreen());
+      case Routes.ATTENDANCE_LEAVING:
           return _pageRoute(const AttendanceLeavingScreen());
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());

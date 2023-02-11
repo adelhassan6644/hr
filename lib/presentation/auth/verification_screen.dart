@@ -6,6 +6,7 @@ import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/dimensions.dart';
 import '../../domain/localization/language_constant.dart';
+import '../base/count_down.dart';
 import '../base/custom_app_bar.dart';
 import '../base/custom_button.dart';
 import '../notifier/auth_provider.dart';
@@ -60,14 +61,8 @@ class VerificationScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              TextButton(
-                onPressed: () {},
-                child: Text(getTranslated("send_the_code_again", context),
-                    style: const TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: ColorResources.PRIMARY)),
-              ),
+              const CountDown(),
+
               SizedBox(
                 height: context.height * 0.07,
               ),

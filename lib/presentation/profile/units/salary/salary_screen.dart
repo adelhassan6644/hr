@@ -19,7 +19,7 @@ class SalaryScreen extends StatelessWidget {
         title: getTranslated("salary_&_financial", context),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+        padding:  EdgeInsets.symmetric(horizontal:16.w ,vertical:  16.h),
         child: ListView(
           children: [
             Container(
@@ -118,51 +118,54 @@ class SalaryScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
+             SizedBox(
+              height: 24.h,
             ),
             Text(getTranslated("salary_details", context),
                 style: const TextStyle(
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w700,
                   fontSize: 16,
                 )),
-            Container(
-                padding:
-                    const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_LARGE),
-                decoration: const BoxDecoration(
-                  color: ColorResources.FILL,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      DateTime.now().monthFormat(),
-                      style: const TextStyle(
-                          fontSize: 14,
-                          color: ColorResources.blackColor,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CustomButton(
-                      textColor: ColorResources.WHITE,
-                      text: getTranslated("details", context),
-                      backgroundColor: ColorResources.PRIMARY,
-                      onTap: ()=>CustomNavigator.push(Routes.SALARY_DETAILS),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CustomButton(
-                        textColor: ColorResources.PRIMARY,
-                        text: getTranslated("download", context),
-                        icon: Icons.download,
-                        backgroundColor: ColorResources.WHITE),
-                  ],
-                )),
+            Padding(
+              padding:  EdgeInsets.symmetric(vertical:  16.h),
+              child: Container(
+                  padding:
+                      const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_LARGE),
+                  decoration: const BoxDecoration(
+                    color: ColorResources.FILL,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        DateTime.now().monthFormat(),
+                        style: const TextStyle(
+                            fontSize: 14,
+                            color: ColorResources.blackColor,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomButton(
+                        textColor: ColorResources.WHITE,
+                        text: getTranslated("details", context),
+                        backgroundColor: ColorResources.PRIMARY,
+                        onTap: ()=>CustomNavigator.push(Routes.SALARY_DETAILS),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomButton(
+                          textColor: ColorResources.PRIMARY,
+                          text: getTranslated("download", context),
+                          icon: Icons.download,
+                          backgroundColor: ColorResources.WHITE),
+                    ],
+                  )),
+            ),
           ],
         ),
       ),

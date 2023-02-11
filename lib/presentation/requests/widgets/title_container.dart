@@ -3,7 +3,7 @@ import 'package:hr_project/app/core/utils/extensions.dart';
 import '../../../app/core/utils/color_resources.dart';
 import '../../../app/core/utils/text_styles.dart';
 
-Widget titleContainer({required String title,IconData? icon,Color? color  }){
+Widget titleContainer({required String title,IconData? icon,Color? color,Color? textColor,Color? iconColor,double? textSize,String? astIcon   }){
   return
     Padding(
       padding:  EdgeInsets.only(right: 8.0.w),
@@ -19,10 +19,10 @@ Widget titleContainer({required String title,IconData? icon,Color? color  }){
           ),
           child: Row(
             children: [
-             icon != null? Icon(icon,size: 15,): const SizedBox(),
+             if(icon != null)  Icon(icon,size: 15,color: iconColor,),
               Text(title,style: AppTextStyles.w600.copyWith(
-                  fontSize: 12,
-                  color: ColorResources.SUB_HEADER
+                  fontSize: textSize??12,
+                  color: textColor??ColorResources.SUB_HEADER
               ),),
             ],
           )),

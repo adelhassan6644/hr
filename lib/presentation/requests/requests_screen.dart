@@ -23,6 +23,12 @@ class RequestsScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: getTranslated("requests", context),
       ),
+      resizeToAvoidBottomInset: true,
+      floatingActionButton: FloatingActionButton(
+        onPressed: ()=>CustomNavigator.push(Routes.ADD_REQUEST),
+        backgroundColor:ColorResources.PRIMARY ,
+        child: Icon(Icons.add,color: ColorResources.WHITE,size: 20.h,),
+      ),
       body:NotificationListener(
         onNotification: (ScrollNotification sn) {
           if (
@@ -89,7 +95,7 @@ class RequestsScreen extends StatelessWidget {
             ),
           ),
         ),),
-      )
+      ),
     );
   }
 }

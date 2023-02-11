@@ -1,6 +1,7 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
+import 'package:hr_project/presentation/notifier/add_request_provider.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:hr_project/presentation/notifier/language_provider.dart';
 import 'package:hr_project/presentation/notifier/localization_provider.dart';
@@ -34,6 +35,7 @@ Future<void> main() async {
   await di.init();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => di.sl<ThemeProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<AddRequestProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<ProfileProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LanguageProvider>()),

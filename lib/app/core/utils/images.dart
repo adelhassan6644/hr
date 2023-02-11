@@ -4,9 +4,16 @@ class Images {
   static const String authHeader = 'assets/icons/auth_hederl.png';
   static const String banner = 'assets/icons/banner.svg';
   static const String home = 'assets/icons/home.svg';
-  static const String plane = 'assets/icons/plane.svg';
+  // static const String plane = 'assets/icons/plane.svg';
   static const String ticket = 'assets/icons/ticket.svg';
   static const String user = 'assets/icons/user.svg';
+  static const String document = 'assets/icons/document.png';
+  static const String exit = 'assets/icons/exit.png';
+  static const String plane = 'assets/icons/plane.png';
+  static const String cash = 'assets/icons/cash.png';
+  static const String letter = 'assets/icons/letter.png';
+  static const String attachment = 'assets/icons/attachment.png';
+  static const String question = 'assets/icons/question.png';
   static const String notification = 'assets/icons/notifications.png';
   static const String expenses = 'assets/icons/expenses.png';
   static const String vacations = 'assets/icons/vacation.png';

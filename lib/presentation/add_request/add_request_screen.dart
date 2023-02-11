@@ -1,0 +1,166 @@
+import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/utils/color_resources.dart';
+import 'package:hr_project/app/core/utils/dimensions.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/app/core/utils/text_styles.dart';
+import 'package:hr_project/presentation/add_request/requests/loan_request.dart';
+import 'package:hr_project/presentation/add_request/widgets/tab_request.dart';
+import 'package:hr_project/presentation/base/animated_widget.dart';
+import 'package:hr_project/presentation/base/custom_app_bar.dart';
+
+import '../../app/core/utils/images.dart';
+import '../../domain/localization/language_constant.dart';
+
+class AddRequestScreen extends StatelessWidget {
+  const AddRequestScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CustomAppBar(
+        title: getTranslated("add_request",context),
+      ),
+     body:Padding(
+       padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+           vertical:Dimensions.PADDING_SIZE_DEFAULT.h ),
+       child: SizedBox(
+         height: context.height,
+         child: ListAnimator(
+           data: [
+           Text(getTranslated("select_your_request_type", context),style: AppTextStyles.w500.copyWith(
+              color: ColorResources.SUBTITLE,
+              fontSize: 16.0,
+           ),),
+
+           ///Finance Request
+           SizedBox(
+             height: 16.h,
+           ),
+           Container(
+             padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                 vertical:Dimensions.PADDING_SIZE_DEFAULT.h ),
+           decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(12.w)),
+             border: Border.all(
+               color: ColorResources.BORDER_COLOR,
+                width: 1.0.h,
+             )
+           ),
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+             Text(getTranslated("finance", context),style: AppTextStyles.w600.copyWith(
+               color: ColorResources.PRIMARY,
+               fontSize: 16.0,
+             ),),
+             SizedBox(
+               height: 16.h,
+             ),
+               tabRequest(title:getTranslated("loan", context),textColor:ColorResources.SUBTITLE,
+                   textSize: 14,
+                   iconColor: ColorResources.SUBTITLE,
+                   astIcon: Images.salaries,
+               onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => LoanRequest(),))),
+               SizedBox(
+               height: 8.h,
+             ),
+               tabRequest(title:getTranslated("financial_compensation", context),textColor:ColorResources.SUBTITLE,
+                   textSize: 14,
+                   iconColor: ColorResources.SUBTITLE,
+                   astIcon: Images.expenses),
+
+           ],),
+         ),
+           ///Attendance Request
+           SizedBox(
+               height: 16.h,
+             ),
+           Container(
+               padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                   vertical:Dimensions.PADDING_SIZE_DEFAULT.h ),
+               decoration: BoxDecoration(
+                   borderRadius: BorderRadius.all(Radius.circular(12.w)),
+                   border: Border.all(
+                     color: ColorResources.BORDER_COLOR,
+                     width: 1.0.h,
+                   )
+               ),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   Text(getTranslated("attendance", context),style: AppTextStyles.w600.copyWith(
+                     color: ColorResources.PRIMARY,
+                     fontSize: 16.0,
+                   ),),
+                   SizedBox(
+                     height: 16.h,
+                   ),
+                   tabRequest(title:getTranslated("permission", context),textColor:ColorResources.SUBTITLE,
+                   textSize: 14,
+                   iconColor: ColorResources.SUBTITLE,
+                   astIcon: Images.exit),
+                 ],),
+             ),
+           ///other Request
+           SizedBox(
+               height: 16.h,
+             ),
+             Container(
+               padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                   vertical:Dimensions.PADDING_SIZE_DEFAULT.h ),
+               decoration: BoxDecoration(
+                   borderRadius: BorderRadius.all(Radius.circular(12.w)),
+                   border: Border.all(
+                     color: ColorResources.BORDER_COLOR,
+                     width: 1.0.h,
+                   )
+               ),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   Text(getTranslated("other", context),style: AppTextStyles.w600.copyWith(
+                     color: ColorResources.PRIMARY,
+                     fontSize: 16.0,
+                   ),),
+                   SizedBox(
+                     height: 16.h,
+                   ),
+                   tabRequest(title:getTranslated("vacation", context),textColor:ColorResources.SUBTITLE,
+                       textSize: 14,
+                       iconColor: ColorResources.SUBTITLE,
+                       astIcon: Images.vacations),
+                   SizedBox(
+                     height: 8.h,
+                   ),
+                   tabRequest(title:getTranslated("business_trip", context),textColor:ColorResources.SUBTITLE,
+                       textSize: 14,
+                       iconColor: ColorResources.SUBTITLE,
+                       astIcon: Images.plane),
+                   SizedBox(
+                     height: 8.h,
+                   ),
+                   tabRequest(title:getTranslated("letter", context),textColor:ColorResources.SUBTITLE,
+                       textSize: 14,
+                       iconColor: ColorResources.SUBTITLE,
+                       astIcon: Images.letter), SizedBox(
+                     height: 8.h,
+                   ),
+                   tabRequest(title:getTranslated("asset", context),textColor:ColorResources.SUBTITLE,
+                       textSize: 14,
+                       iconColor: ColorResources.SUBTITLE,
+                       astIcon: Images.assetsIcon), SizedBox(
+                     height: 8.h,
+                   ),
+                   tabRequest(title:getTranslated("asset_clear", context),textColor:ColorResources.SUBTITLE,
+                       textSize: 14,
+                       iconColor: ColorResources.SUBTITLE,
+                       astIcon: Images.assetsIcon),
+
+                 ],),
+             ),
+           ],),
+       ),
+     ) ,
+    );
+  }
+}
