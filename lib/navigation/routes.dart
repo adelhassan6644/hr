@@ -10,6 +10,9 @@ class Routes {
   // static const PROFILE_PAGE = "/PROFILE_PAGE";
   // static const REQUESTS_PAGE= "/REQUESTS_PAGE";
    static const ADD_REQUEST= "/ADD_REQUEST";
+   static const LOAN_REQUEST= "/LOAN_REQUEST";
+   static const EXPENSE_CLAIM_REQUEST= "/EXPENSE_CLAIM_REQUEST";
+   static const PERMISSIN_REQUEST= "/PERMISSIN_REQUEST";
   static const REQUESTS_FLOW= "/REQUESTS_FLOW";
   // static const ATTENDANCE_PAGE = "/ATTENDANCE_PAGE";
   static const ATTENDANCE_LEAVING = "/ATTENDANCE_LEAVING";

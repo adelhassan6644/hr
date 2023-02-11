@@ -10,8 +10,10 @@ class Images {
   static const String document = 'assets/icons/document.png';
   static const String exit = 'assets/icons/exit.png';
   static const String plane = 'assets/icons/plane.png';
+  static const String description = 'assets/icons/description.png';
   static const String cash = 'assets/icons/cash.png';
   static const String letter = 'assets/icons/letter.png';
+  static const String time = 'assets/icons/time.png';
   static const String attachment = 'assets/icons/attachment.png';
   static const String question = 'assets/icons/question.png';
   static const String notification = 'assets/icons/notifications.png';

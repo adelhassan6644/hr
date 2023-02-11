@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/presentation/add_request/add_request_screen.dart';
+import 'package:hr_project/presentation/add_request/requests/expense_request_Screen.dart';
+import 'package:hr_project/presentation/add_request/requests/loan_request_screen.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/dashBoard/dashboard_screen.dart';
 import 'package:hr_project/presentation/profile/units/personal/personal_screen.dart';
@@ -7,6 +9,7 @@ import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/settings/edit_password_screen.dart';
 import 'package:hr_project/presentation/settings/language_screen.dart';
 import '../main.dart';
+import '../presentation/add_request/requests/permission_details.dart';
 import '../presentation/auth/forget_password_screen.dart';
 import '../presentation/auth/reset_password_screen.dart';
 import '../presentation/auth/verification_screen.dart';
@@ -54,6 +57,12 @@ abstract class CustomNavigator {
           return _pageRoute( RequestFlowScreen(model: settings.arguments as Model,));
       case Routes.ADD_REQUEST:
           return _pageRoute( const AddRequestScreen());
+          case Routes.LOAN_REQUEST:
+          return _pageRoute( const LoanRequestScreen());
+          case Routes.EXPENSE_CLAIM_REQUEST:
+          return _pageRoute( const ExpenseRequestScreen());
+          case Routes.PERMISSIN_REQUEST:
+          return _pageRoute( const PermissionRequestScreen());
       case Routes.ATTENDANCE_LEAVING:
           return _pageRoute(const AttendanceLeavingScreen());
       case Routes.SETTINGS:

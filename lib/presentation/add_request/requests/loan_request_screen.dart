@@ -16,14 +16,14 @@ import '../../../app/core/utils/text_styles.dart';
 import '../../../domain/localization/language_constant.dart';
 import '../widgets/request_reason.dart';
 
-class LoanRequest extends StatefulWidget {
-  const LoanRequest({Key? key}) : super(key: key);
+class LoanRequestScreen extends StatefulWidget {
+  const LoanRequestScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoanRequest> createState() => _LoanRequestState();
+  State<LoanRequestScreen> createState() => _LoanRequestScreenState();
 }
 
-class _LoanRequestState extends State<LoanRequest> {
+class _LoanRequestScreenState extends State<LoanRequestScreen> {
   late TextEditingController amount;
   late TextEditingController reason;
   late TextEditingController loanAmount;
@@ -99,6 +99,7 @@ class _LoanRequestState extends State<LoanRequest> {
                       tIcon: Images.cash,
                       removePIcon: false,
                       sIcon: Images.question,
+                      type: TextInputType.number,
                       sufWidget: Text(
                         getTranslated("sar", context),
                         style: AppTextStyles.w500.copyWith(
@@ -109,7 +110,6 @@ class _LoanRequestState extends State<LoanRequest> {
                       controller: loanAmount,
                       tIconColor: ColorResources.hintColor,
                       hint: getTranslated("loan_amount", context),
-                      onChanged: (String? value) {},
                       label: true,
                     ),
                     SizedBox(
@@ -233,7 +233,7 @@ class _LoanRequestState extends State<LoanRequest> {
                                         ),
                                       ),
                                       tIconColor: ColorResources.hintColor,
-                                      hint: "${getTranslated("number_of_months", context)}${"  :  "}${(int.parse(loanAmount.text.trim().toString()) ~/ int.parse(amount.text.trim().toString())).roundToDouble()}",
+                                      hint: "${getTranslated("number_of_months", context)}${"  :  "}${(int.parse(loanAmount.text.trim().toString().digitsLocale()) ~/ int.parse(amount.text.trim().toString().digitsLocale())).roundToDouble()}",
                                     ),
                                   ],
                                 ),
@@ -258,7 +258,7 @@ class _LoanRequestState extends State<LoanRequest> {
                                       ),
                                       tIconColor: ColorResources.hintColor,
                                       hint:
-                                          "${getTranslated("monthly_installment", context)}${" :  "}${(int.parse(loanAmount.text.trim().toString()) ~/ int.parse(numberOfMonths.text.trim().toString())).roundToDouble()}",
+                                          "${getTranslated("monthly_installment", context)}${" :  "}${(int.parse(loanAmount.text.trim().toString().digitsLocale()) ~/ int.parse(numberOfMonths.text.trim().toString().digitsLocale())).roundToDouble()}",
                                     ),
                                   ],
                                 ),

@@ -48,7 +48,8 @@ class RequestDetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
+              Container(height: 1.5.h,
+                color: ColorResources.BORDER_COLOR,),
               Padding(
                 padding:  EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                 child: Row(
@@ -142,7 +143,7 @@ class RequestDetailsScreen extends StatelessWidget {
                         const Icon(Icons.money_off),
                         SizedBox(width: 8.w,),
                         Expanded(
-                          child: Text(getTranslated("monthly_deduction",context),style: AppTextStyles.w600.copyWith(
+                          child: Text(getTranslated("monthly_installment",context),style: AppTextStyles.w600.copyWith(
                               color: ColorResources.HEADER,
                               fontSize: 14
                           ),),
@@ -162,7 +163,7 @@ class RequestDetailsScreen extends StatelessWidget {
                         const Icon(Icons.timer),
                         SizedBox(width: 8.w,),
                         Expanded(
-                          child: Text(getTranslated("period_of_deduction",context),style: AppTextStyles.w600.copyWith(
+                          child: Text(getTranslated("period_of_installment",context),style: AppTextStyles.w600.copyWith(
                               color: ColorResources.HEADER,
                               fontSize: 14
                           ),),
