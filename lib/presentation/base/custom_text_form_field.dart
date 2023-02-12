@@ -137,7 +137,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         disabledBorder: disableBorderStyle,
         focusedErrorBorder: errorOutLineInputBorderStyle,
         errorBorder: errorOutLineInputBorderStyle,
-        contentPadding:  EdgeInsets.symmetric(vertical: 25.w),
+        contentPadding:  EdgeInsets.symmetric(vertical: 25.w, horizontal:widget.sufWidget  != null ? 0:25.h),
         border: disableBorderStyle,
         isDense: true,
         alignLabelWithHint: true,

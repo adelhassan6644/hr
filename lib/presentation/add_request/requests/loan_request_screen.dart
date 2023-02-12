@@ -233,7 +233,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                         ),
                                       ),
                                       tIconColor: ColorResources.hintColor,
-                                      hint: "${getTranslated("number_of_months", context)}${"  :  "}${(int.parse(loanAmount.text.trim().toString().digitsLocale()) ~/ int.parse(amount.text.trim().toString().digitsLocale())).roundToDouble()}",
+                                      hint: "${getTranslated("number_of_months", context)}${"  :  "}${(int.parse(loanAmount.text.trim().toString().convertDigits()) ~/ int.parse(amount.text.trim().toString().convertDigits())).roundToDouble()}",
                                     ),
                                   ],
                                 ),
@@ -258,7 +258,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                       ),
                                       tIconColor: ColorResources.hintColor,
                                       hint:
-                                          "${getTranslated("monthly_installment", context)}${" :  "}${(int.parse(loanAmount.text.trim().toString().digitsLocale()) ~/ int.parse(numberOfMonths.text.trim().toString().digitsLocale())).roundToDouble()}",
+                                          "${getTranslated("monthly_installment", context)}${" :  "}${(int.parse(loanAmount.text.trim().toString().convertDigits()) ~/ int.parse(numberOfMonths.text.trim().toString().convertDigits())).roundToDouble()}",
                                     ),
                                   ],
                                 ),

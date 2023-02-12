@@ -281,8 +281,9 @@ extension Difference on DateTime {
     }
   }
 }
-extension TurnNumbers on String {
-  String digitsLocale({String locale = "en"}) {
+
+extension ConvertDigits on String {
+  String convertDigits({String locale = "en"}) {
     var sb = StringBuffer();
     if (locale == "en") {
       return this;
