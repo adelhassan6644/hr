@@ -58,7 +58,7 @@ class AuthProvider extends ChangeNotifier {
 
     _isLoading = true;
     notifyListeners();
-    CustomNavigator.pop();
+    CustomNavigator.push(Routes.DASHBOARD,clean: true);
     _isLoading = false;
     notifyListeners();
 

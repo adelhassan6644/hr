@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/presentation/add_request/add_request_screen.dart';
+import 'package:hr_project/presentation/add_request/requests/business_trip_request.dart';
 import 'package:hr_project/presentation/add_request/requests/expense_request_Screen.dart';
 import 'package:hr_project/presentation/add_request/requests/loan_request_screen.dart';
+import 'package:hr_project/presentation/add_request/requests/vacation_request.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/dashBoard/dashboard_screen.dart';
 import 'package:hr_project/presentation/profile/units/personal/personal_screen.dart';
@@ -63,6 +65,10 @@ abstract class CustomNavigator {
           return _pageRoute( const ExpenseRequestScreen());
           case Routes.PERMISSIN_REQUEST:
           return _pageRoute( const PermissionRequestScreen());
+      case Routes.VACATION_REQUEST:
+        return _pageRoute(const VacationRequest());
+      case Routes.BUSINESS_TRIP_REQUEST :
+        return _pageRoute(const BusinessTripRequest());
       case Routes.ATTENDANCE_LEAVING:
           return _pageRoute(const AttendanceLeavingScreen());
       case Routes.SETTINGS:

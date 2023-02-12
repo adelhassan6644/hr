@@ -25,7 +25,7 @@ class _RequestFlowScreenState extends State<RequestFlowScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar:  CustomAppBar(
-        title: "${getTranslated("request", context)} ${widget.model.requestType}",
+        title: "${widget.model.requestType} ${getTranslated("request", context)} ",
         showLeading: true,
       ),
       body: Column(

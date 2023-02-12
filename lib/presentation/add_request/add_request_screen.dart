@@ -134,14 +134,18 @@ class AddRequestScreen extends StatelessWidget {
                    tabRequest(title:getTranslated("vacation", context),textColor:ColorResources.SUBTITLE,
                        textSize: 14,
                        iconColor: ColorResources.SUBTITLE,
-                       astIcon: Images.vacations),
+                       astIcon: Images.vacations,
+                       onTap: ()=>CustomNavigator.push(Routes.VACATION_REQUEST)
+                   ),
                    SizedBox(
                      height: 8.h,
                    ),
                    tabRequest(title:getTranslated("business_trip", context),textColor:ColorResources.SUBTITLE,
                        textSize: 14,
                        iconColor: ColorResources.SUBTITLE,
-                       astIcon: Images.plane),
+                       astIcon: Images.plane,
+                       onTap: ()=>CustomNavigator.push(Routes.BUSINESS_TRIP_REQUEST)
+                   ),
                    SizedBox(
                      height: 8.h,
                    ),

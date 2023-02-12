@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/app/core/utils/text_styles.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:intl/intl.dart';
 
@@ -13,6 +15,7 @@ import 'confirm_bottom_sheet.dart';
 
 class CustomSelectDate extends StatefulWidget {
   final String? initialString;
+  final String? format;
   final bool? isNotEmptyValue;
   final bool? showOnly;
   final DateTime? startDateTime;
@@ -22,6 +25,7 @@ class CustomSelectDate extends StatefulWidget {
   const CustomSelectDate(
       {Key? key,
       this.initialString,
+      this.format,
       required this.valueChanged,
       this.isNotEmptyValue = false,
       this.showOnly = false,
@@ -59,12 +63,12 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
               onConfirm: () {
                 if (date != null) {
                   setState(() =>
-                      _date = DateFormat("dd-mm-yyyy").format(date!));
+                      _date = DateFormat(widget.format??"dd,MMM,yyyy").format(date!));
                   widget.valueChanged!(date!);
                   CustomNavigator.pop();
                 } else {
                   setState(() => _date =
-                      DateFormat("dd-mm-yyyy").format(DateTime.now()));
+                      DateFormat(widget.format??"dd,MMM,yyyy").format(DateTime.now()));
                   widget.valueChanged!(DateTime.now());
                   CustomNavigator.pop();
                 }
@@ -89,13 +93,17 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
         return null;
       },
       decoration: InputDecoration(
-          contentPadding:  EdgeInsets.symmetric(vertical: 25.w, horizontal: 25.w),
+          contentPadding:  EdgeInsets.symmetric(vertical: 22.w, horizontal: 22.w),
           hintText: _date,
+          alignLabelWithHint: true,
           enabledBorder: disableBorderStyle,
           border: disableBorderStyle,
+          hintStyle: AppTextStyles.w500.copyWith(
+            fontSize: 14
+          ),
           suffixIcon: Padding(
               padding:  EdgeInsets.symmetric( horizontal: 20.w),
-              child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,)),),
+              child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: ColorResources.hintColor,)),),
     );
   }
 }
