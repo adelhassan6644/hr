@@ -20,7 +20,6 @@ class EditPasswordScreen extends StatelessWidget {
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title:getTranslated("change_password", context),
-        titleCenter:true ,
       ),
       body: Padding(
         padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),

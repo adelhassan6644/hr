@@ -229,6 +229,8 @@ final _kEventSource = { for (var item in List.generate(50, (index) => index)) Da
 extension MediaQueryValues on BuildContext {
   double get height => MediaQuery.of(this).size.height;
 
+  double get topPadding => MediaQuery.of(this).padding.top;
+
   double get width => MediaQuery.of(this).size.width;
 
   double get toPadding => MediaQuery.of(this).viewPadding.top;

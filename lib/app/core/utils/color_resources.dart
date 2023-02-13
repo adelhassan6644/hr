@@ -90,6 +90,7 @@ abstract class ColorResources {
   static const Color GREEN_COLOR = Colors.green;
   static const Color disabledColor = Color(0xFF979797);
   static const Color FILL = Color(0xfffcfdfe);
+  static const Color FILL_COLOR = Color(0xfff7f7f7);
   static const Color transparentColor = Color(0xFF0000FFFF);
   static Color shadowColor = const Color(0xFFEEEEEE);
 

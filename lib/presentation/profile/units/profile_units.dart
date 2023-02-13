@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/notifier/localization_provider.dart';
 import 'package:provider/provider.dart';
@@ -18,10 +19,9 @@ settingCard(
   return InkWell(
     onTap: onTap,
     child: Container(
-      height: 55,
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      height: 55.h,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.w),
           color: ColorResources.FILL),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -44,8 +44,8 @@ settingCard(
                         color: ColorResources.PRIMARY,
                       )),
           ),
-          const SizedBox(
-            width: 10,
+           SizedBox(
+            width: 10.w,
           ),
           Text(
             name,
@@ -70,9 +70,9 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
     padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
     child: Container(
       padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-      decoration: const BoxDecoration(
-          color: ColorResources.FILL,
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+      decoration:  BoxDecoration(
+          color: ColorResources.FILL_COLOR,
+          borderRadius: BorderRadius.all(Radius.circular(15.w)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -131,7 +131,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
 
 profileCard({File? profileImage,required String name,required String description,required VoidCallback onTap}){
   return Padding(
-    padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+    padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
     child: Stack(
       alignment: Alignment.topRight,
       children: [
@@ -141,7 +141,7 @@ profileCard({File? profileImage,required String name,required String description
             height: 100,
             decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: ColorResources.FILL
+                color: ColorResources.FILL_COLOR
             ),
             child: ClipOval(
               child: profileImage == null

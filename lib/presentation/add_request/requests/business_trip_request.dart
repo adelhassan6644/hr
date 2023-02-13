@@ -112,39 +112,45 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                       onTap: (){
                         setState(() {
                           CustomBottomSheet.show(label:  getTranslated("select_additional_services", context),
+                              height: 0.35*context.height,
                               list:  CupertinoScrollbar(
                                 thickness: 4.0,
                                 thumbVisibility: true,
                                 radius:  Radius.circular(12.w),
                                 child: SizedBox(
-                                  height: context.height*0.4,
+                                  height: context.height*0.35,
                                   child: StatefulBuilder(
                                     builder: (context,reBuilder) {
-                                      return ListView.builder(
-                                          itemCount: services.length,
-                                          shrinkWrap: true,
-                                          physics: const BouncingScrollPhysics(),
-                                          itemBuilder: (context,index) {
-                                            return CustomCheckBoxListTile(
-                                              title:getTranslated(services[index], context),
-                                              value: selectedService.contains(services[index]),
-                                              onChange: (value){
-                                                reBuilder(() {
-                                                  if(selectedService.contains(services[index])){
-                                                    selectedService.remove(services[index]);
-                                                  }else{
-                                                    selectedService.add(services[index]);
-                                                  }
-                                                });
+                                      return Column(
+                                        children: [
+                                          ListView.builder(
+                                              itemCount: services.length,
+                                              shrinkWrap: true,
+                                              physics: const BouncingScrollPhysics(),
+                                              itemBuilder: (context,index) {
+                                                return CustomCheckBoxListTile(
+                                                  title:getTranslated(services[index], context),
+                                                  value: selectedService.contains(services[index]),
+                                                  onChange: (value){
+                                                    reBuilder(() {
+                                                      if(selectedService.contains(services[index])){
+                                                        selectedService.remove(services[index]);
+                                                      }else{
+                                                        selectedService.add(services[index]);
+                                                      }
+                                                    });
 
-                                              },
-                                            );
-                                          }
+                                                  },
+                                                );
+                                              }
+                                          ),
+                                        ],
                                       );
                                     }
                                   ),
                                 ),
-                              ));
+                              )
+                          );
                         });
                        
                       },

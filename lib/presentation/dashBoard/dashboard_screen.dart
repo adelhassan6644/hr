@@ -38,7 +38,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   return  Scaffold(
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 20,right: 25,left: 25),
+          padding:  EdgeInsets.only(bottom: 20.h,right: 25.w,left: 25.w),
           child: Container(
             height: 60.h,
               decoration:BoxDecoration(
