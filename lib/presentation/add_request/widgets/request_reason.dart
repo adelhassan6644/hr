@@ -54,7 +54,11 @@ class RequestReason extends StatelessWidget {
           ),
           CustomButtonImagePicker(
             title:getTranslated("attachment", context) ,
-            onTap: (){},
+            onTap: () async {
+
+              // var _image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+            },
           )
         ],
       ),

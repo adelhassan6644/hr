@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/presentation/base/confirm_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/utils/color_resources.dart';
@@ -11,6 +12,7 @@ import '../../../domain/localization/language_constant.dart';
 import '../../base/animated_widget.dart';
 import '../../base/custom_app_bar.dart';
 import '../../base/custom_button.dart';
+import '../../base/custom_check_box_list_tile.dart';
 import '../../base/custom_date_time_picker.dart';
 import '../../base/custom_drop_down_button.dart';
 import '../../base/custom_text_form_field.dart';
@@ -33,6 +35,9 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
   DateTime? returnDate;
   DateTime? departureDate;
   bool isFlight = false;
+
+  List<String>services=["accommodation","transportation","food"];
+  List<String>selectedService=[];
 
   @override
   void initState() {
@@ -104,7 +109,45 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                       read: true,
                       tIconColor: ColorResources.hintColor,
                       hint: getTranslated("select_additional_services", context),
-                      onTap: (){},
+                      onTap: (){
+                        setState(() {
+                          CustomBottomSheet.show(label:  getTranslated("select_additional_services", context),
+                              list:  CupertinoScrollbar(
+                                thickness: 4.0,
+                                thumbVisibility: true,
+                                radius:  Radius.circular(12.w),
+                                child: SizedBox(
+                                  height: context.height*0.4,
+                                  child: StatefulBuilder(
+                                    builder: (context,reBuilder) {
+                                      return ListView.builder(
+                                          itemCount: services.length,
+                                          shrinkWrap: true,
+                                          physics: const BouncingScrollPhysics(),
+                                          itemBuilder: (context,index) {
+                                            return CustomCheckBoxListTile(
+                                              title:getTranslated(services[index], context),
+                                              value: selectedService.contains(services[index]),
+                                              onChange: (value){
+                                                reBuilder(() {
+                                                  if(selectedService.contains(services[index])){
+                                                    selectedService.remove(services[index]);
+                                                  }else{
+                                                    selectedService.add(services[index]);
+                                                  }
+                                                });
+
+                                              },
+                                            );
+                                          }
+                                      );
+                                    }
+                                  ),
+                                ),
+                              ));
+                        });
+                       
+                      },
                     ),
                     SizedBox(
                       height: 16.h,

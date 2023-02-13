@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/presentation/add_request/add_request_screen.dart';
+import 'package:hr_project/presentation/add_request/requests/asset_request.dart';
 import 'package:hr_project/presentation/add_request/requests/business_trip_request.dart';
 import 'package:hr_project/presentation/add_request/requests/expense_request_Screen.dart';
+import 'package:hr_project/presentation/add_request/requests/letter_request.dart';
 import 'package:hr_project/presentation/add_request/requests/loan_request_screen.dart';
 import 'package:hr_project/presentation/add_request/requests/vacation_request.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
@@ -11,6 +13,7 @@ import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/settings/edit_password_screen.dart';
 import 'package:hr_project/presentation/settings/language_screen.dart';
 import '../main.dart';
+import '../presentation/add_request/requests/clear_asset_request.dart';
 import '../presentation/add_request/requests/permission_details.dart';
 import '../presentation/auth/forget_password_screen.dart';
 import '../presentation/auth/reset_password_screen.dart';
@@ -69,6 +72,12 @@ abstract class CustomNavigator {
         return _pageRoute(const VacationRequest());
       case Routes.BUSINESS_TRIP_REQUEST :
         return _pageRoute(const BusinessTripRequest());
+        case Routes.LETTER_REQUEST :
+        return _pageRoute(const LetterRequest());
+        case Routes.ASSET_REQUEST :
+        return _pageRoute(const AssetRequest());
+        case Routes.CLEAR_ASSET_REQUEST :
+        return _pageRoute(const ClearAssetRequest());
       case Routes.ATTENDANCE_LEAVING:
           return _pageRoute(const AttendanceLeavingScreen());
       case Routes.SETTINGS:
