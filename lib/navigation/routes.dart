@@ -29,6 +29,9 @@ class Routes {
   static const CHANGE_PASSWORD = "/CHANGE_PASSWORD";
   static const LANGUAGES = "/LANGUAGES";
   static const PERSONAL = "/PERSONAL";
+  static const ASSETS = "/ASSETS";
+  static const DOCUMENTS = "/DOCUMENTS";
+  static const CONTRACT = "/CONTRACT";
 }
 
 //

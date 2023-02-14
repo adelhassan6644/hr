@@ -8,6 +8,7 @@ import 'package:hr_project/presentation/add_request/requests/loan_request_screen
 import 'package:hr_project/presentation/add_request/requests/vacation_request.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/dashBoard/dashboard_screen.dart';
+import 'package:hr_project/presentation/profile/units/contract/contract_screen.dart';
 import 'package:hr_project/presentation/profile/units/personal/personal_screen.dart';
 import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/settings/edit_password_screen.dart';
@@ -19,6 +20,7 @@ import '../presentation/auth/forget_password_screen.dart';
 import '../presentation/auth/reset_password_screen.dart';
 import '../presentation/auth/verification_screen.dart';
 import '../presentation/home/attendance_leaving_screen.dart';
+import '../presentation/profile/units/assets/assets_screen.dart';
 import '../presentation/profile/units/salary/salary_details_screen.dart';
 import '../presentation/profile/units/salary/salary_screen.dart';
 import '../presentation/settings/settings_screen.dart';
@@ -92,6 +94,10 @@ abstract class CustomNavigator {
           return _pageRoute(const SalaryScreen());
           case Routes.SALARY_DETAILS:
           return _pageRoute(const SalaryDetailsScreen());
+          case Routes.ASSETS:
+          return _pageRoute(const AssetsScreen());
+          case Routes.CONTRACT:
+          return _pageRoute(const ContractScreen());
       default:
         return MaterialPageRoute(builder: (_) => const MyApp());
     }

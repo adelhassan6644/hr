@@ -50,6 +50,18 @@
   "asset_request": "Asset Request",
   "asset_details": "Asset Details",
   "asset_type": "Asset Type",
+  "asset_status": "Asset Status",
+  "car": "car",
+
+  "active": "active",
+  "inactive": "inactive",
+  "unlimited_time": "Unlimited Time",
+  "contract_duration": "Contract Duration",
+  "contract_starting_date": "Contract starting date",
+  "employment_contract": "Employment contract",
+  "there_is_no_contract": "There is no contract",
+  "there_is_no_asset": "There is no asset",
+
   "clear_asset_request": "Clear Asset Request",
   "clear_asset_details": "Clear Asset Details",
   "clear_asset_type": "Clear Asset Type",

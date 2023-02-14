@@ -25,7 +25,7 @@ class SalaryScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
               decoration: const BoxDecoration(
-                color: ColorResources.FILL,
+                color: ColorResources.FILL_COLOR,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
               child: Row(
@@ -132,7 +132,7 @@ class SalaryScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_LARGE),
                   decoration: const BoxDecoration(
-                    color: ColorResources.FILL,
+                    color: ColorResources.FILL_COLOR,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(

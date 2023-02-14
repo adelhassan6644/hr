@@ -12,6 +12,8 @@ class Images {
   static const String plane = 'assets/icons/plane.png';
   static const String description = 'assets/icons/description.png';
   static const String destination = 'assets/icons/destination.png';
+  static const String emptyContract = 'assets/icons/Signing a contract-rafiki.png';
+  static const String emptyAsset = 'assets/icons/empty_asset.png';
   static const String cash = 'assets/icons/cash.png';
   static const String letter = 'assets/icons/letter.png';
   static const String time = 'assets/icons/time.png';

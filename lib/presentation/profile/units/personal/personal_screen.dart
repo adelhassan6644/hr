@@ -30,7 +30,7 @@ class PersonalScreen extends StatelessWidget {
                   height: 100,
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: ColorResources.FILL
+                      color: ColorResources.FILL_COLOR
                   ),
                   child: const ClipOval(
                     child:

@@ -77,7 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             settingCard(
                 name: getTranslated("assets", context),
                 iconAsset: Images.assetsIcon,
-                onTap: () {}),
+                onTap: () => CustomNavigator.push(Routes.ASSETS)),
             Container(
               width: context.width,
               height: 0.5,
@@ -86,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             settingCard(
                 name: getTranslated("contract", context),
                 iconAsset: Images.contractIcon,
-                onTap: () {}),
+                onTap: () => CustomNavigator.push(Routes.CONTRACT)),
             Container(
               width: context.width,
               height: 0.5,

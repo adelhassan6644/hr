@@ -19,13 +19,13 @@ abstract class ColorResources {
   static Color getStatusColor(String status) {
   switch (status) {
     case "approved":
-      return GREEN_COLOR.withOpacity(0.3);
+      return ACTIVE.withOpacity(0.3);
       case "pending":
-        return GOLD_COLOR.withOpacity(0.3);
+        return PENDING.withOpacity(0.3);
       case "rejected":
         return WARNING_COLOR.withOpacity(0.3);
     default:
-      return GREEN_COLOR.withOpacity(0.3);
+      return ACTIVE.withOpacity(0.3);
   }
 
   }
@@ -33,13 +33,13 @@ abstract class ColorResources {
   static Color getStatusColorOfVacation(String status) {
   switch (status) {
     case "accepted":
-      return GREEN_COLOR;
+      return ACTIVE;
       case "pending":
-      return GOLD_COLOR;
+      return PENDING;
       case "rejected":
-      return WARNING_COLOR;
+      return IN_ACTIVE;
     default:
-      return GREEN_COLOR;
+      return ACTIVE;
   }
 
   }
@@ -72,6 +72,10 @@ abstract class ColorResources {
   }
 
   static const Color PRIMARY = Color(0xFF2c80d5);
+  static const Color ACTIVE = Color(0xFF2FAF99);
+  static const Color IN_ACTIVE = Color(0xFFDB5353);
+  static const Color PENDING = Color(0xFFA6840A);
+  static const Color LOGOUT_COLOR = Color(0xffF16063);
   static const Color primaryLight = Color(0xFFA256E2);
   static const Color hintColor = Color(0xFF52575C);
   static const Color chatColor = Color(0xFF43908A);
