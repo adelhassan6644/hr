@@ -1,11 +1,13 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:hr_project/presentation/notifier/localization_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../app/core/utils/color_resources.dart';
 import '../../../app/core/utils/constant.dart';
 import '../../../app/core/utils/dimensions.dart';
-import '../../../app/core/utils/images.dart';
 import '../../../domain/localization/language_constant.dart';
 
 settingCard(
@@ -17,19 +19,10 @@ settingCard(
   return InkWell(
     onTap: onTap,
     child: Container(
-      height: 55,
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      height: 55.h,
       decoration: BoxDecoration(
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: Colors.grey.withOpacity(0.1),
-          //     spreadRadius: 5,
-          //     blurRadius: 7,
-          //     offset: const Offset(0, 3), // changes position of shadow
-          //   ),
-          // ],
-          borderRadius: BorderRadius.circular(12),
-          color: ColorResources.fillColor),
+          borderRadius: BorderRadius.circular(12.w),
+          color: ColorResources.FILL),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,29 +32,32 @@ settingCard(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: iconSvg != null
                     ? SvgPicture.asset(
-                        iconSvg,
-                        color: ColorResources.primary,
-                        height: 25,
-                        width: 25,
-                      )
+                  iconSvg,
+                  color: ColorResources.PRIMARY,
+                  height: 25,
+                  width: 25,
+                )
                     : Image.asset(
                         iconAsset ?? "",
                         height: 25,
                         width: 25,
-                        color: ColorResources.primary,
+                        color: ColorResources.PRIMARY,
                       )),
           ),
-          const SizedBox(
-            width: 10,
+           SizedBox(
+            width: 10.w,
           ),
           Text(
             name,
             style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
           ),
           const Spacer(),
-          const Icon(
-            Icons.keyboard_arrow_right_sharp,
-            color: ColorResources.primary,
+          RotatedBox(
+            quarterTurns: Provider.of<LocalizationProvider>(CustomNavigator.navigatorState.currentContext!,listen: false).locale.languageCode == "ar" ?2:0,
+            child: const Icon(
+              Icons.keyboard_arrow_right_sharp,
+              color: ColorResources.PRIMARY,
+            ),
           )
         ],
       ),
@@ -74,13 +70,9 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
     padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
     child: Container(
       padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-      decoration: const BoxDecoration(
-          color: ColorResources.fillColor,
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          // border: Border.all(
-          //     color: ColorResources.borderColor,
-          //     style: BorderStyle.solid,
-          //     width: 1)
+      decoration:  BoxDecoration(
+          color: ColorResources.FILL_COLOR,
+          borderRadius: BorderRadius.all(Radius.circular(15.w)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +93,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
                     getTranslated("view_details", context),
                     style: titleTextStyle.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: ColorResources.primary),
+                        color: ColorResources.PRIMARY),
                   ))
             ],
           ),
@@ -115,7 +107,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
                 style: const TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 16,
-                    color: ColorResources.primary),
+                    color: ColorResources.PRIMARY),
               ),
               const SizedBox(
                 width: 20,
@@ -139,8 +131,9 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
 
 profileCard({File? profileImage,required String name,required String description,required VoidCallback onTap}){
   return Padding(
-    padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+    padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
     child: Stack(
+      alignment: Alignment.topRight,
       children: [
         Column(children: [
           Container(
@@ -148,12 +141,12 @@ profileCard({File? profileImage,required String name,required String description
             height: 100,
             decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: ColorResources.fillColor
+                color: ColorResources.FILL_COLOR
             ),
             child: ClipOval(
               child: profileImage == null
                   ? const Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)
-                  : Image.file(profileImage!, fit: BoxFit.cover,),
+                  : Image.file(profileImage, fit: BoxFit.cover,),
             ),
           ),
           const SizedBox(height: 8,),
@@ -161,7 +154,8 @@ profileCard({File? profileImage,required String name,required String description
           const SizedBox(height: 8,),
           Center(child: Text(description,style: hintTextStyle)),
         ],),
-        IconButton(onPressed: onTap, icon: const Icon(Icons.settings,color: ColorResources.primary,size: 26,))
+        IconButton(onPressed: onTap, icon: const Icon(Icons.settings,color: ColorResources.PRIMARY,size: 26,)),
+
       ],
     ),
   );

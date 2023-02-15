@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
@@ -11,8 +11,8 @@ import '../base/custom_button.dart';
 import '../base/custom_text_form_field.dart';
 import '../notifier/auth_provider.dart';
 
-class ChangePasswordScreen extends StatelessWidget {
-  const ChangePasswordScreen({Key? key}) : super(key: key);
+class EditPasswordScreen extends StatelessWidget {
+  const EditPasswordScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,6 @@ class ChangePasswordScreen extends StatelessWidget {
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title:getTranslated("change_password", context),
-        titleCenter:true ,
       ),
       body: Padding(
         padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
@@ -36,7 +35,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   ),
                   Text(getTranslated("password", context),
                       style: titleTextStyle.copyWith(
-                          color: ColorResources.primary)),
+                          color: ColorResources.PRIMARY)),
                   const SizedBox(
                     height: 5,
                   ),
@@ -51,7 +50,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   ),
                   Text(getTranslated("new_password", context),
                       style: titleTextStyle.copyWith(
-                          color: ColorResources.primary)),
+                          color: ColorResources.PRIMARY)),
                   const SizedBox(
                     height: 5,
                   ),
@@ -66,7 +65,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   ),
                   Text(getTranslated("confirm_password", context),
                       style: titleTextStyle.copyWith(
-                          color: ColorResources.primary)),
+                          color: ColorResources.PRIMARY)),
                   const SizedBox(
                     height: 5,
                   ),
@@ -85,9 +84,9 @@ class ChangePasswordScreen extends StatelessWidget {
                         onTap: () {
                           authProvider.resetPassword(context: context);
                         },
-                        textColor: ColorResources.whiteColor,
+                        textColor: ColorResources.WHITE,
                         text: getTranslated("confirm", context),
-                        backgroundColor: ColorResources.primary),
+                        backgroundColor: ColorResources.PRIMARY),
                   ),
                 ],
               );

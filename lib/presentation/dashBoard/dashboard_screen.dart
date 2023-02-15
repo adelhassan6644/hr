@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/dashBoard/units/nav_bar_item.dart';
 import 'package:hr_project/presentation/home/home_Screen.dart';
 import 'package:hr_project/presentation/profile/profile_screen.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/images.dart';
+import '../home/attendance_leaving_screen.dart';
+import '../requests/requests_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -35,9 +38,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   return  Scaffold(
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 20,right: 25,left: 25),
+          padding:  EdgeInsets.only(bottom: 20.h,right: 25.w,left: 25.w),
           child: Container(
-            height: 55,
+            height: 60.h,
               decoration:BoxDecoration(
             color: const Color(0xfff7f7f7),
             borderRadius: BorderRadius.circular(100),
@@ -87,8 +90,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           physics: const NeverScrollableScrollPhysics(),
           children: const [
             HomeScreen(),
-            HomeScreen(),
-            HomeScreen(),
+            RequestsScreen(),
+            AttendanceLeavingScreen(),
             ProfileScreen(),
           ]),
     );

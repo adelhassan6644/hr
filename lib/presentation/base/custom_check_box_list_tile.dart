@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../app/core/utils/app_strings.dart';
 import '../../app/core/utils/color_resources.dart';
-import '../../app/core/utils/constant.dart';
 
 class CustomCheckBoxListTile extends StatelessWidget {
   final String title;
@@ -22,27 +20,28 @@ class CustomCheckBoxListTile extends StatelessWidget {
         width: 9,
       ),
       controlAffinity: ListTileControlAffinity.leading,
-      checkColor: Colors.white,
+      checkColor: ColorResources.WHITE,
       contentPadding: EdgeInsets.zero,
       checkboxShape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
       ),
-      activeColor: ColorResources.primary,
+      activeColor: ColorResources.PRIMARY,
       title: Text(
         title,
-        style: value ? selectTextStyle : hintTextStyle,
+        style:   TextStyle(
+            color:value ? ColorResources.PRIMARY:ColorResources.disabledColor,
+            fontSize: 13,
+            fontWeight: FontWeight.w700) ,
       ),
       subtitle:subTitle != null? Text(
         "(${subTitle??""})",
         style: value ? const TextStyle(
-            color: ColorResources.primary,
+            color: ColorResources.PRIMARY,
             fontSize: 11,
-            fontFamily: AppStrings.fontFamily,
             fontWeight: FontWeight.w600)
-            : const TextStyle(
-            color: ColorResources.disabledColor,
+            :  const TextStyle(
+            color: ColorResources.hintColor,
             fontSize: 11,
-            fontFamily: AppStrings.fontFamily,
             fontWeight: FontWeight.w600),
       ):null,
       value: value,

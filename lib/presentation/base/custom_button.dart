@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
-import '../../app/core/utils/app_strings.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/dimensions.dart';
@@ -27,7 +26,7 @@ class CustomButton extends StatelessWidget {
     this.isFlat=false,
     required this.textColor, this.width ,
     this.iconSize=25,
-    this.iconColor = ColorResources.primary ,
+    this.iconColor = ColorResources.PRIMARY ,
     required this.text,required this.backgroundColor}) : super(key: key);
 
   @override
@@ -45,14 +44,8 @@ class CustomButton extends StatelessWidget {
        child:  Row(
          mainAxisAlignment: MainAxisAlignment.center,
          children: [
-           Text(
-             text,
-             style: titleTextStyle.copyWith(
-                 color: textColor
-             ),
-           ),
-           if( icon != null || assetIcon != null )
-             wSpace,
+
+
           if( icon != null )
            Icon(icon,color: iconColor ,size:iconSize ),
            if(assetIcon != null)
@@ -62,6 +55,14 @@ class CustomButton extends StatelessWidget {
                width: iconSize,
                color: iconColor,
              ),
+           if( icon != null || assetIcon != null )
+             SizedBox(width: 15.w),
+           Text(
+             text,
+             style: titleTextStyle.copyWith(
+                 color: textColor
+             ),
+           ),
 
 
          ],

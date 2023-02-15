@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
@@ -37,7 +37,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   ),
                   Text(getTranslated("email_or_id", context),
                       style: titleTextStyle.copyWith(
-                          color: ColorResources.primary)),
+                          color: ColorResources.PRIMARY)),
                   const SizedBox(
                     height: 5,
                   ),
@@ -56,9 +56,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                         onTap: () {
                           authProvider.requestOTP(context);
                         },
-                        textColor: ColorResources.whiteColor,
+                        textColor: ColorResources.WHITE,
                         text: getTranslated("confirm", context),
-                        backgroundColor: ColorResources.primary),
+                        backgroundColor: ColorResources.PRIMARY),
                   ),
                 ],
               );

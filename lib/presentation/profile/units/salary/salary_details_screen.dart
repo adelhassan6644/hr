@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
-import 'package:hr_project/presentation/base/custom_button.dart';
-import 'package:hr_project/presentation/notifier/auth_provider.dart';
-import 'package:provider/provider.dart';
 import '../../../../app/core/utils/color_resources.dart';
 import '../../../../app/core/utils/constant.dart';
 import '../../../../app/core/utils/dimensions.dart';
@@ -18,10 +14,8 @@ class SalaryDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       appBar: CustomAppBar(
-        titleCenter: true,
         title: getTranslated("salary_details", context),
       ),
-
       body: Column(
         children: [
           Container(
@@ -29,7 +23,7 @@ class SalaryDetailsScreen extends StatelessWidget {
             height: context.height * 0.25,
             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
             decoration: const BoxDecoration(
-              color: ColorResources.primary,
+              color: ColorResources.PRIMARY,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(30),
                 bottomLeft: Radius.circular(30),
@@ -48,7 +42,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   DateTime.now().monthFormat(),
                   style: const TextStyle(
                       fontSize: 18,
-                      color: ColorResources.whiteColor,
+                      color: ColorResources.WHITE,
                       fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(
@@ -58,7 +52,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   getTranslated("pay_by", context),
                   style: const TextStyle(
                       fontSize: 14,
-                      color: ColorResources.whiteColor,
+                      color: ColorResources.WHITE,
                       fontWeight: FontWeight.w600),
                 ),
 
@@ -74,7 +68,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                   decoration: const BoxDecoration(
-                    color: ColorResources.fillColor,
+                    color: ColorResources.FILL,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
@@ -89,7 +83,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                                 "total_salary_and_allowances", context),
                             style: const TextStyle(
                                 fontSize: 16,
-                                color: ColorResources.primary,
+                                color: ColorResources.PRIMARY,
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(
@@ -181,7 +175,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   padding:
                   const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                   decoration: const BoxDecoration(
-                    color: ColorResources.fillColor,
+                    color: ColorResources.FILL,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
@@ -196,7 +190,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                                 "deductions", context),
                             style: const TextStyle(
                                 fontSize: 16,
-                                color: ColorResources.primary,
+                                color: ColorResources.PRIMARY,
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(
@@ -256,12 +250,12 @@ class SalaryDetailsScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      TextButton(onPressed: (){}, child: Text(getTranslated("more_details", context),
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: ColorResources.primary
-                      ),),)
+                      // TextButton(onPressed: (){}, child: Text(getTranslated("more_details", context),
+                      // style: const TextStyle(
+                      //   fontSize: 14,
+                      //   fontWeight: FontWeight.w500,
+                      //   color: ColorResources.primary
+                      // ),),)
                     ],
                   ),
                 ),

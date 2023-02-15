@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/media_query_values.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/presentation/settings/widget/language_widget.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/app_storage_keys.dart';
@@ -31,7 +31,7 @@ class LanguageScreen extends StatelessWidget {
           Row(mainAxisAlignment: MainAxisAlignment.end,
             children: [
             IconButton(onPressed: (){ Navigator.pop(context);},
-                icon: const Icon(Icons.clear,size: 25,color: ColorResources.primary,))
+                icon: const Icon(Icons.clear,size: 25,color: ColorResources.PRIMARY,))
           ],),
           const SizedBox(height: 10),
           Consumer<LanguageProvider>(
@@ -72,7 +72,7 @@ class LanguageScreen extends StatelessWidget {
                                     .countryCode,
                               ));
                             }, textColor: Colors.white,
-                            backgroundColor: ColorResources.primary,
+                            backgroundColor: ColorResources.PRIMARY,
                           ),
                         ),
                     ],
