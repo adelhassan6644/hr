@@ -51,7 +51,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               children: [
                 Expanded(
                   child: BottomNavItem(
-                      svgIcon: Images.home,
+                      imageIcon: Images.home,
                     isSelected: _selectedIndex ==0 ,
                     onTap: () => _setPage(0),
                     name: getTranslated("home", context),

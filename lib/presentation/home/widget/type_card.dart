@@ -32,7 +32,7 @@ class TypeCard extends StatelessWidget {
               )
             ],
             borderRadius: const BorderRadius.all(Radius.circular(12)),
-            color: ColorResources.FILL),
+            color: ColorResources.FILL_COLOR),
         child:  Row(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

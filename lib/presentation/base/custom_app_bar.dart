@@ -30,6 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             style:  const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
+              color:ColorResources.PRIMARY
             )),
       ),
       leading: Navigator.canPop(context)?Padding(

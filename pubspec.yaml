@@ -41,7 +41,7 @@ dependencies:
   equatable:
   shared_preferences:
   get_it:
-#    firebase_messaging:
+  #    firebase_messaging:
   provider:
   connectivity:
   flutter_styled_toast:
@@ -62,7 +62,7 @@ dependencies:
   loading_animation_widget:
   flutter_calendar_week: ^3.0.0
   simple_gesture_detector:
-#  table_calendar:
+  #  table_calendar:
   platform: ^3.1.0
   flutter_staggered_animations:
   percent_indicator: ^4.2.2

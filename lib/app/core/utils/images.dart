@@ -3,7 +3,7 @@ class Images {
   static const String splash = 'assets/icons/hr.png';
   static const String authHeader = 'assets/icons/auth_hederl.png';
   static const String banner = 'assets/icons/banner.svg';
-  static const String home = 'assets/icons/home.svg';
+  static const String home = 'assets/icons/home.png';
   // static const String plane = 'assets/icons/plane.svg';
   static const String ticket = 'assets/icons/ticket.svg';
   static const String user = 'assets/icons/user.svg';

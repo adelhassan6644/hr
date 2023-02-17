@@ -44,7 +44,6 @@ Widget build(BuildContext context) {
             color: isSelected? ColorResources.PRIMARY
                 :ColorResources.disabledColor,
             fontSize: 10,
-
           ),):const SizedBox.shrink()
         ],
       ),

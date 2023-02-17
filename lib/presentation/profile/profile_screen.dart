@@ -48,18 +48,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
             settingCard(
                 name: getTranslated("organization", context),
                 iconAsset: Images.organizationIcon,
-                onTap: (){}
-            ),
-            Container(
-              width: context.width,
-              height: 0.5,
-              color: ColorResources.BORDER_COLOR,
-            ),
-            settingCard(
-                name: getTranslated("salary_&_financial", context),
-                iconAsset: Images.salaryIcon,
-                onTap: () => CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL)
-            ),
+                onTap: () => CustomNavigator.push(Routes.ORGANIZATION)),
+            // Container(
+            //   width: context.width,
+            //   height: 0.5,
+            //   color: ColorResources.BORDER_COLOR,
+            // ),
+            // settingCard(
+            //     name: getTranslated("salary_&_financial", context),
+            //     iconAsset: Images.salaryIcon,
+            //     onTap: () => CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL)
+            // ),
             Container(
               width: context.width,
               height: 0.5,
@@ -68,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             settingCard(
                 name: getTranslated("documents", context),
                 iconAsset: Images.documentsIcon,
-                onTap: () {}),
+                onTap: () => CustomNavigator.push(Routes.DOCUMENTS)),
             Container(
               width: context.width,
               height: 0.5,

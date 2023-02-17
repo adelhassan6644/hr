@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: ColorResources.FILL),
+                  color: ColorResources.FILL_COLOR),
               child: Column(
                 children: [
                   Row(
