@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:pinput/pinput.dart';
 import 'app_strings.dart';
 import 'color_resources.dart';
@@ -11,7 +12,7 @@ import 'dimensions.dart';
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
-    color: ColorResources.borderColor,
+    color: ColorResources.BORDER_COLOR,
   ),
 );
 
@@ -21,7 +22,7 @@ import 'dimensions.dart';
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
-    color: ColorResources.primary,
+    color: ColorResources.PRIMARY,
   ),
 );
 
@@ -62,7 +63,7 @@ const TextStyle errorHintTextStyle = TextStyle(
     fontWeight: FontWeight.w600);
 
 const TextStyle selectTextStyle = TextStyle(
-    color: ColorResources.primary,
+    color: ColorResources.PRIMARY,
     fontSize: 12,
     fontFamily: AppStrings.fontFamily,
     fontWeight: FontWeight.w700);
@@ -88,7 +89,7 @@ const TextStyle unSelectTextStyle = TextStyle(
     border: Border.all(
         color: ColorResources.transparentColor,
         style: BorderStyle.solid),
-    color: ColorResources.fillColor);
+    color: ColorResources.FILL);
 
 final defaultPinTheme = PinTheme(
   width: 56,
@@ -109,11 +110,11 @@ final submittedPinTheme = defaultPinTheme.copyWith(
 );
 
 
- Widget hSpace = const SizedBox(
-   height: Dimensions.PADDING_SIZE_LARGE,
+ Widget hSpace =  SizedBox(
+   height: Dimensions.PADDING_SIZE_LARGE.h,
  );
 
-Widget wSpace = const SizedBox(
-  width:8,
+Widget wSpace =  SizedBox(
+  width:Dimensions.PADDING_SIZE_LARGE.w,
 );
 

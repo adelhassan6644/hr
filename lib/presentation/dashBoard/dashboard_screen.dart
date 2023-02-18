@@ -6,6 +6,8 @@ import 'package:hr_project/presentation/home/home_Screen.dart';
 import 'package:hr_project/presentation/profile/profile_screen.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/images.dart';
+import '../home/attendance_leaving_screen.dart';
+import '../requests/requests_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -36,7 +38,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   return  Scaffold(
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 20,right: 25,left: 25),
+          padding:  EdgeInsets.only(bottom: 20.h,right: 25.w,left: 25.w),
           child: Container(
             height: 60.h,
               decoration:BoxDecoration(
@@ -49,7 +51,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               children: [
                 Expanded(
                   child: BottomNavItem(
-                      svgIcon: Images.home,
+                      imageIcon: Images.home,
                     isSelected: _selectedIndex ==0 ,
                     onTap: () => _setPage(0),
                     name: getTranslated("home", context),
@@ -88,8 +90,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           physics: const NeverScrollableScrollPhysics(),
           children: const [
             HomeScreen(),
-            HomeScreen(),
-            HomeScreen(),
+            RequestsScreen(),
+            AttendanceLeavingScreen(),
             ProfileScreen(),
           ]),
     );

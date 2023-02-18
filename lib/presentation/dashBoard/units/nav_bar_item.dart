@@ -28,23 +28,22 @@ Widget build(BuildContext context) {
           svgIcon != null?
           SvgPicture.asset(
             svgIcon??"",
-            color:isSelected ? ColorResources.primary :ColorResources.disabledColor ,
+            color:isSelected ? ColorResources.PRIMARY :ColorResources.disabledColor ,
             width: 20,
             height:20,
           ):
           Image.asset(
             imageIcon??"",
-            color:isSelected ? ColorResources.primary :ColorResources.disabledColor ,
+            color:isSelected ? ColorResources.PRIMARY :ColorResources.disabledColor ,
             width: 20,
             height:20,
           ),
           name != null?
           Text(name??"",style: TextStyle(
             fontWeight: FontWeight.w400,
-            color: isSelected? ColorResources.primary
+            color: isSelected? ColorResources.PRIMARY
                 :ColorResources.disabledColor,
             fontSize: 10,
-
           ),):const SizedBox.shrink()
         ],
       ),

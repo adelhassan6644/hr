@@ -7,7 +7,7 @@ Row titleRow({required String title}) {
       Text(
         title,
         style: const TextStyle(
-            color: ColorResources.primary,
+            color: ColorResources.PRIMARY,
             fontSize: 20,
             fontWeight: FontWeight.w600),
       ),

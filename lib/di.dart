@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hr_project/presentation/notifier/add_request_provider.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:hr_project/presentation/notifier/language_provider.dart';
 import 'package:hr_project/presentation/notifier/localization_provider.dart';
@@ -36,6 +37,7 @@ Future<void> init() async {
   //provider
    sl.registerLazySingleton(() => AuthProvider());
    sl.registerLazySingleton(() => ProfileProvider());
+   sl.registerLazySingleton(() => AddRequestProvider());
    sl.registerLazySingleton(() => ThemeProvider(sharedPreferences: sl()));
    sl.registerLazySingleton(() => LocalizationProvider(sharedPreferences: sl()));
    sl.registerLazySingleton(() => LanguageProvider());

@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
     this.isFlat=false,
     required this.textColor, this.width ,
     this.iconSize=25,
-    this.iconColor = ColorResources.primary ,
+    this.iconColor = ColorResources.PRIMARY ,
     required this.text,required this.backgroundColor}) : super(key: key);
 
   @override
@@ -56,7 +56,7 @@ class CustomButton extends StatelessWidget {
                color: iconColor,
              ),
            if( icon != null || assetIcon != null )
-             wSpace,
+             SizedBox(width: 15.w),
            Text(
              text,
              style: titleTextStyle.copyWith(

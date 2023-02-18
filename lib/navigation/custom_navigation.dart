@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:hr_project/presentation/add_request/add_request_screen.dart';
+import 'package:hr_project/presentation/add_request/requests/asset_request.dart';
+import 'package:hr_project/presentation/add_request/requests/business_trip_request.dart';
+import 'package:hr_project/presentation/add_request/requests/expense_request_Screen.dart';
+import 'package:hr_project/presentation/add_request/requests/letter_request.dart';
+import 'package:hr_project/presentation/add_request/requests/loan_request_screen.dart';
+import 'package:hr_project/presentation/add_request/requests/vacation_request.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/dashBoard/dashboard_screen.dart';
-import 'package:hr_project/presentation/home/home_Screen.dart';
-import 'package:hr_project/presentation/profile/profile_screen.dart';
+import 'package:hr_project/presentation/profile/units/contract/contract_screen.dart';
+import 'package:hr_project/presentation/profile/units/documents/documents_screen.dart';
+import 'package:hr_project/presentation/profile/units/organization/organization_screen.dart';
+import 'package:hr_project/presentation/profile/units/personal/personal_screen.dart';
+import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/settings/edit_password_screen.dart';
 import 'package:hr_project/presentation/settings/language_screen.dart';
 import '../main.dart';
+import '../presentation/add_request/requests/clear_asset_request.dart';
+import '../presentation/add_request/requests/permission_details.dart';
 import '../presentation/auth/forget_password_screen.dart';
 import '../presentation/auth/reset_password_screen.dart';
 import '../presentation/auth/verification_screen.dart';
+import '../presentation/home/attendance_leaving_screen.dart';
+import '../presentation/profile/units/assets/assets_screen.dart';
+import '../presentation/profile/units/salary/salary_details_screen.dart';
+import '../presentation/profile/units/salary/salary_screen.dart';
 import '../presentation/settings/settings_screen.dart';
 import '../splash.dart';
 import 'routes.dart';
@@ -30,142 +45,78 @@ abstract class CustomNavigator {
   static Route<dynamic> onCreateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.APP:
-        return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-                const MyApp(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            });
+        return _pageRoute(const MyApp());
       case Routes.SPLASH:
-        return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-            const Splash(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            });
+        return _pageRoute(const Splash());
       case Routes.LOGIN:
-        return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-            const LoginScreen(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            });
+        return _pageRoute(const LoginScreen());
       case Routes.FORGET_PASSWORD:
-        return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-            const ForgetPasswordScreen(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            });
+        return _pageRoute(const ForgetPasswordScreen());
       case Routes.VERIFICATION_CODE:
-        return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-            const VerificationScreen(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            });
+        return _pageRoute(const VerificationScreen());
       case Routes.RESET_PASSWORD:
-        return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-            const ResetPasswordScreen(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            });
-        case Routes.DASHBOARD:
-          return PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-              const DashBoardScreen(),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                return SlideTransition(
-                  position: animation.drive(tween),
-                  child: child,
-                );
-              });
-      case Routes.PROFILE_PAGE:
-        return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-            const ProfileScreen(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            });
-        case Routes.HOME_PAGE:
-          return PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-              const HomeScreen(),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                return SlideTransition(
-                  position: animation.drive(tween),
-                  child: child,
-                );
-              });
+        return _pageRoute(const ResetPasswordScreen());
+      case Routes.DASHBOARD:
+        return _pageRoute(const DashBoardScreen());
+      // case Routes.PROFILE_PAGE:
+      //   return _pageRoute(const ProfileScreen());
+      //   case Routes.HOME_PAGE:
+      //     return _pageRoute(const HomeScreen());
+      case Routes.REQUESTS_FLOW:
+          return _pageRoute( RequestFlowScreen(model: settings.arguments as Model,));
+      case Routes.ADD_REQUEST:
+          return _pageRoute( const AddRequestScreen());
+      case Routes.LOAN_REQUEST:
+          return _pageRoute( const LoanRequestScreen());
+      case Routes.EXPENSE_CLAIM_REQUEST:
+          return _pageRoute( const ExpenseRequestScreen());
+      case Routes.PERMISSIN_REQUEST:
+          return _pageRoute( const PermissionRequestScreen());
+      case Routes.VACATION_REQUEST:
+        return _pageRoute(const VacationRequest());
+      case Routes.BUSINESS_TRIP_REQUEST :
+        return _pageRoute(const BusinessTripRequest());
+      case Routes.LETTER_REQUEST:
+        return _pageRoute(const LetterRequest());
+      case Routes.ASSET_REQUEST:
+        return _pageRoute(const AssetRequest());
+      case Routes.CLEAR_ASSET_REQUEST:
+        return _pageRoute(const ClearAssetRequest());
+      case Routes.ATTENDANCE_LEAVING:
+          return _pageRoute(const AttendanceLeavingScreen());
       case Routes.SETTINGS:
-        return PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-            const SettingsScreen(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            });
-        case Routes.EDIT_PASSWORD:
-          return PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-              const EditPasswordScreen(),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                return SlideTransition(
-                  position: animation.drive(tween),
-                  child: child,
-                );
-              });
-        case Routes.LANGUAGES:
-          return PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-              const LanguageScreen(),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                return SlideTransition(
-                  position: animation.drive(tween),
-                  child: child,
-                );
-              });
-
+        return _pageRoute(const SettingsScreen());
+      case Routes.CHANGE_PASSWORD:
+          return _pageRoute(const EditPasswordScreen());
+      case Routes.LANGUAGES:
+          return _pageRoute(const LanguageScreen());
+      case Routes.PERSONAL:
+          return _pageRoute(const PersonalScreen());
+      case Routes.ORGANIZATION:
+        return _pageRoute(const OrganizationScreen());
+      case Routes.DOCUMENTS :
+        return _pageRoute(const DocumentsScreen());
+      case Routes.SALARIES_AND_FINANCIAL:
+          return _pageRoute(const SalaryScreen());
+      case Routes.SALARY_DETAILS:
+          return _pageRoute(const SalaryDetailsScreen());
+      case Routes.ASSETS:
+          return _pageRoute(const AssetsScreen());
+      case Routes.CONTRACT:
+          return _pageRoute(const ContractScreen());
       default:
         return MaterialPageRoute(builder: (_) => const MyApp());
     }
   }
+
+
+  static PageRouteBuilder<dynamic> _pageRoute(Widget child) => PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 600),
+      reverseTransitionDuration: const Duration(milliseconds: 600),
+      transitionsBuilder: (c, anim, a2, child) => child,
+      opaque: false,
+      pageBuilder: (_, __, ___) => child);
+
 
   static pop({dynamic result}) {
     if (navigatorState.currentState!.canPop()) {
@@ -179,10 +130,12 @@ abstract class CustomNavigator {
       return navigatorState.currentState!.pushNamedAndRemoveUntil(
           routeName, (_) => false,
           arguments: arguments);
-    } else if (replace) {
+    }
+    else if (replace) {
       return navigatorState.currentState!
           .pushReplacementNamed(routeName, arguments: arguments);
-    } else {
+    }
+    else {
       return navigatorState.currentState!
           .pushNamed(routeName, arguments: arguments);
     }

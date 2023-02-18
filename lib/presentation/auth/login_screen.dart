@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/presentation/auth/forget_password_screen.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:hr_project/navigation/routes.dart';
 import 'package:hr_project/presentation/base/custom_button.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,7 @@ class LoginScreen extends StatelessWidget {
             height: context.height*0.25,
             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
             decoration: const BoxDecoration(
-              color: ColorResources.primary,
+              color: ColorResources.PRIMARY,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(30),
                 bottomLeft: Radius.circular(30),
@@ -36,7 +37,7 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height:MediaQuery.of(context).systemGestureInsets.top),
+                SizedBox(height:MediaQuery.of(context).padding.top),
                 Text(getTranslated("welcome", context),
                     style: headLineTextStyle.copyWith(color: Colors.white)),
                 const SizedBox(
@@ -64,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Text(getTranslated("email_or_id", context),
                             style: titleTextStyle.copyWith(
-                                color: ColorResources.primary)),
+                                color: ColorResources.PRIMARY)),
                         const SizedBox(
                           height: 5,
                         ),
@@ -79,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Text(getTranslated("password", context),
                             style: titleTextStyle.copyWith(
-                                color: ColorResources.primary)),
+                                color: ColorResources.PRIMARY)),
                         const SizedBox(
                           height: 5,
                         ),
@@ -94,13 +95,11 @@ class LoginScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextButton(
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ForgetPasswordScreen()));
-                              },
+                              onPressed: ()=>CustomNavigator.push(Routes.FORGET_PASSWORD),
                               child: Text(
                                   getTranslated("forget_password", context),
                                   style: titleTextStyle.copyWith(
-                                      color: ColorResources.primary)),
+                                      color: ColorResources.PRIMARY)),
                             ),
                           ],
                         ),
@@ -115,9 +114,9 @@ class LoginScreen extends StatelessWidget {
                           onTap: () {
                             authProvider.logIn(context);
                           },
-                          textColor: ColorResources.whiteColor,
+                          textColor: ColorResources.WHITE,
                           text: getTranslated("sign_in", context),
-                          backgroundColor: ColorResources.primary),
+                          backgroundColor: ColorResources.PRIMARY),
                     ),
                   ],
                 ),

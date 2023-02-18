@@ -51,7 +51,7 @@ Tab tab ({required bool isSelected,required String label}){
         height: 40.h,
         decoration: BoxDecoration(
           color: isSelected
-              ? ColorResources.primary.withOpacity(0.8)
+              ? ColorResources.PRIMARY.withOpacity(0.8)
               : ColorResources.transparentColor,
           borderRadius: BorderRadius.circular(10),
         ),
@@ -64,7 +64,7 @@ Tab tab ({required bool isSelected,required String label}){
             style: AppTextStyles.w600.copyWith(
               fontSize: 12,
               color: isSelected
-                  ? ColorResources.whiteColor
+                  ? ColorResources.WHITE
                   : ColorResources.disabledColor,
             ),
           ),
