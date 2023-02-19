@@ -30,7 +30,7 @@ class DioClient extends ApiClient {
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
-        'X-Authorization': EndPoints.apiKey
+        'X-Api-Key': EndPoints.apiKey
       };
     dio.interceptors.add(loggingInterceptor);
   }

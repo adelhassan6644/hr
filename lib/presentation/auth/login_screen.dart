@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
@@ -16,37 +17,36 @@ import '../base/custom_text_form_field.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> key =
+    GlobalKey<FormState>();
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
       body: Column(
         children: [
-
           Container(
             width: context.width,
-            height: context.height*0.25,
+            height: context.height * 0.30,
             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
             decoration: const BoxDecoration(
               color: ColorResources.PRIMARY,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(30),
                 bottomLeft: Radius.circular(30),
-
               ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height:MediaQuery.of(context).padding.top),
+                SizedBox(height: MediaQuery.of(context).padding.top),
                 FittedBox(
-                  child:Center(
+                  child: Center(
                     child: Image.asset(
                       Images.logo,
-height: 145,
+                      height: context.height * 0.20,
                       width: context.width,
-
                     ),
                   ),
                 ),
@@ -57,79 +57,90 @@ height: 145,
                 // ),
                 // Text(getTranslated("sign_in", context),
                 //     style: headLineTextStyle.copyWith(color: Colors.white)),
-
               ],
             ),
-          ).animate()
-              .shimmer(duration: 1000.ms),
+          ).animate().move(
+                delay: 300.ms,
+                duration: 600.ms,
+              ),
           Expanded(
             child: Consumer<AuthProvider>(builder: (child, authProvider, _) {
-              return Padding(
-                padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-                child: ListView(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Text(getTranslated("email_or_id", context),
-                            style: titleTextStyle.copyWith(
-                                color: ColorResources.PRIMARY)),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        CustomTextFormField(
-                          controller: authProvider.emailTEC,
-                          hint: getTranslated(
-                              "enter_your_email_or_id", context),
-                          valid: Validations.email,
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Text(getTranslated("password", context),
-                            style: titleTextStyle.copyWith(
-                                color: ColorResources.PRIMARY)),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        CustomTextFormField(
-                          controller: authProvider.passwordTEC,
-                          hint: getTranslated("enter_your_password", context),
-                          valid: Validations.password,
-                          icon: Icons.lock_outline,
-                          removePIcon: false, // removePIcon: true,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: ()=>CustomNavigator.push(Routes.FORGET_PASSWORD),
-                              child: Text(
-                                  getTranslated("forget_password", context),
-                                  style: titleTextStyle.copyWith(
-                                      color: ColorResources.PRIMARY)),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: context.height * 0.15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_LARGE),
-                      child: CustomButton(
+              return Form(
+                key: key,
+                child: Padding(
+                  padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+                  child: ListView(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(getTranslated("email_or_id", context),
+                              style: titleTextStyle.copyWith(
+                                  color: ColorResources.PRIMARY)),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          CustomTextFormField(
+                            isValidat: key.currentState?.validate()??true,
+                            controller: authProvider.emailTEC,
+                            hint:
+                                getTranslated("enter_your_email_or_id", context),
+                            valid: Validations.email,
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(getTranslated("password", context),
+                              style: titleTextStyle.copyWith(
+                                  color: ColorResources.PRIMARY)),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          CustomTextFormField(
+                            isValidat: key.currentState?.validate()??true,
+
+                            controller: authProvider.passwordTEC,
+                            hint: getTranslated("enter_your_password", context),
+                            valid: Validations.password,
+                            icon: Icons.lock_outline,
+                            removePIcon: false, // removePIcon: true,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                onPressed: () =>
+                                    CustomNavigator.push(Routes.FORGET_PASSWORD),
+                                child: Text(
+                                    getTranslated("forget_password", context),
+                                    style: titleTextStyle.copyWith(
+                                        color: ColorResources.PRIMARY)),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: context.height * 0.15,
+                      ),
+                      CustomButton(
+                          isLoading: authProvider.isLoading,
+                          isError: authProvider.isError,
                           onTap: () {
-                            authProvider.logIn(context);
+                            key.currentState!.save();
+
+                            if(key.currentState!.validate()) {
+                              authProvider.logIn();
+                            }
                           },
                           textColor: ColorResources.WHITE,
                           text: getTranslated("sign_in", context),
                           backgroundColor: ColorResources.PRIMARY),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             }),
