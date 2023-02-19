@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
@@ -8,6 +9,7 @@ import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
+import '../../app/core/utils/images.dart';
 import '../../app/core/utils/validation.dart';
 import '../../domain/localization/language_constant.dart';
 import '../base/custom_text_form_field.dart';
@@ -38,19 +40,28 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(height:MediaQuery.of(context).padding.top),
-                Text(getTranslated("welcome", context),
-                    style: headLineTextStyle.copyWith(color: Colors.white)),
-                const SizedBox(
-                  height: 10,
+                FittedBox(
+                  child:Center(
+                    child: Image.asset(
+                      Images.logo,
+height: 145,
+                      width: context.width,
+
+                    ),
+                  ),
                 ),
-                Text(getTranslated("sign_in", context),
-                    style: headLineTextStyle.copyWith(color: Colors.white)),
-                const SizedBox(
-                  height: 10,
-                ),
+                // Text(getTranslated("welcome", context),
+                //     style: headLineTextStyle.copyWith(color: Colors.white)),
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                // Text(getTranslated("sign_in", context),
+                //     style: headLineTextStyle.copyWith(color: Colors.white)),
+
               ],
             ),
-          ),
+          ).animate()
+              .shimmer(duration: 1000.ms),
           Expanded(
             child: Consumer<AuthProvider>(builder: (child, authProvider, _) {
               return Padding(
