@@ -59,9 +59,11 @@ class LoginScreen extends StatelessWidget {
                 //     style: headLineTextStyle.copyWith(color: Colors.white)),
               ],
             ),
-          ).animate().move(
+          ).animate().moveY(
                 delay: 300.ms,
                 duration: 600.ms,
+
+
               ),
           Expanded(
             child: Consumer<AuthProvider>(builder: (child, authProvider, _) {
