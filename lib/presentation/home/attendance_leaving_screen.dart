@@ -39,6 +39,7 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
         length:3,
         initialIndex: _selectedIndex,
         vsync: CustomNavigator.scaffoldState.currentState!);
+    _onDaySelected(DateTime.now(),DateTime.now());
     super.initState();
   }
 

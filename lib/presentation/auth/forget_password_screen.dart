@@ -24,7 +24,8 @@ class ForgetPasswordScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-        child: Column(
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
           children: [
             Text(getTranslated("please_enter_your_email_or_id", context),
                 style: titleTextStyle.copyWith(color: Colors.black,fontSize: 13,)),
@@ -32,14 +33,14 @@ class ForgetPasswordScreen extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 35,
+                   SizedBox(
+                    height: 35.h,
                   ),
                   Text(getTranslated("email_or_id", context),
                       style: titleTextStyle.copyWith(
                           color: ColorResources.PRIMARY)),
-                  const SizedBox(
-                    height: 5,
+                   SizedBox(
+                    height: 15.h,
                   ),
                   CustomTextFormField(
                     controller: authProvider.emailTEC,

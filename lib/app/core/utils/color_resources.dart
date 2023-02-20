@@ -71,10 +71,10 @@ abstract class ColorResources {
     return Color(0xFF25282B);
   }
 
-  static const Color PRIMARY = Color(0xFF2c80d5);
+  static const Color PRIMARY = Color(0xFF4c44ab);
   static const Color ACTIVE = Color(0xFF2FAF99);
   static const Color IN_ACTIVE = Color(0xFFDB5353);
-  static const Color PENDING = Color(0xFFA6840A);
+  static const Color PENDING = Color(0xFFf3b309);
   static const Color LOGOUT_COLOR = Color(0xffF16063);
   static const Color primaryLight = Color(0xFFA256E2);
   static const Color hintColor = Color(0xFF52575C);
@@ -90,7 +90,7 @@ abstract class ColorResources {
   static const Color BACKGROUND_COLOR = Color(0xfffcfdfe);
   static const Color COLOR_GREY_BUNKER = Color(0xff25282B);
   static const Color COLOR_GREY_CHATEAU = Color(0xffF5F5F5);
-  static const Color GOLD_COLOR = Color(0xffF8CA78);
+  static const Color GOLD_COLOR = Color(0xfff3b309);
   static const Color GREEN_COLOR = Colors.green;
   static const Color disabledColor = Color(0xFF979797);
   static const Color FILL = Color(0xfffcfdfe);

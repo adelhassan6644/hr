@@ -24,7 +24,7 @@ class ResetPasswordScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-        child: Column(
+        child: ListView(
           children: [
             Consumer<AuthProvider>(builder: (child, authProvider, _) {
               return Column(

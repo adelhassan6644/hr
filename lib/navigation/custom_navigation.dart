@@ -29,10 +29,6 @@ import '../presentation/settings/settings_screen.dart';
 import '../splash.dart';
 import 'routes.dart';
 
-const begin = Offset(0.0, 1.0);
-const end = Offset.zero;
-const curve = Curves.bounceInOut;
-var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
 abstract class CustomNavigator {
   static final GlobalKey<NavigatorState> navigatorState =
@@ -111,9 +107,17 @@ abstract class CustomNavigator {
 
 
   static PageRouteBuilder<dynamic> _pageRoute(Widget child) => PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 600),
-      reverseTransitionDuration: const Duration(milliseconds: 600),
-      transitionsBuilder: (c, anim, a2, child) => child,
+      transitionDuration: const Duration(milliseconds: 400),
+      reverseTransitionDuration: const Duration(milliseconds: 400),
+      transitionsBuilder: (c, anim, a2, child) {
+        var begin = const Offset(1.0,0.0);
+        var end = Offset.zero;
+        var tween = Tween(begin: begin,end: end);
+        var curveAnimation=CurvedAnimation(
+          parent: anim,curve: Curves.linearToEaseOut);
+        return SlideTransition(position: tween.animate(curveAnimation),child: child,);
+
+      },
       opaque: false,
       pageBuilder: (_, __, ___) => child);
 

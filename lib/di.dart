@@ -35,7 +35,7 @@ Future<void> init() async {
 
 
   //provider
-   sl.registerLazySingleton(() => AuthProvider());
+   sl.registerLazySingleton(() => AuthProvider(authRepo: sl()));
    sl.registerLazySingleton(() => ProfileProvider());
    sl.registerLazySingleton(() => AddRequestProvider());
    sl.registerLazySingleton(() => ThemeProvider(sharedPreferences: sl()));
