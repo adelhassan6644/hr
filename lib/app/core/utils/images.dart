@@ -4,7 +4,7 @@ class Images {
   static const String authHeader = 'assets/icons/auth_hederl.png';
   static const String banner = 'assets/icons/banner.svg';
   static const String home = 'assets/icons/home.png';
-  // static const String plane = 'assets/icons/plane.svg';
+  static const String period = 'assets/icons/period.png';
   static const String ticket = 'assets/icons/ticket.svg';
   static const String user = 'assets/icons/user.svg';
   static const String document = 'assets/icons/document.png';

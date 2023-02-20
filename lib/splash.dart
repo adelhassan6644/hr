@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 import 'app/core/utils/color_resources.dart';
 import 'app/core/utils/images.dart';
@@ -64,6 +65,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
                     fontWeight: FontWeight.w700,
                     color: ColorResources.PRIMARY)),
               ).animate().slideY().then(delay: 2000.ms).slide() .shimmer(duration: 1000.ms) ,
+              SizedBox(height:40.h),
             ],
           ),
         ));

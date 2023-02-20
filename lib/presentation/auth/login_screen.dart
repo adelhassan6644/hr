@@ -15,13 +15,18 @@ import '../../app/core/utils/validation.dart';
 import '../../domain/localization/language_constant.dart';
 import '../base/custom_text_form_field.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<FormState> key = GlobalKey<FormState>();
+
+  @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> key =
-    GlobalKey<FormState>();
     return Scaffold(
       body: Column(
         children: [
@@ -59,16 +64,11 @@ class LoginScreen extends StatelessWidget {
                 //     style: headLineTextStyle.copyWith(color: Colors.white)),
               ],
             ),
-          ).animate().moveY(
-                delay: 300.ms,
-                duration: 600.ms,
-
-
-              ),
-          Expanded(
-            child: Consumer<AuthProvider>(builder: (child, authProvider, _) {
-              return Form(
-                key: key,
+          ).animate().moveY(delay: 300.ms, duration: 600.ms,),
+          Consumer<AuthProvider>(builder: (child, authProvider, _) {
+            return Form(
+              key: key,
+              child: Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                   child: ListView(
@@ -76,34 +76,32 @@ class LoginScreen extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(
-                            height: 15,
+                           SizedBox(
+                            height: 25.h,
                           ),
                           Text(getTranslated("email_or_id", context),
                               style: titleTextStyle.copyWith(
                                   color: ColorResources.PRIMARY)),
-                          const SizedBox(
-                            height: 5,
+                           SizedBox(
+                            height: 15.h,
                           ),
                           CustomTextFormField(
                             isValidat: key.currentState?.validate()??true,
                             controller: authProvider.emailTEC,
-                            hint:
-                                getTranslated("enter_your_email_or_id", context),
+                            hint: getTranslated("enter_your_email_or_id", context),
                             valid: Validations.email,
                           ),
-                          const SizedBox(
-                            height: 15,
+                           SizedBox(
+                            height: 15.h,
                           ),
                           Text(getTranslated("password", context),
                               style: titleTextStyle.copyWith(
                                   color: ColorResources.PRIMARY)),
-                          const SizedBox(
-                            height: 5,
+                           SizedBox(
+                            height: 15.h,
                           ),
                           CustomTextFormField(
                             isValidat: key.currentState?.validate()??true,
-
                             controller: authProvider.passwordTEC,
                             hint: getTranslated("enter_your_password", context),
                             valid: Validations.password,
@@ -126,14 +124,13 @@ class LoginScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: context.height * 0.15,
+                        height: context.height * 0.10,
                       ),
                       CustomButton(
                           isLoading: authProvider.isLoading,
                           isError: authProvider.isError,
                           onTap: () {
                             key.currentState!.save();
-
                             if(key.currentState!.validate()) {
                               authProvider.logIn();
                             }
@@ -144,9 +141,9 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              );
-            }),
-          ),
+              ),
+            );
+          }),
         ],
       ),
     );

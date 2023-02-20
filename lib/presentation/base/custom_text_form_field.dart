@@ -84,7 +84,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget build(BuildContext context) {
 
     return Animate(
-      effects: widget.isValidat?[]:[ShakeEffect()],
+      effects: widget.isValidat?[]:[const ShakeEffect()],
 
       child: TextFormField(
         onTap: widget.onTap,
@@ -146,7 +146,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           isDense: true,
           alignLabelWithHint: true,
           hintText: widget.hint,
-          hintStyle: widget.isValidat!?errorHintTextStyle: hintTextStyle,
+          hintStyle: widget.isValidat? hintTextStyle:errorHintTextStyle,
            labelText: widget.label? widget.hint : null,
           fillColor: ColorResources.FILL,
           // labelStyle: widget.error!?errorHintPoppinsTextStyle: hintPoppinsTextStyle,
