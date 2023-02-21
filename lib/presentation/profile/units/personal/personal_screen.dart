@@ -3,13 +3,17 @@ import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/app/core/utils/text_styles.dart';
+import 'package:hr_project/data/model/user_model.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import '../../../base/animated_widget.dart';
+import '../../../base/image_widget.dart';
 
 
 class PersonalScreen extends StatelessWidget {
-  const PersonalScreen({Key? key}) : super(key: key);
+  const PersonalScreen({required this.user, Key? key}) : super(key: key);
+
+ final UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +34,11 @@ class PersonalScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: ColorResources.FILL_COLOR
                   ),
-                  child: const ClipOval(
-                      child:
-                      Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)
-                  ),
+                  child:
+                  user.image == null
+                      ? const ClipOval(child: Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)) :
+                  ImageWidget.network(user.image!,width: 100.w,height: 100.h,border:BorderRadius.circular(100)),
+
                 ),
               ),
               SizedBox(height: 24.h,),
@@ -77,7 +82,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("1311",style: AppTextStyles.w600.copyWith(
+                            Text(user.jobCategory!.id.toString()??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)

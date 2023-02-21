@@ -47,7 +47,7 @@ class RequestDetailsScreen extends StatelessWidget {
                                 fontSize: 14
                             ),),
                           ),
-                          titleContainer(title:model.requestType,color: ColorResources.PRIMARY.withOpacity(0.2)),
+                          titleContainer(title:model.requestType,color: ColorResources.PRIMARY,textColor: Colors.white),
 
 
                         ],),
@@ -69,7 +69,7 @@ class RequestDetailsScreen extends StatelessWidget {
                         ),),
                       ),
                       titleContainer(title:model.status == "rejected"? getTranslated(model.status, context).replaceAll("ال", "").replaceAll("ة", ""):
-                      getTranslated(model.status, context) ,color: ColorResources.getStatusColor(model.status)),
+                      getTranslated(model.status, context) ,color: ColorResources.getStatusColor(model.status),textColor: Colors.white),
                     ],),
                 ),
                 Container(height: 1.h,

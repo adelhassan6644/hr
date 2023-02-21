@@ -19,13 +19,13 @@ abstract class ColorResources {
   static Color getStatusColor(String status) {
   switch (status) {
     case "approved":
-      return ACTIVE.withOpacity(0.3);
+      return ACTIVE;
       case "pending":
-        return PENDING.withOpacity(0.3);
+        return PENDING;
       case "rejected":
-        return WARNING_COLOR.withOpacity(0.3);
+        return WARNING_COLOR;
     default:
-      return ACTIVE.withOpacity(0.3);
+      return ACTIVE;
   }
 
   }
@@ -72,8 +72,8 @@ abstract class ColorResources {
   }
 
   static const Color PRIMARY = Color(0xFF4c44ab);
-  static const Color ACTIVE = Color(0xFF2FAF99);
-  static const Color IN_ACTIVE = Color(0xFFDB5353);
+  static const Color ACTIVE = Color(0xFF5F9B56);
+  static const Color IN_ACTIVE = Color(0xFFBE3725);
   static const Color PENDING = Color(0xFFf3b309);
   static const Color LOGOUT_COLOR = Color(0xffF16063);
   static const Color primaryLight = Color(0xFFA256E2);

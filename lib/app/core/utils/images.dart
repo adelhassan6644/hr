@@ -35,6 +35,7 @@ class Images {
 static const globalIcon="assets/icons/global.png";
   static const String phoneIcon = 'assets/icons/telephone.png';
   static const String mailIcon = 'assets/icons/mail-inbox-app.png';
+  static const String emailIcon = 'assets/icons/mail.png';
   static const String lockIcon = 'assets/icons/lock.png';
   static const String languageIcon = 'assets/icons/language.png';
   static const String eyeLockIcon = 'assets/icons/closeEye.png';

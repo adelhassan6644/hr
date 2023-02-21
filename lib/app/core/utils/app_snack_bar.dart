@@ -26,12 +26,12 @@ class CustomSnackBar{
       CustomNavigator.scaffoldState.currentState!.showSnackBar(
         SnackBar(
           padding: const EdgeInsets.all(0),
-          duration: const Duration(seconds: 1),
+          duration: const Duration(seconds: 2),
           behavior: notification.isFloating ? SnackBarBehavior.floating : SnackBarBehavior.fixed,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(notification.radius), side: BorderSide(width: 1, color: notification.borderColor)),
           margin: notification.isFloating ?  EdgeInsets.all(24.w) : null,
           content: SizedBox(
-            height: notification.withAction ? null : 48.h,
+            height: notification.withAction ? null : 60.h,
             child: Row(
               children: [
                 if (notification.iconName != null) Image.asset(notification.iconName!,height: 20.h,width: 20.w,),

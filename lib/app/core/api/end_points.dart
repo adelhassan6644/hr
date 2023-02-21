@@ -4,12 +4,11 @@ class EndPoints {
   static const String apiKey = '123';
   static const String register = '';
   static const String login = '/employee/login';
-  static const String confirmMail = '';
-  static const String forgetPassword = '';
-  static const String restPasswordConfirm = '';
-  static const String resendConfirmationCode = '';
-  static const String getSlider = '';
   static const String updatePassword = '';
+  static const String resetPassword = '';
+  static const String sendVerificationCode = '';
+  static const String getVerificationCode = '';
+  static const String getSlider = '';
   static const String publicLessons = '';
   static const String todaySchedule = '';
   static const String getPaidLessons = '';

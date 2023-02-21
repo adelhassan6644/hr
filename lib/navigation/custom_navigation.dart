@@ -15,6 +15,7 @@ import 'package:hr_project/presentation/profile/units/personal/personal_screen.d
 import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/settings/edit_password_screen.dart';
 import 'package:hr_project/presentation/settings/language_screen.dart';
+import '../data/model/user_model.dart';
 import '../main.dart';
 import '../presentation/add_request/requests/clear_asset_request.dart';
 import '../presentation/add_request/requests/permission_details.dart';
@@ -54,20 +55,16 @@ abstract class CustomNavigator {
         return _pageRoute(const ResetPasswordScreen());
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoardScreen());
-      // case Routes.PROFILE_PAGE:
-      //   return _pageRoute(const ProfileScreen());
-      //   case Routes.HOME_PAGE:
-      //     return _pageRoute(const HomeScreen());
       case Routes.REQUESTS_FLOW:
-          return _pageRoute( RequestFlowScreen(model: settings.arguments as Model,));
+        return _pageRoute(RequestFlowScreen(model: settings.arguments as Model,));
       case Routes.ADD_REQUEST:
-          return _pageRoute( const AddRequestScreen());
+        return _pageRoute( const AddRequestScreen());
       case Routes.LOAN_REQUEST:
-          return _pageRoute( const LoanRequestScreen());
+        return _pageRoute( const LoanRequestScreen());
       case Routes.EXPENSE_CLAIM_REQUEST:
-          return _pageRoute( const ExpenseRequestScreen());
+        return _pageRoute( const ExpenseRequestScreen());
       case Routes.PERMISSIN_REQUEST:
-          return _pageRoute( const PermissionRequestScreen());
+        return _pageRoute( const PermissionRequestScreen());
       case Routes.VACATION_REQUEST:
         return _pageRoute(const VacationRequest());
       case Routes.BUSINESS_TRIP_REQUEST :
@@ -79,27 +76,27 @@ abstract class CustomNavigator {
       case Routes.CLEAR_ASSET_REQUEST:
         return _pageRoute(const ClearAssetRequest());
       case Routes.ATTENDANCE_LEAVING:
-          return _pageRoute(const AttendanceLeavingScreen());
+        return _pageRoute(const AttendanceLeavingScreen());
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());
       case Routes.CHANGE_PASSWORD:
-          return _pageRoute(const EditPasswordScreen());
+        return _pageRoute(const EditPasswordScreen());
       case Routes.LANGUAGES:
-          return _pageRoute(const LanguageScreen());
+        return _pageRoute(const LanguageScreen());
       case Routes.PERSONAL:
-          return _pageRoute(const PersonalScreen());
+        return _pageRoute( PersonalScreen(user: settings.arguments as UserModel,));
       case Routes.ORGANIZATION:
         return _pageRoute(const OrganizationScreen());
       case Routes.DOCUMENTS :
         return _pageRoute(const DocumentsScreen());
       case Routes.SALARIES_AND_FINANCIAL:
-          return _pageRoute(const SalaryScreen());
+        return _pageRoute(const SalaryScreen());
       case Routes.SALARY_DETAILS:
-          return _pageRoute(const SalaryDetailsScreen());
+        return _pageRoute(const SalaryDetailsScreen());
       case Routes.ASSETS:
-          return _pageRoute(const AssetsScreen());
+        return _pageRoute(const AssetsScreen());
       case Routes.CONTRACT:
-          return _pageRoute(const ContractScreen());
+        return _pageRoute(const ContractScreen());
       default:
         return MaterialPageRoute(builder: (_) => const MyApp());
     }

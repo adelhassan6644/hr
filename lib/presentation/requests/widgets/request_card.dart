@@ -36,7 +36,7 @@ class RequestCard extends StatelessWidget {
               children: [
                 titleContainer(title:status == "rejected"? getTranslated(status, context).replaceAll("ال", "").replaceAll("ة", ""):
                 getTranslated(status, context) ,
-                    color: ColorResources.getStatusColor(status)),
+                    color: ColorResources.getStatusColor(status),textColor: Colors.white),
                 titleContainer(title:DateTime.now().format("EEEE dd MMMM"),),
               ],
             ),
@@ -53,7 +53,7 @@ class RequestCard extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ...List.generate(5, (index) => titleContainer(title:requestType,color: ColorResources.PRIMARY.withOpacity(0.2)),)
+                    ...List.generate(5, (index) => titleContainer(title:requestType,color: ColorResources.PRIMARY,textColor: Colors.white),)
                   ],
                 ),
               ),
@@ -69,7 +69,7 @@ class RequestCard extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    titleContainer(title:reason,icon: Icons.question_mark),
+                    titleContainer(title:reason,icon: Icons.question_mark,),
                   ],
                 ),
               ),
