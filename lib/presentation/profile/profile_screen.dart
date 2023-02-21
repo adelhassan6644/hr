@@ -37,8 +37,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
-              profileCard(user: profileProvider.user,),
-              annualLeaveBalance(onTap: () {}, days: 33.5, context: context),
+              profileCard(user: profileProvider.user,context: context),
+              annualLeaveBalance(onTap: () {}, days: profileProvider.user.vacations??0, context: context),
               settingCard(
                   name: getTranslated("personal", context),
                   iconAsset: Images.personalCardIcon,
@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               settingCard(
                   name: getTranslated("organization", context),
                   iconAsset: Images.organizationIcon,
-                  onTap: () => CustomNavigator.push(Routes.ORGANIZATION)),
+                  onTap: () => CustomNavigator.push(Routes.ORGANIZATION,arguments: profileProvider.user )),
               // Container(
               //   width: context.width,
               //   height: 0.5,

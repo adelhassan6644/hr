@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:hr_project/presentation/notifier/auth_provider.dart';
+import 'package:provider/provider.dart';
 import 'app/core/utils/color_resources.dart';
 import 'app/core/utils/images.dart';
 import 'navigation/routes.dart';
@@ -17,17 +19,16 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> with WidgetsBindingObserver {
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
     Future.delayed(const Duration(milliseconds: 4500), () {
-    CustomNavigator.push(Routes.LOGIN,replace: true);
+
+      if (Provider.of<AuthProvider>(context, listen: false).isLogin) {
+        CustomNavigator.push(Routes.DASHBOARD,replace: true);
+      }else{
+        CustomNavigator.push(Routes.LOGIN,replace: true);
+      }
+
     });
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
   }
 
 

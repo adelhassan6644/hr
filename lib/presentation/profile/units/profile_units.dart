@@ -67,7 +67,7 @@ settingCard(
   );
 }
 
-annualLeaveBalance({context, required VoidCallback onTap,required double days}) {
+annualLeaveBalance({context, required VoidCallback onTap,required int days}) {
   return Padding(
     padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
     child: Container(
@@ -131,7 +131,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
   );
 }
 
-profileCard({required UserModel user}){
+profileCard({required UserModel user,context}){
   return Padding(
     padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
     child: Stack(
@@ -152,7 +152,7 @@ profileCard({required UserModel user}){
 
           ),
           const SizedBox(height: 8,),
-          Center(child: Text(user.arName??"",style: titleTextStyle)),
+          Center(child: Text(Provider.of<LocalizationProvider>(context,listen: false).locale.languageCode == "ar"?user.arName??"":user.enName??"",style: titleTextStyle)),
           const SizedBox(height: 8,),
           Center(child: Text(user.description??"",style: hintTextStyle)),
         ],),

@@ -86,7 +86,7 @@ abstract class CustomNavigator {
       case Routes.PERSONAL:
         return _pageRoute( PersonalScreen(user: settings.arguments as UserModel,));
       case Routes.ORGANIZATION:
-        return _pageRoute(const OrganizationScreen());
+        return _pageRoute( OrganizationScreen(employee: settings.arguments as UserModel,));
       case Routes.DOCUMENTS :
         return _pageRoute(const DocumentsScreen());
       case Routes.SALARIES_AND_FINANCIAL:

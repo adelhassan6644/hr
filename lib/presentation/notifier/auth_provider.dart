@@ -36,6 +36,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
   // String get otp=>_otp;
 
 
+ bool get isLogin => authRepo.isLoggedIn();
+
  logIn( ) async {
    try{
     {isError=false;
@@ -218,9 +220,9 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
 
   }
 
- logOut(){
+ logOut() async {
     CustomNavigator.push(Routes.LOGIN,clean: true);
-    authRepo.clearSharedData();
+  await authRepo.clearSharedData();
     CustomSnackBar.showSnackBar(notification: AppNotification(
             message: "You logged out successfully !",
             isFloating: true,

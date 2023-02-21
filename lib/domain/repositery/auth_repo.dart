@@ -30,6 +30,7 @@ class AuthRepo {
     sharedPreferences.setBool(AppStorageKey.isLogin, true);
   }
 
+
   Future<Either<ServerFailure, Response>> logIn(
       {required String email, required String password}) async {
     try {
@@ -37,6 +38,7 @@ class AuthRepo {
           uri: EndPoints.login, data: {"email": email, "password": password});
       if (response.statusCode == 200) {
         await saveUser(response.data['data']['employee']);
+        await setLoggedIn();
         return Right(response);
       } else {
         return left(ServerFailure(ApiErrorHandler.getMessage(response.data['message'])));
