@@ -14,7 +14,7 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
   final TextEditingController _passwordTEC = TextEditingController(text:kDebugMode?"123456789":'');
   final TextEditingController _newPasswordTEC = TextEditingController();
   final TextEditingController _confirmPasswordTEC = TextEditingController();
-
+ final GlobalKey<FormState> key = GlobalKey<FormState>();
  TextEditingController get emailTEC => _emailTEC;
   TextEditingController get passwordTEC => _passwordTEC;
   TextEditingController get newPasswordTEC => _newPasswordTEC;
