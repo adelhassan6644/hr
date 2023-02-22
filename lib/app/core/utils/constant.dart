@@ -92,20 +92,21 @@ const TextStyle unSelectTextStyle = TextStyle(
     color: ColorResources.FILL);
 
 final defaultPinTheme = PinTheme(
-  width: 56,
-  height: 56,
-  textStyle: const TextStyle(fontSize: 20,
-      color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
+  width: 55.w,
+  height: 55.h,
+  textStyle: const TextStyle(fontSize: 18,
+      color: ColorResources.HEADER, fontWeight: FontWeight.w600),
   decoration: BoxDecoration(
-    border: Border.all(color: const Color.fromRGBO(114, 178, 238, 1)),
-    borderRadius: BorderRadius.circular(8),
+    color:ColorResources.FILL_COLOR,
+    border: Border.all(color: ColorResources.BORDER_COLOR),
+    borderRadius: BorderRadius.circular(5),
   ),
 );
 
 
 final submittedPinTheme = defaultPinTheme.copyWith(
   decoration: defaultPinTheme.decoration?.copyWith(
-    color: const Color.fromRGBO(234, 239, 243, 1),
+    color:ColorResources.FILL_COLOR,
   ),
 );
 

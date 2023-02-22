@@ -3,6 +3,7 @@ import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
+import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
@@ -78,13 +79,17 @@ class SettingsScreen extends StatelessWidget {
               color: ColorResources.BORDER_COLOR,
             ),
             const Spacer(),
-            TextButton(
-                onPressed: ()=> CustomNavigator.push(Routes.LOGIN,clean: true),
-                child: Text(
-                  getTranslated("log_out", context),
-                  style: titleTextStyle.copyWith(
-                      fontSize: 18, color: ColorResources.WARNING_COLOR),
-                )),
+            Consumer<AuthProvider>(
+              builder: (context,authProvider,widget) {
+                return TextButton(
+                    onPressed: ()=> authProvider.logOut(),
+                    child: Text(
+                      getTranslated("log_out", context),
+                      style: titleTextStyle.copyWith(
+                          fontSize: 18, color: ColorResources.WARNING_COLOR),
+                    ));
+              }
+            ),
             const SizedBox(
               height: 20,
             )

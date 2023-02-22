@@ -10,7 +10,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'app/core/api/end_points.dart';
 import 'data/dio/dio_client.dart';
 import 'data/dio/logging_interceptor.dart';
+import 'data/model/user_model.dart';
 import 'domain/repositery/auth_repo.dart';
+import 'domain/repositery/profile_repo.dart';
 
 
 final sl = GetIt.instance;
@@ -23,8 +25,16 @@ Future<void> init() async {
         loggingInterceptor: sl(),
       ));
 
+  //Model
+  sl.registerLazySingleton(() => UserModel());
+
+
+
+
+
   // Repository
   sl.registerLazySingleton(() => AuthRepo(sharedPreferences: sl(), dioClient: sl() ));
+  sl.registerLazySingleton(() => ProfileRepo(sharedPreferences: sl(), dioClient: sl() ));
 
 
 
@@ -36,7 +46,7 @@ Future<void> init() async {
 
   //provider
    sl.registerLazySingleton(() => AuthProvider(authRepo: sl()));
-   sl.registerLazySingleton(() => ProfileProvider());
+   sl.registerLazySingleton(() => ProfileProvider(user:sl() ,profileRepo: sl() ));
    sl.registerLazySingleton(() => AddRequestProvider());
    sl.registerLazySingleton(() => ThemeProvider(sharedPreferences: sl()));
    sl.registerLazySingleton(() => LocalizationProvider(sharedPreferences: sl()));

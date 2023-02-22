@@ -18,82 +18,86 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero,()=> Provider.of<ProfileProvider>(context,listen: false).getUserDate());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ProfileProvider>(
         builder: (context, profileProvider, widget) {
-      return Padding(
-        padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          children: [
-            // SizedBox(height:CustomNavigator.scaffoldState.currentContext!.topPadding ),
-            profileCard(
-                name: profileProvider.name,
-                description: profileProvider.description,
-                profileImage: profileProvider.profileImage,
-                onTap: () =>CustomNavigator.push(Routes.SETTINGS)
-            ),
-            annualLeaveBalance(onTap: () {}, days: 33.5, context: context),
-            settingCard(
-                name: getTranslated("personal", context),
-                iconAsset: Images.personalCardIcon,
-                onTap: () =>CustomNavigator.push(Routes.PERSONAL)
-            ),
-            Container(
-              width: context.width,
-              height: 0.5,
-              color: ColorResources.BORDER_COLOR,
-            ),
-            settingCard(
-                name: getTranslated("organization", context),
-                iconAsset: Images.organizationIcon,
-                onTap: () => CustomNavigator.push(Routes.ORGANIZATION)),
-            // Container(
-            //   width: context.width,
-            //   height: 0.5,
-            //   color: ColorResources.BORDER_COLOR,
-            // ),
-            // settingCard(
-            //     name: getTranslated("salary_&_financial", context),
-            //     iconAsset: Images.salaryIcon,
-            //     onTap: () => CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL)
-            // ),
-            Container(
-              width: context.width,
-              height: 0.5,
-              color: ColorResources.BORDER_COLOR,
-            ),
-            settingCard(
-                name: getTranslated("documents", context),
-                iconAsset: Images.documentsIcon,
-                onTap: () => CustomNavigator.push(Routes.DOCUMENTS)),
-            Container(
-              width: context.width,
-              height: 0.5,
-              color: ColorResources.BORDER_COLOR,
-            ),
-            settingCard(
-                name: getTranslated("assets", context),
-                iconAsset: Images.assetsIcon,
-                onTap: () => CustomNavigator.push(Routes.ASSETS)),
-            Container(
-              width: context.width,
-              height: 0.5,
-              color: ColorResources.BORDER_COLOR,
-            ),
-            settingCard(
-                name: getTranslated("contract", context),
-                iconAsset: Images.contractIcon,
-                onTap: () => CustomNavigator.push(Routes.CONTRACT)),
-            Container(
-              width: context.width,
-              height: 0.5,
-              color: ColorResources.BORDER_COLOR,
-            ),
-          ],
-        ),
-      );
+
+          if (profileProvider.isLoading){return const Center(child: CircularProgressIndicator());}
+          else {
+        return Padding(
+          padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: [
+              profileCard(user: profileProvider.user,context: context),
+              annualLeaveBalance(onTap: () {}, days: profileProvider.user.vacations??0, context: context),
+              settingCard(
+                  name: getTranslated("personal", context),
+                  iconAsset: Images.personalCardIcon,
+                  onTap: () => CustomNavigator.push(Routes.PERSONAL,arguments: profileProvider.user)),
+              Container(
+                width: context.width,
+                height: 0.5,
+                color: ColorResources.BORDER_COLOR,
+              ),
+              settingCard(
+                  name: getTranslated("organization", context),
+                  iconAsset: Images.organizationIcon,
+                  onTap: () => CustomNavigator.push(Routes.ORGANIZATION,arguments: profileProvider.user )),
+              // Container(
+              //   width: context.width,
+              //   height: 0.5,
+              //   color: ColorResources.BORDER_COLOR,
+              // ),
+              // settingCard(
+              //     name: getTranslated("salary_&_financial", context),
+              //     iconAsset: Images.salaryIcon,
+              //     onTap: () => CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL)
+              // ),
+              Container(
+                width: context.width,
+                height: 0.5,
+                color: ColorResources.BORDER_COLOR,
+              ),
+              settingCard(
+                  name: getTranslated("documents", context),
+                  iconAsset: Images.documentsIcon,
+                  onTap: () => CustomNavigator.push(Routes.DOCUMENTS)),
+              Container(
+                width: context.width,
+                height: 0.5,
+                color: ColorResources.BORDER_COLOR,
+              ),
+              settingCard(
+                  name: getTranslated("assets", context),
+                  iconAsset: Images.assetsIcon,
+                  onTap: () => CustomNavigator.push(Routes.ASSETS)),
+              Container(
+                width: context.width,
+                height: 0.5,
+                color: ColorResources.BORDER_COLOR,
+              ),
+              settingCard(
+                  name: getTranslated("contract", context),
+                  iconAsset: Images.contractIcon,
+                  onTap: () => CustomNavigator.push(Routes.CONTRACT)),
+              Container(
+                width: context.width,
+                height: 0.5,
+                color: ColorResources.BORDER_COLOR,
+              ),
+            ],
+          ),
+        );
+      }
     });
   }
 }

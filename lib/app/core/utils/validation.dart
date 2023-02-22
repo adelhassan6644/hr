@@ -42,11 +42,11 @@ class Validations {
     }
   }
 
-  static String? code(String value) {
-    if (value.isEmpty) {
+  static String? code(String? value) {
+    if ( value == null||value.isEmpty) {
       return '';
     } else if (value.length < 4) {
-      return "LocaleKeys.codeError.tr()";
+      return "Enter Valid Code";
     } else {
       return null;
     }

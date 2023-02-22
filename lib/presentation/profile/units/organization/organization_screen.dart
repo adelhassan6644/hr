@@ -5,10 +5,14 @@ import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/app/core/utils/text_styles.dart';
 import 'package:hr_project/presentation/base/animated_widget.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
+import '../../../../data/model/user_model.dart';
 import '../../../../domain/localization/language_constant.dart';
 
 class OrganizationScreen extends StatelessWidget {
-  const OrganizationScreen({Key? key}) : super(key: key);
+  const OrganizationScreen({required this.employee,Key? key}) : super(key: key);
+
+  final UserModel employee;
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +65,7 @@ class OrganizationScreen extends StatelessWidget {
                               fontSize: 16,
                             ),),
                           ),
-                          Text(DateTime.now().format("dd-MMMM-yyyy"),style: AppTextStyles.w600.copyWith(
+                          Text(employee.dateOfJoining!.format("dd-MMMM-yyyy"),style: AppTextStyles.w600.copyWith(
                             fontSize: 12,
                             color: ColorResources.SUB_TEXT
                           ),)
@@ -90,7 +94,7 @@ class OrganizationScreen extends StatelessWidget {
                               fontSize: 16,
                             ),),
                           ),
-                          Text("Admin Manager",style: AppTextStyles.w600.copyWith(
+                          Text(employee.jobType?.jobTitle??"",style: AppTextStyles.w600.copyWith(
                               fontSize: 12,
                               color: ColorResources.SUB_TEXT
                           ),)
@@ -206,7 +210,7 @@ class OrganizationScreen extends StatelessWidget {
                               fontSize: 16,
                             ),),
                           ),
-                          Text("jedah",style: AppTextStyles.w600.copyWith(
+                          Text(employee.branch?.enName??"",style: AppTextStyles.w600.copyWith(
                               fontSize: 12,
                               color: ColorResources.SUB_TEXT
                           ),)
@@ -235,7 +239,7 @@ class OrganizationScreen extends StatelessWidget {
                               fontSize: 16,
                             ),),
                           ),
-                          Text("5",style: AppTextStyles.w600.copyWith(
+                          Text(employee.jobLevel?.jobTitle??"",style: AppTextStyles.w600.copyWith(
                               fontSize: 12,
                               color: ColorResources.SUB_TEXT
                           ),)
@@ -264,7 +268,7 @@ class OrganizationScreen extends StatelessWidget {
                               fontSize: 16,
                             ),),
                           ),
-                          Text("AbdulKarim",style: AppTextStyles.w600.copyWith(
+                          Text(employee.directManager?.enName??"",style: AppTextStyles.w600.copyWith(
                               fontSize: 12,
                               color: ColorResources.SUB_TEXT
                           ),)

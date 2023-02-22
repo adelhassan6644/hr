@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
@@ -86,13 +85,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 15.h,
                           ),
                           CustomTextFormField(
+                            tIcon: Images.emailIcon,
+                            removePIcon: false,
                             isValidat: key.currentState?.validate()??true,
                             controller: authProvider.emailTEC,
                             hint: getTranslated("enter_your_email_or_id", context),
                             valid: Validations.email,
                           ),
                            SizedBox(
-                            height: 15.h,
+                            height: 25.h,
                           ),
                           Text(getTranslated("password", context),
                               style: titleTextStyle.copyWith(
@@ -101,6 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 15.h,
                           ),
                           CustomTextFormField(
+                            tIcon: Images.lockIcon,
                             isValidat: key.currentState?.validate()??true,
                             controller: authProvider.passwordTEC,
                             hint: getTranslated("enter_your_password", context),
@@ -124,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: context.height * 0.10,
+                        height: 35.h,
                       ),
                       CustomButton(
                           isLoading: authProvider.isLoading,

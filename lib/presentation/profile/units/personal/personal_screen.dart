@@ -3,13 +3,19 @@ import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/app/core/utils/text_styles.dart';
+import 'package:hr_project/data/model/user_model.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
+import 'package:provider/provider.dart';
 import '../../../base/animated_widget.dart';
+import '../../../base/image_widget.dart';
+import '../../../notifier/localization_provider.dart';
 
 
 class PersonalScreen extends StatelessWidget {
-  const PersonalScreen({Key? key}) : super(key: key);
+  const PersonalScreen({required this.user, Key? key}) : super(key: key);
+
+ final UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +36,11 @@ class PersonalScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: ColorResources.FILL_COLOR
                   ),
-                  child: const ClipOval(
-                      child:
-                      Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)
-                  ),
+                  child:
+                  user.image == null
+                      ? const ClipOval(child: Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)) :
+                  ImageWidget.network(user.image!,width: 100.w,height: 100.h,border:BorderRadius.circular(100)),
+
                 ),
               ),
               SizedBox(height: 24.h,),
@@ -77,7 +84,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("1311",style: AppTextStyles.w600.copyWith(
+                            Text(user.employeeInfo?.id?.toString()??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -106,7 +113,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("Ahmed Ahmed",style: AppTextStyles.w600.copyWith(
+                            Text(Provider.of<LocalizationProvider>(context,listen: false).locale.languageCode == "ar"?user.arName??"":user.enName??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -135,7 +142,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("test@gmail.com",style: AppTextStyles.w600.copyWith(
+                            Text(user.email??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -164,7 +171,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("055669886",style: AppTextStyles.w600.copyWith(
+                            Text(user.phone??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -193,7 +200,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text(getTranslated("male", context),style: AppTextStyles.w600.copyWith(
+                            Text((user.gender??1) == 1 ?getTranslated("male", context):getTranslated("female", context),style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -222,7 +229,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("married",style: AppTextStyles.w600.copyWith(
+                            Text((user.employeeInfo?.maritalStatus??1) == 1 ? "married":"single",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -309,7 +316,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("22055699812",style: AppTextStyles.w600.copyWith(
+                            Text(user.employeeInfo?.idNumber??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -338,7 +345,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("Muslim",style: AppTextStyles.w600.copyWith(
+                            Text(int.parse(user.employeeInfo?.religion??"1")==1? "Muslim":"Christian",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -367,7 +374,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("16-8-1996",style: AppTextStyles.w600.copyWith(
+                            Text(user.dateOfBirth!.format("dd-MM-yyyy"),style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
