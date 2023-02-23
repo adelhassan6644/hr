@@ -72,6 +72,7 @@ abstract class ColorResources {
   }
 
   static const Color PRIMARY = Color(0xFF4a42aa);
+  static const Color SACOUNDRY = Color(0xFFf4b309);
   static const Color ACTIVE = Color(0xFF5F9B56);
   static const Color IN_ACTIVE = Color(0xFFBE3725);
   static const Color PENDING = Color(0xFFf3b309);

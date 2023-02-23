@@ -37,6 +37,7 @@ dependencies:
   flutter_clean_architecture:
   dio: ^5.0.0
   internet_connection_checker:
+  geolocator: ^9.0.2
   dartz:
   equatable:
   shared_preferences:
