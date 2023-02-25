@@ -27,12 +27,13 @@ class CustomButton extends StatelessWidget {
       this.height,
       this.assetIcon,
       this.isLoading = false,
-      required this.textColor,
+       this.textColor = ColorResources.WHITE,
+
       this.width,
       this.iconSize = 25,
       this.iconColor = ColorResources.PRIMARY,
       required this.text,
-      required this.backgroundColor,  this.isError=false})
+       this.backgroundColor=ColorResources.PRIMARY,  this.isError=false})
       : super(key: key);
 
   @override
