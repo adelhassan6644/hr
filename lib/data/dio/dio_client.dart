@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../app/core/api/end_points.dart';
 import 'api_clinet.dart';
 import 'logging_interceptor.dart';
@@ -8,8 +9,7 @@ import 'logging_interceptor.dart';
 class DioClient extends ApiClient {
   final String baseUrl;
   final LoggingInterceptor loggingInterceptor;
-
-  // final SharedPreferences sharedPreferences;
+  final SharedPreferences sharedPreferences;
 
   final Dio dio;
 
@@ -19,7 +19,7 @@ class DioClient extends ApiClient {
     this.baseUrl, {
     required this.dio,
     required this.loggingInterceptor,
-    // required this.sharedPreferences,
+     required this.sharedPreferences,
   }) {
     // token = sharedPreferences.getString(AppStorageKey.token);
     dio
@@ -30,7 +30,9 @@ class DioClient extends ApiClient {
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
-        'X-Api-Key': EndPoints.apiKey
+        'X-Api-Key': EndPoints.apiKey,
+        // 'language_code': sharedPreferences.getString("languageCode")
+
       };
     dio.interceptors.add(loggingInterceptor);
   }

@@ -226,11 +226,14 @@ class UserModel {
     this.password,
     this.address,
     this.description,
+    this.otp,
     this.dateOfBirth,
     this.dateOfJoining,
     this.dateOfLeaving,
+    this.otpVerifiedAt,
     this.status,
     this.gender,
+    this.rememberToken,
     this.directManagerId,
     this.jobRoleId,
     this.hrEmployeeId,
@@ -271,16 +274,19 @@ class UserModel {
   final String? enName;
   final String? arName;
   final String? email;
-  final String? image;
+  final dynamic image;
   final String? phone;
   final String? password;
   final String? address;
   final dynamic description;
+  final dynamic otp;
   final DateTime? dateOfBirth;
   final DateTime? dateOfJoining;
   final dynamic dateOfLeaving;
+  final dynamic otpVerifiedAt;
   final dynamic status;
   final int? gender;
+  final dynamic rememberToken;
   final int? directManagerId;
   final int? jobRoleId;
   final dynamic hrEmployeeId;
@@ -326,11 +332,14 @@ class UserModel {
     password: json["password"],
     address: json["address"],
     description: json["description"],
+    otp: json["otp"],
     dateOfBirth: json["date_of_birth"] == null ? null : DateTime.parse(json["date_of_birth"]),
     dateOfJoining: json["date_of_joining"] == null ? null : DateTime.parse(json["date_of_joining"]),
     dateOfLeaving: json["date_of_leaving"],
+    otpVerifiedAt: json["otp_verified_at"],
     status: json["status"],
     gender: json["gender"],
+    rememberToken: json["remember_token"],
     directManagerId: json["direct_manager_id"],
     jobRoleId: json["job_role_id"],
     hrEmployeeId: json["hr_employee_id"],
@@ -377,11 +386,14 @@ class UserModel {
     "password": password,
     "address": address,
     "description": description,
+    "otp": otp,
     "date_of_birth": "${dateOfBirth!.year.toString().padLeft(4, '0')}-${dateOfBirth!.month.toString().padLeft(2, '0')}-${dateOfBirth!.day.toString().padLeft(2, '0')}",
     "date_of_joining": dateOfJoining?.toIso8601String(),
     "date_of_leaving": dateOfLeaving,
+    "otp_verified_at": otpVerifiedAt,
     "status": status,
     "gender": gender,
+    "remember_token": rememberToken,
     "direct_manager_id": directManagerId,
     "job_role_id": jobRoleId,
     "hr_employee_id": hrEmployeeId,

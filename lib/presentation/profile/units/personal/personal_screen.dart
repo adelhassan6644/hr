@@ -68,13 +68,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //     color:ColorResources.shadowColor ,
-                          //     offset:const Offset(0,3) ,
-                          //     blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -84,7 +77,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text(user.employeeInfo?.id?.toString()??"",style: AppTextStyles.w600.copyWith(
+                            Text(user.employeeInfo?.id?.toString().convertDigits()??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -97,13 +90,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -126,13 +112,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -155,13 +134,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -171,7 +143,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text(user.phone??"",style: AppTextStyles.w600.copyWith(
+                            Text(user.phone?.convertDigits()??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -213,13 +185,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -229,7 +194,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text((user.employeeInfo?.maritalStatus??1) == 1 ? "married":"single",style: AppTextStyles.w600.copyWith(
+                            Text((user.employeeInfo?.maritalStatus??1) == 1 ? getTranslated("married", context):getTranslated("single", context),style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -242,13 +207,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -258,7 +216,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("28",style: AppTextStyles.w600.copyWith(
+                            Text("28".convertDigits(),style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -271,13 +229,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -287,7 +238,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text("National ID",style: AppTextStyles.w600.copyWith(
+                            Text(user.nationalId == 1?getTranslated("national_id", context):getTranslated("accommodation", context),style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -300,13 +251,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -316,7 +260,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text(user.employeeInfo?.idNumber??"",style: AppTextStyles.w600.copyWith(
+                            Text(user.employeeInfo?.idNumber?.convertDigits()??"",style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -329,13 +273,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -345,7 +282,7 @@ class PersonalScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),),
                             ),
-                            Text(int.parse(user.employeeInfo?.religion??"1")==1? "Muslim":"Christian",style: AppTextStyles.w600.copyWith(
+                            Text(int.parse(user.employeeInfo?.religion??"1")==1? getTranslated("muslim", context): getTranslated("christian", context),style: AppTextStyles.w600.copyWith(
                                 fontSize: 12,
                                 color: ColorResources.SUB_TEXT
                             ),)
@@ -358,13 +295,6 @@ class PersonalScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorResources.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //       color:ColorResources.shadowColor ,
-                          //       offset:const Offset(0,3) ,
-                          //       blurRadius: 7
-                          //   )
-                          // ]
                         ),
                         child: Row(
                           children: [
@@ -382,7 +312,6 @@ class PersonalScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 24.h,),
-
                     ],
                   ),
                 ),
