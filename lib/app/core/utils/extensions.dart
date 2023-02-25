@@ -285,9 +285,9 @@ extension Difference on DateTime {
 }
 
 String localeCode =  Provider.of<LocalizationProvider>(
-    CustomNavigator.scaffoldState.currentContext!,
+    CustomNavigator.navigatorState.currentContext!,
     listen: false)
-    .locale.languageCode == "en"?"en":"ar";
+    .locale.languageCode ;
 
 extension ConvertDigits on String {
   String convertDigits() {
