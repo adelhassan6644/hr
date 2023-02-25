@@ -9,10 +9,13 @@ import 'package:hr_project/presentation/add_request/requests/vacation_request.da
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/dashBoard/dashboard_screen.dart';
 import 'package:hr_project/presentation/profile/units/contract/contract_screen.dart';
+import 'package:hr_project/presentation/profile/units/documents/documents_screen.dart';
+import 'package:hr_project/presentation/profile/units/organization/organization_screen.dart';
 import 'package:hr_project/presentation/profile/units/personal/personal_screen.dart';
 import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/settings/edit_password_screen.dart';
 import 'package:hr_project/presentation/settings/language_screen.dart';
+import '../data/model/user_model.dart';
 import '../main.dart';
 import '../presentation/add_request/requests/clear_asset_request.dart';
 import '../presentation/add_request/requests/permission_details.dart';
@@ -27,10 +30,6 @@ import '../presentation/settings/settings_screen.dart';
 import '../splash.dart';
 import 'routes.dart';
 
-const begin = Offset(0.0, 1.0);
-const end = Offset.zero;
-const curve = Curves.bounceInOut;
-var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
 abstract class CustomNavigator {
   static final GlobalKey<NavigatorState> navigatorState =
@@ -56,48 +55,48 @@ abstract class CustomNavigator {
         return _pageRoute(const ResetPasswordScreen());
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoardScreen());
-      // case Routes.PROFILE_PAGE:
-      //   return _pageRoute(const ProfileScreen());
-      //   case Routes.HOME_PAGE:
-      //     return _pageRoute(const HomeScreen());
       case Routes.REQUESTS_FLOW:
-          return _pageRoute( RequestFlowScreen(model: settings.arguments as Model,));
+        return _pageRoute(RequestFlowScreen(model: settings.arguments as Model,));
       case Routes.ADD_REQUEST:
-          return _pageRoute( const AddRequestScreen());
-          case Routes.LOAN_REQUEST:
-          return _pageRoute( const LoanRequestScreen());
-          case Routes.EXPENSE_CLAIM_REQUEST:
-          return _pageRoute( const ExpenseRequestScreen());
-          case Routes.PERMISSIN_REQUEST:
-          return _pageRoute( const PermissionRequestScreen());
+        return _pageRoute( const AddRequestScreen());
+      case Routes.LOAN_REQUEST:
+        return _pageRoute( const LoanRequestScreen());
+      case Routes.EXPENSE_CLAIM_REQUEST:
+        return _pageRoute( const ExpenseRequestScreen());
+      case Routes.PERMISSIN_REQUEST:
+        return _pageRoute( const PermissionRequestScreen());
       case Routes.VACATION_REQUEST:
         return _pageRoute(const VacationRequest());
       case Routes.BUSINESS_TRIP_REQUEST :
         return _pageRoute(const BusinessTripRequest());
-        case Routes.LETTER_REQUEST :
+      case Routes.LETTER_REQUEST:
         return _pageRoute(const LetterRequest());
-        case Routes.ASSET_REQUEST :
+      case Routes.ASSET_REQUEST:
         return _pageRoute(const AssetRequest());
-        case Routes.CLEAR_ASSET_REQUEST :
+      case Routes.CLEAR_ASSET_REQUEST:
         return _pageRoute(const ClearAssetRequest());
       case Routes.ATTENDANCE_LEAVING:
-          return _pageRoute(const AttendanceLeavingScreen());
+        return _pageRoute(const AttendanceLeavingScreen());
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());
-        case Routes.CHANGE_PASSWORD:
-          return _pageRoute(const EditPasswordScreen());
-        case Routes.LANGUAGES:
-          return _pageRoute(const LanguageScreen());
-          case Routes.PERSONAL:
-          return _pageRoute(const PersonalScreen());
-          case Routes.SALARIES_AND_FINANCIAL:
-          return _pageRoute(const SalaryScreen());
-          case Routes.SALARY_DETAILS:
-          return _pageRoute(const SalaryDetailsScreen());
-          case Routes.ASSETS:
-          return _pageRoute(const AssetsScreen());
-          case Routes.CONTRACT:
-          return _pageRoute(const ContractScreen());
+      case Routes.CHANGE_PASSWORD:
+        return _pageRoute(const EditPasswordScreen());
+      case Routes.LANGUAGES:
+        return _pageRoute(const LanguageScreen());
+      case Routes.PERSONAL:
+        return _pageRoute( PersonalScreen(user: settings.arguments as UserModel,));
+      case Routes.ORGANIZATION:
+        return _pageRoute( OrganizationScreen(employee: settings.arguments as UserModel,));
+      case Routes.DOCUMENTS :
+        return _pageRoute(const DocumentsScreen());
+      case Routes.SALARIES_AND_FINANCIAL:
+        return _pageRoute(const SalaryScreen());
+      case Routes.SALARY_DETAILS:
+        return _pageRoute(const SalaryDetailsScreen());
+      case Routes.ASSETS:
+        return _pageRoute(const AssetsScreen());
+      case Routes.CONTRACT:
+        return _pageRoute(const ContractScreen());
       default:
         return MaterialPageRoute(builder: (_) => const MyApp());
     }
@@ -105,9 +104,17 @@ abstract class CustomNavigator {
 
 
   static PageRouteBuilder<dynamic> _pageRoute(Widget child) => PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 600),
-      reverseTransitionDuration: const Duration(milliseconds: 600),
-      transitionsBuilder: (c, anim, a2, child) => child,
+      transitionDuration: const Duration(milliseconds: 400),
+      reverseTransitionDuration: const Duration(milliseconds: 400),
+      transitionsBuilder: (c, anim, a2, child) {
+        var begin = const Offset(1.0,0.0);
+        var end = Offset.zero;
+        var tween = Tween(begin: begin,end: end);
+        var curveAnimation=CurvedAnimation(
+          parent: anim,curve: Curves.linearToEaseOut);
+        return SlideTransition(position: tween.animate(curveAnimation),child: child,);
+
+      },
       opaque: false,
       pageBuilder: (_, __, ___) => child);
 

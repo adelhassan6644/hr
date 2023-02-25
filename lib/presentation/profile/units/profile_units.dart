@@ -1,14 +1,17 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:hr_project/presentation/base/image_widget.dart';
 import 'package:hr_project/presentation/notifier/localization_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/color_resources.dart';
 import '../../../app/core/utils/constant.dart';
 import '../../../app/core/utils/dimensions.dart';
+import '../../../data/model/user_model.dart';
 import '../../../domain/localization/language_constant.dart';
+import '../../../navigation/routes.dart';
 
 settingCard(
     {required String name,
@@ -65,7 +68,7 @@ settingCard(
   );
 }
 
-annualLeaveBalance({context, required VoidCallback onTap,required double days}) {
+annualLeaveBalance({context, required VoidCallback onTap,required int days}) {
   return Padding(
     padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
     child: Container(
@@ -103,7 +106,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
           Row(
             children: [
               Text(
-                "$days ${getTranslated("days", context)}",
+                "${days.toString().convertDigits()} ${getTranslated("days", context)}",
                 style: const TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 16,
@@ -129,7 +132,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required double days}) 
   );
 }
 
-profileCard({File? profileImage,required String name,required String description,required VoidCallback onTap}){
+profileCard({required UserModel user,context}){
   return Padding(
     padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
     child: Stack(
@@ -143,18 +146,18 @@ profileCard({File? profileImage,required String name,required String description
                 shape: BoxShape.circle,
                 color: ColorResources.FILL_COLOR
             ),
-            child: ClipOval(
-              child: profileImage == null
-                  ? const Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)
-                  : Image.file(profileImage, fit: BoxFit.cover,),
-            ),
+            child:
+              user.image == null
+                  ? const ClipOval(child: Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)) :
+              ImageWidget.network(user.image!,width: 100.w,height: 100.h,border:BorderRadius.circular(100)),
+
           ),
           const SizedBox(height: 8,),
-          Center(child: Text(name,style: titleTextStyle)),
+          Center(child: Text(Provider.of<LocalizationProvider>(context,listen: false).locale.languageCode == "ar"?user.arName??"":user.enName??"",style: titleTextStyle)),
           const SizedBox(height: 8,),
-          Center(child: Text(description,style: hintTextStyle)),
-        ],),
-        IconButton(onPressed: onTap, icon: const Icon(Icons.settings,color: ColorResources.PRIMARY,size: 26,)),
+          Center(child: Text(user.description??"",style: hintTextStyle)),
+        ],).animate().flip().then(delay:10.ms).shimmer(),
+        IconButton(onPressed: () => CustomNavigator.push(Routes.SETTINGS), icon: const Icon(Icons.settings,color: ColorResources.PRIMARY,size: 26,)),
 
       ],
     ),

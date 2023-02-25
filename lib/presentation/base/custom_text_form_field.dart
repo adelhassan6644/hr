@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
@@ -33,12 +34,12 @@ class CustomTextFormField extends StatefulWidget {
   final int? maxLength;
   final Color? fieldColor;
   final int? maxLine;
-  final bool? error;
+  final bool isValidat;
 
-  const CustomTextFormField({super.key,
-    this.error=false,
-
-    this.maxLine=1,
+  const CustomTextFormField({
+    super.key,
+    this.isValidat = true,
+    this.maxLine = 1,
     this.hint,
     this.sufWidget,
     this.onSave,
@@ -50,7 +51,7 @@ class CustomTextFormField extends StatefulWidget {
     this.controller,
     this.focus,
     this.sIcon,
-    this.label=false,
+    this.label = false,
     this.read,
     this.eIcon,
     this.edit,
@@ -81,78 +82,93 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-
-    return TextFormField(
-      onTap: widget.onTap,
-      validator: widget.valid,
-      controller: widget.controller,
-      maxLength: widget.maxLength,
-      focusNode: widget.focus,
-      readOnly: widget.read == true ? true : false,
-      maxLines: widget.maxLine,
-      obscureText: widget.icon == Icons.lock_outline? _isHidden : false,
-      keyboardType: widget.type,
-      inputFormatters: widget.formatter ?? [],
-      onSaved: (widget.onSave),
-      style:widget.error!? hintTextStyle.copyWith(color: ColorResources.WARNING_COLOR):hintTextStyle,
-      onChanged: widget.onChanged,
-      decoration: InputDecoration(
-        prefixIcon:widget.removePIcon == true ? null:Padding(
-          padding:   EdgeInsets.symmetric(horizontal: 5.w, ),
-          child: widget.tIcon != null
-              ? Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 10.w,),
-                  child: Image.asset(
-                    widget.tIcon!,
-                    height: 25,
-                    color: widget.tIconColor,
+    return Animate(
+      effects: widget.isValidat ? [] : [const ShakeEffect()],
+      child: TextFormField(
+        onTap: widget.onTap,
+        validator: widget.valid,
+        controller: widget.controller,
+        maxLength: widget.maxLength,
+        focusNode: widget.focus,
+        readOnly: widget.read == true ? true : false,
+        maxLines: widget.maxLine,
+        obscureText: widget.icon == Icons.lock_outline ? _isHidden : false,
+        keyboardType: widget.type,
+        inputFormatters: widget.formatter ?? [],
+        onSaved: (widget.onSave),
+        style: !widget.isValidat
+            ? hintTextStyle.copyWith(color: ColorResources.WARNING_COLOR)
+            : hintTextStyle,
+        onChanged: widget.onChanged,
+        decoration: InputDecoration(
+          prefixIcon: widget.removePIcon == true
+              ? null
+              : Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 5.w,
                   ),
-                )
-              : null,
+                  child: widget.tIcon != null
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                          ),
+                          child: Image.asset(
+                            widget.tIcon!,
+                            height: 25.h,
+                            color: widget.tIconColor??ColorResources.disabledColor,
+                          ),
+                        )
+                      : null,
+                ),
+          suffixIcon: widget.removePIcon == true
+              ? null : widget.icon == Icons.lock_outline
+                  ? IconButton(
+                      splashColor: Colors.transparent,
+                      onPressed: _visibility,
+                      alignment: Alignment.center,
+                      icon: _isHidden
+                          ?
+                      Image.asset(
+                          Images.eyeLockIcon,
+                          height: 25.h,
+                          color: ColorResources.disabledColor
+                            )
+                          : Image.asset(
+                              Images.unlockEyeLockIcon,
+                              color: ColorResources.PRIMARY,
+                              height: 25.h,
+                            ),
+                    )
+                  : widget.sufWidget != null
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 25.w, horizontal: 25.w),
+                          child: widget.sufWidget)
+                      : Icon(
+                          widget.icon,
+                          color: Colors.grey,
+                          size: 20,
+                        ),
+          focusedBorder:
+              widget.read == true ? disableBorderStyle : focusBorderStyle,
+          enabledBorder: disableBorderStyle,
+          disabledBorder: disableBorderStyle,
+          focusedErrorBorder: errorOutLineInputBorderStyle,
+          errorBorder: errorOutLineInputBorderStyle,
+          contentPadding: EdgeInsets.symmetric(
+              vertical: 25.w, horizontal: widget.sufWidget != null ? 0 : 25.h),
+          border: disableBorderStyle,
+          isDense: true,
+          alignLabelWithHint: true,
+          hintText: widget.hint,
+          hintStyle: widget.isValidat ? hintTextStyle : errorHintTextStyle,
+          labelText: widget.label ? widget.hint : null,
+          fillColor: ColorResources.FILL,
+          filled: true,
+          errorStyle: errorHintTextStyle,
+          prefixIconConstraints: BoxConstraints(maxHeight: 20.h),
         ),
-        suffixIcon: widget.removePIcon == true ? null:widget.icon == Icons.lock_outline
-            ? IconButton(
-                splashColor: Colors.transparent,
-                onPressed: _visibility,
-                alignment: Alignment.center,
-                icon: _isHidden
-                    ?
-                Image.asset(
-                        Images.eyeLockIcon,
-                        height: 25,
-                      )
-                    : Image.asset(
-                        Images.unlockEyeLockIcon,
-                        color: ColorResources.PRIMARY,
-                        height: 25,
-                      ),
-              ) :widget.sufWidget != null? Padding(padding: EdgeInsets.symmetric(vertical: 25.w, horizontal: 25.w) ,
-            child: widget.sufWidget): Icon(
-    widget.icon,
-    color: Colors.grey,
-    size: 20,
-    ),
-        focusedBorder: widget.read ==true?disableBorderStyle: focusBorderStyle,
-        enabledBorder: disableBorderStyle,
-        disabledBorder: disableBorderStyle,
-        focusedErrorBorder: errorOutLineInputBorderStyle,
-        errorBorder: errorOutLineInputBorderStyle,
-        contentPadding:  EdgeInsets.symmetric(vertical: 25.w, horizontal:widget.sufWidget  != null ? 0:25.h),
-        border: disableBorderStyle,
-        isDense: true,
-        alignLabelWithHint: true,
-        hintText: widget.hint,
-        hintStyle: widget.error!?errorHintTextStyle: hintTextStyle,
-         labelText: widget.label? widget.hint : null,
-        fillColor: ColorResources.FILL,
-        // labelStyle: widget.error!?errorHintPoppinsTextStyle: hintPoppinsTextStyle,
-        filled: true,
-        // errorText: "${widget.hint}*",
-        errorStyle:errorHintTextStyle,
-        prefixIconConstraints:  BoxConstraints(maxHeight: 20.h),
-
       ),
-
     );
   }
 }

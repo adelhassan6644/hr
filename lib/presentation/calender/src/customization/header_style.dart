@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/utils/color_resources.dart';
 
 import '../shared/utils.dart' show TextFormatter;
 
@@ -86,9 +87,9 @@ class HeaderStyle {
     this.formatButtonShowsNext = true,
     this.titleTextFormatter,
     this.titleTextStyle = const TextStyle(fontSize: 17.0),
-    this.formatButtonTextStyle = const TextStyle(fontSize: 14.0),
+    this.formatButtonTextStyle = const TextStyle(fontSize: 14.0,color:  ColorResources.PRIMARY),
     this.formatButtonDecoration = const BoxDecoration(
-      border: const Border.fromBorderSide(BorderSide()),
+      // border: const Border.fromBorderSide(BorderSide(color: ColorResources.SACOUNDRY)),
       borderRadius: const BorderRadius.all(Radius.circular(12.0)),
     ),
     this.headerMargin = const EdgeInsets.all(0.0),
@@ -99,8 +100,8 @@ class HeaderStyle {
     this.rightChevronPadding = const EdgeInsets.all(12.0),
     this.leftChevronMargin = const EdgeInsets.symmetric(horizontal: 8.0),
     this.rightChevronMargin = const EdgeInsets.symmetric(horizontal: 8.0),
-    this.leftChevronIcon = const Icon(Icons.chevron_left),
-    this.rightChevronIcon = const Icon(Icons.chevron_right),
+    this.leftChevronIcon = const Icon(Icons.chevron_left,color: ColorResources.PRIMARY,),
+    this.rightChevronIcon = const Icon(Icons.chevron_right,color: ColorResources.PRIMARY),
     this.leftChevronVisible = true,
     this.rightChevronVisible = true,
     this.decoration = const BoxDecoration(),

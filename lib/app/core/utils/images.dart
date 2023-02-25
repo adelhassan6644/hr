@@ -1,10 +1,10 @@
 class Images {
-  static const String logo = 'assets/icons/logo.png';
-  static const String splash = 'assets/icons/hr.png';
+  static const String logo = 'assets/logo.jpg';
+  static const String splash = 'assets/logoo.png';
   static const String authHeader = 'assets/icons/auth_hederl.png';
   static const String banner = 'assets/icons/banner.svg';
-  static const String home = 'assets/icons/home.svg';
-  // static const String plane = 'assets/icons/plane.svg';
+  static const String home = 'assets/icons/home.png';
+  static const String period = 'assets/icons/period.png';
   static const String ticket = 'assets/icons/ticket.svg';
   static const String user = 'assets/icons/user.svg';
   static const String document = 'assets/icons/document.png';
@@ -35,6 +35,7 @@ class Images {
 static const globalIcon="assets/icons/global.png";
   static const String phoneIcon = 'assets/icons/telephone.png';
   static const String mailIcon = 'assets/icons/mail-inbox-app.png';
+  static const String emailIcon = 'assets/icons/mail.png';
   static const String lockIcon = 'assets/icons/lock.png';
   static const String languageIcon = 'assets/icons/language.png';
   static const String eyeLockIcon = 'assets/icons/closeEye.png';

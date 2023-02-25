@@ -52,7 +52,19 @@
   "asset_type": "Asset Type",
   "asset_status": "Asset Status",
   "car": "car",
-
+  "join_date": "Join Date",
+  "job_title": "Job Title",
+  "job_type": "Job Type",
+  "department": "Department",
+  "job_unit": "Job Unit",
+  "location": "Location",
+  "grade": "Grade",
+  "line_manager": "Line Manager",
+  "information_about_organization": "Information about Organization",
+  "personal_information": "Personal Information",
+  "personal_documents": "Personal Documents",
+  "employee_documents": "Employee Documents",
+  "company_documents": "Company Documents",
   "active": "active",
   "inactive": "inactive",
   "unlimited_time": "Unlimited Time",
@@ -173,10 +185,16 @@
   "gender": "Gender",
   "job_id": "Job ID",
   "id_type": "Identity Type",
+  "national_id": "National ID",
+
   "id_number": "Identity Number",
   "religion": "Religion",
+  "muslim": "Muslim",
+  "christian": "Christian",
   "nationality": "Nationality",
   "marital_status": "Marital Status",
+  "married": "Married",
+  "single": "Single",
   "status": "Status",
   "approved":"Approved",
   "cancelled_by_employee":"Cancelled by Employee",
@@ -309,6 +327,7 @@
   "payment_tickets":"Payment Tickets",
   "other": "other",
   "there_are_no_paid_tickets": "There are no paid tickets",
-  "reason": "reason"
-
+  "reason": "reason",
+  "work": "Work",
+  "not_attended": "Not Attended"
 }

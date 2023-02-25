@@ -8,9 +8,11 @@ final String? svgIcon;
 final VoidCallback onTap;
 final bool isSelected;
 final String? name;
+final double? width;final double? height;
+
 const BottomNavItem(
     {super.key, this.imageIcon,this.svgIcon , this.name,this.isSelected = false,
-      required this.onTap,});
+      required this.onTap, this.width=20, this.height=20,});
 
 @override
 Widget build(BuildContext context) {
@@ -29,14 +31,14 @@ Widget build(BuildContext context) {
           SvgPicture.asset(
             svgIcon??"",
             color:isSelected ? ColorResources.PRIMARY :ColorResources.disabledColor ,
-            width: 20,
-            height:20,
+            width: width,
+            height:height,
           ):
           Image.asset(
             imageIcon??"",
             color:isSelected ? ColorResources.PRIMARY :ColorResources.disabledColor ,
-            width: 20,
-            height:20,
+            width: width,
+            height:height,
           ),
           name != null?
           Text(name??"",style: TextStyle(
@@ -44,7 +46,6 @@ Widget build(BuildContext context) {
             color: isSelected? ColorResources.PRIMARY
                 :ColorResources.disabledColor,
             fontSize: 10,
-
           ),):const SizedBox.shrink()
         ],
       ),

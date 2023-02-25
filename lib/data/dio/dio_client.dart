@@ -1,15 +1,16 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../app/core/api/end_points.dart';
 import 'api_clinet.dart';
 import 'logging_interceptor.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class DioClient extends ApiClient {
   final String baseUrl;
   final LoggingInterceptor loggingInterceptor;
-
-  // final SharedPreferences sharedPreferences;
+  final SharedPreferences sharedPreferences;
 
   final Dio dio;
 
@@ -19,18 +20,20 @@ class DioClient extends ApiClient {
     this.baseUrl, {
     required this.dio,
     required this.loggingInterceptor,
-    // required this.sharedPreferences,
+     required this.sharedPreferences,
   }) {
     // token = sharedPreferences.getString(AppStorageKey.token);
     dio
       ..options.baseUrl = baseUrl
-      ..options.connectTimeout = 30000
-      ..options.receiveTimeout = 30000
+      ..options.connectTimeout = 60.seconds
+      ..options.receiveTimeout = 60.seconds
       ..httpClientAdapter
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
-        'X-Authorization': EndPoints.apiKey
+        'X-Api-Key': EndPoints.apiKey,
+        // 'language_code': sharedPreferences.getString("languageCode")
+
       };
     dio.interceptors.add(loggingInterceptor);
   }

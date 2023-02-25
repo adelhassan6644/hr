@@ -2,6 +2,7 @@ import 'dart:collection';
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hr_project/app/core/utils/color_resources.dart';
 import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
@@ -39,6 +40,7 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
         length:3,
         initialIndex: _selectedIndex,
         vsync: CustomNavigator.scaffoldState.currentState!);
+    _onDaySelected(DateTime.now(),DateTime.now());
     super.initState();
   }
 
@@ -119,19 +121,7 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
         padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT.h),
         child: Column(
           children: [
-            /*CustomTabBar(
-              myTabs: [
-                tab(isSelected: _selectedIndex==0,
-                    label: "weekly"),
-                tab(isSelected: _selectedIndex==1,
-                    label: "monthly"),
-                tab(isSelected: _selectedIndex==2,
-                    label: "yearly"),
-              ],
-              tabController: _tabController,
-              onTap: (int index) {
-                setState(() {_selectedIndex = index;});
-              },),*/
+
             TableCalendar<Event>(
               firstDay: kFirstDay,
               lastDay: kLastDay,
@@ -142,10 +132,9 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
               calendarFormat: _calendarFormat,
               rangeSelectionMode: _rangeSelectionMode,
               eventLoader: _getEventsForDay,
-              startingDayOfWeek: StartingDayOfWeek.monday,
+              startingDayOfWeek: StartingDayOfWeek.sunday,
               calendarStyle: CalendarStyle(
-                // weekendDecoration:BoxDecoration(color:ColorResources.primary.withOpacity(.5),shape: BoxShape.circle ),
-                // Use `CalendarStyle` to customize the UI
+
                 outsideDaysVisible: true,
                 selectedDecoration:  const BoxDecoration(color:ColorResources.PRIMARY,shape: BoxShape.circle ),
                   markerDecoration: const BoxDecoration(color:ColorResources.PRIMARY,shape: BoxShape.circle ),
@@ -154,11 +143,7 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
               onDaySelected: _onDaySelected,
               weekendDays: const [DateTime.friday, DateTime.thursday],
 
-              // holidayPredicate: (day) {
-              //   // Every 20th day of the month will be treated as a holiday
-              //   return day.day == 20;
-              // },
-              onRangeSelected: _onRangeSelected,
+
               onFormatChanged: (format) {
                 if (_calendarFormat != format) {
                   setState(() {
@@ -169,7 +154,7 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
               onPageChanged: (focusedDay) {
                 _focusedDay = focusedDay;
               },
-            ),
+            ).animate().flip().slide().then(delay:10.ms).shimmer(),
             const SizedBox(height: 8.0),
             Expanded(
               child: ValueListenableBuilder<List<Event>>(
@@ -185,35 +170,7 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
                 },
               ),
             ),
-        /*    Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  Center(
-                      child: Column(
-                        children: const [
-                          AttendanceCard(statues: "متأخر"),
-                          AttendanceCard(statues: "late"),
-                        ],
-                      )),
-                  Center(
-                      child: Column(
-                        children: const [
-                          AttendanceCard(statues: "متأخر"),
-                          AttendanceCard(statues: "late"),
-                        ],
-                      )),
-                  Center(
-                      child: Column(
-                        children: const [
-                          AttendanceCard(statues: "متأخر"),
-                          AttendanceCard(statues: "late"),
-                        ],
-                      )),
-                ],
-              ),
-            ),*/
+
           ],
         ),
       ),

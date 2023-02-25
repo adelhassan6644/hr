@@ -2,6 +2,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/notifier/add_request_provider.dart';
+import 'package:hr_project/presentation/notifier/attendance_repo_provider.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:hr_project/presentation/notifier/language_provider.dart';
 import 'package:hr_project/presentation/notifier/localization_provider.dart';
@@ -40,6 +41,7 @@ Future<void> main() async {
     ChangeNotifierProvider(create: (context) => di.sl<ProfileProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LanguageProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<AttendanceProvider>()),
   ], child: const MyApp()));
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarBrightness: Brightness.light,
@@ -55,6 +57,8 @@ class MyApp extends StatelessWidget {
     for (var language in AppStorageKey.languages) {
       locals.add(Locale(language.languageCode!, language.countryCode));
     }
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark, statusBarBrightness: Brightness.light));
     return MaterialApp(
       builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
@@ -79,6 +83,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+
       home: const LoginScreen(),
     );
   }

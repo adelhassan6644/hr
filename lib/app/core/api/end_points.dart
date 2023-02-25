@@ -1,15 +1,14 @@
 class EndPoints {
-  static const String baseUrl = '';
-  static const String paymentBaseUrl = '';
-  static const String apiKey = '';
+  static const String baseUrl = 'https://erp.softwarecloud2.com/api';
+  static const String paymentBaseUrl = '/employee/login';
+  static const String apiKey = '123';
   static const String register = '';
-  static const String login = '';
-  static const String confirmMail = '';
-  static const String forgetPassword = '';
-  static const String restPasswordConfirm = '';
-  static const String resendConfirmationCode = '';
-  static const String getSlider = '';
+  static const String login = '/employee/login';
   static const String updatePassword = '';
+  static const String resetPassword = '';
+  static const String sendVerificationCode = '';
+  static const String getVerificationCode = '';
+  static const String getSlider = '';
   static const String publicLessons = '';
   static const String todaySchedule = '';
   static const String getPaidLessons = '';
