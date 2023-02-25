@@ -38,6 +38,8 @@ dependencies:
   dio: ^5.0.0
   internet_connection_checker:
   geolocator: ^9.0.2
+  permission_handler:
+  fluttertoast:
   dartz:
   equatable:
   shared_preferences:
