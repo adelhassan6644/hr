@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
@@ -155,7 +156,7 @@ profileCard({required UserModel user,context}){
           Center(child: Text(Provider.of<LocalizationProvider>(context,listen: false).locale.languageCode == "ar"?user.arName??"":user.enName??"",style: titleTextStyle)),
           const SizedBox(height: 8,),
           Center(child: Text(user.description??"",style: hintTextStyle)),
-        ],),
+        ],).animate().flip().then(delay:10.ms).shimmer(),
         IconButton(onPressed: () => CustomNavigator.push(Routes.SETTINGS), icon: const Icon(Icons.settings,color: ColorResources.PRIMARY,size: 26,)),
 
       ],

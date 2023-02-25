@@ -45,6 +45,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
                 child: Center(
                   child:Image.asset(
                     Images.splash,
+                    width: context.width*.7,
 
                   ),
                 ).animate()

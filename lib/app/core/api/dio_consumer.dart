@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hr_project/app/core/api/status_code.dart';
 import 'package:hr_project/di.dart' as di;
@@ -80,11 +80,11 @@ class DioConsumer implements ApiConsumer {
 
   dynamic _handleDioError(DioError error) {
     switch (error.type) {
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionTimeout:
       case DioErrorType.sendTimeout:
       case DioErrorType.receiveTimeout:
         throw const FetchDataException();
-      case DioErrorType.response:
+      case DioErrorType.badResponse:
         switch (error.response?.statusCode) {
           case StatusCode.badRequest:
             throw const BadRequestException();
@@ -102,7 +102,7 @@ class DioConsumer implements ApiConsumer {
         break;
       case DioErrorType.cancel:
         break;
-      case DioErrorType.other:
+      case DioErrorType.unknown:
         throw const NoInternetConnectionException();
     }
   }

@@ -159,7 +159,7 @@ class RequestDetailsScreen extends StatelessWidget {
                         padding:  EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                         child: Row(
                           children: [
-                            Image.asset(Images.period,height: 20.h,width: 20.w,color: ColorResources.HEADER,),
+                            Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: ColorResources.HEADER,),
                             SizedBox(width: 8.w,),
                             Expanded(
                               child: Text(getTranslated("period_of_installment",context),style: AppTextStyles.w600.copyWith(
