@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../app/core/api/end_points.dart';
 import 'api_clinet.dart';
 import 'logging_interceptor.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class DioClient extends ApiClient {
   final String baseUrl;
@@ -24,8 +25,8 @@ class DioClient extends ApiClient {
     // token = sharedPreferences.getString(AppStorageKey.token);
     dio
       ..options.baseUrl = baseUrl
-      ..options.connectTimeout = 30000
-      ..options.receiveTimeout = 30000
+      ..options.connectTimeout = 60.seconds
+      ..options.receiveTimeout = 60.seconds
       ..httpClientAdapter
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
