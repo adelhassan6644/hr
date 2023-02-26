@@ -84,7 +84,7 @@ class _PermissionRequestScreenState extends State<PermissionRequestScreen> {
                           onChange:addRequestProvider.onSelectLoanType,
                           name: getTranslated("type", context),
                           pIcon: Images.time,
-                          pIconColor: ColorResources.hintColor);
+                          pIconColor: ColorResources.GOLD_COLOR);
                     }
                     ),
                     SizedBox(
