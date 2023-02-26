@@ -106,7 +106,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required int days}) {
           Row(
             children: [
               Text(
-                "$days ${getTranslated("days", context)}",
+                "${days.toString().convertDigits()} ${getTranslated("days", context)}",
                 style: const TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 16,

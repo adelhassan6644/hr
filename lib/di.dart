@@ -25,6 +25,7 @@ Future<void> init() async {
         EndPoints.baseUrl,
         dio: sl(),
         loggingInterceptor: sl(),
+    sharedPreferences: sl()
       ));
 
   //Model
