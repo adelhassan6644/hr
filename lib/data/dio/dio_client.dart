@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../app/core/api/app_interceptors.dart';
 import '../../app/core/api/end_points.dart';
 import 'api_clinet.dart';
@@ -11,7 +12,7 @@ class DioClient extends ApiClient {
   final String baseUrl;
   final LoggingInterceptor loggingInterceptor;
 
-  // final SharedPreferences sharedPreferences;
+  final SharedPreferences sharedPreferences;
 
   final Dio _dio;
 
@@ -21,7 +22,7 @@ class DioClient extends ApiClient {
     this.baseUrl, {
     required Dio dio,
     required this.loggingInterceptor,
-    // required this.sharedPreferences,
+    required this.sharedPreferences,
   }) : _dio = dio {
     // token = sharedPreferences.getString(AppStorageKey.token);
     _dio
@@ -32,7 +33,9 @@ class DioClient extends ApiClient {
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
-        'X-Api-Key': EndPoints.apiKey
+        'X-Api-Key': EndPoints.apiKey,
+        // 'language_code': sharedPreferences.getString("languageCode")
+
       };
     _dio.interceptors.add(PrettyDioLogger(
       requestHeader: true,
