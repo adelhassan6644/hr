@@ -2,9 +2,10 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import '../../app/core/api/app_interceptors.dart';
 import '../../app/core/api/end_points.dart';
 import 'api_clinet.dart';
-import 'logging_interceptor.dart';
 
 class DioClient extends ApiClient {
   final String baseUrl;
@@ -12,18 +13,18 @@ class DioClient extends ApiClient {
 
   // final SharedPreferences sharedPreferences;
 
-  final Dio dio;
+  final Dio _dio;
 
-  String? token;
+  String? _token;
 
   DioClient(
     this.baseUrl, {
-    required this.dio,
+    required Dio dio,
     required this.loggingInterceptor,
     // required this.sharedPreferences,
-  }) {
+  }) : _dio = dio {
     // token = sharedPreferences.getString(AppStorageKey.token);
-    dio
+    _dio
       ..options.baseUrl = baseUrl
       ..options.connectTimeout = 60.seconds
       ..options.receiveTimeout = 60.seconds
@@ -33,7 +34,15 @@ class DioClient extends ApiClient {
         "Accept": " application/json",
         'X-Api-Key': EndPoints.apiKey
       };
-    dio.interceptors.add(loggingInterceptor);
+    _dio.interceptors.add(PrettyDioLogger(
+      requestHeader: true,
+      requestBody: true,
+      responseBody: true,
+      responseHeader: true,
+      error: true,
+      compact: true,
+      maxWidth: 150,
+    ),);
   }
 
   @override
@@ -42,7 +51,7 @@ class DioClient extends ApiClient {
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
-      var response = await dio.get(uri, queryParameters: queryParameters);
+      var response = await _dio.get(uri, queryParameters: queryParameters);
       log(response.toString());
 
       return response;
@@ -61,7 +70,7 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      var response = await dio.post(
+      var response = await _dio.post(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -81,7 +90,7 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      var response = await dio.put(
+      var response = await _dio.put(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -101,7 +110,7 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      var response = await dio.delete(
+      var response = await _dio.delete(
         uri,
         data: data,
         queryParameters: queryParameters,

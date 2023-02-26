@@ -1,27 +1,35 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hr_project/app/core/utils/constant.dart';
 
 import '../utils/app_strings.dart';
 
-class AppIntercepters extends Interceptor {
+class LoggingInterceptor extends InterceptorsWrapper {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    debugPrint('REQUEST[${options.method}] => PATH: ${options.path}');
+    log('REQUEST[${options.data}] => PATH: ${options.path}');
+
+
     options.headers[AppStrings.contentType] = AppStrings.applicationJson;
     super.onRequest(options, handler);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    debugPrint(
-        'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
+    log( 'RESPONSE[${response.data}]'
+        );
+
+
     super.onResponse(response, handler);
   }
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    debugPrint(
-        'ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
+    log( 'ERROR[${err.response}] => PATH: ${err.requestOptions.path}');
+
+
     super.onError(err, handler);
   }
 }

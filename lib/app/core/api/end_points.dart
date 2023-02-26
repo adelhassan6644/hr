@@ -2,6 +2,7 @@ class EndPoints {
   static const String baseUrl = 'https://erp.softwarecloud2.com/api';
   static const String paymentBaseUrl = '/employee/login';
   static const String apiKey = '123';
+  static const String attendEmployee = '/employee/attendance/attend/';
   static const String register = '';
   static const String login = '/employee/login';
   static const String updatePassword = '';

@@ -45,6 +45,7 @@ dependencies:
   equatable:
   shared_preferences:
   get_it:
+  pretty_dio_logger:
   #    firebase_messaging:
   provider:
   connectivity:
@@ -81,6 +82,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_launcher_icons:
+
 flutter_native_splash:
   image: ""
   color: "ffffff"
@@ -89,7 +91,7 @@ flutter_native_splash:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: ""
+  image_path: "assets/icons/Icon.png"
 
   flutter_lints: ^2.0.0
 

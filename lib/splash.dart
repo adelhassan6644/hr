@@ -22,9 +22,9 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
     Future.delayed(const Duration(milliseconds: 4500), () {
 
       if (Provider.of<AuthProvider>(context, listen: false).isLogin) {
-        CustomNavigator.push(Routes.DASHBOARD,replace: true);
+        CustomNavigator.push(Routes.DASHBOARD,clean: true);
       }else{
-        CustomNavigator.push(Routes.LOGIN,replace: true);
+        CustomNavigator.push(Routes.LOGIN,clean: true);
       }
 
     });

@@ -1,7 +1,7 @@
 import '../../../presentation/notifier/language_provider.dart';
 
 class AppStorageKey {
-  static const String token = "token";
+  static const String userID = "user_id";
   static const String isLogin = "is_login";
   static const String userKey = "user_key";
   static String firstTimeOnApp = "first_time";

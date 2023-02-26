@@ -6,6 +6,7 @@ import 'app_strings.dart';
 import 'color_resources.dart';
 import 'dimensions.dart';
 
+
  const OutlineInputBorder disableBorderStyle =   OutlineInputBorder(
   borderRadius: BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),

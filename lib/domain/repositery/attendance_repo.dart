@@ -1,64 +1,38 @@
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../app/core/api/end_points.dart';
+import '../../app/core/error/api_error_handler.dart';
+import '../../app/core/error/failures.dart';
 import '../../data/dio/dio_client.dart';
-import '../../navigation/custom_navigation.dart';
-import '../../presentation/base/regular_location_permission.bottomsheet.dart';
+import 'package:geolocator/geolocator.dart';
 
-class AttendanceRepo {
+import 'base_repo.dart';
 
-  final SharedPreferences sharedPreferences;
-  final DioClient dioClient;
-  AttendanceRepo({required this.sharedPreferences, required this.dioClient});
-  Future<bool> handleLocationRequest() async {
-    var status = await Permission.locationWhenInUse.status;
-    //check if location permission is not granted
-    if (!status.isGranted) {
-      final requestResult = await showDialog(
-        barrierDismissible: false,
-        context: CustomNavigator.navigatorState.currentContext!,
-        builder: (context) {
-          return RegularLocationPermissionDialog();
-        },
-      );
-      //check if dialog was accepted or not
-      if (requestResult == null || (requestResult is bool && !requestResult)) {
-        return false;
+class AttendanceRepo extends BaseRepo {
+
+  AttendanceRepo({required super.sharedPreferences, required super.dioClient});
+
+  Future<Either<ServerFailure, Response>> attendEmployee() async {
+    try {
+      final position = await getCurrentPosition();
+      Response response = await dioClient.post(
+          uri: "${EndPoints.attendEmployee}${currentUserID()}",
+          data: {"lat": position.latitude, "long": position.longitude});
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return left(ServerFailure(
+            ApiErrorHandler.getMessage(response.data['message'])));
       }
-
-      //
-  else {
-        permissionDeniedAlert();
-      }
-
-      if (status.isPermanentlyDenied) {
-        //When the user previously rejected the permission and select never ask again
-        //Open the screen of settings
-        await openAppSettings();
-      }
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
-    //location permission is granted
-    else {
-
-    }
-    return true;
   }
 
-  //
-  void permissionDeniedAlert() async {
-    //The user deny the permission
-    await Fluttertoast.showToast(
-      msg: "Permission denied",
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 3,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
+  Future<Position> getCurrentPosition() async {
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.bestForNavigation);
   }
-
 }

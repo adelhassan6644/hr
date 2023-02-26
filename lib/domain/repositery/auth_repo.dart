@@ -55,6 +55,11 @@ class AuthRepo {
         AppStorageKey.userKey,
         jsonEncode(jsonData),
       );
+
+      await sharedPreferences.setInt(
+        AppStorageKey.userID,
+        jsonData['id'],
+      );
     } catch (error) {
       return ServerFailure(ApiErrorHandler.getMessage(error));
     }

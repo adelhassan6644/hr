@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:permission_handler/permission_handler.dart';
 
+import '../../navigation/custom_navigation.dart';
 import 'custom_button.dart';
 
 
@@ -22,16 +24,18 @@ class RegularLocationPermissionDialog extends StatelessWidget {
 
           CustomButton(
             text: "Next",
-            onTap: () {
-              // AppService().navigatorKey.currentContext.pop(true);
+            onTap: () async {
+              CustomNavigator.pop();
+              await openAppSettings();
+
             },
           ),
           CustomButton(
             text: "Cancel",
 
-            onTap: () {
-              context.pop(false);
-              // print("called here");
+            onTap: () async {
+              CustomNavigator.pop();
+              await openAppSettings();
             },
           ),
         ],

@@ -24,10 +24,23 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+		<key>NSCameraUsageDescription</key>
+    		<string>We need access to your camera for profile photo update and scanning for order verification code.</string>
+    		<key>NSLocationAlwaysUsageDescription</key>
+    		<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
+    		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    		<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
+    		<key>NSLocationWhenInUseUsageDescription</key>
+    		<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
+    		<key>NSPhotoLibraryUsageDescription</key>
+    		<string>We need access to your gallery for profile photo.</string>
+    		<key>NSMicrophoneUsageDescription</key>
+    		<string>We does not access to microphone</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
