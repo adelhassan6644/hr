@@ -301,7 +301,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                 return "Must be less 4 member";
                               }
                             },
-                            tIconColor: ColorResources.hintColor,
+                            tIconColor: ColorResources.GOLD_COLOR,
                             hint:getTranslated("members", context) ,
                             controller: members,
                             label: true,
