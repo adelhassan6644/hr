@@ -3,6 +3,7 @@ import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/auth/login_screen.dart';
 import 'package:hr_project/presentation/notifier/add_request_provider.dart';
 import 'package:hr_project/presentation/notifier/attendance_repo_provider.dart';
+import 'package:hr_project/presentation/notifier/attendance_schedules_provider.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:hr_project/presentation/notifier/language_provider.dart';
 import 'package:hr_project/presentation/notifier/localization_provider.dart';
@@ -42,6 +43,7 @@ Future<void> main() async {
     ChangeNotifierProvider(create: (context) => di.sl<LanguageProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AttendanceProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<AttendanceScheduleProvider>()),
   ], child: const MyApp()));
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarBrightness: Brightness.light,

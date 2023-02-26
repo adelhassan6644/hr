@@ -3,6 +3,7 @@ class EndPoints {
   static const String paymentBaseUrl = '/employee/login';
   static const String apiKey = '123';
   static const String attendEmployee = '/employee/attendance/attend/';
+  static const String attendEmployeeSchedule = '/employee/attendance/schedules/';
   static const String register = '';
   static const String login = '/employee/login';
   static const String updatePassword = '';

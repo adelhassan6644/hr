@@ -9,13 +9,21 @@ import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:hr_project/presentation/requests/request_flow_screen.dart';
 import 'package:hr_project/presentation/requests/widgets/request_card.dart';
+import 'package:provider/provider.dart';
 
 import '../../app/core/utils/text_styles.dart';
 import '../../navigation/routes.dart';
 import '../base/animated_widget.dart';
+import '../notifier/attendance_schedules_provider.dart';
 
-class RequestsScreen extends StatelessWidget {
+class RequestsScreen extends StatefulWidget {
   const RequestsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RequestsScreen> createState() => _RequestsScreenState();
+}
+
+class _RequestsScreenState extends State<RequestsScreen> {
 
   @override
   Widget build(BuildContext context) {

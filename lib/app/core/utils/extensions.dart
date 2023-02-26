@@ -201,30 +201,7 @@ class Event {
   String toString() => title;
 }
 
-final kEvents = LinkedHashMap<DateTime, List<Event>>(
-  equals: isSameDay,
-  hashCode: getHashCode,
-)..addAll(_kEventSource);
-List<DateTime> daysInRange(DateTime first, DateTime last) {
-  final dayCount = last.difference(first).inDays + 1;
-  return List.generate(
-    dayCount,
-    (index) => DateTime.utc(first.year, first.month, first.day + index),
-  );
-}
 
-final kToday = DateTime.now();
-final kFirstDay = DateTime(kToday.year, kToday.month - 3, kToday.day);
-final kLastDay = DateTime(kToday.year, kToday.month + 3, kToday.day);
-final _kEventSource = { for (var item in List.generate(50, (index) => index)) DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5) : List.generate(
-        item % 4 + 1, (index) => Event(title: getTranslated("work", CustomNavigator.scaffoldState.currentContext!), color: Colors.green)) }
-  ..addAll({
-    kToday: [
-      Event(title: getTranslated("work", CustomNavigator.scaffoldState.currentContext!), color: Colors.grey),
-      Event(title: getTranslated("vacation", CustomNavigator.scaffoldState.currentContext!), color: Colors.green),
-      Event(title:  getTranslated("not_attended", CustomNavigator.scaffoldState.currentContext!), color: Colors.red),
-    ],
-  });
 
 extension MediaQueryValues on BuildContext {
   double get height => MediaQuery.of(this).size.height;
