@@ -44,7 +44,7 @@ class CustomButtonImagePicker extends StatelessWidget {
                       color: ColorResources.BACKGROUND_COLOR,
                       border: Border.all(
                       style: BorderStyle.solid,
-                      color: ColorResources.BORDER_COLOR,
+                      color: ColorResources.GOLD_COLOR.withOpacity(0.2),
                     )
                   ),
                   child: Row(
@@ -55,18 +55,18 @@ class CustomButtonImagePicker extends StatelessWidget {
                       imageFile != null || imageUrl != null ?
                       const Icon(Icons.file_upload,
                           size: 20,
-                        color: ColorResources.hintColor,
+                        color: ColorResources.GOLD_COLOR,
                       ) : Image.asset(
                         Images.attachment,
                         height: 20,
-                        color: ColorResources.hintColor,
+                        color: ColorResources.GOLD_COLOR,
                       ),
                       SizedBox(width: 15.w),
                       Text(
                         imageFile != null || imageUrl != null ? getTranslated("edit", context) : getTranslated( "attachment", context),
                         style: AppTextStyles.w500.copyWith(
                             fontSize: 12,
-                            color: ColorResources.hintColor),
+                            color: ColorResources.PRIMARY),
                       ),
                     ],
                   ),

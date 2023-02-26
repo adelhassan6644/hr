@@ -55,7 +55,7 @@ class _ClearAssetRequest extends State<ClearAssetRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: ColorResources.GOLD_COLOR.withOpacity(0.4),
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -69,6 +69,7 @@ class _ClearAssetRequest extends State<ClearAssetRequest> {
                         getTranslated("clear_asset_details", context),
                         style: AppTextStyles.w600.copyWith(
                           fontSize: 16.0,
+                          color: ColorResources.PRIMARY
                         ),
                       ),
                     ),
@@ -82,7 +83,7 @@ class _ClearAssetRequest extends State<ClearAssetRequest> {
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("clear_asset_type", context),
                               pIcon: Images.assetsIcon,
-                              pIconColor: ColorResources.hintColor);
+                              pIconColor: ColorResources.GOLD_COLOR);
                         }
                     ),
                   ],

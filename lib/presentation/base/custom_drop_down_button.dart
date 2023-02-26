@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/app/core/utils/text_styles.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/dimensions.dart';
@@ -57,7 +58,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
         isExpanded: true,
         dropdownColor: ColorResources.FILL,
         itemHeight: 50,
-        icon: widget.icon ?? const Icon(Icons.arrow_drop_down,color:ColorResources.hintColor,),
+        icon: widget.icon ?? const Icon(Icons.arrow_drop_down,color:ColorResources.GOLD_COLOR,),
         iconSize: widget.iconSize,
         hint: Row(
           children: [
@@ -87,7 +88,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           errorBorder: errorOutLineInputBorderStyle,
           focusedErrorBorder: errorOutLineInputBorderStyle,
           labelText: widget.label,
-          errorStyle: errorHintTextStyle,
+          errorStyle:errorHintTextStyle
         ),
         name: widget.name,
       ),

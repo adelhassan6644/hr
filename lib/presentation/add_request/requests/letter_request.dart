@@ -61,7 +61,7 @@ class _LetterRequestState extends State<LetterRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: ColorResources.GOLD_COLOR.withOpacity(0.4),
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -75,6 +75,7 @@ class _LetterRequestState extends State<LetterRequest> {
                         getTranslated("letter_details", context),
                         style: AppTextStyles.w600.copyWith(
                           fontSize: 16.0,
+                          color: ColorResources.PRIMARY
                         ),
                       ),
                     ),
@@ -88,7 +89,7 @@ class _LetterRequestState extends State<LetterRequest> {
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("letter_type", context),
                               pIcon: Images.letter,
-                              pIconColor: ColorResources.hintColor);
+                              pIconColor: ColorResources.GOLD_COLOR);
                         }
                     ),
                     SizedBox(
@@ -110,7 +111,7 @@ class _LetterRequestState extends State<LetterRequest> {
                       tIcon: Images.letter,
                       label: true,
                       removePIcon: false,
-                      tIconColor: ColorResources.hintColor,
+                      tIconColor: ColorResources.GOLD_COLOR,
                       hint: getTranslated("subject_to_en", context),
                       onTap: (){},
                     ),
@@ -121,7 +122,7 @@ class _LetterRequestState extends State<LetterRequest> {
                       tIcon: Images.letter,
                       removePIcon: false,
                       label: true,
-                      tIconColor: ColorResources.hintColor,
+                      tIconColor: ColorResources.GOLD_COLOR,
                       hint: getTranslated("subject_to_ar", context),
                       onTap: (){},
                     ),

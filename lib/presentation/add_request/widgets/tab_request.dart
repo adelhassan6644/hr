@@ -15,7 +15,7 @@ Widget tabRequest({required String title, Function()? onTap ,IconData? icon,Colo
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(
                     width: 0.5,
-                    color: ColorResources.BORDER_COLOR
+                    color: ColorResources.GOLD_COLOR.withOpacity(0.4)
                 )
             ),
             child: Row(

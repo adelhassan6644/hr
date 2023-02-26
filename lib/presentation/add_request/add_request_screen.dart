@@ -29,7 +29,7 @@ class AddRequestScreen extends StatelessWidget {
          child: ListAnimator(
            data: [
            Text(getTranslated("select_your_request_type", context),style: AppTextStyles.w500.copyWith(
-              color: ColorResources.SUBTITLE,
+              color: ColorResources.PRIMARY,
               fontSize: 16.0,
            ),),
 
@@ -43,7 +43,7 @@ class AddRequestScreen extends StatelessWidget {
            decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(12.w)),
              border: Border.all(
-               color: ColorResources.BORDER_COLOR,
+               color: ColorResources.GOLD_COLOR.withOpacity(0.4),
                 width: 1.0.h,
              )
            ),
@@ -57,18 +57,18 @@ class AddRequestScreen extends StatelessWidget {
              SizedBox(
                height: 16.h,
              ),
-               tabRequest(title:getTranslated("loan", context),textColor:ColorResources.SUBTITLE,
+               tabRequest(title:getTranslated("loan", context),textColor:ColorResources.PRIMARY,
                    textSize: 14,
-                   iconColor: ColorResources.SUBTITLE,
+                   iconColor: ColorResources.GOLD_COLOR,
                    astIcon: Images.salaries,
                onTap: ()=>CustomNavigator.push(Routes.LOAN_REQUEST)
                ),
                SizedBox(
                height: 8.h,
              ),
-               tabRequest(title:getTranslated("expense_claim", context),textColor:ColorResources.SUBTITLE,
+               tabRequest(title:getTranslated("expense_claim", context),textColor:ColorResources.PRIMARY,
                    textSize: 14,
-                   iconColor: ColorResources.SUBTITLE,
+                   iconColor: ColorResources.GOLD_COLOR,
                    astIcon: Images.expenses,
                    onTap: ()=>CustomNavigator.push(Routes.EXPENSE_CLAIM_REQUEST)
 
@@ -86,7 +86,7 @@ class AddRequestScreen extends StatelessWidget {
                decoration: BoxDecoration(
                    borderRadius: BorderRadius.all(Radius.circular(12.w)),
                    border: Border.all(
-                     color: ColorResources.BORDER_COLOR,
+                     color: ColorResources.GOLD_COLOR.withOpacity(0.4),
                      width: 1.0.h,
                    )
                ),
@@ -100,9 +100,9 @@ class AddRequestScreen extends StatelessWidget {
                    SizedBox(
                      height: 16.h,
                    ),
-                   tabRequest(title:getTranslated("permission", context),textColor:ColorResources.SUBTITLE,
+                   tabRequest(title:getTranslated("permission", context),textColor:ColorResources.PRIMARY,
                        textSize: 14,
-                       iconColor: ColorResources.SUBTITLE,
+                       iconColor: ColorResources.GOLD_COLOR,
                        astIcon: Images.exit,
                        onTap: ()=>CustomNavigator.push(Routes.PERMISSIN_REQUEST)),
                  ],),
@@ -117,7 +117,7 @@ class AddRequestScreen extends StatelessWidget {
                decoration: BoxDecoration(
                    borderRadius: BorderRadius.all(Radius.circular(12.w)),
                    border: Border.all(
-                     color: ColorResources.BORDER_COLOR,
+                     color: ColorResources.GOLD_COLOR.withOpacity(0.4),
                      width: 1.0.h,
                    )
                ),
@@ -131,43 +131,43 @@ class AddRequestScreen extends StatelessWidget {
                    SizedBox(
                      height: 16.h,
                    ),
-                   tabRequest(title:getTranslated("vacation", context),textColor:ColorResources.SUBTITLE,
+                   tabRequest(title:getTranslated("vacation", context),textColor:ColorResources.PRIMARY,
                        textSize: 14,
-                       iconColor: ColorResources.SUBTITLE,
+                       iconColor: ColorResources.GOLD_COLOR,
                        astIcon: Images.vacations,
                        onTap: ()=>CustomNavigator.push(Routes.VACATION_REQUEST)
                    ),
                    SizedBox(
                      height: 8.h,
                    ),
-                   tabRequest(title:getTranslated("business_trip", context),textColor:ColorResources.SUBTITLE,
+                   tabRequest(title:getTranslated("business_trip", context),textColor:ColorResources.PRIMARY,
                        textSize: 14,
-                       iconColor: ColorResources.SUBTITLE,
+                       iconColor: ColorResources.GOLD_COLOR,
                        astIcon: Images.plane,
                        onTap: ()=>CustomNavigator.push(Routes.BUSINESS_TRIP_REQUEST)
                    ),
                    SizedBox(
                      height: 8.h,
                    ),
-                   tabRequest(title:getTranslated("letter", context),textColor:ColorResources.SUBTITLE,
+                   tabRequest(title:getTranslated("letter", context),textColor:ColorResources.PRIMARY,
                        textSize: 14,
-                       iconColor: ColorResources.SUBTITLE,
+                       iconColor: ColorResources.GOLD_COLOR,
                        astIcon: Images.letter,
                        onTap: ()=>CustomNavigator.push(Routes.LETTER_REQUEST)),
                    SizedBox(
                      height: 8.h,
                    ),
-                   tabRequest(title:getTranslated("asset", context),textColor:ColorResources.SUBTITLE,
+                   tabRequest(title:getTranslated("asset", context),textColor:ColorResources.PRIMARY,
                        textSize: 14,
-                       iconColor: ColorResources.SUBTITLE,
+                       iconColor: ColorResources.GOLD_COLOR,
                        astIcon: Images.assetsIcon,
                        onTap: ()=>CustomNavigator.push(Routes.ASSET_REQUEST)),
                    SizedBox(
                      height: 8.h,
                    ),
-                   tabRequest(title:getTranslated("asset_clear", context),textColor:ColorResources.SUBTITLE,
+                   tabRequest(title:getTranslated("asset_clear", context),textColor:ColorResources.PRIMARY,
                        textSize: 14,
-                       iconColor: ColorResources.SUBTITLE,
+                       iconColor: ColorResources.GOLD_COLOR,
                        astIcon: Images.assetsIcon,
                        onTap: ()=>CustomNavigator.push(Routes.CLEAR_ASSET_REQUEST)
                    ),

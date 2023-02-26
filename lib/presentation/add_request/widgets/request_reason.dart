@@ -20,7 +20,7 @@ class RequestReason extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.w),
           border: Border.all(
-              color: ColorResources.BORDER_COLOR,
+              color: ColorResources.GOLD_COLOR.withOpacity(0.4),
               width: 0.5,
               style: BorderStyle.solid
           )
@@ -34,6 +34,7 @@ class RequestReason extends StatelessWidget {
               getTranslated("reason", context),
               style: AppTextStyles.w600.copyWith(
                 fontSize: 16.0,
+                color: ColorResources.PRIMARY
               ),
             ),
           ),
@@ -44,7 +45,7 @@ class RequestReason extends StatelessWidget {
             tIcon: Images.question,
             removePIcon: false,
             sIcon:Images.question ,
-            tIconColor: ColorResources.hintColor,
+            tIconColor: ColorResources.GOLD_COLOR,
             hint:getTranslated("reason", context) ,
             controller: reasonController,
             label: true,

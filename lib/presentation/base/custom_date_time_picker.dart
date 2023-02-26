@@ -98,12 +98,10 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
           alignLabelWithHint: true,
           enabledBorder: disableBorderStyle,
           border: disableBorderStyle,
-          hintStyle: AppTextStyles.w500.copyWith(
-            fontSize: 14
-          ),
+          hintStyle: hintTextStyle,
           suffixIcon: Padding(
               padding:  EdgeInsets.symmetric( horizontal: 20.w),
-              child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: ColorResources.hintColor,)),),
+              child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: ColorResources.GOLD_COLOR,)),),
     );
   }
 }

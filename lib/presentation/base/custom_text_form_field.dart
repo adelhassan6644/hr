@@ -161,6 +161,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           isDense: true,
           alignLabelWithHint: true,
           hintText: widget.hint,
+          labelStyle:  widget.isValidat ? hintTextStyle : errorHintTextStyle,
           hintStyle: widget.isValidat ? hintTextStyle : errorHintTextStyle,
           labelText: widget.label ? widget.hint : null,
           fillColor: ColorResources.FILL,

@@ -6,23 +6,23 @@ import 'app_strings.dart';
 import 'color_resources.dart';
 import 'dimensions.dart';
 
- const OutlineInputBorder disableBorderStyle =   OutlineInputBorder(
-  borderRadius: BorderRadius.all(
+  OutlineInputBorder disableBorderStyle =   OutlineInputBorder(
+  borderRadius: const BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
-    color: ColorResources.BORDER_COLOR,
+    color: ColorResources.GOLD_COLOR.withOpacity(0.2),
   ),
 );
 
- const OutlineInputBorder focusBorderStyle =   OutlineInputBorder(
-  borderRadius: BorderRadius.all(
+  OutlineInputBorder focusBorderStyle =   OutlineInputBorder(
+  borderRadius: const BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
-    color: ColorResources.PRIMARY,
+    color: ColorResources.GOLD_COLOR.withOpacity(0.4),
   ),
 );
 
@@ -41,13 +41,14 @@ const TextStyle darkTextStyle = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700);
 
-const TextStyle hintTextStyle = TextStyle(
+ TextStyle hintTextStyle = const TextStyle(
     fontSize: 12,
-    color: ColorResources.hintColor,
+    color: ColorResources.PRIMARY,
     fontWeight: FontWeight.w600);
 
 const TextStyle titleTextStyle = TextStyle(
     fontSize: 14,
+    color: ColorResources.PRIMARY,
     fontWeight: FontWeight.w700);
 
 const TextStyle headLineTextStyle = TextStyle(

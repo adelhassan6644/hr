@@ -54,8 +54,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text("Software Cloud 2", style: titleTextStyle),
+                        children:  [
+                          const Text("Software Cloud 2", style: titleTextStyle),
                           Center(
                               child: Text("Manager", style: hintTextStyle)),
                         ],
