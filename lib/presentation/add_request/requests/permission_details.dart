@@ -57,7 +57,7 @@ class _PermissionRequestScreenState extends State<PermissionRequestScreen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.GOLD_COLOR.withOpacity(0.4),
+                        color: ColorResources.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -71,7 +71,6 @@ class _PermissionRequestScreenState extends State<PermissionRequestScreen> {
                         getTranslated("permission_details", context),
                         style: AppTextStyles.w600.copyWith(
                           fontSize: 16.0,
-                          color: ColorResources.PRIMARY
                         ),
                       ),
                     ),
@@ -84,7 +83,7 @@ class _PermissionRequestScreenState extends State<PermissionRequestScreen> {
                           onChange:addRequestProvider.onSelectLoanType,
                           name: getTranslated("type", context),
                           pIcon: Images.time,
-                          pIconColor: ColorResources.GOLD_COLOR);
+                          pIconColor: ColorResources.hintColor);
                     }
                     ),
                     SizedBox(

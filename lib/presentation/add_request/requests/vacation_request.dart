@@ -65,7 +65,7 @@ class _VacationRequestState extends State<VacationRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.GOLD_COLOR.withOpacity(0.4),
+                        color: ColorResources.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -79,7 +79,6 @@ class _VacationRequestState extends State<VacationRequest> {
                         getTranslated("vacation_details", context),
                         style: AppTextStyles.w600.copyWith(
                           fontSize: 16.0,
-                          color: ColorResources.PRIMARY
                         ),
                       ),
                     ),
@@ -93,7 +92,7 @@ class _VacationRequestState extends State<VacationRequest> {
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("vacation_type", context),
                               pIcon: Images.vacations,
-                              pIconColor: ColorResources.GOLD_COLOR);
+                              pIconColor: ColorResources.hintColor);
                         }
                     ),
                     SizedBox(
@@ -109,12 +108,12 @@ class _VacationRequestState extends State<VacationRequest> {
                                 padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                 child: Text(getTranslated("start_date", context),style: AppTextStyles.w500.copyWith(
                                     fontSize: 13,
-                                  color: ColorResources.PRIMARY
+                                    color: ColorResources.SUBTITLE
                                 ),),
                               ),
                               SizedBox(height: 8.h,),
                               CustomSelectDate(
-                                format: "dd,MMM",
+                                  format: "dd,MMM",
                                   valueChanged: (value) {
                                     setState(() {
                                       startDate = value;
@@ -135,7 +134,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                 padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                 child: Text(getTranslated("end_date", context),style: AppTextStyles.w500.copyWith(
                                     fontSize: 13,
-                                    color: ColorResources.PRIMARY
+                                    color: ColorResources.SUBTITLE
                                 ),),
                               ),
                               SizedBox(height: 8.h,),
@@ -167,11 +166,11 @@ class _VacationRequestState extends State<VacationRequest> {
                                 getTranslated("day", context),
                                 style: AppTextStyles.w500.copyWith(
                                   fontSize: 13,
-                                  color: ColorResources.PRIMARY,
+                                  color: ColorResources.hintColor,
                                 ),
                               ),
                               read: true,
-                              tIconColor: ColorResources.GOLD_COLOR,
+                              tIconColor: ColorResources.hintColor,
                               hint: "${getTranslated("vacation_duration", context)}${"  :  "}${diffBtw2Dates(startDate: startDate??DateTime.now(), endDate: endDate??DateTime.now())}",
                             ),
                           ],
@@ -191,7 +190,7 @@ class _VacationRequestState extends State<VacationRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.GOLD_COLOR.withOpacity(0.4),
+                        color: ColorResources.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -205,7 +204,6 @@ class _VacationRequestState extends State<VacationRequest> {
                           getTranslated("flight_ticket", context),
                           style: AppTextStyles.w600.copyWith(
                             fontSize: 16.0,
-                            color: ColorResources.PRIMARY
                           ),
                         ),
                         CupertinoSwitch(
@@ -236,7 +234,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                       padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                       child: Text(getTranslated("departure_date", context),style: AppTextStyles.w500.copyWith(
                                           fontSize: 13,
-                                          color: ColorResources.PRIMARY
+                                          color: ColorResources.SUBTITLE
                                       ),),
                                     ),
                                     SizedBox(height: 8.h,),
@@ -262,7 +260,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                       padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                       child: Text(getTranslated("return_date", context),style: AppTextStyles.w500.copyWith(
                                           fontSize: 13,
-                                          color: ColorResources.PRIMARY
+                                          color: ColorResources.SUBTITLE
                                       ),),
                                     ),
                                     SizedBox(height: 8.h,),
@@ -289,9 +287,9 @@ class _VacationRequestState extends State<VacationRequest> {
                             type: TextInputType.number,
                             sufWidget: Text(
                               getTranslated("member", context),
-                              style: AppTextStyles.w400.copyWith(
-                                fontSize: 12,
-                                color: ColorResources.PRIMARY,
+                              style: AppTextStyles.w500.copyWith(
+                                fontSize: 13,
+                                color: ColorResources.hintColor,
                               ),
                             ),
                             valid: (v){
@@ -301,7 +299,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                 return "Must be less 4 member";
                               }
                             },
-                            tIconColor: ColorResources.GOLD_COLOR,
+                            tIconColor: ColorResources.hintColor,
                             hint:getTranslated("members", context) ,
                             controller: members,
                             label: true,

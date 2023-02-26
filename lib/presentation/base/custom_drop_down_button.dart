@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/app/core/utils/text_styles.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/dimensions.dart';
@@ -20,10 +19,10 @@ class CustomDropDownButton extends StatefulWidget {
 
   const CustomDropDownButton({
     required this.items,
-     this.value,
-     this.pIcon,
-     this.pIconColor,
-     this.onChange,
+    this.value,
+    this.pIcon,
+    this.pIconColor,
+    this.onChange,
     this.validation,
     this.icon,
     this.label,
@@ -58,16 +57,16 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
         isExpanded: true,
         dropdownColor: ColorResources.FILL,
         itemHeight: 50,
-        icon: widget.icon ?? const Icon(Icons.arrow_drop_down,color:ColorResources.GOLD_COLOR,),
+        icon: widget.icon ?? const Icon(Icons.arrow_drop_down,color:ColorResources.hintColor,),
         iconSize: widget.iconSize,
         hint: Row(
           children: [
-         if( widget.pIcon != null )  Image.asset(
-           widget.pIcon!,
-           height: 20.w,
-           width: 20.w,
-           color: widget.pIconColor,
-         ),
+            if( widget.pIcon != null )  Image.asset(
+              widget.pIcon!,
+              height: 20.w,
+              width: 20.w,
+              color: widget.pIconColor,
+            ),
             SizedBox(width: 15.w,),
             Text(
               widget.name,
@@ -88,7 +87,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           errorBorder: errorOutLineInputBorderStyle,
           focusedErrorBorder: errorOutLineInputBorderStyle,
           labelText: widget.label,
-          errorStyle:errorHintTextStyle
+          errorStyle: errorHintTextStyle,
         ),
         name: widget.name,
       ),

@@ -70,7 +70,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.GOLD_COLOR.withOpacity(0.4),
+                        color: ColorResources.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -84,7 +84,6 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                         getTranslated("business_trip_details", context),
                         style: AppTextStyles.w600.copyWith(
                           fontSize: 16.0,
-                          color: ColorResources.PRIMARY
                         ),
                       ),
                     ),
@@ -98,7 +97,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("destination", context),
                               pIcon: Images.destination,
-                              pIconColor: ColorResources.GOLD_COLOR);
+                              pIconColor: ColorResources.hintColor);
                         }
                     ),
                     SizedBox(
@@ -108,7 +107,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                       tIcon: Images.services,
                       removePIcon: false,
                       read: true,
-                      tIconColor: ColorResources.GOLD_COLOR,
+                      tIconColor: ColorResources.hintColor,
                       hint: getTranslated("select_additional_services", context),
                       onTap: (){
                         setState(() {
@@ -121,39 +120,39 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                 child: SizedBox(
                                   height: context.height*0.35,
                                   child: StatefulBuilder(
-                                    builder: (context,reBuilder) {
-                                      return Column(
-                                        children: [
-                                          ListView.builder(
-                                              itemCount: services.length,
-                                              shrinkWrap: true,
-                                              physics: const BouncingScrollPhysics(),
-                                              itemBuilder: (context,index) {
-                                                return CustomCheckBoxListTile(
-                                                  title:getTranslated(services[index], context),
-                                                  value: selectedService.contains(services[index]),
-                                                  onChange: (value){
-                                                    reBuilder(() {
-                                                      if(selectedService.contains(services[index])){
-                                                        selectedService.remove(services[index]);
-                                                      }else{
-                                                        selectedService.add(services[index]);
-                                                      }
-                                                    });
+                                      builder: (context,reBuilder) {
+                                        return Column(
+                                          children: [
+                                            ListView.builder(
+                                                itemCount: services.length,
+                                                shrinkWrap: true,
+                                                physics: const BouncingScrollPhysics(),
+                                                itemBuilder: (context,index) {
+                                                  return CustomCheckBoxListTile(
+                                                    title:getTranslated(services[index], context),
+                                                    value: selectedService.contains(services[index]),
+                                                    onChange: (value){
+                                                      reBuilder(() {
+                                                        if(selectedService.contains(services[index])){
+                                                          selectedService.remove(services[index]);
+                                                        }else{
+                                                          selectedService.add(services[index]);
+                                                        }
+                                                      });
 
-                                                  },
-                                                );
-                                              }
-                                          ),
-                                        ],
-                                      );
-                                    }
+                                                    },
+                                                  );
+                                                }
+                                            ),
+                                          ],
+                                        );
+                                      }
                                   ),
                                 ),
                               )
                           );
                         });
-                       
+
                       },
                     ),
                     SizedBox(
@@ -169,7 +168,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                 padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                 child: Text(getTranslated("start_date", context),style: AppTextStyles.w500.copyWith(
                                     fontSize: 13,
-                                    color: ColorResources.PRIMARY
+                                    color: ColorResources.SUBTITLE
                                 ),),
                               ),
                               SizedBox(height: 8.h,),
@@ -195,7 +194,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                 padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                 child: Text(getTranslated("end_date", context),style: AppTextStyles.w500.copyWith(
                                     fontSize: 13,
-                                    color: ColorResources.PRIMARY
+                                    color: ColorResources.SUBTITLE
                                 ),),
                               ),
                               SizedBox(height: 8.h,),
@@ -227,11 +226,11 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                 getTranslated("day", context),
                                 style: AppTextStyles.w500.copyWith(
                                   fontSize: 13,
-                                  color: ColorResources.PRIMARY,
+                                  color: ColorResources.hintColor,
                                 ),
                               ),
                               read: true,
-                              tIconColor: ColorResources.GOLD_COLOR,
+                              tIconColor: ColorResources.hintColor,
                               hint: "${getTranslated("business_trip_duration", context)}${"  :  "}${diffBtw2Dates(startDate: startDate??DateTime.now(), endDate: endDate??DateTime.now())}",
                             ),
                           ],
@@ -251,7 +250,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.GOLD_COLOR.withOpacity(0.4),
+                        color: ColorResources.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -265,7 +264,6 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                           getTranslated("flight_ticket", context),
                           style: AppTextStyles.w600.copyWith(
                             fontSize: 16.0,
-                            color: ColorResources.PRIMARY
                           ),
                         ),
                         CupertinoSwitch(
@@ -296,7 +294,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                       padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                       child: Text(getTranslated("departure_date", context),style: AppTextStyles.w500.copyWith(
                                           fontSize: 13,
-                                          color: ColorResources.PRIMARY
+                                          color: ColorResources.SUBTITLE
                                       ),),
                                     ),
                                     SizedBox(height: 8.h,),
@@ -322,7 +320,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                       padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                       child: Text(getTranslated("return_date", context),style: AppTextStyles.w500.copyWith(
                                           fontSize: 13,
-                                          color: ColorResources.PRIMARY
+                                          color: ColorResources.SUBTITLE
                                       ),),
                                     ),
                                     SizedBox(height: 8.h,),
@@ -349,9 +347,9 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                             type: TextInputType.number,
                             sufWidget: Text(
                               getTranslated("member", context),
-                              style: AppTextStyles.w400.copyWith(
-                                fontSize: 12,
-                                color: ColorResources.PRIMARY,
+                              style: AppTextStyles.w500.copyWith(
+                                fontSize: 13,
+                                color: ColorResources.hintColor,
                               ),
                             ),
                             valid: (v){
@@ -361,7 +359,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                 return "Must be less 4 member";
                               }
                             },
-                            tIconColor: ColorResources.GOLD_COLOR,
+                            tIconColor: ColorResources.hintColor,
                             hint:getTranslated("members", context) ,
                             controller: members,
                             label: true,

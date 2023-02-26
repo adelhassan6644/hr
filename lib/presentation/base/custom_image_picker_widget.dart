@@ -40,12 +40,12 @@ class CustomButtonImagePicker extends StatelessWidget {
                   alignment: Alignment.center,
                   height: 70.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.w),
+                      borderRadius: BorderRadius.circular(12.w),
                       color: ColorResources.BACKGROUND_COLOR,
                       border: Border.all(
-                      style: BorderStyle.solid,
-                      color: ColorResources.GOLD_COLOR.withOpacity(0.2),
-                    )
+                        style: BorderStyle.solid,
+                        color: ColorResources.BORDER_COLOR,
+                      )
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -54,19 +54,19 @@ class CustomButtonImagePicker extends StatelessWidget {
                       SizedBox(width: 15.w),
                       imageFile != null || imageUrl != null ?
                       const Icon(Icons.file_upload,
-                          size: 20,
-                        color: ColorResources.GOLD_COLOR,
+                        size: 20,
+                        color: ColorResources.hintColor,
                       ) : Image.asset(
                         Images.attachment,
                         height: 20,
-                        color: ColorResources.GOLD_COLOR,
+                        color: ColorResources.hintColor,
                       ),
                       SizedBox(width: 15.w),
                       Text(
                         imageFile != null || imageUrl != null ? getTranslated("edit", context) : getTranslated( "attachment", context),
                         style: AppTextStyles.w500.copyWith(
                             fontSize: 12,
-                            color: ColorResources.PRIMARY),
+                            color: ColorResources.hintColor),
                       ),
                     ],
                   ),
@@ -74,7 +74,7 @@ class CustomButtonImagePicker extends StatelessWidget {
               ),
             ),
             if (imageFile != null || imageUrl != null) ...[
-               SizedBox(width: 10.w),
+              SizedBox(width: 10.w),
               Expanded(
                 flex: 5,
                 child: GestureDetector(
@@ -83,8 +83,8 @@ class CustomButtonImagePicker extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => ImageViewer(image:imageFile ?? imageUrl,
-                            isFromInternet:imageFile != null ? false: true,
-                       ),
+                          isFromInternet:imageFile != null ? false: true,
+                        ),
                       ),
                     );
                   },

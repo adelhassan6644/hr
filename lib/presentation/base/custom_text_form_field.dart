@@ -104,53 +104,53 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           prefixIcon: widget.removePIcon == true
               ? null
               : Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 5.w,
-                  ),
-                  child: widget.tIcon != null
-                      ? Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 10.w,
-                          ),
-                          child: Image.asset(
-                            widget.tIcon!,
-                            height: 25.h,
-                            color: widget.tIconColor??ColorResources.disabledColor,
-                          ),
-                        )
-                      : null,
-                ),
+            padding: EdgeInsets.symmetric(
+              horizontal: 5.w,
+            ),
+            child: widget.tIcon != null
+                ? Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 10.w,
+              ),
+              child: Image.asset(
+                widget.tIcon!,
+                height: 25.h,
+                color: widget.tIconColor??ColorResources.disabledColor,
+              ),
+            )
+                : null,
+          ),
           suffixIcon: widget.removePIcon == true
               ? null : widget.icon == Icons.lock_outline
-                  ? IconButton(
-                      splashColor: Colors.transparent,
-                      onPressed: _visibility,
-                      alignment: Alignment.center,
-                      icon: _isHidden
-                          ?
-                      Image.asset(
-                          Images.eyeLockIcon,
-                          height: 25.h,
-                          color: ColorResources.disabledColor
-                            )
-                          : Image.asset(
-                              Images.unlockEyeLockIcon,
-                              color: ColorResources.PRIMARY,
-                              height: 25.h,
-                            ),
-                    )
-                  : widget.sufWidget != null
-                      ? Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 25.w, horizontal: 25.w),
-                          child: widget.sufWidget)
-                      : Icon(
-                          widget.icon,
-                          color: Colors.grey,
-                          size: 20,
-                        ),
+              ? IconButton(
+            splashColor: Colors.transparent,
+            onPressed: _visibility,
+            alignment: Alignment.center,
+            icon: _isHidden
+                ?
+            Image.asset(
+                Images.eyeLockIcon,
+                height: 25.h,
+                color: ColorResources.disabledColor
+            )
+                : Image.asset(
+              Images.unlockEyeLockIcon,
+              color: ColorResources.PRIMARY,
+              height: 25.h,
+            ),
+          )
+              : widget.sufWidget != null
+              ? Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: 25.w, horizontal: 25.w),
+              child: widget.sufWidget)
+              : Icon(
+            widget.icon,
+            color: Colors.grey,
+            size: 20,
+          ),
           focusedBorder:
-              widget.read == true ? disableBorderStyle : focusBorderStyle,
+          widget.read == true ? disableBorderStyle : focusBorderStyle,
           enabledBorder: disableBorderStyle,
           disabledBorder: disableBorderStyle,
           focusedErrorBorder: errorOutLineInputBorderStyle,
@@ -161,8 +161,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           isDense: true,
           alignLabelWithHint: true,
           hintText: widget.hint,
-          labelStyle:  widget.isValidat ? hintTextStyle : errorHintTextStyle,
           hintStyle: widget.isValidat ? hintTextStyle : errorHintTextStyle,
+          labelStyle:widget.isValidat ? hintTextStyle : errorHintTextStyle,
           labelText: widget.label ? widget.hint : null,
           fillColor: ColorResources.FILL,
           filled: true,

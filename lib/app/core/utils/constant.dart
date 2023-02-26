@@ -6,27 +6,27 @@ import 'app_strings.dart';
 import 'color_resources.dart';
 import 'dimensions.dart';
 
-  OutlineInputBorder disableBorderStyle =   OutlineInputBorder(
-  borderRadius: const BorderRadius.all(
+const OutlineInputBorder disableBorderStyle =   OutlineInputBorder(
+  borderRadius: BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
-    color: ColorResources.GOLD_COLOR.withOpacity(0.2),
+    color: ColorResources.BORDER_COLOR,
   ),
 );
 
-  OutlineInputBorder focusBorderStyle =   OutlineInputBorder(
-  borderRadius: const BorderRadius.all(
+const OutlineInputBorder focusBorderStyle =   OutlineInputBorder(
+  borderRadius: BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
-    color: ColorResources.GOLD_COLOR.withOpacity(0.4),
+    color: ColorResources.PRIMARY,
   ),
 );
 
-  OutlineInputBorder errorOutLineInputBorderStyle =   const OutlineInputBorder(
+OutlineInputBorder errorOutLineInputBorderStyle =   const OutlineInputBorder(
   borderRadius: BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
@@ -41,14 +41,18 @@ const TextStyle darkTextStyle = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700);
 
- TextStyle hintTextStyle = const TextStyle(
+const TextStyle hintTextStyle = TextStyle(
+    fontSize: 12,
+    color: ColorResources.hintColor,
+    fontWeight: FontWeight.w600);
+
+const TextStyle labelTextStyle = TextStyle(
     fontSize: 12,
     color: ColorResources.PRIMARY,
     fontWeight: FontWeight.w600);
 
 const TextStyle titleTextStyle = TextStyle(
     fontSize: 14,
-    color: ColorResources.PRIMARY,
     fontWeight: FontWeight.w700);
 
 const TextStyle headLineTextStyle = TextStyle(
@@ -75,7 +79,7 @@ const TextStyle unSelectTextStyle = TextStyle(
     fontWeight: FontWeight.w500);
 
 
- BoxDecoration decoration1 = BoxDecoration(
+BoxDecoration decoration1 = BoxDecoration(
   borderRadius:  const BorderRadius.all(
       Radius.circular(Dimensions.PADDING_SIZE_DEFAULT)),
   border: Border.all(
@@ -84,7 +88,7 @@ const TextStyle unSelectTextStyle = TextStyle(
       style: BorderStyle.solid),
 );
 
- BoxDecoration decoration =BoxDecoration(
+BoxDecoration decoration =BoxDecoration(
     borderRadius: const BorderRadius.all(
         Radius.circular(Dimensions.PADDING_SIZE_DEFAULT)),
     border: Border.all(
@@ -112,11 +116,10 @@ final submittedPinTheme = defaultPinTheme.copyWith(
 );
 
 
- Widget hSpace =  SizedBox(
-   height: Dimensions.PADDING_SIZE_LARGE.h,
- );
+Widget hSpace =  SizedBox(
+  height: Dimensions.PADDING_SIZE_LARGE.h,
+);
 
 Widget wSpace =  SizedBox(
   width:Dimensions.PADDING_SIZE_LARGE.w,
 );
-

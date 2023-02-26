@@ -60,7 +60,7 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.GOLD_COLOR.withOpacity(0.4),
+                        color: ColorResources.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -74,7 +74,6 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                         getTranslated("items", context),
                         style: AppTextStyles.w600.copyWith(
                           fontSize: 16.0,
-                          color: ColorResources.PRIMARY
                         ),
                       ),
                     ),
@@ -86,7 +85,7 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                       removePIcon: false,
                       sIcon: Images.question,
                       controller: description,
-                      tIconColor: ColorResources.GOLD_COLOR,
+                      tIconColor: ColorResources.hintColor,
                       hint: getTranslated("item_name", context),
                       onChanged: (String? value) {},
                       label: true,
@@ -102,11 +101,11 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                         getTranslated("sar", context),
                         style: AppTextStyles.w500.copyWith(
                           fontSize: 12,
-                          color: ColorResources.PRIMARY,
+                          color: ColorResources.hintColor,
                         ),
                       ),
                       controller: expenseAmount,
-                      tIconColor: ColorResources.GOLD_COLOR,
+                      tIconColor: ColorResources.hintColor,
                       hint: getTranslated("amount", context),
                       onChanged: (String? value) {},
                       label: true,
@@ -119,7 +118,7 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                       removePIcon: false,
                       sIcon: Images.question,
                       controller: description,
-                      tIconColor: ColorResources.GOLD_COLOR,
+                      tIconColor: ColorResources.hintColor,
                       hint: getTranslated("description", context),
                       label: true,
                     ),
@@ -145,12 +144,12 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
               ),
               Consumer<AddRequestProvider>(
                   builder: (context, addRequestProvider, child) {
-                return CustomButton(
-                    textColor: ColorResources.WHITE,
-                    text: getTranslated("submit", context),
-                    onTap: () => addRequestProvider.onSubmit(),
-                    backgroundColor: ColorResources.PRIMARY);
-              })
+                    return CustomButton(
+                        textColor: ColorResources.WHITE,
+                        text: getTranslated("submit", context),
+                        onTap: () => addRequestProvider.onSubmit(),
+                        backgroundColor: ColorResources.PRIMARY);
+                  })
             ],
           ),
         ),

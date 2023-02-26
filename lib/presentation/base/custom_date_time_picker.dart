@@ -6,7 +6,6 @@ import 'package:hr_project/app/core/utils/text_styles.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:intl/intl.dart';
 
-
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/images.dart';
 import '../../navigation/custom_navigation.dart';
@@ -24,13 +23,13 @@ class CustomSelectDate extends StatefulWidget {
 
   const CustomSelectDate(
       {Key? key,
-      this.initialString,
-      this.format,
-      required this.valueChanged,
-      this.isNotEmptyValue = false,
-      this.showOnly = false,
-      this.startDateTime,
-      required this.label})
+        this.initialString,
+        this.format,
+        required this.valueChanged,
+        this.isNotEmptyValue = false,
+        this.showOnly = false,
+        this.startDateTime,
+        required this.label})
       : super(key: key);
 
   @override
@@ -63,7 +62,7 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
               onConfirm: () {
                 if (date != null) {
                   setState(() =>
-                      _date = DateFormat(widget.format??"dd,MMM,yyyy").format(date!));
+                  _date = DateFormat(widget.format??"dd,MMM,yyyy").format(date!));
                   widget.valueChanged!(date!);
                   CustomNavigator.pop();
                 } else {
@@ -78,9 +77,9 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
                   onDateTimeChanged: (value) => date = value,
                   initialDateTime: date ?? widget.startDateTime ?? DateTime.now(),
                   minimumDate: widget.startDateTime != null ? DateTime(
-                          widget.startDateTime!.year,
-                          widget.startDateTime!.month,
-                          widget.startDateTime!.day)
+                      widget.startDateTime!.year,
+                      widget.startDateTime!.month,
+                      widget.startDateTime!.day)
                       : DateTime(1900),
                   maximumDate: DateTime(2100)));
         }
@@ -93,15 +92,17 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
         return null;
       },
       decoration: InputDecoration(
-          contentPadding:  EdgeInsets.symmetric(vertical: 22.w, horizontal: 22.w),
-          hintText: _date,
-          alignLabelWithHint: true,
-          enabledBorder: disableBorderStyle,
-          border: disableBorderStyle,
-          hintStyle: hintTextStyle,
-          suffixIcon: Padding(
-              padding:  EdgeInsets.symmetric( horizontal: 20.w),
-              child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: ColorResources.GOLD_COLOR,)),),
+        contentPadding:  EdgeInsets.symmetric(vertical: 22.w, horizontal: 22.w),
+        hintText: _date,
+        alignLabelWithHint: true,
+        enabledBorder: disableBorderStyle,
+        border: disableBorderStyle,
+        hintStyle: AppTextStyles.w500.copyWith(
+            fontSize: 14
+        ),
+        suffixIcon: Padding(
+            padding:  EdgeInsets.symmetric( horizontal: 20.w),
+            child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: ColorResources.hintColor,)),),
     );
   }
 }
