@@ -27,6 +27,8 @@ class AttendanceScheduleProvider extends ChangeNotifier {
   DateTime focusedDay = DateTime.now();
   DateTime? currentDay;
   AttendanceSchedules? attendanceSchedules;
+  DateTime? startScheduleData  ;
+
   final ValueNotifier<List<Event>> selectedEvents = ValueNotifier([]);
 
   init() {
@@ -53,6 +55,7 @@ class AttendanceScheduleProvider extends ChangeNotifier {
       }, (success) {
         attendanceSchedules =
             AttendanceSchedules.fromJson(success.data["data"]);
+        startScheduleData= attendanceSchedules!.schedules!.first.startDate!;
         onDaySelected(DateTime.now(), DateTime.now());
 
         isLoading = false;
@@ -92,8 +95,7 @@ class AttendanceScheduleProvider extends ChangeNotifier {
 
     attendanceSchedulesMap = {
       for (var item in workDays.toList())
-        DateTime.utc(kToday.year, kToday.month, item ): List.generate(
-            item , (index) => Event(title: "work", color: Colors.green))
+        DateTime(kToday.year, kToday.month, item ): [Event(title: "work", color: Colors.green)]
     };
     // log("attendanceSchedulesMap$attendanceSchedulesMap");
     kEvents = LinkedHashMap<DateTime, List<Event>>(

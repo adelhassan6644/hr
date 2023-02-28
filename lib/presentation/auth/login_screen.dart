@@ -27,47 +27,47 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            width: context.width,
-            height: context.height * 0.30,
-            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-            decoration: const BoxDecoration(
-              color: ColorResources.PRIMARY,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(30),
-                bottomLeft: Radius.circular(30),
+      body: Form(
+        key: key,
+        child: Column(
+          children: [
+            Container(
+              width: context.width,
+              height: context.height * 0.30,
+              padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+              decoration: const BoxDecoration(
+                color: ColorResources.PRIMARY,
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(30),
+                ),
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(height: MediaQuery.of(context).padding.top),
-                FittedBox(
-                  child: Center(
-                    child: Image.asset(
-                      Images.logo,
-                      height: context.height * 0.20,
-                      width: context.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(height: MediaQuery.of(context).padding.top),
+                  FittedBox(
+                    child: Center(
+                      child: Image.asset(
+                        Images.logo,
+                        height: context.height * 0.20,
+                        width: context.width,
+                      ),
                     ),
                   ),
-                ),
-                // Text(getTranslated("welcome", context),
-                //     style: headLineTextStyle.copyWith(color: Colors.white)),
-                // const SizedBox(
-                //   height: 10,
-                // ),
-                // Text(getTranslated("sign_in", context),
-                //     style: headLineTextStyle.copyWith(color: Colors.white)),
-              ],
-            ),
-          ).animate().moveY(delay: 300.ms, duration: 600.ms,),
-          Consumer<AuthProvider>(builder: (child, authProvider, _) {
-            return Form(
-              key: key,
-              child: Expanded(
+                  // Text(getTranslated("welcome", context),
+                  //     style: headLineTextStyle.copyWith(color: Colors.white)),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
+                  // Text(getTranslated("sign_in", context),
+                  //     style: headLineTextStyle.copyWith(color: Colors.white)),
+                ],
+              ),
+            ).animate().moveY(delay: 300.ms, duration: 600.ms,),
+            Consumer<AuthProvider>(builder: (child, authProvider, _) {
+              return Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                   child: ListView(
@@ -87,7 +87,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           CustomTextFormField(
                             tIcon: Images.emailIcon,
                             removePIcon: false,
-                            isValidat: key.currentState?.validate()??true,
                             controller: authProvider.emailTEC,
                             hint: getTranslated("enter_your_email_or_id", context),
                             valid: Validations.email,
@@ -103,7 +102,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           CustomTextFormField(
                             tIcon: Images.lockIcon,
-                            isValidat: key.currentState?.validate()??true,
                             controller: authProvider.passwordTEC,
                             hint: getTranslated("enter_your_password", context),
                             valid: Validations.password,
@@ -143,10 +141,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-              ),
-            );
-          }),
-        ],
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

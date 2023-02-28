@@ -67,7 +67,7 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
       ),
       body: Consumer<AttendanceScheduleProvider>(
         builder: (context,notifier,_) {
-          if(!notifier.isLoading) {
+          if(!notifier.isLoading && !notifier.isError) {
             return Padding(
             padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT.h),
             child: Column(
