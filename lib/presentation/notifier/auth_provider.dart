@@ -29,6 +29,7 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
   TextEditingController get newPasswordTEC => _newPasswordTEC;
   TextEditingController get confirmPasswordTEC => _confirmPasswordTEC;
 
+
   bool _isLoading = false;
   bool isError = false;
   bool get isLoading => _isLoading;
