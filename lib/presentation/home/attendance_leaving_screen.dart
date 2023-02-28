@@ -1,6 +1,3 @@
-import 'dart:collection';
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hr_project/app/core/utils/color_resources.dart';
@@ -9,7 +6,7 @@ import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:provider/provider.dart';
-import '../../navigation/custom_navigation.dart';
+import '../../app/core/utils/text_styles.dart';
 import '../calender/src/customization/calendar_style.dart';
 import '../calender/src/shared/utils.dart';
 import '../calender/src/table_calendar.dart';
@@ -24,24 +21,13 @@ class AttendanceLeavingScreen extends StatefulWidget {
 }
 
 class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
-
-
-
-
-
-
   @override
   void initState() {
-
     Future.delayed(Duration.zero,(){
       Provider.of<AttendanceScheduleProvider>(context,listen: false).init();
     });
     super.initState();
   }
-
-
-
-
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
 
   @override
@@ -50,19 +36,12 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
     super.dispose();
   }
 
-
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("attendance_leaving", context),
-        // showLeading: true,
         // titleCenter: true,
       ),
       body: Consumer<AttendanceScheduleProvider>(
@@ -124,8 +103,17 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
             ),
           );
           }
-          else return SizedBox();
-        }
+          else if(notifier.isLoading)  {
+            return Center(child: SizedBox(
+                width: 20.w,
+                height: 20.h,
+                child: const CircularProgressIndicator()));
+          }
+          else{
+            return const Center(
+                child: Text("Error 404 !", style: AppTextStyles.SCREEN_TITLE,));
+          }
+      }
       ),
     );
   }

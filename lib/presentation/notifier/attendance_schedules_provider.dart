@@ -1,18 +1,15 @@
 import 'dart:collection';
-import 'dart:developer';
-import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/domain/repositery/attendance_schedules_repo.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 import '../../app/core/error/failures.dart';
 import '../../app/core/utils/app_snack_bar.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/extensions.dart';
 import '../../data/model/attendance_schedules_model.dart';
-import '../../data/model/user_model.dart';
-import '../../domain/repositery/profile_repo.dart';
 import '../calender/src/shared/utils.dart';
 
 class AttendanceScheduleProvider extends ChangeNotifier {
@@ -95,7 +92,7 @@ class AttendanceScheduleProvider extends ChangeNotifier {
 
     attendanceSchedulesMap = {
       for (var item in workDays.toList())
-        DateTime(kToday.year, kToday.month, item ): [Event(title: "work", color: Colors.green)]
+        DateTime(kToday.year, kToday.month, item ): [Event(title: getTranslated("work", CustomNavigator.navigatorState.currentContext!), color: Colors.green)]
     };
     // log("attendanceSchedulesMap$attendanceSchedulesMap");
     kEvents = LinkedHashMap<DateTime, List<Event>>(
@@ -112,8 +109,9 @@ class AttendanceScheduleProvider extends ChangeNotifier {
 final kToday = DateTime.now();
 final kFirstDay = DateTime(kToday.year, kToday.month - 3, kToday.day);
 final kLastDay = DateTime(kToday.year, kToday.month + 3, kToday.day);
+
 final _kEventSource = {
   for (var item in List.generate(50, (index) => index))
     DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5): List.generate(
-        item % 4 + 1, (index) => Event(title: "work", color: Colors.green))
+        item % 4 + 1, (index) =>  Event(title: getTranslated("work", CustomNavigator.navigatorState.currentContext!), color: Colors.green))
 };
