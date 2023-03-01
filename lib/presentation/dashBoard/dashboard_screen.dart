@@ -22,7 +22,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   _setPage(int index) {
     setState(() {
       _selectedIndex=index;
-      // _pageController.jumpToPage(index,);
+      _pageController.jumpToPage(index,);
     });
   }
 
@@ -85,24 +85,25 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 ),
               ]))
     ),
-      body:IndexedStack(
-        index: _selectedIndex,
-        children: const [
-        HomeScreen(),
-        RequestsScreen(),
-        AttendanceLeavingScreen(),
-        ProfileScreen(),
-      ],)
+      body:
+      // IndexedStack(
+      //   index: _selectedIndex,
+      //   children: const [
+      //   HomeScreen(),
+      //   RequestsScreen(),
+      //   AttendanceLeavingScreen(),
+      //   ProfileScreen(),
+      // ],)
 
-      // PageView(
-      //     controller: _pageController,
-      //     physics: const NeverScrollableScrollPhysics(),
-      //     children: const [
-      //       HomeScreen(),
-      //       RequestsScreen(),
-      //       AttendanceLeavingScreen(),
-      //       ProfileScreen(),
-      //     ]),
+      PageView(
+          controller: _pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
+            HomeScreen(),
+            RequestsScreen(),
+            AttendanceLeavingScreen(),
+            ProfileScreen(),
+          ]),
     );
   }
 

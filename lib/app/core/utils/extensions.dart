@@ -191,15 +191,6 @@ int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;
 }
 
-class Event {
-  final String title;
-  final Color color;
-
-  const Event({required this.title, required this.color});
-
-  @override
-  String toString() => title;
-}
 
 
 

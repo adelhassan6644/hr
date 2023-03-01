@@ -60,6 +60,7 @@ class AttendanceProvider extends ChangeNotifier {
         Either<ServerFailure, Response> response =
             await attendanceRepo.attendEmployee();
         response.fold((fail) {
+          CustomNavigator.pop();
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: fail.error,
