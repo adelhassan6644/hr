@@ -22,7 +22,7 @@ class AppNotification {
 
 class CustomSnackBar{
   static showSnackBar({required AppNotification notification}) {
-    Timer(Duration.zero, () {
+    Future.delayed(Duration.zero, () {
       CustomNavigator.scaffoldState.currentState!.showSnackBar(
         SnackBar(
           padding: const EdgeInsets.all(0),

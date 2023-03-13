@@ -22,14 +22,13 @@ class ForgetPasswordScreen extends StatefulWidget {
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorResources.BACKGROUND_COLOR,
       appBar: CustomAppBar(
-        title:getTranslated("forget_password", context),
-        titleCenter:true ,
+        title: getTranslated("forget_password", context),
+        titleCenter: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
@@ -40,10 +39,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               height: 25.h,
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 24.h),
-              child: Text(getTranslated("please_enter_your_email_or_id", context),
-                  textAlign: TextAlign.center,
-                  style: titleTextStyle.copyWith(color: ColorResources.PRIMARY,fontSize: 13,)),
+              padding: EdgeInsets.symmetric(horizontal: 24.h),
+              child:
+                  Text(getTranslated("please_enter_your_email_or_id", context),
+                      textAlign: TextAlign.center,
+                      style: titleTextStyle.copyWith(
+                        color: ColorResources.PRIMARY,
+                        fontSize: 13,
+                      )),
             ),
             Consumer<AuthProvider>(builder: (child, authProvider, _) {
               return Form(
@@ -51,19 +54,19 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     SizedBox(
+                    SizedBox(
                       height: 35.h,
                     ),
                     Text(getTranslated("email_or_id", context),
                         style: titleTextStyle.copyWith(
                             color: ColorResources.PRIMARY)),
-                     SizedBox(
+                    SizedBox(
                       height: 15.h,
                     ),
                     CustomTextFormField(
                       tIcon: Images.emailIcon,
                       removePIcon: false,
-                      isValidat: formKey.currentState?.validate()??true,
+                      isValid: formKey.currentState?.validate() ?? true,
                       controller: authProvider.emailTEC,
                       hint: getTranslated("enter_your_email_or_id", context),
                       valid: Validations.email,
@@ -76,9 +79,8 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                           isLoading: authProvider.isLoading,
                           isError: authProvider.isError,
                           onTap: () {
-
                             formKey.currentState!.save();
-                            if(formKey.currentState!.validate()) {
+                            if (formKey.currentState!.validate()) {
                               authProvider.getOTP();
                             }
                           },

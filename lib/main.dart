@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
       initialRoute: Routes.SPLASH,
       navigatorKey: CustomNavigator.navigatorState,
       onGenerateRoute: CustomNavigator.onCreateRoute,
-      navigatorObservers: [CustomNavigator.routeObserver],
+      // navigatorObservers: [CustomNavigator.routeObserver],
       title: AppStrings.appName,
       supportedLocales: locals,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,

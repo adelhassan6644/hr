@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:pinput/pinput.dart';
 import 'app_strings.dart';
 import 'color_resources.dart';
 import 'dimensions.dart';
@@ -92,24 +91,7 @@ const TextStyle unSelectTextStyle = TextStyle(
         style: BorderStyle.solid),
     color: ColorResources.FILL);
 
-final defaultPinTheme = PinTheme(
-  width: 55.w,
-  height: 55.h,
-  textStyle: const TextStyle(fontSize: 18,
-      color: ColorResources.HEADER, fontWeight: FontWeight.w600),
-  decoration: BoxDecoration(
-    color:ColorResources.FILL_COLOR,
-    border: Border.all(color: ColorResources.BORDER_COLOR),
-    borderRadius: BorderRadius.circular(5),
-  ),
-);
 
-
-final submittedPinTheme = defaultPinTheme.copyWith(
-  decoration: defaultPinTheme.decoration?.copyWith(
-    color:ColorResources.FILL_COLOR,
-  ),
-);
 
 
  Widget hSpace =  SizedBox(

@@ -34,11 +34,11 @@ class CustomTextFormField extends StatefulWidget {
   final int? maxLength;
   final Color? fieldColor;
   final int? maxLine;
-  final bool isValidat;
+  final bool isValid;
 
   const CustomTextFormField({
     super.key,
-    this.isValidat = true,
+    this.isValid = true,
     this.maxLine = 1,
     this.hint,
     this.sufWidget,
@@ -83,7 +83,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Animate(
-      effects: widget.isValidat ? [] : [const ShakeEffect()],
+      effects: widget.isValid ? [] : [const ShakeEffect()],
       child: TextFormField(
         onTap: widget.onTap,
         validator: widget.valid,
@@ -94,9 +94,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         maxLines: widget.maxLine,
         obscureText: widget.icon == Icons.lock_outline ? _isHidden : false,
         keyboardType: widget.type,
-        inputFormatters: widget.formatter ?? [],
+        inputFormatters: widget.type == TextInputType.phone ? <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp('[0-9]'))] : null,
         onSaved: (widget.onSave),
-        style: !widget.isValidat
+        style: !widget.isValid
             ? hintTextStyle.copyWith(color: ColorResources.WARNING_COLOR)
             : hintTextStyle,
         onChanged: widget.onChanged,
@@ -161,7 +161,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           isDense: true,
           alignLabelWithHint: true,
           hintText: widget.hint,
-          hintStyle: widget.isValidat ? hintTextStyle : errorHintTextStyle,
+          hintStyle: widget.isValid ? hintTextStyle : errorHintTextStyle,
           labelText: widget.label ? widget.hint : null,
           fillColor: ColorResources.FILL,
           filled: true,

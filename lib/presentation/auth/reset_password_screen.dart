@@ -52,7 +52,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     CustomTextFormField(
                       tIcon: Images.lockIcon,
-                      isValidat: key.currentState?.validate()??true,
+                      isValid: key.currentState?.validate()??true,
                       valid: Validations.password,
                       icon: Icons.lock_outline,
                       removePIcon: false, // removePIcon: true,
@@ -70,7 +70,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     CustomTextFormField(
                       tIcon: Images.lockIcon,
-                      isValidat: key.currentState?.validate()??true,
+                      isValid: key.currentState?.validate()??true,
                       valid: (String? value) {
                         if (value!.isEmpty) {
                           return  getTranslated ("required", context);
