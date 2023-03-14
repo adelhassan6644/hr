@@ -58,6 +58,12 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
         }, (success) {
           // _passwordTEC.clear();
           CustomNavigator.push(Routes.DASHBOARD, clean: true);
+          CustomSnackBar.showSnackBar(
+              notification: AppNotification(
+                  message: "you logged in successfully",
+                  isFloating: true,
+                  backgroundColor: ColorResources.ACTIVE,
+                  borderColor: ColorResources.transparentColor));
         });
         _isLoading = false;
         notifyListeners();
@@ -65,6 +71,12 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
     } catch (e) {
       isError = true;
       _isLoading = false;
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: ColorResources.ACTIVE,
+              borderColor: ColorResources.transparentColor));
       notifyListeners();
     }
   }
@@ -80,14 +92,12 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
           email: _emailTEC.text.trim(),
         );
         response.fold((fail) {
-          print("gg");
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: fail.error,
                   isFloating: true,
                   backgroundColor: ColorResources.IN_ACTIVE,
                   borderColor: ColorResources.transparentColor));
-          print("gg");
           isError = true;
           notifyListeners();
         }, (success) {
@@ -126,6 +136,7 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
           code: _otp,
         );
         response.fold((fail) {
+          _otp="";
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: fail.error,
@@ -137,6 +148,7 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
         }, (success) {
           // _otp.clear();
           CustomNavigator.push(Routes.RESET_PASSWORD, replace: true);
+          _otp="";
         });
         _isLoading = false;
         notifyListeners();
@@ -144,6 +156,7 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
     } catch (e) {
       isError = true;
       _isLoading = false;
+      _otp="";
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),

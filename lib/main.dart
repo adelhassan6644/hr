@@ -18,7 +18,7 @@ import 'domain/localization/app_localization.dart';
 import 'navigation/routes.dart';
 import 'presentation/notifier/attendance_schedules_provider.dart';
 import 'presentation/notifier/add_request_provider.dart';
-import 'presentation/notifier/attendance_repo_provider.dart';
+import 'presentation/notifier/attendance_provider.dart';
 import 'presentation/notifier/auth_provider.dart';
 import 'presentation/notifier/language_provider.dart';
 import 'presentation/notifier/profile_provider.dart';

@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hr_project/domain/repositery/attendance_repo.dart';
 import 'package:hr_project/domain/repositery/attendance_schedules_repo.dart';
 import 'package:hr_project/presentation/notifier/add_request_provider.dart';
-import 'package:hr_project/presentation/notifier/attendance_repo_provider.dart';
+import 'package:hr_project/presentation/notifier/attendance_provider.dart';
 import 'package:hr_project/presentation/notifier/attendance_schedules_provider.dart';
 import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:hr_project/presentation/notifier/language_provider.dart';

@@ -126,18 +126,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: 35.h,
                       ),
-                      CustomButton(
-                          isLoading: authProvider.isLoading,
-                          isError: authProvider.isError,
-                          onTap: () {
-                            key.currentState!.save();
-                            if(key.currentState!.validate()) {
-                              authProvider.logIn();
-                            }
-                          },
-                          textColor: ColorResources.WHITE,
-                          text: getTranslated("sign_in", context),
-                          backgroundColor: ColorResources.PRIMARY),
+                      Center(
+                        child: CustomButton(
+                            isLoading: authProvider.isLoading,
+                            isError: authProvider.isError,
+                            onTap: () {
+                              key.currentState!.save();
+                              if (key.currentState!.validate()) {authProvider.logIn();}
+                              },
+                            textColor: ColorResources.WHITE,
+                            text: getTranslated("sign_in", context),
+                            backgroundColor: ColorResources.PRIMARY),
+                      ),
                     ],
                   ),
                 ),
