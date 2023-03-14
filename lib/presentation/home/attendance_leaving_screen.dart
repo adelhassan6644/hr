@@ -7,6 +7,8 @@ import 'package:hr_project/domain/localization/language_constant.dart';
 import 'package:hr_project/presentation/base/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/text_styles.dart';
+import '../../data/model/attendance_schedules_model.dart';
+import '../base/loader_view.dart';
 import '../calender/src/customization/calendar_style.dart';
 import '../calender/src/shared/utils.dart';
 import '../calender/src/table_calendar.dart';
@@ -32,7 +34,7 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
 
   @override
   void dispose() {
-    Provider.of<AttendanceScheduleProvider>(context,listen: false).selectedEvents.dispose();
+    Provider.of<AttendanceScheduleProvider>(context,listen: false).selectedSchedules.dispose();
     super.dispose();
   }
 
@@ -52,14 +54,14 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
             child: Column(
               children: [
 
-                TableCalendar<Event>(
+                TableCalendar<Schedule>(
                   firstDay: kFirstDay,
                   lastDay: kLastDay,
                   focusedDay: notifier.focusedDay,
                   selectedDayPredicate: (day) => isSameDay(notifier.currentDay, day),
 
                   calendarFormat: _calendarFormat,
-                  eventLoader: notifier .getEventsForDay,
+                  eventLoader: notifier .getSchedulesForDay,
                   startingDayOfWeek: StartingDayOfWeek.sunday,
                   calendarStyle: CalendarStyle(
 
@@ -85,13 +87,13 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
                 ).animate().flip().slide().then(delay:10.ms).shimmer(),
                 const SizedBox(height: 8.0),
                 Expanded(
-                  child: ValueListenableBuilder<List<Event>>(
-                    valueListenable: notifier.selectedEvents,
+                  child: ValueListenableBuilder<List<Schedule>>(
+                    valueListenable: notifier.selectedSchedules,
                     builder: (context, value, _) {
                       return ListView.builder(
                         itemCount: value.length,
                         itemBuilder: (context, index) {
-                          return   AttendanceCard(event: value[index],);
+                          return   AttendanceCard(schedule: value[index],);
 
                         },
                       );
@@ -103,16 +105,11 @@ class _AttendanceLeavingScreen extends State<AttendanceLeavingScreen> {
             ),
           );
           }
-          else if(notifier.isLoading)  {
-            return Center(child: SizedBox(
-                width: 20.w,
-                height: 20.h,
-                child: const CircularProgressIndicator()));
+          else
+           {
+            return const LoaderView();
           }
-          else{
-            return const Center(
-                child: Text("Error 404 !", style: AppTextStyles.SCREEN_TITLE,));
-          }
+
       }
       ),
     );

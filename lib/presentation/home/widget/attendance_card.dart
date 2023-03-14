@@ -4,12 +4,13 @@ import 'package:hr_project/app/core/utils/dimensions.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/text_styles.dart';
+import '../../../data/model/attendance_schedules_model.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../notifier/localization_provider.dart';
 
 class AttendanceCard extends StatelessWidget {
-  final Event event;
-  const AttendanceCard({required this.event,Key? key}) : super(key: key);
+  final Schedule schedule;
+  const AttendanceCard({required this.schedule,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +35,14 @@ class AttendanceCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      DateTime.now().day1Format(),
+                      schedule.start!.day1Format(),
                       style: AppTextStyles.w600
                           .copyWith(fontSize: 12),
                     ),
                     Row(
                       children: [
                         Text(
-                          DateTime.now().time1Format(),
+                          schedule.start!.time1Format(),
                           style: AppTextStyles.w600
                               .copyWith(fontSize: 12),
                         ),
@@ -51,7 +52,7 @@ class AttendanceCard extends StatelessWidget {
                               .copyWith(fontSize: 12),
                         ),
                         Text(
-                          DateTime.now().time1Format(),
+                          schedule.end!.time1Format(),
                           style: AppTextStyles.w600
                               .copyWith(fontSize: 12),
                         ),
@@ -61,13 +62,14 @@ class AttendanceCard extends StatelessWidget {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "8 Hours",
-                      style: AppTextStyles.w600.copyWith(fontSize: 12, color: event.color),),
+                      "${schedule.end!.difference(schedule.start!).inHours} Hours",
+                      style: AppTextStyles.w600.copyWith(fontSize: 12, color: schedule.color),),
                     Text(
-                      event.title,
-                      style: AppTextStyles.w600.copyWith(fontSize: 12, color: event.color),),
+                      schedule.title.toString(),
+                      style: AppTextStyles.w600.copyWith(fontSize: 12, color: schedule.color),),
                   ],
                 ),
               ],
@@ -77,7 +79,7 @@ class AttendanceCard extends StatelessWidget {
             width: 5.h,
             height: 75.h,
             decoration: BoxDecoration(
-              color:  event.color,
+              color:  schedule.color,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
                       Provider.of<LocalizationProvider>(

@@ -55,7 +55,6 @@ class DioClient extends ApiClient {
   }) async {
     try {
       var response = await _dio.get(uri, queryParameters: queryParameters);
-      log(response.toString());
 
       return response;
     } on SocketException catch (e) {
@@ -78,7 +77,6 @@ class DioClient extends ApiClient {
         data: data,
         queryParameters: queryParameters,
       );
-      log(uri);
       return response;
     } on FormatException catch (_) {
       throw const FormatException("Unable to process the data");
@@ -98,7 +96,6 @@ class DioClient extends ApiClient {
         data: data,
         queryParameters: queryParameters,
       );
-      log(uri);
       return response;
     } on FormatException catch (_) {
       throw const FormatException("Unable to process the data");

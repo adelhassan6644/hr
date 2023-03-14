@@ -35,7 +35,7 @@ Future<void> main() async {
   }
 
   await di.init();
-  runApp(MultiProvider(providers:[
+  runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => di.sl<ThemeProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AddRequestProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
@@ -43,8 +43,8 @@ Future<void> main() async {
     ChangeNotifierProvider(create: (context) => di.sl<LanguageProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AttendanceProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<AttendanceScheduleProvider>()),
-
+    ChangeNotifierProvider(
+        create: (context) => di.sl<AttendanceScheduleProvider>()),
   ], child: const MyApp()));
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarBrightness: Brightness.light,
@@ -60,8 +60,12 @@ class MyApp extends StatelessWidget {
     for (var language in AppStorageKey.languages) {
       locals.add(Locale(language.languageCode!, language.countryCode));
     }
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark, statusBarBrightness: Brightness.light));
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light));
     return MaterialApp(
       builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
@@ -76,7 +80,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(
         context,
-      ).darkTheme ? dark : light,
+      ).darkTheme
+          ? dark
+          : light,
       locale: Provider.of<LocalizationProvider>(
         context,
       ).locale,
@@ -86,7 +92,6 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-
       home: const LoginScreen(),
     );
   }

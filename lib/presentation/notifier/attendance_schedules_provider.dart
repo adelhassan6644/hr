@@ -26,7 +26,7 @@ class AttendanceScheduleProvider extends ChangeNotifier {
   AttendanceSchedules? attendanceSchedules;
   DateTime? startScheduleData  ;
 
-  final ValueNotifier<List<Event>> selectedEvents = ValueNotifier([]);
+  final ValueNotifier<List<Schedule>> selectedSchedules = ValueNotifier([]);
 
   init() {
     _getAttendanceSchedules();
@@ -52,7 +52,7 @@ class AttendanceScheduleProvider extends ChangeNotifier {
       }, (success) {
         attendanceSchedules =
             AttendanceSchedules.fromJson(success.data["data"]);
-        startScheduleData= attendanceSchedules!.schedules!.first.startDate!;
+        startScheduleData= attendanceSchedules!.schedules!.first.start!;
         onDaySelected(DateTime.now(), DateTime.now());
 
         isLoading = false;
@@ -77,30 +77,49 @@ class AttendanceScheduleProvider extends ChangeNotifier {
       this.focusedDay = focusedDay;
       notifyListeners();
 
-      selectedEvents.value = getEventsForDay(selectedDay);
+      selectedSchedules.value = getSchedulesForDay(selectedDay);
     }
   }
-  LinkedHashMap<DateTime, List<Event>>? kEvents;
-  Map<DateTime, List<Event>>? attendanceSchedulesMap;
+  LinkedHashMap<DateTime, List<Schedule>>? kSchedules;
+  Map<DateTime, List<Schedule>>? attendanceSchedulesMap={};
 
-  List<Event> getEventsForDay(DateTime day) {
+  List<Schedule> getSchedulesForDay(DateTime day) {
+    attendanceSchedulesMap={};
+    for (var employeeSchedule in attendanceSchedules!.schedules!) {
 
-    final workDays = attendanceSchedules!.schedules!.first.workDays!
-        .split(',')
-        .map((c) => int.parse(c)).toList();
-    // log("getEventsForDay$workDays");
+        if (attendanceSchedulesMap!.containsKey(employeeSchedule.start!)) {
+          attendanceSchedulesMap?.update(employeeSchedule.start!, (value) {
+            List<Schedule> newList= value;
+            if(!newList.contains(employeeSchedule)) {
+              newList.add(employeeSchedule);
+            }
+            return newList;
+          });
+        } else {
 
-    attendanceSchedulesMap = {
-      for (var item in workDays.toList())
-        DateTime(kToday.year, kToday.month, item ): [Event(title: getTranslated("work", CustomNavigator.navigatorState.currentContext!), color: Colors.green)]
-    };
+          attendanceSchedulesMap?.addAll({
+            employeeSchedule.start!: [
+              employeeSchedule.copyWith(
+                color:( employeeSchedule.start!.isAfter(DateTime.now())&&(employeeSchedule.isAttend!))?Colors.green:Colors.red
+              )
+            ]
+          });
+        }
+
+    }
+
+
+  /*  attendanceSchedulesMap = {
+      for (var employeeSchedule in attendanceSchedules!.schedules!)
+        employeeSchedule.start!: [Schedule(title: getTranslated("work", CustomNavigator.navigatorState.currentContext!), color: Colors.green)]
+    };*/
     // log("attendanceSchedulesMap$attendanceSchedulesMap");
-    kEvents = LinkedHashMap<DateTime, List<Event>>(
+    kSchedules = LinkedHashMap<DateTime, List<Schedule>>(
       equals: isSameDay,
       hashCode: getHashCode,
     )..addAll(attendanceSchedulesMap!);
 
-    return kEvents![day] ?? [];
+    return kSchedules![day] ?? [];
   }
 }
 
@@ -110,8 +129,4 @@ final kToday = DateTime.now();
 final kFirstDay = DateTime(kToday.year, kToday.month - 3, kToday.day);
 final kLastDay = DateTime(kToday.year, kToday.month + 3, kToday.day);
 
-final _kEventSource = {
-  for (var item in List.generate(50, (index) => index))
-    DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5): List.generate(
-        item % 4 + 1, (index) =>  Event(title: getTranslated("work", CustomNavigator.navigatorState.currentContext!), color: Colors.green))
-};
+
