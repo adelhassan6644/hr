@@ -100,7 +100,7 @@ class AttendanceScheduleProvider extends ChangeNotifier {
           attendanceSchedulesMap?.addAll({
             employeeSchedule.start!: [
               employeeSchedule.copyWith(
-                color: employeeSchedule.start!.isAfter(DateTime.now())?Colors.green:ColorResources.primaryLight
+                color:( employeeSchedule.start!.isAfter(DateTime.now())&&(employeeSchedule.isAttend!))?Colors.green:Colors.red
               )
             ]
           });

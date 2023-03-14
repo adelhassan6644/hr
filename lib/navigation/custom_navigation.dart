@@ -33,7 +33,7 @@ import 'routes.dart';
 
 abstract class CustomNavigator {
   static final GlobalKey<NavigatorState> navigatorState =
-      GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState>();
   static final RouteObserver<PageRoute> routeObserver =
       RouteObserver<PageRoute>();
   static final GlobalKey<ScaffoldMessengerState> scaffoldState =

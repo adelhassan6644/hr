@@ -85,8 +85,8 @@ class Schedule {
         title: json["title"],
         allDay: json["allDay"],
         scheduleId: json["schedule_id"],
-        isAttend: json["is_attend"],
-       color: DateTime.parse(json["start"]).isAfter(DateTime.now())?Colors.green:ColorResources.primaryLight
+        isAttend: json["is_attend"]??true,
+       color: (DateTime.parse(json["start"]).isAfter(DateTime.now())&&json["is_attend"]==true)?Colors.green:Colors.red
 
     );
 
