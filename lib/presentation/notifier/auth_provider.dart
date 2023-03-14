@@ -21,10 +21,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
       TextEditingController(text: kDebugMode ? "123456789" : '');
   final TextEditingController _newPasswordTEC = TextEditingController();
   final TextEditingController _confirmPasswordTEC = TextEditingController();
-  final TextEditingController _codeTEC = TextEditingController();
 
   TextEditingController get emailTEC => _emailTEC;
-  TextEditingController get codeTEC => _codeTEC;
   TextEditingController get passwordTEC => _passwordTEC;
   TextEditingController get newPasswordTEC => _newPasswordTEC;
   TextEditingController get confirmPasswordTEC => _confirmPasswordTEC;
@@ -35,8 +33,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
   bool get isLoading => _isLoading;
   // bool samePassword = false;
 
-  // late String _otp;
-  // String get otp=>_otp;
+  late String _otp="";
+  String get otp=>_otp;
 
   bool get isLogin => authRepo.isLoggedIn();
 
@@ -82,12 +80,14 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
           email: _emailTEC.text.trim(),
         );
         response.fold((fail) {
+          print("gg");
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: fail.error,
                   isFloating: true,
                   backgroundColor: ColorResources.IN_ACTIVE,
                   borderColor: ColorResources.transparentColor));
+          print("gg");
           isError = true;
           notifyListeners();
         }, (success) {
@@ -110,6 +110,11 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
     }
   }
 
+  updateOTP(String value) {
+    _otp=value;
+    notifyListeners();
+  }
+
   sendOTP() async {
     try {
       {
@@ -118,7 +123,7 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
         notifyListeners();
         Either<ServerFailure, Response> response =
             await authRepo.sendVerificationCode(
-          code: _codeTEC.text.trim(),
+          code: _otp,
         );
         response.fold((fail) {
           CustomSnackBar.showSnackBar(
@@ -130,7 +135,7 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
           isError = true;
           notifyListeners();
         }, (success) {
-          _codeTEC.clear();
+          // _otp.clear();
           CustomNavigator.push(Routes.RESET_PASSWORD, replace: true);
         });
         _isLoading = false;
@@ -205,12 +210,14 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
           newPassword: _newPasswordTEC.text.trim(),
         );
         response.fold((fail) {
+
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: fail.error,
                   isFloating: true,
                   backgroundColor: ColorResources.IN_ACTIVE,
                   borderColor: ColorResources.transparentColor));
+
           isError = true;
           notifyListeners();
         }, (success) {

@@ -11,4 +11,10 @@ class Dimensions {
   static const double PADDING_SIZE_DEFAULT = 12.0;
   static const double PADDING_SIZE_LARGE = 16.0;
   static const double PADDING_SIZE_EXTRA_LARGE = 20.0;
+
+
+  static const double RADIUS_SMALL = 8.0;
+  static const double RADIUS_DEFAULT = 12.0;
+  static const double RADIUS_LARGE = 16.0;
+  static const double RADIUS_EXTRA_LARGE = 20.0;
 }

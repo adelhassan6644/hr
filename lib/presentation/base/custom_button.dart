@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
 import '../../app/core/utils/color_resources.dart';
-import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/dimensions.dart';
 
 class CustomButton extends StatelessWidget {
@@ -19,35 +17,37 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final bool isLoading;
   final bool isError;
+  final bool isActive;
 
   const CustomButton(
       {Key? key,
       this.onTap,
+      this.isActive = true,
       this.icon,
       this.height,
       this.assetIcon,
       this.isLoading = false,
-       this.textColor = ColorResources.WHITE,
-
+      this.textColor = ColorResources.WHITE,
       this.width,
       this.iconSize = 25,
       this.iconColor = ColorResources.PRIMARY,
       required this.text,
-       this.backgroundColor=ColorResources.PRIMARY,  this.isError=false})
+      this.backgroundColor = ColorResources.PRIMARY,
+      this.isError = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Animate(
-      effects: isError?[ShakeEffect(), ]:[],
+      effects: isError ? [const ShakeEffect(),] : [],
       child: GestureDetector(
-        onTap: onTap,
+        onTap:isActive? onTap:null,
         child: AnimatedContainer(
-          width: isLoading ? 90 :context.width,
+          width: isLoading ? 90 : context.width,
           height: 55,
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.all(const Radius.circular(15)),
+            color:isActive? ColorResources.PRIMARY:ColorResources.PRIMARY.withOpacity(0.4),
+            borderRadius: const BorderRadius.all(Radius.circular(Dimensions.RADIUS_LARGE)),
           ),
           duration: const Duration(
             milliseconds: 600,
@@ -63,7 +63,7 @@ class CustomButton extends StatelessWidget {
                     ),
                   )
                 : Text(
-              text,
+                    text,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -73,9 +73,7 @@ class CustomButton extends StatelessWidget {
                     ),
                   ),
           ),
-        ).animate(target:  isLoading ? 1 : 0)
-           .scaleXY(end: .8).flip(end: 1),
-
+        ).animate(target: isLoading ? 1 : 0).scaleXY(end: .8).flip(end: 1),
       ).animate().fade(),
     );
   }

@@ -51,7 +51,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                     ),
                     CustomTextFormField(
                       tIcon: Images.lockIcon,
-                      isValidat: key.currentState?.validate()??true,
+                      isValid: key.currentState?.validate()??true,
                       controller: authProvider.passwordTEC,
                       hint: getTranslated(
                           "enter_your_password", context),
@@ -70,7 +70,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                     ),
                     CustomTextFormField(
                       tIcon: Images.lockIcon,
-                      isValidat: key.currentState?.validate()??true,
+                      isValid: key.currentState?.validate()??true,
                       valid:  (String? value) {
                         if (value!.isEmpty) {
                           return  getTranslated ("required", context);
@@ -96,7 +96,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                     ),
                     CustomTextFormField(
                       tIcon: Images.lockIcon,
-                      isValidat: key.currentState?.validate()??true,
+                      isValid: key.currentState?.validate()??true,
                       valid: (String? value) {
                         if (value!.isEmpty) {
                           return  getTranslated ("required", context);

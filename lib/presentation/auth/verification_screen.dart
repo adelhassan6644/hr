@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:pinput/pinput.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../app/core/utils/constant.dart';
 import '../../app/core/utils/dimensions.dart';
-import '../../app/core/utils/validation.dart';
 import '../../domain/localization/language_constant.dart';
 import '../base/count_down.dart';
 import '../base/custom_app_bar.dart';
@@ -54,39 +54,40 @@ class _VerificationScreenState extends State<VerificationScreen> {
                  SizedBox(
                   height: 20.h,
                 ),
-                Pinput(
-                  keyboardType: TextInputType.phone,
-                  // obscureText: true,
-                  // obscuringCharacter: "*",
-                  pinContentAlignment: Alignment.center,
-                  controller: authProvider.codeTEC,
-                  closeKeyboardWhenCompleted: true,
-                  keyboardAppearance: Brightness.light,
-                  defaultPinTheme: defaultPinTheme,
-                  useNativeKeyboard: true,
-                  focusedPinTheme: defaultPinTheme,
-                  submittedPinTheme: submittedPinTheme,
-                  pinputAutovalidateMode: PinputAutovalidateMode.disabled,
-                  showCursor: true,
-                  onChanged: (String? value) {
-                    if ( value == null||value.isEmpty) {
-                      isValid = false;
-                    } else if (value.length < 4) {
-                      isValid = false;
-                    } else {
-                      isValid = true;
-                    }
-                  },
-                  validator: Validations.code,
-                  errorText: !isValid? "Please Enter Valid Code !":null,
-                  errorTextStyle: errorHintTextStyle,
-
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  child: PinCodeTextField(
+                    length: 4,
+                    appContext: context,
+                    keyboardType: TextInputType.phone,
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
+                    animationType: AnimationType.slide,
+                    pinTheme: PinTheme(
+                      shape: PinCodeFieldShape.box,
+                      fieldHeight: 60,
+                      fieldWidth: 60,
+                      borderWidth: 1,
+                      borderRadius:
+                      BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                      selectedColor:ColorResources.PRIMARY,
+                      selectedFillColor: Colors.white,
+                      inactiveFillColor: ColorResources.FILL,
+                      inactiveColor: ColorResources.PRIMARY.withOpacity(0.2),
+                      activeColor: ColorResources.PRIMARY.withOpacity(0.2),
+                      activeFillColor:
+                      ColorResources.FILL,
+                    ),
+                    animationDuration: const Duration(milliseconds: 300),
+                    backgroundColor: Colors.transparent,
+                    enableActiveFill: true,
+                    onChanged:  authProvider.updateOTP,
+                    beforeTextPaste: (text) => true,
+                  ),
                 ),
                  SizedBox(
                   height: 10.h,
                 ),
                  CountDown(onCount:  authProvider.reSendOTP,),
-
                 SizedBox(
                   height: context.height * 0.07,
                 ),
@@ -98,8 +99,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         authProvider.sendOTP();
                       }
                     },
+                    isActive:authProvider.otp.length==4,
                     textColor: ColorResources.WHITE,
-                    text: getTranslated("send_otp", context),
+                    text: getTranslated("submit", context),
                     backgroundColor: ColorResources.PRIMARY),
 
               ],
