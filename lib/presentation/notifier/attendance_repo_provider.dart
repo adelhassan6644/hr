@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -22,13 +23,20 @@ class AttendanceProvider extends ChangeNotifier {
   bool locationPermissinGranted = false;
   bool isError = false;
   bool isLoading = false;
+  void _startAlarm({required bool isEnter}) async {
+    final player = AudioPlayer();
+    if (isEnter) {
+      await player.play(AssetSource('audio/enter.mp3'));
+    } else {
+      await player.play(AssetSource('audio/exit.mp3'));
+    }
+  }
 
   handleLocationPermission() async {
     PermissionStatus status = await Permission.location.request();
     if (status.isGranted) {
       locationPermissinGranted = status.isGranted;
       sendAttendEmployee();
-
     } else {
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
@@ -45,13 +53,11 @@ class AttendanceProvider extends ChangeNotifier {
       status = await Permission.location.request();
       locationPermissinGranted = status.isGranted;
       sendAttendEmployee();
-
     }
   }
 
   sendAttendEmployee() async {
     try {
-
       {
         isError = false;
         isLoading = true;
@@ -60,6 +66,7 @@ class AttendanceProvider extends ChangeNotifier {
         Either<ServerFailure, Response> response =
             await attendanceRepo.attendEmployee();
         response.fold((fail) {
+          _startAlarm(isEnter: true);
           CustomNavigator.pop();
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
@@ -70,6 +77,7 @@ class AttendanceProvider extends ChangeNotifier {
           isError = true;
           notifyListeners();
         }, (success) {
+          _startAlarm(isEnter: true);
           CustomNavigator.pop();
           CustomSnackBar.showSnackBar(
               notification: AppNotification(

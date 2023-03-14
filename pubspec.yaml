@@ -37,7 +37,7 @@ dependencies:
   flutter_clean_architecture:
   dio: ^5.0.0
   internet_connection_checker:
-
+  audioplayers:
   geolocator: ^9.0.2
   permission_handler:
   fluttertoast:
@@ -111,6 +111,7 @@ flutter:
     - assets/
     - assets/icons/
     - assets/language/
+    - assets/audio/
 
 
   fonts:
