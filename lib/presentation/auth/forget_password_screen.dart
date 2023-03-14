@@ -81,6 +81,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                           onTap: () {
                             formKey.currentState!.save();
                             if (formKey.currentState!.validate()) {
+                              // CustomNavigator.push(Routes.VERIFICATION_CODE);
                               authProvider.getOTP();
                             }
                           },

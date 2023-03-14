@@ -2,16 +2,12 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../app/core/error/failures.dart';
 import '../../app/core/utils/app_snack_bar.dart';
 import '../../app/core/utils/color_resources.dart';
 import '../../navigation/custom_navigation.dart';
-import '../../presentation/base/regular_location_permission.bottomsheet.dart';
 import 'package:flutter/cupertino.dart';
-
 import '../../domain/repositery/attendance_repo.dart';
 import '../base/loading_dialog.dart';
 
@@ -92,6 +88,12 @@ class AttendanceProvider extends ChangeNotifier {
       }
     } catch (e) {
       CustomNavigator.pop();
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: ColorResources.IN_ACTIVE,
+              borderColor: ColorResources.transparentColor));
       isError = true;
       isLoading = false;
       notifyListeners();

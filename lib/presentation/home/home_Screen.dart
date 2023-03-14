@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
              SizedBox(height: 30.h),
-            CheckInCard(),
+            const CheckInCard(),
 
              SizedBox(height: 40.h),
              TypeCard(
