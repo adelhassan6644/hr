@@ -1,33 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/presentation/add_request/add_request_screen.dart';
-import 'package:hr_project/presentation/add_request/requests/asset_request.dart';
-import 'package:hr_project/presentation/add_request/requests/business_trip_request.dart';
-import 'package:hr_project/presentation/add_request/requests/expense_request_Screen.dart';
-import 'package:hr_project/presentation/add_request/requests/letter_request.dart';
-import 'package:hr_project/presentation/add_request/requests/loan_request_screen.dart';
-import 'package:hr_project/presentation/add_request/requests/vacation_request.dart';
-import 'package:hr_project/presentation/auth/login_screen.dart';
-import 'package:hr_project/presentation/dashBoard/dashboard_screen.dart';
-import 'package:hr_project/presentation/profile/units/contract/contract_screen.dart';
-import 'package:hr_project/presentation/profile/units/documents/documents_screen.dart';
-import 'package:hr_project/presentation/profile/units/organization/organization_screen.dart';
-import 'package:hr_project/presentation/profile/units/personal/personal_screen.dart';
-import 'package:hr_project/presentation/requests/request_flow_screen.dart';
-import 'package:hr_project/presentation/settings/edit_password_screen.dart';
-import 'package:hr_project/presentation/settings/language_screen.dart';
 import '../data/model/user_model.dart';
 import '../main.dart';
-import '../presentation/add_request/requests/clear_asset_request.dart';
-import '../presentation/add_request/requests/permission_details.dart';
-import '../presentation/auth/forget_password_screen.dart';
-import '../presentation/auth/reset_password_screen.dart';
-import '../presentation/auth/verification_screen.dart';
-import '../presentation/home/attendance_leaving_screen.dart';
-import '../presentation/profile/units/assets/assets_screen.dart';
-import '../presentation/profile/units/salary/salary_details_screen.dart';
-import '../presentation/profile/units/salary/salary_screen.dart';
-import '../presentation/settings/settings_screen.dart';
-import '../splash.dart';
+import '../main_page/dashboard.dart';
+import '../features/splash/page/splash.dart';
 import 'routes.dart';
 
 

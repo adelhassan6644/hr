@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:hr_project/domain/repositery/base_repo.dart';
-import '../../../app/core/api/end_points.dart';
+import '../../data/api/end_points.dart';
 import '../../../app/core/error/api_error_handler.dart';
 import '../../../app/core/error/failures.dart';
 

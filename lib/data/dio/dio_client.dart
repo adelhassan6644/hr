@@ -1,60 +1,62 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../app/core/api/app_interceptors.dart';
-import '../../app/core/api/end_points.dart';
+import '../api/end_points.dart';
 import 'api_clinet.dart';
+import 'logging_interceptor.dart';
 
 class DioClient extends ApiClient {
   final String baseUrl;
   final LoggingInterceptor loggingInterceptor;
-
   final SharedPreferences sharedPreferences;
 
-  final Dio _dio;
-
-  String? _token;
+  final Dio dio;
 
   DioClient(
     this.baseUrl, {
-    required Dio dio,
+    required this.dio,
     required this.loggingInterceptor,
     required this.sharedPreferences,
-  }) : _dio = dio {
-    // token = sharedPreferences.getString(AppStorageKey.token);
-    _dio
+  }) {
+    dio
       ..options.baseUrl = baseUrl
-      ..options.connectTimeout = 60.seconds
-      ..options.receiveTimeout = 60.seconds
+      ..options.connectTimeout = const Duration(seconds: 60)
+      ..options.receiveTimeout = const Duration(seconds: 60)
       ..httpClientAdapter
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
-        'X-Api-Key': EndPoints.apiKey,
-        // 'language_code': sharedPreferences.getString("languageCode")
-
+        'X-Api-Key': EndPoints.apiKey
       };
-    _dio.interceptors.add(PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-      responseBody: true,
-      responseHeader: true,
-      error: true,
-      compact: true,
-      maxWidth: 150,
-    ),);
+    dio.interceptors.add(PrettyDioLogger(
+        request: true,
+        responseBody: true,
+        requestBody: true,
+        requestHeader: true));
   }
+
+  // void updateHeader({required String token}) {
+  //   dio.options.headers = {
+  //     'Content-Type': 'application/json; charset=UTF-8',
+  //     "Accept": " application/json",
+  //     'X-Authorization': EndPoints.apiKey
+  //   };
+  // }
 
   @override
   Future<Response> get({
     required String uri,
+    bool useGoogleUri = false,
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
-      var response = await _dio.get(uri, queryParameters: queryParameters);
+      if (useGoogleUri) {
+        dio.options.baseUrl = EndPoints.googleMapsBaseUrl;
+      } else {
+        dio.options.baseUrl = baseUrl;
+      }
+      var response = await dio.get(uri, queryParameters: queryParameters);
 
       return response;
     } on SocketException catch (e) {
@@ -62,7 +64,7 @@ class DioClient extends ApiClient {
     } on FormatException catch (_) {
       throw const FormatException("Unable to process the data");
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -72,7 +74,8 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      var response = await _dio.post(
+      dio.options.baseUrl = baseUrl;
+      var response = await dio.post(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -81,7 +84,7 @@ class DioClient extends ApiClient {
     } on FormatException catch (_) {
       throw const FormatException("Unable to process the data");
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -91,7 +94,8 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      var response = await _dio.put(
+      dio.options.baseUrl = baseUrl;
+      var response = await dio.put(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -100,7 +104,7 @@ class DioClient extends ApiClient {
     } on FormatException catch (_) {
       throw const FormatException("Unable to process the data");
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -110,7 +114,8 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      var response = await _dio.delete(
+      dio.options.baseUrl = baseUrl;
+      var response = await dio.delete(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -119,7 +124,7 @@ class DioClient extends ApiClient {
     } on FormatException catch (_) {
       throw const FormatException("Unable to process the data");
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

@@ -7,7 +7,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../app/core/utils/color_resources.dart';
+import '../../app/core/color_resources.dart';
 
 AttendanceSchedules attendanceSchedulesFromJson(String str) => AttendanceSchedules.fromJson(json.decode(str));
 

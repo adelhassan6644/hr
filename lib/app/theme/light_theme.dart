@@ -1,31 +1,39 @@
 import 'package:flutter/material.dart';
-import '../core/utils/app_strings.dart';
-import '../core/utils/color_resources.dart';
-import '../core/utils/dimensions.dart';
+import 'package:hr_project/app/core/color_resources.dart';
+
+import '../core/app_strings.dart';
+import '../core/dimensions.dart';
+import '../core/text_styles.dart';
+
 
 ThemeData light = ThemeData(
   fontFamily: AppStrings.fontFamily,
-  primaryColor:  ColorResources.PRIMARY,
+  useMaterial3: true,
+  primaryColor: ColorResources.PRIMARY,
   brightness: Brightness.light,
-  accentColor: Colors.white,
-  scaffoldBackgroundColor: Colors.white,
+  // accentColor: Colors.white,
+  colorScheme: const ColorScheme.light(
+      primary: ColorResources.PRIMARY,
+      secondary: ColorResources.PRIMARY),
+
+  scaffoldBackgroundColor: ColorResources.BACKGROUND_COLOR,
   focusColor: const Color(0xFFADC4C8),
-  hintColor: const Color(0xFF52575C),
+  hintColor: ColorResources.hintColor,
+  disabledColor: ColorResources.disabledColor,
   textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-    primary: Colors.black,
-    textStyle: const TextStyle(color: Colors.black),
+    primary: ColorResources.PRIMARY,
+    textStyle: AppTextStyles.w400.copyWith(
+      color: ColorResources.WHITE,
+    ),
   )),
+
   pageTransitionsTheme: const PageTransitionsTheme(
     builders: <TargetPlatform, PageTransitionsBuilder>{
       TargetPlatform.android: ZoomPageTransitionsBuilder(),
     },
   ),
-  // pageTransitionsTheme: const PageTransitionsTheme(builders: {
-  //   TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-  //   TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-  //   TargetPlatform.fuchsia: CupertinoPageTransitionsBuilder(),
-  // }),
+
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.white,
     elevation: 0,
