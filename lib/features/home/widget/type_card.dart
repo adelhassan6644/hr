@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
-
+import 'package:hr_project/app/core/extensions.dart';
 import '../../../app/core/color_resources.dart';
-import '../../../app/core/utils/dimensions.dart';
+import '../../../app/core/dimensions.dart';
 
 class TypeCard extends StatelessWidget {
   final String title ;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/domain/localization/language_constant.dart';
-import 'package:hr_project/presentation/home/widget/holiday_card.dart';
+import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/features/home/widget/holiday_card.dart';
+import '../../app/core/dimensions.dart';
+import '../../app/localization/localization/language_constant.dart';
 import '../../components/custom_app_bar.dart';
 import '../../components/custom_tab_bar.dart';
 import '../../navigation/custom_navigation.dart';
@@ -40,8 +40,7 @@ class _HolidaysScreen extends State<HolidaysScreen> {
       backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("holidays", context),
-        showLeading: true,
-        titleCenter: true,
+
       ),
       body: Padding(
         padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT.h),

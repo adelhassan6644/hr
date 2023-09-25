@@ -7,7 +7,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/language_constant.dart';
+import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_drop_down_button.dart';
 import '../../../components/animated_widget.dart';
@@ -89,7 +89,7 @@ class _VacationRequestState extends State<VacationRequest> {
                           items: addRequestProvider.loanTypes,
                           onChange: addRequestProvider.onSelectLoanType,
                           name: getTranslated("vacation_type", context),
-                          pIcon: Images.vacations,
+                          // pIcon: Images.vacations,
                           pIconColor: Styles.hintColor);
                     }),
                     SizedBox(
@@ -166,8 +166,8 @@ class _VacationRequestState extends State<VacationRequest> {
                               height: 16.h,
                             ),
                             CustomTextFormField(
-                              tIcon: Images.calenderIcon,
-                              removePIcon: false,
+                              // tIcon: Images.calenderIcon,
+                              // removePIcon: false,
                               sufWidget: Text(
                                 getTranslated("day", context),
                                 style: AppTextStyles.w500.copyWith(
@@ -176,7 +176,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                 ),
                               ),
                               read: true,
-                              tIconColor: Styles.hintColor,
+                              // tIconColor: Styles.hintColor,
                               hint:
                                   "${getTranslated("vacation_duration", context)}${"  :  "}${diffBtw2Dates(startDate: startDate ?? DateTime.now(), endDate: endDate ?? DateTime.now())}",
                             ),
@@ -298,9 +298,9 @@ class _VacationRequestState extends State<VacationRequest> {
                             height: 16.h,
                           ),
                           CustomTextFormField(
-                            tIcon: Images.members,
-                            removePIcon: false,
-                            type: TextInputType.number,
+                            // tIcon: Images.members,
+                            // removePIcon: false,
+                            // type: TextInputType.number,
                             sufWidget: Text(
                               getTranslated("member", context),
                               style: AppTextStyles.w500.copyWith(
@@ -315,7 +315,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                 return "Must be less 4 member";
                               }
                             },
-                            tIconColor: Styles.hintColor,
+                            // tIconColor: Styles.hintColor,
                             hint: getTranslated("members", context),
                             controller: members,
                             label: true,

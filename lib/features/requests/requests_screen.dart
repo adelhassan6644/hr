@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/domain/localization/language_constant.dart';
+import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/features/requests/request_flow_screen.dart';
+import 'package:hr_project/features/requests/widgets/request_card.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
-import 'package:hr_project/presentation/requests/request_flow_screen.dart';
-import 'package:hr_project/presentation/requests/widgets/request_card.dart';
 
+import '../../app/core/dimensions.dart';
 import '../../app/core/text_styles.dart';
+import '../../app/localization/localization/language_constant.dart';
 import '../../components/animated_widget.dart';
 import '../../components/custom_app_bar.dart';
 import '../../navigation/routes.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/presentation/requests/widgets/title_container.dart';
+import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/features/requests/widgets/title_container.dart';
 
 import '../../../app/core/color_resources.dart';
-import '../../../app/core/utils/dimensions.dart';
-import '../../../domain/localization/language_constant.dart';
+import '../../../app/core/dimensions.dart';
+import '../../../app/localization/localization/language_constant.dart';
 
 class RequestCard extends StatelessWidget {
   const RequestCard({ this.onTap,required this.status,required this.reason,required this.requestType,Key? key}) : super(key: key);

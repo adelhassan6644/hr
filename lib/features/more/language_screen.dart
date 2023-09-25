@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/presentation/settings/widget/language_widget.dart';
+import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/features/more/widget/language_widget.dart';
 import 'package:provider/provider.dart';
-import '../../app/core/utils/app_storage_keys.dart';
+import '../../app/core/app_storage_keys.dart';
+import '../../app/core/dimensions.dart';
+import '../../app/localization/localization/language_constant.dart';
+import '../../app/localization/provider/localization_provider.dart';
 import '../../components/custom_button.dart';
-import '../../domain/localization/language_constant.dart';
-import '../notifier/language_provider.dart';
-import '../notifier/localization_provider.dart';
+import '../language/provider/language_provider.dart';
+
 
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({Key? key}) : super(key: key);

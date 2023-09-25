@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
-import '../../../domain/localization/language_constant.dart';
-import '../../notifier/language_provider.dart';
+
+import '../../../app/localization/localization/language_constant.dart';
+import '../../language/provider/language_provider.dart';
 
 Widget languageWidget(
     {required BuildContext context,

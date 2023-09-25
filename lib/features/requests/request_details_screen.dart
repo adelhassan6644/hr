@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/app/core/extensions.dart';
 import 'package:hr_project/app/core/text_styles.dart';
-import 'package:hr_project/presentation/requests/request_flow_screen.dart';
-import 'package:hr_project/presentation/requests/widgets/title_container.dart';
+import 'package:hr_project/features/requests/widgets/title_container.dart';
+import '../../app/core/dimensions.dart';
 import '../../app/core/images.dart';
-import '../../domain/localization/language_constant.dart';
+import '../../app/localization/localization/language_constant.dart';
+import 'request_flow_screen.dart';
 
 class RequestDetailsScreen extends StatelessWidget {
   const RequestDetailsScreen({required this.model, Key? key}) : super(key: key);

@@ -161,7 +161,7 @@ class SalaryScreen extends StatelessWidget {
                       CustomButton(
                           textColor: Styles.PRIMARY_COLOR,
                           text: getTranslated("download", context),
-                          icon: Icons.download,
+                          // icon: Icons.download,
                           backgroundColor: Styles.WHITE),
                     ],
                   )),

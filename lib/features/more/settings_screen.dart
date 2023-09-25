@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/app/core/extensions.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
-import 'package:hr_project/presentation/notifier/auth_provider.dart';
 import 'package:provider/provider.dart';
 import '../../app/core/color_resources.dart';
-import '../../app/core/utils/constant.dart';
+import '../../app/core/constant.dart';
+import '../../app/core/dimensions.dart';
 import '../../app/core/images.dart';
+import '../../app/localization/localization/language_constant.dart';
+import '../../app/localization/provider/localization_provider.dart';
 import '../../components/custom_app_bar.dart';
-import '../../domain/localization/language_constant.dart';
 import '../../navigation/routes.dart';
-import '../notifier/localization_provider.dart';
-import '../profile/units/profile_units.dart';
+import '../auth/provider/auth_provider.dart';
+import '../profile/widgets/profile_units.dart';
 import 'language_screen.dart';
 
 class SettingsScreen extends StatelessWidget {

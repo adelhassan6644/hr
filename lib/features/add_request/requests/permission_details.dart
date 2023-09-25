@@ -6,7 +6,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/language_constant.dart';
+import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
@@ -82,7 +82,7 @@ class _PermissionRequestScreenState extends State<PermissionRequestScreen> {
                           items: addRequestProvider.loanTypes,
                           onChange: addRequestProvider.onSelectLoanType,
                           name: getTranslated("type", context),
-                          pIcon: Images.time,
+                          // pIcon: Images.time,
                           pIconColor: Styles.hintColor);
                     }),
                     SizedBox(

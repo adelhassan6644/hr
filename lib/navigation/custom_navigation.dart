@@ -1,5 +1,30 @@
 import 'package:flutter/material.dart';
 import '../data/model/user_model.dart';
+import '../features/add_request/page/add_request_screen.dart';
+import '../features/add_request/requests/asset_request.dart';
+import '../features/add_request/requests/business_trip_request.dart';
+import '../features/add_request/requests/clear_asset_request.dart';
+import '../features/add_request/requests/expense_request_Screen.dart';
+import '../features/add_request/requests/letter_request.dart';
+import '../features/add_request/requests/loan_request_screen.dart';
+import '../features/add_request/requests/permission_details.dart';
+import '../features/add_request/requests/vacation_request.dart';
+import '../features/attendance/page/attendance_page.dart';
+import '../features/auth/pages/forget_password_screen.dart';
+import '../features/auth/pages/login_screen.dart';
+import '../features/auth/pages/reset_password_screen.dart';
+import '../features/auth/pages/verification_screen.dart';
+import '../features/more/edit_password_screen.dart';
+import '../features/more/language_screen.dart';
+import '../features/more/settings_screen.dart';
+import '../features/profile/widgets/assets/assets_screen.dart';
+import '../features/profile/widgets/contract/contract_screen.dart';
+import '../features/profile/widgets/documents/documents_screen.dart';
+import '../features/profile/widgets/organization/organization_screen.dart';
+import '../features/profile/widgets/personal/personal_screen.dart';
+import '../features/profile/widgets/salary/salary_details_screen.dart';
+import '../features/profile/widgets/salary/salary_screen.dart';
+import '../features/requests/request_flow_screen.dart';
 import '../main.dart';
 import '../main_page/dashboard.dart';
 import '../features/splash/page/splash.dart';
@@ -51,7 +76,7 @@ abstract class CustomNavigator {
       case Routes.CLEAR_ASSET_REQUEST:
         return _pageRoute(const ClearAssetRequest());
       case Routes.ATTENDANCE_LEAVING:
-        return _pageRoute(const AttendanceLeavingScreen());
+        return _pageRoute(const AttendancePage());
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());
       case Routes.CHANGE_PASSWORD:

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/app/core/extensions.dart';
 import 'package:provider/provider.dart';
-import '../../../app/core/utils/text_styles.dart';
+import '../../../app/core/dimensions.dart';
+import '../../../app/core/text_styles.dart';
+import '../../../app/localization/provider/localization_provider.dart';
 import '../../../navigation/custom_navigation.dart';
-import '../../notifier/localization_provider.dart';
 
 class MoneyCard extends StatelessWidget {
   final String price;

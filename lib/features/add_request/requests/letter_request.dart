@@ -7,7 +7,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/language_constant.dart';
+import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
@@ -87,7 +87,7 @@ class _LetterRequestState extends State<LetterRequest> {
                               items: addRequestProvider.loanTypes,
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("letter_type", context),
-                              pIcon: Images.letter,
+                              // pIcon: Images.letter,
                               pIconColor: Styles.hintColor);
                         }
                     ),
@@ -107,10 +107,10 @@ class _LetterRequestState extends State<LetterRequest> {
                       height: 16.h,
                     ),
                     CustomTextFormField(
-                      tIcon: Images.letter,
+                      // tIcon: Images.letter,
                       label: true,
-                      removePIcon: false,
-                      tIconColor: Styles.hintColor,
+                      // removePIcon: false,
+                      // tIconColor: Styles.hintColor,
                       hint: getTranslated("subject_to_en", context),
                       onTap: (){},
                     ),
@@ -118,10 +118,10 @@ class _LetterRequestState extends State<LetterRequest> {
                       height: 16.h,
                     ),
                     CustomTextFormField(
-                      tIcon: Images.letter,
-                      removePIcon: false,
+                      // tIcon: Images.letter,
+                      // removePIcon: false,
                       label: true,
-                      tIconColor: Styles.hintColor,
+                      // tIconColor: Styles.hintColor,
                       hint: getTranslated("subject_to_ar", context),
                       onTap: (){},
                     ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/domain/localization/language_constant.dart';
+import 'package:hr_project/features/requests/request_details_screen.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
-import 'package:hr_project/presentation/requests/request_details_screen.dart';
 
+import '../../app/localization/localization/language_constant.dart';
 import '../../components/custom_app_bar.dart';
 import '../../components/custom_tab_bar_2.dart';
 
@@ -33,7 +33,6 @@ class _RequestFlowScreenState extends State<RequestFlowScreen> {
       appBar: CustomAppBar(
         title:
             "${widget.model.requestType} ${getTranslated("request", context)} ",
-        showLeading: true,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.min,

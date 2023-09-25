@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/utils/dimensions.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
-import 'package:hr_project/domain/localization/language_constant.dart';
+import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/features/home/widget/check_in_card.dart';
+import 'package:hr_project/features/home/widget/type_card.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
-import 'package:hr_project/presentation/home/widget/check_in_card.dart';
-import 'package:hr_project/presentation/home/widget/type_card.dart';
-import '../../../app/core/utils/constant.dart';
+import '../../app/core/constant.dart';
+import '../../app/core/dimensions.dart';
 import '../../app/core/images.dart';
+import '../../app/localization/localization/language_constant.dart';
 import '../../navigation/routes.dart';
 
 class HomeScreen extends StatelessWidget {

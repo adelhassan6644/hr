@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/utils/extensions.dart';
+import 'package:hr_project/app/core/extensions.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/text_styles.dart';
 

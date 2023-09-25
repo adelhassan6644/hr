@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Unfocus extends StatefulWidget {
-  const Unfocus({Key? key, required this.child}) : super(key: key);
+class UnFocus extends StatefulWidget {
+  const UnFocus({Key? key, required this.child}) : super(key: key);
 
   final Widget child;
 
   @override
-  State<Unfocus> createState() => _UnfocusState();
+  State<UnFocus> createState() => _UnFocusState();
 }
 
-class _UnfocusState extends State<Unfocus> {
+class _UnFocusState extends State<UnFocus> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -81,7 +81,7 @@ class _ClearAssetRequest extends State<ClearAssetRequest> {
                               items: addRequestProvider.loanTypes,
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("clear_asset_type", context),
-                              pIcon: Images.assetsIcon,
+                              // pIcon: Images.assetsIcon,
                               pIconColor: Styles.hintColor);
                         }
                     ),

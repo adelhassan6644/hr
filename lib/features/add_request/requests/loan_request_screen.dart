@@ -6,7 +6,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/language_constant.dart';
+import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
@@ -88,7 +88,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                             items: addRequestProvider.loanTypes,
                             onChange:addRequestProvider.onSelectLoanType,
                             name: getTranslated("loan_type", context),
-                            pIcon: Images.salaryIcon,
+                            // pIcon: Images.salaryIcon,
                             pIconColor: Styles.hintColor);
                       }
                     ),
@@ -96,10 +96,10 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                       height: 16.h,
                     ),
                     CustomTextFormField(
-                      tIcon: Images.cash,
-                      removePIcon: false,
-                      sIcon: Images.question,
-                      type: TextInputType.number,
+                      // tIcon: Images.cash,
+                      // removePIcon: false,
+                      // sIcon: Images.question,
+                      // type: TextInputType.number,
                       sufWidget: Text(
                         getTranslated("sar", context),
                         style: AppTextStyles.w500.copyWith(
@@ -108,7 +108,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                         ),
                       ),
                       controller: loanAmount,
-                      tIconColor: Styles.hintColor,
+                      // tIconColor: Styles.hintColor,
                       hint: getTranslated("loan_amount", context),
                       label: true,
                     ),
@@ -166,7 +166,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                 "A_specified_monthly_amount", context),
                           ],
                           name: getTranslated("monthly_installment", context),
-                          pIcon: Images.cash,
+                          // pIcon: Images.cash,
                           pIconColor: Styles.hintColor,
                           onChange: (Object? value) {
                             reBuilder(() {
@@ -186,11 +186,11 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                   getTranslated(
                                       "specified_number_of_months", context))
                                 CustomTextFormField(
-                                  tIcon: Images.calenderIcon,
+                                  // tIcon: Images.calenderIcon,
                                   controller: numberOfMonths,
-                                  removePIcon: false,
-                                  type: TextInputType.number,
-                                  tIconColor: Styles.hintColor,
+                                  // removePIcon: false,
+                                  // type: TextInputType.number,
+                                  // tIconColor: Styles.hintColor,
                                   hint: getTranslated(
                                       "number_of_months", context),
                                   label: true,
@@ -199,10 +199,10 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                   getTranslated(
                                       "A_specified_monthly_amount", context))
                                 CustomTextFormField(
-                                  tIcon: Images.cash,
-                                  removePIcon: false,
+                                  // tIcon: Images.cash,
+                                  // removePIcon: false,
                                   controller: amount,
-                                  type: TextInputType.number,
+                                  // type: TextInputType.number,
                                   sufWidget: Text(
                                     getTranslated("sar", context),
                                     style: AppTextStyles.w500.copyWith(
@@ -210,7 +210,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                       color: Styles.hintColor,
                                     ),
                                   ),
-                                  tIconColor: Styles.hintColor,
+                                  // tIconColor: Styles.hintColor,
                                   hint: getTranslated("amount", context),
                                   label: true,
                                 ),
@@ -222,8 +222,8 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                       height: 16.h,
                                     ),
                                     CustomTextFormField(
-                                      tIcon: Images.calenderIcon,
-                                      removePIcon: false,
+                                      // tIcon: Images.calenderIcon,
+                                      // removePIcon: false,
                                       read: true,
                                       sufWidget: Text(
                                         getTranslated("month", context),
@@ -232,7 +232,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                           color: Styles.hintColor,
                                         ),
                                       ),
-                                      tIconColor: Styles.hintColor,
+                                      // tIconColor: Styles.hintColor,
                                       hint: "${getTranslated("number_of_months", context)}${"  :  "}${(int.parse(loanAmount.text.trim().toString().convertDigits()) ~/ int.parse(amount.text.trim().toString().convertDigits())).roundToDouble()}",
                                     ),
                                   ],
@@ -245,10 +245,10 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                       height: 16.h,
                                     ),
                                     CustomTextFormField(
-                                      tIcon: Images.cash,
-                                      removePIcon: false,
+                                      // tIcon: Images.cash,
+                                      // removePIcon: false,
                                       read: true,
-                                      type: TextInputType.number,
+                                      // type: TextInputType.number,
                                       sufWidget: Text(
                                         getTranslated("sar", context),
                                         style: AppTextStyles.w500.copyWith(
@@ -256,7 +256,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                           color: Styles.hintColor,
                                         ),
                                       ),
-                                      tIconColor: Styles.hintColor,
+                                      // tIconColor: Styles.hintColor,
                                       hint:
                                           "${getTranslated("monthly_installment", context)}${" :  "}${(int.parse(loanAmount.text.trim().toString().convertDigits()) ~/ int.parse(numberOfMonths.text.trim().toString().convertDigits())).roundToDouble()}",
                                     ),

@@ -6,7 +6,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/language_constant.dart';
+import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
@@ -81,11 +81,11 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                       height: 16.h,
                     ),
                     CustomTextFormField(
-                      tIcon: Images.expenses,
-                      removePIcon: false,
-                      sIcon: Images.question,
+                      // tIcon: Images.expenses,
+                      // removePIcon: false,
+                      // sIcon: Images.question,
                       controller: description,
-                      tIconColor: Styles.hintColor,
+                      // tIconColor: Styles.hintColor,
                       hint: getTranslated("item_name", context),
                       onChanged: (String? value) {},
                       label: true,
@@ -94,9 +94,9 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                       height: 16.h,
                     ),
                     CustomTextFormField(
-                      tIcon: Images.cash,
-                      removePIcon: false,
-                      sIcon: Images.question,
+                      // tIcon: Images.cash,
+                      // removePIcon: false,
+                      // sIcon: Images.question,
                       sufWidget: Text(
                         getTranslated("sar", context),
                         style: AppTextStyles.w500.copyWith(
@@ -105,7 +105,7 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                         ),
                       ),
                       controller: expenseAmount,
-                      tIconColor: Styles.hintColor,
+                      // tIconColor: Styles.hintColor,
                       hint: getTranslated("amount", context),
                       onChanged: (String? value) {},
                       label: true,
@@ -114,11 +114,11 @@ class _ExpenseRequestScreenState extends State<ExpenseRequestScreen> {
                       height: 16.h,
                     ),
                     CustomTextFormField(
-                      tIcon: Images.description,
-                      removePIcon: false,
-                      sIcon: Images.question,
+                      // tIcon: Images.description,
+                      // removePIcon: false,
+                      // sIcon: Images.question,
                       controller: description,
-                      tIconColor: Styles.hintColor,
+                      // tIconColor: Styles.hintColor,
                       hint: getTranslated("description", context),
                       label: true,
                     ),
