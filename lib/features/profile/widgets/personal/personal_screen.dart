@@ -34,12 +34,12 @@ class PersonalScreen extends StatelessWidget {
                   width: 100,
                   height: 100,
                   decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: ColorResources.FILL_COLOR),
+                      shape: BoxShape.circle, color: Styles.FILL_COLOR),
                   child: user.image == null
                       ? const ClipOval(
                           child: Icon(
                           Icons.person,
-                          color: ColorResources.disabledColor,
+                          color: Styles.disabledColor,
                           size: 80,
                         ))
                       : ImageWidget.network(user.image!,
@@ -61,7 +61,7 @@ class PersonalScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.w),
                       border: Border.all(
-                          color: ColorResources.BORDER_COLOR,
+                          color: Styles.BORDER_COLOR,
                           width: 0.5,
                           style: BorderStyle.solid)),
                   child: Column(
@@ -79,7 +79,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -88,7 +88,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("job_id", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -99,7 +99,7 @@ class PersonalScreen extends StatelessWidget {
                                       .convertDigits() ??
                                   "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -110,7 +110,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -119,7 +119,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("name", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -132,7 +132,7 @@ class PersonalScreen extends StatelessWidget {
                                   ? user.arName ?? ""
                                   : user.enName ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -143,7 +143,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -152,7 +152,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("email_or_id", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -160,7 +160,7 @@ class PersonalScreen extends StatelessWidget {
                             Text(
                               user.email ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -171,7 +171,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -180,7 +180,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("phone", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -188,7 +188,7 @@ class PersonalScreen extends StatelessWidget {
                             Text(
                               user.phone?.convertDigits() ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -199,7 +199,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                           // boxShadow: [
                           //   BoxShadow(
@@ -215,7 +215,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("gender", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -225,7 +225,7 @@ class PersonalScreen extends StatelessWidget {
                                   ? getTranslated("male", context)
                                   : getTranslated("female", context),
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -236,7 +236,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -245,7 +245,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("marital_status", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -255,7 +255,7 @@ class PersonalScreen extends StatelessWidget {
                                   ? getTranslated("married", context)
                                   : getTranslated("single", context),
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -266,7 +266,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -275,7 +275,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("age", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -283,7 +283,7 @@ class PersonalScreen extends StatelessWidget {
                             Text(
                               "28".convertDigits(),
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -294,7 +294,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -303,7 +303,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("id_type", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -313,7 +313,7 @@ class PersonalScreen extends StatelessWidget {
                                   ? getTranslated("national_id", context)
                                   : getTranslated("accommodation", context),
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -324,7 +324,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -333,7 +333,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("id_number", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -342,7 +342,7 @@ class PersonalScreen extends StatelessWidget {
                               user.employeeInfo?.idNumber?.convertDigits() ??
                                   "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -353,7 +353,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -362,7 +362,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("religion", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -372,7 +372,7 @@ class PersonalScreen extends StatelessWidget {
                                   ? getTranslated("muslim", context)
                                   : getTranslated("christian", context),
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -383,7 +383,7 @@ class PersonalScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -392,7 +392,7 @@ class PersonalScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("date_of_birth", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -400,7 +400,7 @@ class PersonalScreen extends StatelessWidget {
                             Text(
                               user.dateOfBirth!.format("dd-MM-yyyy"),
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),

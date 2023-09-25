@@ -7,7 +7,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/language_constant.dart';
+import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/confirm_bottom_sheet.dart';
 import '../../../components/custom_check_box_list_tile.dart';
 import '../../../components/animated_widget.dart';
@@ -70,7 +70,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: Styles.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -96,18 +96,18 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                               items: addRequestProvider.loanTypes,
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("destination", context),
-                              pIcon: Images.destination,
-                              pIconColor: ColorResources.hintColor);
+                              // pIcon: Images.destination,
+                              pIconColor: Styles.hintColor);
                         }
                     ),
                     SizedBox(
                       height: 16.h,
                     ),
                     CustomTextFormField(
-                      tIcon: Images.services,
-                      removePIcon: false,
+                      // tIcon: Images.services,
+                      // removePIcon: false,
                       read: true,
-                      tIconColor: ColorResources.hintColor,
+                      // tIconColor: Styles.hintColor,
                       hint: getTranslated("select_additional_services", context),
                       onTap: (){
                         setState(() {
@@ -168,7 +168,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                 padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                 child: Text(getTranslated("start_date", context),style: AppTextStyles.w500.copyWith(
                                     fontSize: 13,
-                                    color: ColorResources.SUBTITLE
+                                    color: Styles.SUBTITLE
                                 ),),
                               ),
                               SizedBox(height: 8.h,),
@@ -194,7 +194,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                 padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                 child: Text(getTranslated("end_date", context),style: AppTextStyles.w500.copyWith(
                                     fontSize: 13,
-                                    color: ColorResources.SUBTITLE
+                                    color: Styles.SUBTITLE
                                 ),),
                               ),
                               SizedBox(height: 8.h,),
@@ -220,17 +220,17 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                               height: 16.h,
                             ),
                             CustomTextFormField(
-                              tIcon: Images.calenderIcon,
-                              removePIcon: false,
+                              // tIcon: Images.calenderIcon,
+                              // removePIcon: false,
                               sufWidget: Text(
                                 getTranslated("day", context),
                                 style: AppTextStyles.w500.copyWith(
                                   fontSize: 13,
-                                  color: ColorResources.hintColor,
+                                  color: Styles.hintColor,
                                 ),
                               ),
                               read: true,
-                              tIconColor: ColorResources.hintColor,
+                              // tIconColor: Styles.hintColor,
                               hint: "${getTranslated("business_trip_duration", context)}${"  :  "}${diffBtw2Dates(startDate: startDate??DateTime.now(), endDate: endDate??DateTime.now())}",
                             ),
                           ],
@@ -250,7 +250,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: Styles.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -267,7 +267,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                           ),
                         ),
                         CupertinoSwitch(
-                            activeColor: ColorResources.PRIMARY,
+                            activeColor: Styles.PRIMARY_COLOR,
                             value: isFlight,
                             onChanged: (value) {
                               setState(() {
@@ -294,7 +294,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                       padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                       child: Text(getTranslated("departure_date", context),style: AppTextStyles.w500.copyWith(
                                           fontSize: 13,
-                                          color: ColorResources.SUBTITLE
+                                          color: Styles.SUBTITLE
                                       ),),
                                     ),
                                     SizedBox(height: 8.h,),
@@ -320,7 +320,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                       padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                                       child: Text(getTranslated("return_date", context),style: AppTextStyles.w500.copyWith(
                                           fontSize: 13,
-                                          color: ColorResources.SUBTITLE
+                                          color: Styles.SUBTITLE
                                       ),),
                                     ),
                                     SizedBox(height: 8.h,),
@@ -342,14 +342,14 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                             height: 16.h,
                           ),
                           CustomTextFormField(
-                            tIcon: Images.members,
-                            removePIcon: false,
-                            type: TextInputType.number,
+                            // tIcon: Images.members,
+                            // removePIcon: false,
+                            // type: TextInputType.number,
                             sufWidget: Text(
                               getTranslated("member", context),
                               style: AppTextStyles.w500.copyWith(
                                 fontSize: 13,
-                                color: ColorResources.hintColor,
+                                color: Styles.hintColor,
                               ),
                             ),
                             valid: (v){
@@ -359,7 +359,7 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
                                 return "Must be less 4 member";
                               }
                             },
-                            tIconColor: ColorResources.hintColor,
+                            // tIconColor: Styles.hintColor,
                             hint:getTranslated("members", context) ,
                             controller: members,
                             label: true,
@@ -382,10 +382,10 @@ class _BusinessTripRequest extends State<BusinessTripRequest> {
               Consumer<AddRequestProvider>(
                   builder: (context, addRequestProvider, child) {
                     return CustomButton(
-                        textColor: ColorResources.WHITE,
+                        textColor: Styles.WHITE,
                         text: getTranslated("submit", context),
                         onTap: () => addRequestProvider.onSubmit(),
-                        backgroundColor: ColorResources.PRIMARY);
+                        backgroundColor: Styles.PRIMARY_COLOR);
                   })
             ],
           ),

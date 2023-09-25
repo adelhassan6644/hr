@@ -46,12 +46,12 @@ loadingDialog() {
                       getTranslated("please_wait", context),
                       style: AppTextStyles.w700.copyWith(
                           fontSize: 18.0,
-                          color: ColorResources.PRIMARY,
+                          color: Styles.PRIMARY_COLOR,
                           decoration: TextDecoration.none),
                     ),
                   ),
                   const SpinKitThreeBounce(
-                    color: ColorResources.PRIMARY,
+                    color: Styles.PRIMARY_COLOR,
                     size: 20,
                   )
                 ]),
@@ -81,7 +81,7 @@ spinKitDialog() {
             child: const Center(
               child: Center(
                 child: SpinKitFadingCircle(
-                  color: ColorResources.WHITE,
+                  color: Styles.WHITE,
                   size: 50,
                 ),
               ),

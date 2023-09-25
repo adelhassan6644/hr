@@ -50,7 +50,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
     return Container(
       height: 360.h,
       decoration: const BoxDecoration(
-          color: ColorResources.WHITE,
+          color: Styles.WHITE,
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(20), topLeft: Radius.circular(20))),
       child: Column(
@@ -121,8 +121,8 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     CustomNavigator.pop();
                   }
                 },
-                backgroundColor: ColorResources.PRIMARY,
-                textColor: ColorResources.WHITE,
+                backgroundColor: Styles.PRIMARY_COLOR,
+                textColor: Styles.WHITE,
               ),
             ),
           ),

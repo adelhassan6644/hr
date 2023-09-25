@@ -16,7 +16,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       body: SafeArea(
           top: false,
           child: Column(
@@ -35,7 +35,7 @@ class AboutUs extends StatelessWidget {
                           vertical: Dimensions.PADDING_SIZE_SMALL.h,
                         ),
                         decoration: BoxDecoration(
-                            color: ColorResources.WHITE,
+                            color: Styles.WHITE,
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
                           children: [
@@ -50,7 +50,7 @@ class AboutUs extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: AppTextStyles.w500.copyWith(
                                           fontSize: 18,
-                                          color: ColorResources.PRIMARY)),
+                                          color: Styles.PRIMARY_COLOR)),
                                 ),
 
                                 ///Call Center
@@ -60,7 +60,7 @@ class AboutUs extends StatelessWidget {
                                     textAlign: TextAlign.start,
                                     style: AppTextStyles.w400.copyWith(
                                         fontSize: 14,
-                                        color: ColorResources.PRIMARY)),
+                                        color: Styles.PRIMARY_COLOR)),
                                 Padding(
                                   padding: EdgeInsets.symmetric(vertical: 8.h),
                                   child: CustomTextFormField(
@@ -78,7 +78,7 @@ class AboutUs extends StatelessWidget {
                                     textAlign: TextAlign.start,
                                     style: AppTextStyles.w400.copyWith(
                                         fontSize: 14,
-                                        color: ColorResources.PRIMARY)),
+                                        color: Styles.PRIMARY_COLOR)),
                               ],
                             ),
                           ],
@@ -87,7 +87,7 @@ class AboutUs extends StatelessWidget {
                     : const Expanded(
                         child: Center(
                           child: CircularProgressIndicator(
-                            color: ColorResources.PRIMARY,
+                            color: Styles.PRIMARY_COLOR,
                           ),
                         ),
                       );

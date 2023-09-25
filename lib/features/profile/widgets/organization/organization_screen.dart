@@ -40,7 +40,7 @@ class OrganizationScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.w),
                       border: Border.all(
-                          color: ColorResources.BORDER_COLOR,
+                          color: Styles.BORDER_COLOR,
                           width: 0.5,
                           style: BorderStyle.solid)),
                   child: Column(
@@ -59,7 +59,7 @@ class OrganizationScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -68,7 +68,7 @@ class OrganizationScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("join_date", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -76,7 +76,7 @@ class OrganizationScreen extends StatelessWidget {
                             Text(
                               employee.dateOfJoining!.format("dd-MMMM-yyyy"),
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -87,7 +87,7 @@ class OrganizationScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -96,7 +96,7 @@ class OrganizationScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("job_title", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -104,7 +104,7 @@ class OrganizationScreen extends StatelessWidget {
                             Text(
                               employee.jobRole?.jobTitle ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -115,7 +115,7 @@ class OrganizationScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -124,7 +124,7 @@ class OrganizationScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("job_type", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -132,7 +132,7 @@ class OrganizationScreen extends StatelessWidget {
                             Text(
                               employee.jobType?.name ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -143,7 +143,7 @@ class OrganizationScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -152,7 +152,7 @@ class OrganizationScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("department", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -160,7 +160,7 @@ class OrganizationScreen extends StatelessWidget {
                             Text(
                               employee.jobCategory?.name ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -171,7 +171,7 @@ class OrganizationScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -180,7 +180,7 @@ class OrganizationScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("job_unit", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -188,7 +188,7 @@ class OrganizationScreen extends StatelessWidget {
                             Text(
                               employee.jobUnit?.name ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -199,7 +199,7 @@ class OrganizationScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -208,7 +208,7 @@ class OrganizationScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("location", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -221,7 +221,7 @@ class OrganizationScreen extends StatelessWidget {
                                   ? employee.branch?.enName ?? ""
                                   : employee.branch?.arName ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -232,7 +232,7 @@ class OrganizationScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -241,7 +241,7 @@ class OrganizationScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("grade", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -249,7 +249,7 @@ class OrganizationScreen extends StatelessWidget {
                             Text(
                               employee.jobLevel?.name ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),
@@ -260,7 +260,7 @@ class OrganizationScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
@@ -269,7 +269,7 @@ class OrganizationScreen extends StatelessWidget {
                               child: Text(
                                 getTranslated("line_manager", context),
                                 style: AppTextStyles.w500.copyWith(
-                                  color: ColorResources.HEADER,
+                                  color: Styles.HEADER,
                                   fontSize: 16,
                                 ),
                               ),
@@ -283,7 +283,7 @@ class OrganizationScreen extends StatelessWidget {
                                   ? employee.directManager?.enName ?? ""
                                   : employee.directManager?.arName ?? "",
                               style: AppTextStyles.w600.copyWith(
-                                  fontSize: 12, color: ColorResources.SUB_TEXT),
+                                  fontSize: 12, color: Styles.SUB_TEXT),
                             )
                           ],
                         ),

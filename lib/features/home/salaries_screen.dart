@@ -39,7 +39,7 @@ class _SalariesScreenState extends State<SalariesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("salaries", context),
         showLeading: true,

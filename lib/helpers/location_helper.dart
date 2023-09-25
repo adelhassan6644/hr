@@ -6,7 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import '../navigation/custom_navigation.dart';
 
 abstract class LocationHelper {
-  static checkLocation({bool isSplash = true}) async {
+  static checkLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -16,7 +16,7 @@ abstract class LocationHelper {
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      showCustomDialog(isSplash: isSplash);
+      showCustomDialog();
       Future.error('Location services are disabled.');
       return false;
     }
@@ -26,7 +26,7 @@ abstract class LocationHelper {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
-        await showCustomDialog(isSplash: isSplash);
+        await showCustomDialog();
         Future.error('Location permissions are denied');
         return false;
       }
@@ -35,7 +35,7 @@ abstract class LocationHelper {
     if (permission == LocationPermission.deniedForever) {
       // Permissions are denied forever, handle appropriately.
       permission = await Geolocator.requestPermission();
-      await showCustomDialog(isSplash: isSplash);
+      await showCustomDialog();
       Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
       return false;
@@ -45,7 +45,7 @@ abstract class LocationHelper {
     return true;
   }
 
-  static showCustomDialog({bool isSplash = true}) {
+  static showCustomDialog() {
     showDialog(
         context: CustomNavigator.navigatorState.currentContext!,
         builder: (_) => CupertinoAlertDialog(

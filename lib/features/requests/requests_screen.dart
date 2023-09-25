@@ -34,14 +34,14 @@ class _RequestsScreenState extends State<RequestsScreen> {
         isExtended: true,
         icon: Icon(
           Icons.add,
-          color: ColorResources.WHITE,
+          color: Styles.WHITE,
           size: 20.h,
         ),
         label: Text(getTranslated("add", context),
             style: AppTextStyles.w600
-                .copyWith(color: ColorResources.WHITE, fontSize: 14)),
+                .copyWith(color: Styles.WHITE, fontSize: 14)),
         onPressed: () => CustomNavigator.push(Routes.ADD_REQUEST),
-        backgroundColor: ColorResources.PRIMARY,
+        backgroundColor: Styles.PRIMARY_COLOR,
       ),
       body: NotificationListener(
         onNotification: (ScrollNotification sn) {
@@ -76,7 +76,7 @@ class _RequestsScreenState extends State<RequestsScreen> {
                           Text(
                             "4 ${getTranslated("results", context)}",
                             style: AppTextStyles.w600.copyWith(
-                                fontSize: 12, color: ColorResources.HEADER),
+                                fontSize: 12, color: Styles.HEADER),
                           ),
                           ...List.generate(
                             5,

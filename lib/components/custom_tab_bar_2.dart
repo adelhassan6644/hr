@@ -30,8 +30,8 @@ class TabWidget extends StatelessWidget {
                 if (icon != null)
                   SvgPicture.asset(icon??"",
                       color: isSelected
-                          ? ColorResources.WHITE
-                          : ColorResources.WHITE.withOpacity(.5),
+                          ? Styles.WHITE
+                          : Styles.WHITE.withOpacity(.5),
                       height:iconSize?.h , width: iconSize?.w),
                 if (icon != null) SizedBox(width: 4.w),
                 Expanded(
@@ -43,7 +43,7 @@ class TabWidget extends StatelessWidget {
                       fontSize: 12,
                       overflow: TextOverflow.fade,
                       fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                      color: isSelected ? ColorResources.PRIMARY : ColorResources.SUB_TEXT,
+                      color: isSelected ? Styles.PRIMARY_COLOR : Styles.SUB_TEXT,
                     ),
                   ),
                 ),
@@ -56,7 +56,7 @@ class TabWidget extends StatelessWidget {
                 height: 3.h,
                 margin: EdgeInsets.only(top: 10.h),
                 decoration: BoxDecoration(
-                  color: isSelected ? ColorResources.PRIMARY : Colors.transparent,
+                  color: isSelected ? Styles.PRIMARY_COLOR : Colors.transparent,
                 ),
               );
             })

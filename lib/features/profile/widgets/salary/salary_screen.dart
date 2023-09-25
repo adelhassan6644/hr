@@ -25,7 +25,7 @@ class SalaryScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
               decoration: const BoxDecoration(
-                color: ColorResources.FILL_COLOR,
+                color: Styles.FILL_COLOR,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
               child: Row(
@@ -41,7 +41,7 @@ class SalaryScreen extends StatelessWidget {
                           "10217.50",
                           style: TextStyle(
                             fontSize: 16,
-                            color: ColorResources.blackColor,
+                            color: Styles.blackColor,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -49,14 +49,14 @@ class SalaryScreen extends StatelessWidget {
                           getTranslated("sar", context),
                           style: const TextStyle(
                             fontSize: 16,
-                            color: ColorResources.blackColor,
+                            color: Styles.blackColor,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                       ],
                     ),
-                    progressColor: ColorResources.PRIMARY,
-                    backgroundColor: ColorResources.GOLD_COLOR,
+                    progressColor: Styles.PRIMARY_COLOR,
+                    backgroundColor: Styles.GOLD_COLOR,
                   ),
                   const SizedBox(
                     width: 20,
@@ -69,14 +69,14 @@ class SalaryScreen extends StatelessWidget {
                         getTranslated("base_salary", context),
                         style: const TextStyle(
                             fontSize: 14,
-                            color: ColorResources.PRIMARY,
+                            color: Styles.PRIMARY_COLOR,
                             fontWeight: FontWeight.w500),
                       ),
                       const Text(
                         "5675.8",
                         style: TextStyle(
                             fontSize: 14,
-                            color: ColorResources.grayColor,
+                            color: Styles.grayColor,
                             fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
@@ -86,14 +86,14 @@ class SalaryScreen extends StatelessWidget {
                         getTranslated("health_insurance", context),
                         style: const TextStyle(
                             fontSize: 14,
-                            color: ColorResources.GOLD_COLOR,
+                            color: Styles.GOLD_COLOR,
                             fontWeight: FontWeight.w500),
                       ),
                       const Text(
                         "534.34",
                         style: TextStyle(
                             fontSize: 14,
-                            color: ColorResources.grayColor,
+                            color: Styles.grayColor,
                             fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
@@ -103,14 +103,14 @@ class SalaryScreen extends StatelessWidget {
                         getTranslated("family_allowance", context),
                         style: const TextStyle(
                             fontSize: 14,
-                            color: ColorResources.GOLD_COLOR,
+                            color: Styles.GOLD_COLOR,
                             fontWeight: FontWeight.w500),
                       ),
                       const Text(
                         "5675.8",
                         style: TextStyle(
                             fontSize: 14,
-                            color: ColorResources.grayColor,
+                            color: Styles.grayColor,
                             fontWeight: FontWeight.w500),
                       ),
                     ],
@@ -132,7 +132,7 @@ class SalaryScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_LARGE),
                   decoration: const BoxDecoration(
-                    color: ColorResources.FILL_COLOR,
+                    color: Styles.FILL_COLOR,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
@@ -143,26 +143,26 @@ class SalaryScreen extends StatelessWidget {
                         DateTime.now().monthFormat(),
                         style: const TextStyle(
                             fontSize: 14,
-                            color: ColorResources.blackColor,
+                            color: Styles.blackColor,
                             fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       CustomButton(
-                        textColor: ColorResources.WHITE,
+                        textColor: Styles.WHITE,
                         text: getTranslated("details", context),
-                        backgroundColor: ColorResources.PRIMARY,
+                        backgroundColor: Styles.PRIMARY_COLOR,
                         onTap: ()=>CustomNavigator.push(Routes.SALARY_DETAILS),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       CustomButton(
-                          textColor: ColorResources.PRIMARY,
+                          textColor: Styles.PRIMARY_COLOR,
                           text: getTranslated("download", context),
                           icon: Icons.download,
-                          backgroundColor: ColorResources.WHITE),
+                          backgroundColor: Styles.WHITE),
                     ],
                   )),
             ),

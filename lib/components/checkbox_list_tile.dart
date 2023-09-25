@@ -29,16 +29,16 @@ class CheckBoxListTile extends StatelessWidget {
             height: 18.h,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(2),
-                color: ColorResources.WHITE,
+                color: Styles.WHITE,
                 border: Border.all(
                     color: check
-                        ? ColorResources.PRIMARY
-                        : ColorResources.disabledColor,
+                        ? Styles.PRIMARY_COLOR
+                        : Styles.disabledColor,
                     width: 1)),
             child: check
                 ? const Icon(
                     Icons.check,
-                    color: ColorResources.PRIMARY,
+                    color: Styles.PRIMARY_COLOR,
                     size: 14,
                   )
                 : null,
@@ -50,8 +50,8 @@ class CheckBoxListTile extends StatelessWidget {
               style: AppTextStyles.w500.copyWith(
                   fontSize: 14,
                   color: check
-                      ? ColorResources.PRIMARY
-                      : ColorResources.disabledColor),
+                      ? Styles.PRIMARY_COLOR
+                      : Styles.disabledColor),
             ),
           ),
           if (description != null)
@@ -60,8 +60,8 @@ class CheckBoxListTile extends StatelessWidget {
               style: AppTextStyles.w900.copyWith(
                   fontSize: 10,
                   color: check
-                      ? ColorResources.PRIMARY
-                      : ColorResources.SUBTITLE),
+                      ? Styles.PRIMARY_COLOR
+                      : Styles.SUBTITLE),
             )
         ],
       ),

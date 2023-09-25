@@ -61,7 +61,7 @@ class _LetterRequestState extends State<LetterRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: Styles.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -88,7 +88,7 @@ class _LetterRequestState extends State<LetterRequest> {
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("letter_type", context),
                               pIcon: Images.letter,
-                              pIconColor: ColorResources.hintColor);
+                              pIconColor: Styles.hintColor);
                         }
                     ),
                     SizedBox(
@@ -110,7 +110,7 @@ class _LetterRequestState extends State<LetterRequest> {
                       tIcon: Images.letter,
                       label: true,
                       removePIcon: false,
-                      tIconColor: ColorResources.hintColor,
+                      tIconColor: Styles.hintColor,
                       hint: getTranslated("subject_to_en", context),
                       onTap: (){},
                     ),
@@ -121,7 +121,7 @@ class _LetterRequestState extends State<LetterRequest> {
                       tIcon: Images.letter,
                       removePIcon: false,
                       label: true,
-                      tIconColor: ColorResources.hintColor,
+                      tIconColor: Styles.hintColor,
                       hint: getTranslated("subject_to_ar", context),
                       onTap: (){},
                     ),
@@ -145,10 +145,10 @@ class _LetterRequestState extends State<LetterRequest> {
               Consumer<AddRequestProvider>(
                   builder: (context, addRequestProvider, child) {
                     return CustomButton(
-                        textColor: ColorResources.WHITE,
+                        textColor: Styles.WHITE,
                         text: getTranslated("submit", context),
                         onTap: () => addRequestProvider.onSubmit(),
-                        backgroundColor: ColorResources.PRIMARY);
+                        backgroundColor: Styles.PRIMARY_COLOR);
                   })
             ],
           ),

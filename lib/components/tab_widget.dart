@@ -50,7 +50,7 @@ class TabWidget extends StatelessWidget {
                 bottom: BorderSide(
                     width: withBorder ? 1 : 0,
                     color: withBorder
-                        ? ColorResources.BORDER_COLOR
+                        ? Styles.BORDER_COLOR
                         : Colors.transparent))),
         child: Column(
           children: [
@@ -65,8 +65,8 @@ class TabWidget extends StatelessWidget {
                     customImageIconSVG(
                         imageName: svgIcon!,
                         color: isSelected
-                            ? ColorResources.WHITE
-                            : iconColor ?? ColorResources.PRIMARY,
+                            ? Styles.WHITE
+                            : iconColor ?? Styles.PRIMARY_COLOR,
                         height: iconSize,
                         width: iconSize),
                   if (svgIcon != null) const SizedBox(width: 4),
@@ -81,8 +81,8 @@ class TabWidget extends StatelessWidget {
                         fontWeight:
                             isSelected ? FontWeight.w600 : FontWeight.w400,
                         color: isSelected
-                            ? ColorResources.PRIMARY
-                            : ColorResources.disabledColor,
+                            ? Styles.PRIMARY_COLOR
+                            : Styles.disabledColor,
                       ),
                     ),
                   ),
@@ -100,7 +100,7 @@ class TabWidget extends StatelessWidget {
                     topLeft: Radius.circular(100),
                     topRight: Radius.circular(100),
                   ),
-                  color: isSelected ? ColorResources.PRIMARY : Colors.transparent,
+                  color: isSelected ? Styles.PRIMARY_COLOR : Colors.transparent,
                 ),
               );
             })

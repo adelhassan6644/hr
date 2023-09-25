@@ -26,7 +26,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("verify_the_email", context),
       ),
@@ -47,7 +47,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       textAlign: TextAlign.center,
                       style: titleTextStyle.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: ColorResources.PRIMARY,
+                          color: Styles.PRIMARY_COLOR,
                           fontSize: 16)),
                 ),
                  SizedBox(
@@ -68,13 +68,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       borderWidth: 1,
                       borderRadius:
                       BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                      selectedColor:ColorResources.PRIMARY,
+                      selectedColor:Styles.PRIMARY_COLOR,
                       selectedFillColor: Colors.white,
-                      inactiveFillColor: ColorResources.FILL,
-                      inactiveColor: ColorResources.PRIMARY.withOpacity(0.2),
-                      activeColor: ColorResources.PRIMARY.withOpacity(0.2),
+                      inactiveFillColor: Styles.FILL,
+                      inactiveColor: Styles.PRIMARY_COLOR.withOpacity(0.2),
+                      activeColor: Styles.PRIMARY_COLOR.withOpacity(0.2),
                       activeFillColor:
-                      ColorResources.FILL,
+                      Styles.FILL,
                     ),
                     animationDuration: const Duration(milliseconds: 300),
                     backgroundColor: Colors.transparent,
@@ -98,9 +98,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         authProvider.sendOTP();
                       }
                     },
-                    textColor: ColorResources.WHITE,
+                    textColor: Styles.WHITE,
                     text: getTranslated("submit", context),
-                    backgroundColor: ColorResources.PRIMARY),
+                    backgroundColor: Styles.PRIMARY_COLOR),
 
               ],
             ),

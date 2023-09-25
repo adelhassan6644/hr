@@ -47,7 +47,7 @@ class CustomButton extends StatelessWidget {
       this.withBorderColor = false,
       this.withShadow = false,
       required this.text,
-      this.backgroundColor = ColorResources.PRIMARY,
+      this.backgroundColor = Styles.PRIMARY_COLOR,
       this.isError = false})
       : super(key: key);
 
@@ -77,14 +77,14 @@ class CustomButton extends StatelessWidget {
                 : null,
             border: Border.all(
                 color: withBorderColor
-                    ? borderColor ?? ColorResources.PRIMARY
+                    ? borderColor ?? Styles.PRIMARY_COLOR
                     : Colors.transparent),
             borderRadius: BorderRadius.circular(radius ?? 30),
           ),
           child: Center(
             child: isLoading
                 ? SpinKitThreeBounce(
-                    color: loadingColor ?? ColorResources.WHITE,
+                    color: loadingColor ?? Styles.WHITE,
                     size: 25,
                   )
                 : Row(
@@ -102,7 +102,7 @@ class CustomButton extends StatelessWidget {
                           height: 1,
                           fontSize: textSize ?? 16,
                           overflow: TextOverflow.ellipsis,
-                          color: textColor ?? ColorResources.WHITE,
+                          color: textColor ?? Styles.WHITE,
                         ),
                       ),
                       if (assetIcon != null ||

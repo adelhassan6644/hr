@@ -1,15 +1,13 @@
 class EndPoints {
-
   static const String baseUrl = 'https://erp.softwarecloud2.com/api';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
   static const String imageUrl = 'https://test.fitariki.com/';
   static const String apiKey = 'eGvviZ/npgc2Blb4/PSymh1tyb/UIt3aq82W6f+Wn4=';
   static const String topic = 'fitariki';
 
-
-
-  static const String attendEmployee = '/employee/attendance/attend/';
-  static const String attendEmployeeSchedule = '/employee/attendance/schedules/';
+  static attendEmployee(id) => '/employee/attendance/attend/$id';
+  static employeeSchedule(id) => '/employee/attendance/schedules/$id';
+  static daySchedules(id) => '/employee/attendance/schedules/$id';
   static const String register = '';
   static const String login = '/employee/login';
   static const String updatePassword = '';
@@ -25,8 +23,8 @@ class EndPoints {
   static const String eventByCities = '';
   static const String eventByCitiesCategory = '';
   static const String getProfileInfo = '';
-  static const String getCategories= '';
-  static const String getFeaturedEventUrl= '';
+  static const String getCategories = '';
+  static const String getFeaturedEventUrl = '';
   static const String updateProfileInfo = '';
   static const String getNotification = '';
   static const String makeAsRaed = '';
@@ -48,7 +46,6 @@ class EndPoints {
   ///App Config
   static const String setting = '';
   static const String contact = '';
-
 
   ///App Content
   static const String getContact = 'app/contact';

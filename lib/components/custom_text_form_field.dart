@@ -82,7 +82,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     borderRadius: BorderRadius.circular(30),
     borderSide: const BorderSide(
       style: BorderStyle.solid,
-      color: ColorResources.PRIMARY,
+      color: Styles.PRIMARY_COLOR,
       width: 1,
     ),
   );
@@ -117,8 +117,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
             : widget.formatter,
         style: AppTextStyles.w500
-            .copyWith(color: ColorResources.TITLE, fontSize: 14),
-        cursorColor: ColorResources.TITLE,
+            .copyWith(color: Styles.TITLE, fontSize: 14),
+        cursorColor: Styles.TITLE,
         onChanged: widget.onChanged,
         obscureText: widget.isPassword == true ? _isHidden : false,
         decoration: InputDecoration(
@@ -140,7 +140,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                           ? customImageIconSVG(
                               imageName: widget.pSvgIcon!,
                               color:
-                                  widget.pIconColor ?? ColorResources.SUBTITLE,
+                                  widget.pIconColor ?? Styles.SUBTITLE,
                               height: 16.h,
                               width: 16.w,
                             )
@@ -150,7 +150,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 height: 100,
                 width: 1,
                 decoration: BoxDecoration(
-                    color: ColorResources.disabledColor,
+                    color: Styles.disabledColor,
                     borderRadius: BorderRadius.circular(100)),
                 child: const SizedBox(),
               ),
@@ -184,12 +184,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                                         imageName: SvgImages.hiddenEyeIcon,
                                         height: 16.55.h,
                                         width: 19.59.w,
-                                        color: ColorResources.SUBTITLE)
+                                        color: Styles.SUBTITLE)
                                     : customImageIconSVG(
                                         imageName: SvgImages.eyeIcon,
                                         height: 16.55.h,
                                         width: 19.59.w,
-                                        color: ColorResources.PRIMARY,
+                                        color: Styles.PRIMARY_COLOR,
                                       ),
                               )
                             : null),
@@ -198,30 +198,30 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               borderSide: widget.addBorder
                   ? BorderSide(
                       color: widget.read == true
-                          ? ColorResources.disabledColor
-                          : ColorResources.BORDER_COLOR)
+                          ? Styles.disabledColor
+                          : Styles.BORDER_COLOR)
                   : null),
           disabledBorder: _borders.copyWith(
               borderSide: widget.addBorder
-                  ? const BorderSide(color: ColorResources.BORDER_COLOR)
+                  ? const BorderSide(color: Styles.BORDER_COLOR)
                   : null),
           focusedBorder: _borders.copyWith(
               borderSide: widget.addBorder
                   ? BorderSide(
                       color: widget.read == true
-                          ? ColorResources.disabledColor
-                          : ColorResources.PRIMARY)
+                          ? Styles.disabledColor
+                          : Styles.PRIMARY_COLOR)
                   : null),
           errorBorder: _borders.copyWith(
               borderSide: widget.addBorder
-                  ? const BorderSide(color: ColorResources.IN_ACTIVE)
+                  ? const BorderSide(color: Styles.IN_ACTIVE)
                   : null),
           border: _borders.copyWith(
               borderSide: widget.addBorder
                   ? BorderSide(
                       color: widget.read == true
-                          ? ColorResources.disabledColor
-                          : ColorResources.BORDER_COLOR)
+                          ? Styles.disabledColor
+                          : Styles.BORDER_COLOR)
                   : null),
           contentPadding:
               EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
@@ -229,16 +229,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           alignLabelWithHint: true,
           hintText: widget.hint,
           labelStyle: AppTextStyles.w400
-              .copyWith(color: ColorResources.SUBTITLE, fontSize: 14),
+              .copyWith(color: Styles.SUBTITLE, fontSize: 14),
           hintStyle: AppTextStyles.w400
-              .copyWith(color: ColorResources.disabledColor, fontSize: 12),
+              .copyWith(color: Styles.disabledColor, fontSize: 12),
           labelText: widget.label ? widget.hint : null,
-          fillColor: ColorResources.FILL_COLOR,
+          fillColor: Styles.FILL_COLOR,
           floatingLabelStyle: AppTextStyles.w400
-              .copyWith(color: ColorResources.TITLE, fontSize: 12),
+              .copyWith(color: Styles.TITLE, fontSize: 12),
           filled: true,
           errorStyle: AppTextStyles.w400.copyWith(
-            color: ColorResources.IN_ACTIVE,
+            color: Styles.IN_ACTIVE,
             fontSize: 11,
           ),
           errorMaxLines: 2,

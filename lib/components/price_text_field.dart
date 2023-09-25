@@ -37,8 +37,8 @@ class PriceTextFormField extends StatelessWidget {
           ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
           : formatter,
       style: AppTextStyles.w400
-          .copyWith(color: ColorResources.PRIMARY, fontSize: 13),
-      cursorColor: ColorResources.PRIMARY,
+          .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 13),
+      cursorColor: Styles.PRIMARY_COLOR,
       onChanged: onChanged,
       decoration: InputDecoration(
         suffixIconConstraints: const BoxConstraints(maxHeight: 22),
@@ -79,7 +79,7 @@ class PriceTextFormField extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         isDense: true,
         hintText: hint,
-        fillColor: ColorResources.BORDER_COLOR,
+        fillColor: Styles.BORDER_COLOR,
         filled: true,
       ),
     );

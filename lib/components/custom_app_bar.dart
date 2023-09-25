@@ -78,7 +78,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                               scaleX:sl<LocalizationProvider>().locale.languageCode=="en"?-1: 1,
                               child: customImageIconSVG(
                                   imageName: SvgImages.arrowRight,
-                                  color: ColorResources.WHITE),
+                                  color: Styles.WHITE),
                             ),
                           ),
                         ),
@@ -94,7 +94,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Text(
                   title ?? "",
                   style: AppTextStyles.w700
-                      .copyWith(color: ColorResources.PRIMARY, fontSize: 16),
+                      .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 16),
                 ),
               ),
               actionChild ??

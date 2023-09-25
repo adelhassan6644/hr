@@ -38,13 +38,13 @@ class HomeScreen extends StatelessWidget {
                         height: 40,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
-                            color: ColorResources.FILL),
+                            color: Styles.FILL),
                         child: const ClipOval(
                             child:
                             // profileImage == null ?
                             Icon(
                               Icons.person,
-                              color: ColorResources.disabledColor,
+                              color: Styles.disabledColor,
                             )
                           // : Image.file(profileImage!, fit: BoxFit.cover,),
                         ),
@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                 IconButton(
                   icon: Image.asset(
                     Images.notification,
-                    color: ColorResources.PRIMARY,
+                    color: Styles.PRIMARY_COLOR,
                     height: 25,
                   ),
                   onPressed: () {},
@@ -80,10 +80,10 @@ class HomeScreen extends StatelessWidget {
              TypeCard(
               icon: const Icon(
                 Icons.fingerprint,
-                color: ColorResources.PRIMARY,
+                color: Styles.PRIMARY_COLOR,
               ),
               title: getTranslated("attendance_leaving", context),
-              iconColor: ColorResources.PRIMARY,
+              iconColor: Styles.PRIMARY_COLOR,
               onTap: () =>CustomNavigator.push(Routes.ATTENDANCE_LEAVING),
             ),
              SizedBox(height: 20.h),

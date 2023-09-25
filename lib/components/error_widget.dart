@@ -17,7 +17,7 @@ class ErrorWidget extends StatelessWidget {
         const Center(
           child: Icon(
             Icons.warning_amber_rounded,
-            color: ColorResources.PRIMARY,
+            color: Styles.PRIMARY_COLOR,
             size: 150,
           ),
         ),
@@ -32,7 +32,7 @@ class ErrorWidget extends StatelessWidget {
         const Text(
           ('try_again'),
           style: TextStyle(
-              color: ColorResources.hintColor,
+              color: Styles.hintColor,
               fontSize: 18,
               fontWeight: FontWeight.w500),
         ),

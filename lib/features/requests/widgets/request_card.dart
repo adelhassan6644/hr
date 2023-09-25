@@ -24,7 +24,7 @@ class RequestCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
                 width: 0.5,
-                color: ColorResources.BORDER_COLOR
+                color: Styles.BORDER_COLOR
             )
         ),
         child: Column(children: [
@@ -36,13 +36,13 @@ class RequestCard extends StatelessWidget {
               children: [
                 titleContainer(title:status == "rejected"? getTranslated(status, context).replaceAll("ال", "").replaceAll("ة", ""):
                 getTranslated(status, context) ,
-                    color: ColorResources.getStatusColor(status),textColor: Colors.white),
+                    color: Styles.getStatusColor(status),textColor: Colors.white),
                 titleContainer(title:DateTime.now().format("EEEE dd MMMM"),),
               ],
             ),
           ),
           SizedBox(height: 10.h,),
-          Container(height: 1,color: ColorResources.BORDER_COLOR,),
+          Container(height: 1,color: Styles.BORDER_COLOR,),
           SizedBox(height: 10.h,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT),
@@ -53,7 +53,7 @@ class RequestCard extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ...List.generate(5, (index) => titleContainer(title:requestType,color: ColorResources.PRIMARY,textColor: Colors.white),)
+                    ...List.generate(5, (index) => titleContainer(title:requestType,color: Styles.PRIMARY_COLOR,textColor: Colors.white),)
                   ],
                 ),
               ),

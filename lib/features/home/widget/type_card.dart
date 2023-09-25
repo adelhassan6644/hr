@@ -25,14 +25,14 @@ class TypeCard extends StatelessWidget {
         decoration:  BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: ColorResources.grayColor.withOpacity(0.15),
+                color: Styles.grayColor.withOpacity(0.15),
                 spreadRadius: 3,
                 blurRadius: 3,
                 offset: const Offset(0, 3),
               )
             ],
             borderRadius: const BorderRadius.all(Radius.circular(12)),
-            color: ColorResources.FILL_COLOR),
+            color: Styles.FILL_COLOR),
         child:  Row(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

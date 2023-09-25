@@ -21,7 +21,7 @@ class FilteredBackIcon extends StatelessWidget {
               color: Colors.black.withOpacity(0.3),
               borderRadius: BorderRadius.circular(100)),
           child: customImageIconSVG(
-              imageName: SvgImages.arrowRight, color: ColorResources.WHITE),
+              imageName: SvgImages.arrowRight, color: Styles.WHITE),
         ),
       ),
     );

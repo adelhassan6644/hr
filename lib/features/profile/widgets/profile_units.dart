@@ -25,7 +25,7 @@ settingCard(
       height: 55.h,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.w),
-          color: ColorResources.FILL),
+          color: Styles.FILL),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,7 +36,7 @@ settingCard(
                 child: iconSvg != null
                     ? SvgPicture.asset(
                   iconSvg,
-                  color: ColorResources.PRIMARY,
+                  color: Styles.PRIMARY_COLOR,
                   height: 25,
                   width: 25,
                 )
@@ -44,7 +44,7 @@ settingCard(
                         iconAsset ?? "",
                         height: 25,
                         width: 25,
-                        color: ColorResources.PRIMARY,
+                        color: Styles.PRIMARY_COLOR,
                       )),
           ),
            SizedBox(
@@ -59,7 +59,7 @@ settingCard(
             quarterTurns: sl<LocalizationProvider>().locale.languageCode == "ar" ?2:0,
             child: const Icon(
               Icons.keyboard_arrow_right_sharp,
-              color: ColorResources.PRIMARY,
+              color: Styles.PRIMARY_COLOR,
             ),
           )
         ],
@@ -74,7 +74,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required int days}) {
     child: Container(
       padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
       decoration:  BoxDecoration(
-          color: ColorResources.FILL_COLOR,
+          color: Styles.FILL_COLOR,
           borderRadius: BorderRadius.all(Radius.circular(15.w)),
       ),
       child: Column(
@@ -88,7 +88,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required int days}) {
                 getTranslated("annual_leave_balance", context),
                 style: titleTextStyle.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: ColorResources.disabledColor),
+                    color: Styles.disabledColor),
               ),
               TextButton(
                   onPressed: onTap,
@@ -96,7 +96,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required int days}) {
                     getTranslated("view_details", context),
                     style: titleTextStyle.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: ColorResources.PRIMARY),
+                        color: Styles.PRIMARY_COLOR),
                   ))
             ],
           ),
@@ -110,7 +110,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required int days}) {
                 style: const TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 16,
-                    color: ColorResources.PRIMARY),
+                    color: Styles.PRIMARY_COLOR),
               ),
               const SizedBox(
                 width: 20,
@@ -119,7 +119,7 @@ annualLeaveBalance({context, required VoidCallback onTap,required int days}) {
                 getTranslated("available_to_use", context),
                 style: titleTextStyle.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: ColorResources.disabledColor),
+                    color: Styles.disabledColor),
               ),
             ],
           ),
@@ -144,11 +144,11 @@ profileCard({required UserModel user,context}){
             height: 100,
             decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: ColorResources.FILL_COLOR
+                color: Styles.FILL_COLOR
             ),
             child:
               user.image == null
-                  ? const ClipOval(child: Icon(Icons.person,color: ColorResources.disabledColor,size: 80,)) :
+                  ? const ClipOval(child: Icon(Icons.person,color: Styles.disabledColor,size: 80,)) :
               ImageWidget.network(user.image!,width: 100.w,height: 100.h,border:BorderRadius.circular(100)),
 
           ),
@@ -157,7 +157,7 @@ profileCard({required UserModel user,context}){
           const SizedBox(height: 8,),
           Center(child: Text(user.description??"",style: hintTextStyle)),
         ],).animate().flip().then(delay:10.ms).shimmer(),
-        IconButton(onPressed: () => CustomNavigator.push(Routes.SETTINGS), icon: const Icon(Icons.settings,color: ColorResources.PRIMARY,size: 26,)),
+        IconButton(onPressed: () => CustomNavigator.push(Routes.SETTINGS), icon: const Icon(Icons.settings,color: Styles.PRIMARY_COLOR,size: 26,)),
 
       ],
     ),

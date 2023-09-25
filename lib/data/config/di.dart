@@ -47,7 +47,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => ProfileProvider(user: sl(), profileRepo: sl()));
   sl.registerLazySingleton(() => AddRequestProvider());
 
-  sl.registerLazySingleton(() => AttendanceProvider(attendanceRepo: sl()));
+  sl.registerLazySingleton(() => AttendanceProvider(repo: sl()));
   sl.registerLazySingleton(() => AttendanceScheduleProvider(attendanceSchedulesRepo: sl()));
 
   // External

@@ -27,8 +27,8 @@ class ProfileProvider extends ChangeNotifier {
             notification: AppNotification(
                 message: fail.error,
                 isFloating: true,
-                backgroundColor: ColorResources.IN_ACTIVE,
-                borderColor: ColorResources.transparentColor));
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Styles.transparentColor));
         notifyListeners();
       }, (success) {
         isLoading = false;
@@ -42,8 +42,8 @@ class ProfileProvider extends ChangeNotifier {
           notification: AppNotification(
               message: e.toString(),
               isFloating: true,
-              backgroundColor: ColorResources.IN_ACTIVE,
-              borderColor: ColorResources.transparentColor));
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Styles.transparentColor));
       notifyListeners();
     }
   }

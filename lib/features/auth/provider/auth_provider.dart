@@ -51,8 +51,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
               notification: AppNotification(
                   message: fail.error,
                   isFloating: true,
-                  backgroundColor: ColorResources.IN_ACTIVE,
-                  borderColor: ColorResources.transparentColor));
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Styles.transparentColor));
           isError = true;
           notifyListeners();
         }, (success) {
@@ -84,8 +84,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
               notification: AppNotification(
                   message: fail.error,
                   isFloating: true,
-                  backgroundColor: ColorResources.IN_ACTIVE,
-                  borderColor: ColorResources.transparentColor));
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Styles.transparentColor));
           isError = true;
           notifyListeners();
         }, (success) {
@@ -101,8 +101,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
           notification: AppNotification(
               message: e.toString(),
               isFloating: true,
-              backgroundColor: ColorResources.IN_ACTIVE,
-              borderColor: ColorResources.transparentColor));
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Styles.transparentColor));
 
       notifyListeners();
     }
@@ -128,8 +128,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
               notification: AppNotification(
                   message: fail.error,
                   isFloating: true,
-                  backgroundColor: ColorResources.IN_ACTIVE,
-                  borderColor: ColorResources.transparentColor));
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Styles.transparentColor));
           isError = true;
           notifyListeners();
         }, (success) {
@@ -146,8 +146,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
           notification: AppNotification(
               message: e.toString(),
               isFloating: true,
-              backgroundColor: ColorResources.IN_ACTIVE,
-              borderColor: ColorResources.transparentColor));
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Styles.transparentColor));
       notifyListeners();
     }
   }
@@ -172,8 +172,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
               notification: AppNotification(
                   message: fail.error,
                   isFloating: true,
-                  backgroundColor: ColorResources.IN_ACTIVE,
-                  borderColor: ColorResources.transparentColor));
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Styles.transparentColor));
           isError = true;
           notifyListeners();
         }, (success) {
@@ -182,8 +182,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
               notification: AppNotification(
                   message: "Your Password Change successfully !",
                   isFloating: true,
-                  backgroundColor: ColorResources.ACTIVE,
-                  borderColor: ColorResources.transparentColor));
+                  backgroundColor: Styles.ACTIVE,
+                  borderColor: Styles.transparentColor));
         });
         _isLoading = false;
         notifyListeners();
@@ -213,8 +213,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
               notification: AppNotification(
                   message: fail.error,
                   isFloating: true,
-                  backgroundColor: ColorResources.IN_ACTIVE,
-                  borderColor: ColorResources.transparentColor));
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Styles.transparentColor));
 
           isError = true;
           notifyListeners();
@@ -224,8 +224,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
               notification: AppNotification(
                   message: "Your Password updated successfully !",
                   isFloating: true,
-                  backgroundColor: ColorResources.ACTIVE,
-                  borderColor: ColorResources.transparentColor));
+                  backgroundColor: Styles.ACTIVE,
+                  borderColor: Styles.transparentColor));
         });
         _isLoading = false;
         notifyListeners();
@@ -244,8 +244,8 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
         notification: AppNotification(
             message: "You logged out successfully !",
             isFloating: true,
-            backgroundColor: ColorResources.ACTIVE,
-            borderColor: ColorResources.transparentColor));
+            backgroundColor: Styles.ACTIVE,
+            borderColor: Styles.transparentColor));
     notifyListeners();
   }
 }

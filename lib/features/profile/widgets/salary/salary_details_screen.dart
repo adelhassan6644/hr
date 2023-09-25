@@ -12,7 +12,7 @@ class SalaryDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("salary_details", context),
       ),
@@ -23,7 +23,7 @@ class SalaryDetailsScreen extends StatelessWidget {
             height: context.height * 0.25,
             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
             decoration: const BoxDecoration(
-              color: ColorResources.PRIMARY,
+              color: Styles.PRIMARY_COLOR,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(30),
                 bottomLeft: Radius.circular(30),
@@ -42,7 +42,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   DateTime.now().monthFormat(),
                   style: const TextStyle(
                       fontSize: 18,
-                      color: ColorResources.WHITE,
+                      color: Styles.WHITE,
                       fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(
@@ -52,7 +52,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   getTranslated("pay_by", context),
                   style: const TextStyle(
                       fontSize: 14,
-                      color: ColorResources.WHITE,
+                      color: Styles.WHITE,
                       fontWeight: FontWeight.w600),
                 ),
 
@@ -68,7 +68,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                   decoration: const BoxDecoration(
-                    color: ColorResources.FILL,
+                    color: Styles.FILL,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
@@ -83,7 +83,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                                 "total_salary_and_allowances", context),
                             style: const TextStyle(
                                 fontSize: 16,
-                                color: ColorResources.PRIMARY,
+                                color: Styles.PRIMARY_COLOR,
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(
@@ -98,7 +98,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Container(
-                          color: ColorResources.disabledColor,
+                          color: Styles.disabledColor,
                           height: 1,
                         ),
                       ),
@@ -109,14 +109,14 @@ class SalaryDetailsScreen extends StatelessWidget {
                             getTranslated("base_salary", context),
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.disabledColor,
+                                color: Styles.disabledColor,
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
                             "5675.8 ${getTranslated("sar", context)}",
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.grayColor,
+                                color: Styles.grayColor,
                                 fontWeight: FontWeight.w500),
                           ),
                         ],
@@ -131,14 +131,14 @@ class SalaryDetailsScreen extends StatelessWidget {
                             getTranslated("health_insurance", context),
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.disabledColor,
+                                color: Styles.disabledColor,
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
                             "56 ${getTranslated("sar", context)}",
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.grayColor,
+                                color: Styles.grayColor,
                                 fontWeight: FontWeight.w500),
                           ),
                         ],
@@ -153,14 +153,14 @@ class SalaryDetailsScreen extends StatelessWidget {
                             getTranslated("family_allowance", context),
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.disabledColor,
+                                color: Styles.disabledColor,
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
                             "675 ${getTranslated("sar", context)}",
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.grayColor,
+                                color: Styles.grayColor,
                                 fontWeight: FontWeight.w500),
                           ),
                         ],
@@ -175,7 +175,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                   padding:
                   const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                   decoration: const BoxDecoration(
-                    color: ColorResources.FILL,
+                    color: Styles.FILL,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(
@@ -190,7 +190,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                                 "deductions", context),
                             style: const TextStyle(
                                 fontSize: 16,
-                                color: ColorResources.PRIMARY,
+                                color: Styles.PRIMARY_COLOR,
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(
@@ -205,7 +205,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Container(
-                          color: ColorResources.disabledColor,
+                          color: Styles.disabledColor,
                           height: 1,
                         ),
                       ),
@@ -216,14 +216,14 @@ class SalaryDetailsScreen extends StatelessWidget {
                             getTranslated("absence", context),
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.disabledColor,
+                                color: Styles.disabledColor,
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
                             "56 ${getTranslated("sar", context)}",
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.grayColor,
+                                color: Styles.grayColor,
                                 fontWeight: FontWeight.w500),
                           ),
                         ],
@@ -238,14 +238,14 @@ class SalaryDetailsScreen extends StatelessWidget {
                             getTranslated("delay", context),
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.disabledColor,
+                                color: Styles.disabledColor,
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
                             "675 ${getTranslated("sar", context)}",
                             style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorResources.grayColor,
+                                color: Styles.grayColor,
                                 fontWeight: FontWeight.w500),
                           ),
                         ],

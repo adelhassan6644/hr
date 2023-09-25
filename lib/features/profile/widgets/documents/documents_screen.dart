@@ -31,7 +31,7 @@ class DocumentsScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.w),
                       border: Border.all(
-                          color: ColorResources.BORDER_COLOR,
+                          color: Styles.BORDER_COLOR,
                           width: 0.5,
                           style: BorderStyle.solid)),
                   child: Column(
@@ -44,20 +44,20 @@ class DocumentsScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
                           children: [
-                            Image.asset(Images.document,color: ColorResources.disabledColor,height: 20.h,width: 20.w,),
+                            Image.asset(Images.document,color: Styles.disabledColor,height: 20.h,width: 20.w,),
                             SizedBox(width: 10.w,),
                             Expanded(
                               child: Text("Passport",style: AppTextStyles.w500.copyWith(
-                                color: ColorResources.HEADER,
+                                color: Styles.HEADER,
                                 fontSize: 16,
                               ),),
                             ),
-                            Icon(Icons.download,size: 20.w,color: ColorResources.disabledColor,)
+                            Icon(Icons.download,size: 20.w,color: Styles.disabledColor,)
                           ],
                         ),
                       ),
@@ -78,7 +78,7 @@ class DocumentsScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.w),
                       border: Border.all(
-                          color: ColorResources.BORDER_COLOR,
+                          color: Styles.BORDER_COLOR,
                           width: 0.5,
                           style: BorderStyle.solid)),
                   child: Column(
@@ -91,20 +91,20 @@ class DocumentsScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
                           children: [
-                            Image.asset(Images.document,color: ColorResources.disabledColor,height: 20.h,width: 20.w,),
+                            Image.asset(Images.document,color: Styles.disabledColor,height: 20.h,width: 20.w,),
                             SizedBox(width: 10.w,),
                             Expanded(
                               child: Text("Employee file",style: AppTextStyles.w500.copyWith(
-                                color: ColorResources.HEADER,
+                                color: Styles.HEADER,
                                 fontSize: 16,
                               ),),
                             ),
-                            Icon(Icons.download,size: 20.w,color: ColorResources.disabledColor,)
+                            Icon(Icons.download,size: 20.w,color: Styles.disabledColor,)
                           ],
                         ),
                       ),
@@ -125,7 +125,7 @@ class DocumentsScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.w),
                       border: Border.all(
-                          color: ColorResources.BORDER_COLOR,
+                          color: Styles.BORDER_COLOR,
                           width: 0.5,
                           style: BorderStyle.solid)),
                   child: Column(
@@ -138,20 +138,20 @@ class DocumentsScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: ColorResources.FILL_COLOR,
+                          color: Styles.FILL_COLOR,
                           borderRadius: BorderRadius.all(Radius.circular(12.w)),
                         ),
                         child: Row(
                           children: [
-                            Image.asset(Images.document,color: ColorResources.disabledColor,height: 20.h,width: 20.w,),
+                            Image.asset(Images.document,color: Styles.disabledColor,height: 20.h,width: 20.w,),
                             SizedBox(width: 10.w,),
                             Expanded(
                               child: Text("Company file",style: AppTextStyles.w500.copyWith(
-                                color: ColorResources.HEADER,
+                                color: Styles.HEADER,
                                 fontSize: 16,
                               ),),
                             ),
-                            Icon(Icons.download,size: 20.w,color: ColorResources.disabledColor,)
+                            Icon(Icons.download,size: 20.w,color: Styles.disabledColor,)
                           ],
                         ),
                       ),

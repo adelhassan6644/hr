@@ -37,7 +37,7 @@ class _HolidaysScreen extends State<HolidaysScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("holidays", context),
         showLeading: true,

@@ -20,7 +20,7 @@ class CheckInCard extends StatelessWidget {
           padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: ColorResources.FILL_COLOR),
+              color: Styles.FILL_COLOR),
           child: Column(
             children: [
               Row(
@@ -29,7 +29,7 @@ class CheckInCard extends StatelessWidget {
                   Text(
                     DateTime.now().dataMainFormat(),
                     style: const TextStyle(
-                        color: ColorResources.disabledColor,
+                        color: Styles.disabledColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
@@ -51,7 +51,7 @@ class CheckInCard extends StatelessWidget {
                           getTranslated(
                               "check_in_attendance_leaving", context),
                           style: const TextStyle(
-                              color: ColorResources.hintColor,
+                              color: Styles.hintColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 14),
                         ),
@@ -60,7 +60,7 @@ class CheckInCard extends StatelessWidget {
                           child: Text(
                             DateTime.now().timeFormat(),
                             style: const TextStyle(
-                                color: ColorResources.blackColor,
+                                color: Styles.blackColor,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -68,7 +68,7 @@ class CheckInCard extends StatelessWidget {
                         Text(
                           getTranslated("Checked_in_at", context),
                           style: const TextStyle(
-                              color: ColorResources.hintColor,
+                              color: Styles.hintColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 14),
                         ),
@@ -83,20 +83,20 @@ class CheckInCard extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: ColorResources.PRIMARY.withOpacity(.1),
+                        color: Styles.PRIMARY_COLOR.withOpacity(.1),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
                         children: [
                           const Icon(
                             Icons.fingerprint,
-                            color: ColorResources.PRIMARY,
+                            color: Styles.PRIMARY_COLOR,
                             size: 40,
                           ),
                           Text(
                             getTranslated("check_now", context),
                             style: const TextStyle(
-                                color: ColorResources.PRIMARY,
+                                color: Styles.PRIMARY_COLOR,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12),
                           ),

@@ -15,17 +15,17 @@ Widget tabRequest({required String title, Function()? onTap ,IconData? icon,Colo
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(
                     width: 0.5,
-                    color: ColorResources.BORDER_COLOR
+                    color: Styles.BORDER_COLOR
                 )
             ),
             child: Row(
               children: [
                 if( icon != null) Icon(icon,size: iconSize?.w??15,color: iconColor,),
-                if( astIcon != null) Image.asset(astIcon,color: iconColor??ColorResources.PRIMARY,height:iconSize?.h??20.h ,width: iconSize?.w??20.w,),
+                if( astIcon != null) Image.asset(astIcon,color: iconColor??Styles.PRIMARY_COLOR,height:iconSize?.h??20.h ,width: iconSize?.w??20.w,),
                 if( astIcon != null || icon != null)SizedBox(width: 16.w,),
                 Text(title,style: AppTextStyles.w600.copyWith(
                     fontSize: textSize??12,
-                    color: textColor??ColorResources.SUB_HEADER
+                    color: textColor??Styles.SUB_HEADER
                 ),),
               ],
             )),

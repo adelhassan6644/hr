@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import '../../app/core/app_snack_bar.dart';
-import '../../app/localization/language_constant.dart';
+import '../../app/localization/localization/language_constant.dart';
 import '../../navigation/custom_navigation.dart';
 
 

@@ -62,12 +62,12 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
-                          color: ColorResources.GOLD_COLOR))
+                          color: Styles.GOLD_COLOR))
                 ],
                 style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
-                    color: ColorResources.PRIMARY)),
+                    color: Styles.PRIMARY_COLOR)),
           )
               .animate()
               .slideY()

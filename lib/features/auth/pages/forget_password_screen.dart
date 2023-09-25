@@ -24,7 +24,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("forget_password", context),
       ),
@@ -42,7 +42,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   Text(getTranslated("please_enter_your_email_or_id", context),
                       textAlign: TextAlign.center,
                       style: titleTextStyle.copyWith(
-                        color: ColorResources.PRIMARY,
+                        color: Styles.PRIMARY_COLOR,
                         fontSize: 13,
                       )),
             ),
@@ -57,7 +57,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     ),
                     Text(getTranslated("email_or_id", context),
                         style: titleTextStyle.copyWith(
-                            color: ColorResources.PRIMARY)),
+                            color: Styles.PRIMARY_COLOR)),
                     SizedBox(
                       height: 15.h,
                     ),
@@ -79,9 +79,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                               authProvider.getOTP();
                             }
                           },
-                          textColor: ColorResources.WHITE,
+                          textColor: Styles.WHITE,
                           text: getTranslated("confirm", context),
-                          backgroundColor: ColorResources.PRIMARY),
+                          backgroundColor: Styles.PRIMARY_COLOR),
                     ),
                   ],
                 ),

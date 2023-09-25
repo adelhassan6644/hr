@@ -63,7 +63,7 @@ class _VacationRequestState extends State<VacationRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: Styles.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -90,7 +90,7 @@ class _VacationRequestState extends State<VacationRequest> {
                           onChange: addRequestProvider.onSelectLoanType,
                           name: getTranslated("vacation_type", context),
                           pIcon: Images.vacations,
-                          pIconColor: ColorResources.hintColor);
+                          pIconColor: Styles.hintColor);
                     }),
                     SizedBox(
                       height: 16.h,
@@ -108,7 +108,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                   getTranslated("start_date", context),
                                   style: AppTextStyles.w500.copyWith(
                                       fontSize: 13,
-                                      color: ColorResources.SUBTITLE),
+                                      color: Styles.SUBTITLE),
                                 ),
                               ),
                               SizedBox(
@@ -139,7 +139,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                   getTranslated("end_date", context),
                                   style: AppTextStyles.w500.copyWith(
                                       fontSize: 13,
-                                      color: ColorResources.SUBTITLE),
+                                      color: Styles.SUBTITLE),
                                 ),
                               ),
                               SizedBox(
@@ -172,11 +172,11 @@ class _VacationRequestState extends State<VacationRequest> {
                                 getTranslated("day", context),
                                 style: AppTextStyles.w500.copyWith(
                                   fontSize: 13,
-                                  color: ColorResources.hintColor,
+                                  color: Styles.hintColor,
                                 ),
                               ),
                               read: true,
-                              tIconColor: ColorResources.hintColor,
+                              tIconColor: Styles.hintColor,
                               hint:
                                   "${getTranslated("vacation_duration", context)}${"  :  "}${diffBtw2Dates(startDate: startDate ?? DateTime.now(), endDate: endDate ?? DateTime.now())}",
                             ),
@@ -197,7 +197,7 @@ class _VacationRequestState extends State<VacationRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: Styles.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -214,7 +214,7 @@ class _VacationRequestState extends State<VacationRequest> {
                           ),
                         ),
                         CupertinoSwitch(
-                            activeColor: ColorResources.PRIMARY,
+                            activeColor: Styles.PRIMARY_COLOR,
                             value: isFlight,
                             onChanged: (value) {
                               setState(() {
@@ -244,7 +244,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                             "departure_date", context),
                                         style: AppTextStyles.w500.copyWith(
                                             fontSize: 13,
-                                            color: ColorResources.SUBTITLE),
+                                            color: Styles.SUBTITLE),
                                       ),
                                     ),
                                     SizedBox(
@@ -275,7 +275,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                         getTranslated("return_date", context),
                                         style: AppTextStyles.w500.copyWith(
                                             fontSize: 13,
-                                            color: ColorResources.SUBTITLE),
+                                            color: Styles.SUBTITLE),
                                       ),
                                     ),
                                     SizedBox(
@@ -305,7 +305,7 @@ class _VacationRequestState extends State<VacationRequest> {
                               getTranslated("member", context),
                               style: AppTextStyles.w500.copyWith(
                                 fontSize: 13,
-                                color: ColorResources.hintColor,
+                                color: Styles.hintColor,
                               ),
                             ),
                             valid: (v) {
@@ -315,7 +315,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                 return "Must be less 4 member";
                               }
                             },
-                            tIconColor: ColorResources.hintColor,
+                            tIconColor: Styles.hintColor,
                             hint: getTranslated("members", context),
                             controller: members,
                             label: true,
@@ -338,10 +338,10 @@ class _VacationRequestState extends State<VacationRequest> {
               Consumer<AddRequestProvider>(
                   builder: (context, addRequestProvider, child) {
                 return CustomButton(
-                    textColor: ColorResources.WHITE,
+                    textColor: Styles.WHITE,
                     text: getTranslated("submit", context),
                     onTap: () => addRequestProvider.onSubmit(),
-                    backgroundColor: ColorResources.PRIMARY);
+                    backgroundColor: Styles.PRIMARY_COLOR);
               })
             ],
           ),

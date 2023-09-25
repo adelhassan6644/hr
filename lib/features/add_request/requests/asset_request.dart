@@ -4,9 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/language_constant.dart';
+import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
@@ -55,7 +54,7 @@ class _AssetRequestState extends State<AssetRequest> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: Styles.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -81,8 +80,8 @@ class _AssetRequestState extends State<AssetRequest> {
                               items: addRequestProvider.loanTypes,
                               onChange: addRequestProvider.onSelectLoanType,
                               name: getTranslated("asset_type", context),
-                              pIcon: Images.assetsIcon,
-                              pIconColor: ColorResources.hintColor);
+                              // pIcon: Images.assetsIcon,
+                              pIconColor: Styles.hintColor);
                         }
                     ),
                   ],
@@ -102,10 +101,10 @@ class _AssetRequestState extends State<AssetRequest> {
               Consumer<AddRequestProvider>(
                   builder: (context, addRequestProvider, child) {
                     return CustomButton(
-                        textColor: ColorResources.WHITE,
+                        textColor: Styles.WHITE,
                         text: getTranslated("submit", context),
                         onTap: () => addRequestProvider.onSubmit(),
-                        backgroundColor: ColorResources.PRIMARY);
+                        backgroundColor: Styles.PRIMARY_COLOR);
                   })
             ],
           ),

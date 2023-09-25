@@ -29,23 +29,23 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
                 width: 18,
                 height: 18,
                 decoration: BoxDecoration(
-                    color: ColorResources.WHITE,
+                    color: Styles.WHITE,
                     shape: BoxShape.circle,
-                    border: Border.all(color: ColorResources.PRIMARY, width: 1)),
+                    border: Border.all(color: Styles.PRIMARY_COLOR, width: 1)),
             child: Container(
               decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: ColorResources.PRIMARY,),
+                  color: Styles.PRIMARY_COLOR,),
             ),) : Container(
               width: 18,
               height: 18,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: ColorResources.PRIMARY, width: 1)),
+                  border: Border.all(color: Styles.PRIMARY_COLOR, width: 1)),
               child: Container(
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: ColorResources.WHITE,),
+                  color: Styles.WHITE,),
               ),
             ),),
         SizedBox(width: 8.w,),
@@ -56,7 +56,7 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
               fontSize: 14,
               overflow: TextOverflow.ellipsis,
               fontWeight:widget.check? FontWeight.w600:FontWeight.w400,
-              color: widget.check? widget.selectedColor?? ColorResources.WHITE:ColorResources.hintColor,
+              color: widget.check? widget.selectedColor?? Styles.WHITE:Styles.hintColor,
             ),
           ),
         ),

@@ -32,7 +32,7 @@ class AssetsScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT.w),
                     decoration: BoxDecoration(
-                      color: ColorResources.FILL_COLOR,
+                      color: Styles.FILL_COLOR,
                       borderRadius: BorderRadius.circular(12.w),
                     ),
                     child: Column(
@@ -42,11 +42,11 @@ class AssetsScreen extends StatelessWidget {
                             child: Text(
                               "${getTranslated("asset_status", context)} ",style: AppTextStyles.w600.copyWith(
                                 fontSize: 14,
-                                color: ColorResources.HEADER
+                                color: Styles.HEADER
                             ),overflow: TextOverflow.fade,
                             ),
                           ),
-                          titleContainer(title:getTranslated("active", context),color: ColorResources.ACTIVE,textColor: ColorResources.WHITE)
+                          titleContainer(title:getTranslated("active", context),color: Styles.ACTIVE,textColor: Styles.WHITE)
                         ],),
                         SizedBox(height: 24.h,),
                         Row(children: [
@@ -54,13 +54,13 @@ class AssetsScreen extends StatelessWidget {
                             child: Text(
                               "${getTranslated("asset_type", context)} ",style: AppTextStyles.w600.copyWith(
                                 fontSize: 14,
-                                color: ColorResources.HEADER
+                                color: Styles.HEADER
                             ),overflow: TextOverflow.fade,
                             ),
                           ),
                           Text(getTranslated("car", context),style: AppTextStyles.w500.copyWith(
                               fontSize: 12,
-                              color: ColorResources.PRIMARY
+                              color: Styles.PRIMARY_COLOR
                           ),overflow: TextOverflow.fade,),
 
                           SizedBox(width: 8.w,)
@@ -71,13 +71,13 @@ class AssetsScreen extends StatelessWidget {
                             child: Text(
                               "${getTranslated("from", context)} : ",style: AppTextStyles.w600.copyWith(
                                 fontSize: 14,
-                                color: ColorResources.HEADER
+                                color: Styles.HEADER
                             ),overflow: TextOverflow.fade,
                             ),
                           ),
                           Text(DateTime.now().format("dd-MMM-yyyy"),style: AppTextStyles.w500.copyWith(
                               fontSize: 12,
-                              color: ColorResources.PRIMARY
+                              color: Styles.PRIMARY_COLOR
                           ),overflow: TextOverflow.fade,
                           ),
                           SizedBox(width: 8.w,)
@@ -103,7 +103,7 @@ class AssetsScreen extends StatelessWidget {
                   Text(
                     getTranslated("there_is_no_asset", context),style: AppTextStyles.w600.copyWith(
                     fontSize: 14,
-                    color: ColorResources.HEADER,
+                    color: Styles.HEADER,
                   ),overflow: TextOverflow.fade,
                     maxLines: 2,
                   ),

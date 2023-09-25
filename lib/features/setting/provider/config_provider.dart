@@ -27,7 +27,7 @@ class ConfigProvider extends ChangeNotifier {
             notification: AppNotification(
                 message: ApiErrorHandler.getMessage(l),
                 isFloating: true,
-                backgroundColor: ColorResources.IN_ACTIVE,
+                backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (response) {
         setting = SettingModel.fromJson(response.data["data"]);
@@ -40,7 +40,7 @@ class ConfigProvider extends ChangeNotifier {
           notification: AppNotification(
               message: e.toString(),
               isFloating: true,
-              backgroundColor: ColorResources.IN_ACTIVE,
+              backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
       isLoading = false;
       notifyListeners();
@@ -59,7 +59,7 @@ class ConfigProvider extends ChangeNotifier {
             notification: AppNotification(
                 message: ApiErrorHandler.getMessage(l),
                 isFloating: true,
-                backgroundColor: ColorResources.IN_ACTIVE,
+                backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (response) {
         contact = ContactModel.fromJson(response.data["data"]);
@@ -72,7 +72,7 @@ class ConfigProvider extends ChangeNotifier {
           notification: AppNotification(
               message: e.toString(),
               isFloating: true,
-              backgroundColor: ColorResources.IN_ACTIVE,
+              backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
       isGetting = false;
       notifyListeners();

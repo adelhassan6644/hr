@@ -26,7 +26,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("reset_password", context),
       ),
@@ -45,7 +45,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     Text(getTranslated("new_password", context),
                         style: titleTextStyle.copyWith(
-                            color: ColorResources.PRIMARY)),
+                            color: Styles.PRIMARY_COLOR)),
                     SizedBox(
                       height: 15.h,
                     ),
@@ -61,7 +61,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     Text(getTranslated("confirm_password", context),
                         style: titleTextStyle.copyWith(
-                            color: ColorResources.PRIMARY)),
+                            color: Styles.PRIMARY_COLOR)),
                     SizedBox(
                       height: 15.h,
                     ),
@@ -94,9 +94,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               authProvider.resetPassword();
                             }
                           },
-                          textColor: ColorResources.WHITE,
+                          textColor: Styles.WHITE,
                           text: getTranslated("confirm", context),
-                          backgroundColor: ColorResources.PRIMARY),
+                          backgroundColor: Styles.PRIMARY_COLOR),
                     ),
                   ],
                 ),

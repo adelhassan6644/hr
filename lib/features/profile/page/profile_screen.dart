@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 width: context.width,
                 height: 0.5,
-                color: ColorResources.BORDER_COLOR,
+                color: Styles.BORDER_COLOR,
               ),
               settingCard(
                   name: getTranslated("organization", context),
@@ -66,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 width: context.width,
                 height: 0.5,
-                color: ColorResources.BORDER_COLOR,
+                color: Styles.BORDER_COLOR,
               ),
               settingCard(
                   name: getTranslated("documents", context),
@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 width: context.width,
                 height: 0.5,
-                color: ColorResources.BORDER_COLOR,
+                color: Styles.BORDER_COLOR,
               ),
               settingCard(
                   name: getTranslated("assets", context),
@@ -84,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 width: context.width,
                 height: 0.5,
-                color: ColorResources.BORDER_COLOR,
+                color: Styles.BORDER_COLOR,
               ),
               settingCard(
                   name: getTranslated("contract", context),
@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 width: context.width,
                 height: 0.5,
-                color: ColorResources.BORDER_COLOR,
+                color: Styles.BORDER_COLOR,
               ),
             ],
           ),

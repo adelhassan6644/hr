@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: context.height * 0.30,
               padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
               decoration: const BoxDecoration(
-                color: ColorResources.PRIMARY,
+                color: Styles.PRIMARY_COLOR,
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(30),
                   bottomLeft: Radius.circular(30),
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           Text(getTranslated("email_or_id", context),
                               style: titleTextStyle.copyWith(
-                                  color: ColorResources.PRIMARY)),
+                                  color: Styles.PRIMARY_COLOR)),
                           SizedBox(
                             height: 15.h,
                           ),
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           Text(getTranslated("password", context),
                               style: titleTextStyle.copyWith(
-                                  color: ColorResources.PRIMARY)),
+                                  color: Styles.PRIMARY_COLOR)),
                           SizedBox(
                             height: 15.h,
                           ),
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Text(
                                     getTranslated("forget_password", context),
                                     style: titleTextStyle.copyWith(
-                                        color: ColorResources.PRIMARY)),
+                                        color: Styles.PRIMARY_COLOR)),
                               ),
                             ],
                           ),
@@ -136,9 +136,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               authProvider.logIn();
                             }
                           },
-                          textColor: ColorResources.WHITE,
+                          textColor: Styles.WHITE,
                           text: getTranslated("sign_in", context),
-                          backgroundColor: ColorResources.PRIMARY),
+                          backgroundColor: Styles.PRIMARY_COLOR),
                     ],
                   ),
                 ),

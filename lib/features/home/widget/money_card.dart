@@ -24,7 +24,7 @@ class MoneyCard extends StatelessWidget {
             padding: const EdgeInsets.all(
                 Dimensions.PADDING_SIZE_DEFAULT),
             decoration: BoxDecoration(
-              color: ColorResources.FILL,
+              color: Styles.FILL,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -54,7 +54,7 @@ class MoneyCard extends StatelessWidget {
                   "$price \$",
                   style: AppTextStyles.w600.copyWith(
                       fontSize: 12,
-                      color: isSalary?Colors.green: ColorResources.WARNING_COLOR),
+                      color: isSalary?Colors.green: Styles.WARNING_COLOR),
                 ),
               ],
             ),
@@ -63,7 +63,7 @@ class MoneyCard extends StatelessWidget {
             width: 5.h,
             height: 75.h,
             decoration: BoxDecoration(
-              color: ColorResources.PRIMARY,
+              color: Styles.PRIMARY_COLOR,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
                       Provider.of<LocalizationProvider>(

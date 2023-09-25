@@ -14,7 +14,7 @@ Widget titleContainer({required String title,IconData? icon,Color? color,Color? 
               borderRadius: BorderRadius.circular(4),
               border: Border.all(
                   width: 0.5,
-                  color: ColorResources.BORDER_COLOR
+                  color: Styles.BORDER_COLOR
               )
           ),
           child: Row(
@@ -22,7 +22,7 @@ Widget titleContainer({required String title,IconData? icon,Color? color,Color? 
              if(icon != null)  Icon(icon,size: 15,color: iconColor,),
               Text(title,style: AppTextStyles.w600.copyWith(
                   fontSize: textSize??12,
-                  color: textColor??ColorResources.SUB_HEADER
+                  color: textColor??Styles.SUB_HEADER
               ),),
             ],
           )),

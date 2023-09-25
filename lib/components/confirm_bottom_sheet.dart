@@ -37,7 +37,7 @@ abstract class CustomBottomSheet {
             height: height ?? 500,
             width: CustomNavigator.navigatorState.currentContext!.width,
             decoration: const BoxDecoration(
-              color: ColorResources.WHITE,
+              color: Styles.WHITE,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),
                 topLeft: Radius.circular(30),
@@ -57,7 +57,7 @@ abstract class CustomBottomSheet {
                             height: 5.h,
                             width: 50.w,
                             decoration: const BoxDecoration(
-                                color: ColorResources.BORDER_COLOR,
+                                color: Styles.BORDER_COLOR,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(8.0))),
                           ),
@@ -81,7 +81,7 @@ abstract class CustomBottomSheet {
                                 child: const Icon(
                                   Icons.highlight_remove,
                                   size: 24,
-                                  color: ColorResources.disabledColor,
+                                  color: Styles.disabledColor,
                                 ),
                               )
                             ],
@@ -93,7 +93,7 @@ abstract class CustomBottomSheet {
                             right: 24.w,
                             left: 24.w,
                           ),
-                          child: const Divider(color: ColorResources.BORDER_COLOR,),
+                          child: const Divider(color: Styles.BORDER_COLOR,),
                         ),
                         Expanded(
                             child: ListAnimator(

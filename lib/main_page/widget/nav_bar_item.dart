@@ -17,9 +17,9 @@ const BottomNavItem(
 @override
 Widget build(BuildContext context) {
   return InkWell(
-    focusColor: ColorResources.transparentColor,
-    highlightColor: ColorResources.transparentColor,
-    splashColor: ColorResources.transparentColor,
+    focusColor: Styles.transparentColor,
+    highlightColor: Styles.transparentColor,
+    splashColor: Styles.transparentColor,
     onTap: onTap,
     child: SizedBox(
       height: 60,
@@ -30,21 +30,21 @@ Widget build(BuildContext context) {
           svgIcon != null?
           SvgPicture.asset(
             svgIcon??"",
-            color:isSelected ? ColorResources.PRIMARY :ColorResources.disabledColor ,
+            color:isSelected ? Styles.PRIMARY_COLOR :Styles.disabledColor ,
             width: width,
             height:height,
           ):
           Image.asset(
             imageIcon??"",
-            color:isSelected ? ColorResources.PRIMARY :ColorResources.disabledColor ,
+            color:isSelected ? Styles.PRIMARY_COLOR :Styles.disabledColor ,
             width: width,
             height:height,
           ),
           name != null?
           Text(name??"",style: TextStyle(
             fontWeight: FontWeight.w400,
-            color: isSelected? ColorResources.PRIMARY
-                :ColorResources.disabledColor,
+            color: isSelected? Styles.PRIMARY_COLOR
+                :Styles.disabledColor,
             fontSize: 10,
           ),):const SizedBox.shrink()
         ],

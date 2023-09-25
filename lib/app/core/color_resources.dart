@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../theme/theme_provider/theme_provider.dart';
 
-abstract class ColorResources {
+abstract class Styles {
   static Color getGreyColor(BuildContext context) {
     return const Color(0xFF6f7275);
   }
@@ -69,7 +69,7 @@ abstract class ColorResources {
   static Color getCardTextColor(context) {
     return Provider.of<ThemeProvider>(context).darkTheme
         ? Colors.white
-        : PRIMARY;
+        : PRIMARY_COLOR;
   }
 
   static Color getHintColor(BuildContext context) {
@@ -80,7 +80,7 @@ abstract class ColorResources {
     return Color(0xFF25282B);
   }
 
-  static const Color PRIMARY = Color(0xFF4a42aa);
+  static const Color PRIMARY_COLOR = Color(0xFF4a42aa);
   static const Color SACOUNDRY = Color(0xFFf4b309);
   static const Color ACTIVE = Color(0xFF5F9B56);
   static const Color IN_ACTIVE = Color(0xFFBE3725);

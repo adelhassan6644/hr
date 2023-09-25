@@ -25,7 +25,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
         height: 60.h,
         width: context.width,
         decoration: BoxDecoration(
-          color: ColorResources.COLOR_GAINSBORO,
+          color: Styles.COLOR_GAINSBORO,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
@@ -51,8 +51,8 @@ Tab tab ({required bool isSelected,required String label}){
         height: 40.h,
         decoration: BoxDecoration(
           color: isSelected
-              ? ColorResources.PRIMARY.withOpacity(0.8)
-              : ColorResources.transparentColor,
+              ? Styles.PRIMARY_COLOR.withOpacity(0.8)
+              : Styles.transparentColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
@@ -64,8 +64,8 @@ Tab tab ({required bool isSelected,required String label}){
             style: AppTextStyles.w600.copyWith(
               fontSize: 12,
               color: isSelected
-                  ? ColorResources.WHITE
-                  : ColorResources.disabledColor,
+                  ? Styles.WHITE
+                  : Styles.disabledColor,
             ),
           ),
         ),

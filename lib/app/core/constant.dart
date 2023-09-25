@@ -12,7 +12,7 @@ import 'dimensions.dart';
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
-    color: ColorResources.BORDER_COLOR,
+    color: Styles.BORDER_COLOR,
   ),
 );
 
@@ -22,7 +22,7 @@ import 'dimensions.dart';
   ),
   borderSide: BorderSide(
     style: BorderStyle.solid,
-    color: ColorResources.PRIMARY,
+    color: Styles.PRIMARY_COLOR,
   ),
 );
 
@@ -33,7 +33,7 @@ import 'dimensions.dart';
   borderSide: BorderSide(
     width: 1,
     style: BorderStyle.solid,
-    color: ColorResources.errorBorderColor,
+    color: Styles.errorBorderColor,
   ),
 );
 
@@ -43,7 +43,7 @@ const TextStyle darkTextStyle = TextStyle(
 
 const TextStyle hintTextStyle = TextStyle(
     fontSize: 12,
-    color: ColorResources.hintColor,
+    color: Styles.hintColor,
     fontWeight: FontWeight.w600);
 
 const TextStyle titleTextStyle = TextStyle(
@@ -59,16 +59,16 @@ const TextStyle subHeadLineTextStyle = TextStyle(
 
 const TextStyle errorHintTextStyle = TextStyle(
     fontSize: 13,
-    color: ColorResources.errorHintColor,
+    color: Styles.errorHintColor,
     fontWeight: FontWeight.w600);
 
 const TextStyle selectTextStyle = TextStyle(
-    color: ColorResources.PRIMARY,
+    color: Styles.PRIMARY_COLOR,
     fontSize: 12,
     fontFamily: AppStrings.fontFamily,
     fontWeight: FontWeight.w700);
 const TextStyle unSelectTextStyle = TextStyle(
-    color: ColorResources.disabledColor,
+    color: Styles.disabledColor,
     fontSize: 10,
     fontFamily: AppStrings.fontFamily,
     fontWeight: FontWeight.w500);
@@ -79,7 +79,7 @@ const TextStyle unSelectTextStyle = TextStyle(
       Radius.circular(Dimensions.PADDING_SIZE_DEFAULT)),
   border: Border.all(
       width: 1.00,
-      color: ColorResources.shadowColor,
+      color: Styles.shadowColor,
       style: BorderStyle.solid),
 );
 
@@ -87,9 +87,9 @@ const TextStyle unSelectTextStyle = TextStyle(
     borderRadius: const BorderRadius.all(
         Radius.circular(Dimensions.PADDING_SIZE_DEFAULT)),
     border: Border.all(
-        color: ColorResources.transparentColor,
+        color: Styles.transparentColor,
         style: BorderStyle.solid),
-    color: ColorResources.FILL);
+    color: Styles.FILL);
 
 
 

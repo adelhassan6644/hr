@@ -51,7 +51,7 @@ class EmptyState extends StatelessWidget {
                     imageName: img ?? SvgImages.appLogo,
                     width: imgWidth ?? 200,
                     height: imgHeight ?? 150,
-                    color: ColorResources.PRIMARY),
+                    color: Styles.PRIMARY_COLOR),
             SizedBox(
               height: spaceBtw ?? 24.h,
             ),
@@ -60,14 +60,14 @@ class EmptyState extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: ColorResources.PRIMARY,
+                  color: Styles.PRIMARY_COLOR,
                 )),
             SizedBox(height: 8.h),
             Text(subText ?? "",
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                     fontSize: 14,
-                    color: ColorResources.disabledColor,
+                    color: Styles.disabledColor,
                     fontWeight: FontWeight.w400)),
             Visibility(
                 visible: btnText != null,
@@ -78,8 +78,8 @@ class EmptyState extends StatelessWidget {
                   child: CustomButton(
                     text: btnText ?? "",
                     onTap: onTap,
-                    backgroundColor: originalButton? ColorResources.PRIMARY:ColorResources.WHITE,
-                    textColor: originalButton? ColorResources.WHITE:ColorResources.PRIMARY,
+                    backgroundColor: originalButton? Styles.PRIMARY_COLOR:Styles.WHITE,
+                    textColor: originalButton? Styles.WHITE:Styles.PRIMARY_COLOR,
                     withShadow: !originalButton,
                   ),
                 ))

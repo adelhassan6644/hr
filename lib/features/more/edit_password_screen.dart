@@ -25,7 +25,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title:getTranslated("change_password", context),
         titleCenter:true ,
@@ -45,7 +45,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                     ),
                     Text(getTranslated("password", context),
                         style: titleTextStyle.copyWith(
-                            color: ColorResources.PRIMARY)),
+                            color: Styles.PRIMARY_COLOR)),
                      SizedBox(
                       height: 15.h,
                     ),
@@ -64,7 +64,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                     ),
                     Text(getTranslated("new_password", context),
                         style: titleTextStyle.copyWith(
-                            color: ColorResources.PRIMARY)),
+                            color: Styles.PRIMARY_COLOR)),
                      SizedBox(
                       height: 15.h,
                     ),
@@ -90,7 +90,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                     ),
                     Text(getTranslated("confirm_password", context),
                         style: titleTextStyle.copyWith(
-                            color: ColorResources.PRIMARY)),
+                            color: Styles.PRIMARY_COLOR)),
                      SizedBox(
                       height: 15.h,
                     ),
@@ -126,9 +126,9 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                             }
 
                           },
-                          textColor: ColorResources.WHITE,
+                          textColor: Styles.WHITE,
                           text: getTranslated("confirm", context),
-                          backgroundColor: ColorResources.PRIMARY),
+                          backgroundColor: Styles.PRIMARY_COLOR),
                     ),
                   ],
                 ),

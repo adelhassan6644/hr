@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/app/localization/localization/language_constant.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_image_picker_widget.dart';
 import '../../../components/custom_text_form_field.dart';
 
@@ -19,7 +19,7 @@ class RequestReason extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.w),
           border: Border.all(
-              color: ColorResources.BORDER_COLOR,
+              color: Styles.BORDER_COLOR,
               width: 0.5,
               style: BorderStyle.solid
           )
@@ -40,10 +40,10 @@ class RequestReason extends StatelessWidget {
             height: 16.h,
           ),
           CustomTextFormField(
-            tIcon: Images.question,
-            removePIcon: false,
-            sIcon:Images.question ,
-            tIconColor: ColorResources.hintColor,
+            // tIcon: Images.question,
+            // removePIcon: false,
+            // sIcon:Images.question ,
+            // tIconColor: Styles.hintColor,
             hint:getTranslated("reason", context) ,
             controller: reasonController,
             label: true,

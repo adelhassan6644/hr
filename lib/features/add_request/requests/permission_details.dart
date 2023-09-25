@@ -56,7 +56,7 @@ class _PermissionRequestScreenState extends State<PermissionRequestScreen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: Styles.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -83,7 +83,7 @@ class _PermissionRequestScreenState extends State<PermissionRequestScreen> {
                           onChange: addRequestProvider.onSelectLoanType,
                           name: getTranslated("type", context),
                           pIcon: Images.time,
-                          pIconColor: ColorResources.hintColor);
+                          pIconColor: Styles.hintColor);
                     }),
                     SizedBox(
                       height: 16.h,
@@ -108,10 +108,10 @@ class _PermissionRequestScreenState extends State<PermissionRequestScreen> {
               Consumer<AddRequestProvider>(
                   builder: (context, addRequestProvider, child) {
                 return CustomButton(
-                    textColor: ColorResources.WHITE,
+                    textColor: Styles.WHITE,
                     text: getTranslated("submit", context),
                     onTap: () => addRequestProvider.onSubmit(),
-                    backgroundColor: ColorResources.PRIMARY);
+                    backgroundColor: Styles.PRIMARY_COLOR);
               })
             ],
           ),

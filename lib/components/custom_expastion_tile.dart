@@ -22,20 +22,20 @@ class CustomExpansionTile extends StatelessWidget {
             fontSize: 16.0,
           ),
         ),
-        iconColor: ColorResources.PRIMARY,
-        backgroundColor:  ColorResources.BACKGROUND_COLOR,
-        collapsedBackgroundColor: ColorResources.BACKGROUND_COLOR,
+        iconColor: Styles.PRIMARY_COLOR,
+        backgroundColor:  Styles.BACKGROUND_COLOR,
+        collapsedBackgroundColor: Styles.BACKGROUND_COLOR,
         collapsedShape: Border.all(
-          color: ColorResources.BORDER_COLOR,
+          color: Styles.BORDER_COLOR,
           width: 0.25,
           style: BorderStyle.solid
         ),
         shape:Border.all(
-            color: ColorResources.BORDER_COLOR,
+            color: Styles.BORDER_COLOR,
             width: 0.25,
             style: BorderStyle.solid
         ),
-        collapsedTextColor: ColorResources.PRIMARY,
+        collapsedTextColor: Styles.PRIMARY_COLOR,
         initiallyExpanded: opened,
         childrenPadding:  EdgeInsets.symmetric(
           horizontal: 12.w,

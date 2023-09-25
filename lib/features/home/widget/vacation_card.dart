@@ -24,7 +24,7 @@ class VacationCard extends StatelessWidget {
             padding: const EdgeInsets.all(
                 Dimensions.PADDING_SIZE_DEFAULT),
             decoration: BoxDecoration(
-              color: ColorResources.FILL,
+              color: Styles.FILL,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -62,7 +62,7 @@ class VacationCard extends StatelessWidget {
                   getTranslated(status, context).replaceAll("ال", ""),
                   style: AppTextStyles.w600.copyWith(
                       fontSize: 12,
-                      color: ColorResources.getStatusColorOfVacation(status)),
+                      color: Styles.getStatusColorOfVacation(status)),
                 ),
               ],
             ),
@@ -71,7 +71,7 @@ class VacationCard extends StatelessWidget {
             width: 5.h,
             height: 75.h,
             decoration: BoxDecoration(
-              color: ColorResources.PRIMARY,
+              color: Styles.PRIMARY_COLOR,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
                       Provider.of<LocalizationProvider>(

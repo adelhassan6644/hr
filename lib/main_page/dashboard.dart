@@ -4,7 +4,7 @@ import 'package:hr_project/main_page/widget/nav_bar_item.dart';
 import '../../app/core/color_resources.dart';
 import '../../app/core/images.dart';
 import '../app/localization/localization/language_constant.dart';
-import '../features/home/attendance_leaving_screen.dart';
+import '../features/attendance/page/attendance_page.dart';
 import '../features/home/home_Screen.dart';
 import '../features/profile/page/profile_screen.dart';
 import '../features/requests/requests_screen.dart';
@@ -36,7 +36,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
   return  Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       bottomNavigationBar: Padding(
           padding:  EdgeInsets.only(bottom: 20.h,right: 25.w,left: 25.w),
           child: Container(
@@ -93,7 +93,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           children: const [
             HomeScreen(),
             RequestsScreen(),
-            AttendanceLeavingScreen(),
+            AttendancePage(),
             ProfileScreen(),
           ]),
     );

@@ -12,7 +12,7 @@ void showCustomSnackBar(
         vertical: 20,
       ),
       borderRadius: const BorderRadius.all(Radius.circular(25)),
-      backgroundColor: isError ? Colors.red : ColorResources.PRIMARY,
+      backgroundColor: isError ? Colors.red : Styles.PRIMARY_COLOR,
       animation: StyledToastAnimation.slideToBottom,
       reverseAnimation: StyledToastAnimation.slideToBottom,
       position: StyledToastPosition.top,

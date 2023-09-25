@@ -101,7 +101,7 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
           ),
           suffixIcon: Padding(
               padding:  EdgeInsets.symmetric( horizontal: 20.w),
-              child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: ColorResources.hintColor,)),),
+              child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: Styles.hintColor,)),),
     );
   }
 }

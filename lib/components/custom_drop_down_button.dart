@@ -54,7 +54,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
             child: Text(
               item,
               style: AppTextStyles.w600
-                  .copyWith(color: ColorResources.TITLE, fontSize: 13),
+                  .copyWith(color: Styles.TITLE, fontSize: 13),
             ),
           );
         }).toList(),
@@ -64,19 +64,19 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
         isDense: true,
         validator: widget.validation,
         isExpanded: true,
-        dropdownColor: ColorResources.FILL_COLOR,
+        dropdownColor: Styles.FILL_COLOR,
         itemHeight: 50,
         icon: widget.icon ??
             const Icon(
               Icons.keyboard_arrow_down_rounded,
-              color: ColorResources.PRIMARY,
+              color: Styles.PRIMARY_COLOR,
             ),
         iconSize: widget.iconSize,
         borderRadius:
             const BorderRadius.all(Radius.circular(Dimensions.RADIUS_DEFAULT)),
         decoration: InputDecoration(
           hintStyle: AppTextStyles.w400
-              .copyWith(color: ColorResources.disabledColor, fontSize: 14),
+              .copyWith(color: Styles.disabledColor, fontSize: 14),
           hintText: widget.name,
           prefixIcon: Padding(
             padding: EdgeInsets.symmetric(
@@ -97,7 +97,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
                       )
                     : null,
           ),
-          fillColor: ColorResources.FILL_COLOR,
+          fillColor: Styles.FILL_COLOR,
           filled: true,
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
@@ -106,7 +106,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
               ),
             ),
             borderSide: BorderSide(
-                color: ColorResources.LIGHT_BORDER_COLOR,
+                color: Styles.LIGHT_BORDER_COLOR,
                 width: 1,
                 style: BorderStyle.solid),
           ),
@@ -117,7 +117,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
               ),
             ),
             borderSide: BorderSide(
-                color: ColorResources.PRIMARY,
+                color: Styles.PRIMARY_COLOR,
                 width: 1,
                 style: BorderStyle.solid),
           ),
@@ -128,7 +128,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
               ),
             ),
             borderSide: BorderSide(
-                color: ColorResources.LIGHT_BORDER_COLOR,
+                color: Styles.LIGHT_BORDER_COLOR,
                 width: 1,
                 style: BorderStyle.solid),
           ),
@@ -139,7 +139,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
               ),
             ),
             borderSide: BorderSide(
-                color: ColorResources.LIGHT_BORDER_COLOR,
+                color: Styles.LIGHT_BORDER_COLOR,
                 width: 1,
                 style: BorderStyle.solid),
           ),
@@ -150,7 +150,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
               ),
             ),
             borderSide: BorderSide(
-                color: ColorResources.IN_ACTIVE,
+                color: Styles.IN_ACTIVE,
                 width: 1,
                 style: BorderStyle.solid),
           ),
@@ -161,7 +161,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
               ),
             ),
             borderSide: BorderSide(
-                color: ColorResources.IN_ACTIVE,
+                color: Styles.IN_ACTIVE,
                 width: 1,
                 style: BorderStyle.solid),
           ),
@@ -171,12 +171,12 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           ),
           labelText: widget.label,
           errorStyle: AppTextStyles.w600
-              .copyWith(color: ColorResources.IN_ACTIVE, fontSize: 11),
+              .copyWith(color: Styles.IN_ACTIVE, fontSize: 11),
           labelStyle: AppTextStyles.w400
-              .copyWith(color: ColorResources.disabledColor, fontSize: 14),
+              .copyWith(color: Styles.disabledColor, fontSize: 14),
         ),
         style: AppTextStyles.w600
-            .copyWith(color: ColorResources.PRIMARY, fontSize: 14),
+            .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 14),
         name: widget.name,
         elevation: 1,
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/extensions.dart';
 import '../../app/core/text_styles.dart';
-import '../../app/localization/language_constant.dart';
+import '../../app/localization/localization/language_constant.dart';
 
 class CheckConnectionDialog extends StatelessWidget {
   const CheckConnectionDialog(

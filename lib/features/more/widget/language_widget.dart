@@ -19,7 +19,7 @@ Widget languageWidget(
         padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
         decoration: BoxDecoration(
           color: languageProvider.selectIndex == index
-              ? ColorResources.PRIMARY.withOpacity(.15)
+              ? Styles.PRIMARY_COLOR.withOpacity(.15)
               : null,
           borderRadius: BorderRadius.circular(15),
         ),
@@ -33,12 +33,12 @@ Widget languageWidget(
                   style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: ColorResources.blackColor
+                color: Styles.blackColor
                   ),)
               ],
             ),
             languageProvider.selectIndex == index
-                ? const Icon(Icons.done, color: ColorResources.PRIMARY)
+                ? const Icon(Icons.done, color: Styles.PRIMARY_COLOR)
                 : const SizedBox.shrink()
           ],
         ),

@@ -57,8 +57,8 @@ class ConfirmationDialog extends StatelessWidget {
                 child: CustomButton(
               onTap: () => CustomNavigator.pop(),
               text: txtBtn2 ?? "رجوع",
-              backgroundColor: ColorResources.PRIMARY.withOpacity(0.1),
-              textColor:ColorResources.PRIMARY,
+              backgroundColor: Styles.PRIMARY_COLOR.withOpacity(0.1),
+              textColor:Styles.PRIMARY_COLOR,
             ))
           ],
         )

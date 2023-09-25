@@ -63,7 +63,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
-                        color: ColorResources.BORDER_COLOR,
+                        color: Styles.BORDER_COLOR,
                         width: 0.5,
                         style: BorderStyle.solid)),
                 child: Column(
@@ -89,7 +89,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                             onChange:addRequestProvider.onSelectLoanType,
                             name: getTranslated("loan_type", context),
                             pIcon: Images.salaryIcon,
-                            pIconColor: ColorResources.hintColor);
+                            pIconColor: Styles.hintColor);
                       }
                     ),
                     SizedBox(
@@ -104,11 +104,11 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                         getTranslated("sar", context),
                         style: AppTextStyles.w500.copyWith(
                           fontSize: 12,
-                          color: ColorResources.hintColor,
+                          color: Styles.hintColor,
                         ),
                       ),
                       controller: loanAmount,
-                      tIconColor: ColorResources.hintColor,
+                      tIconColor: Styles.hintColor,
                       hint: getTranslated("loan_amount", context),
                       label: true,
                     ),
@@ -136,7 +136,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.w),
                       border: Border.all(
-                          color: ColorResources.BORDER_COLOR,
+                          color: Styles.BORDER_COLOR,
                           width: 0.5,
                           style: BorderStyle.solid)),
                   child: Column(
@@ -167,7 +167,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                           ],
                           name: getTranslated("monthly_installment", context),
                           pIcon: Images.cash,
-                          pIconColor: ColorResources.hintColor,
+                          pIconColor: Styles.hintColor,
                           onChange: (Object? value) {
                             reBuilder(() {
                               selectedMechanism = value;
@@ -190,7 +190,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                   controller: numberOfMonths,
                                   removePIcon: false,
                                   type: TextInputType.number,
-                                  tIconColor: ColorResources.hintColor,
+                                  tIconColor: Styles.hintColor,
                                   hint: getTranslated(
                                       "number_of_months", context),
                                   label: true,
@@ -207,10 +207,10 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                     getTranslated("sar", context),
                                     style: AppTextStyles.w500.copyWith(
                                       fontSize: 12,
-                                      color: ColorResources.hintColor,
+                                      color: Styles.hintColor,
                                     ),
                                   ),
-                                  tIconColor: ColorResources.hintColor,
+                                  tIconColor: Styles.hintColor,
                                   hint: getTranslated("amount", context),
                                   label: true,
                                 ),
@@ -229,10 +229,10 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                         getTranslated("month", context),
                                         style: AppTextStyles.w500.copyWith(
                                           fontSize: 12,
-                                          color: ColorResources.hintColor,
+                                          color: Styles.hintColor,
                                         ),
                                       ),
-                                      tIconColor: ColorResources.hintColor,
+                                      tIconColor: Styles.hintColor,
                                       hint: "${getTranslated("number_of_months", context)}${"  :  "}${(int.parse(loanAmount.text.trim().toString().convertDigits()) ~/ int.parse(amount.text.trim().toString().convertDigits())).roundToDouble()}",
                                     ),
                                   ],
@@ -253,10 +253,10 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                         getTranslated("sar", context),
                                         style: AppTextStyles.w500.copyWith(
                                           fontSize: 12,
-                                          color: ColorResources.hintColor,
+                                          color: Styles.hintColor,
                                         ),
                                       ),
-                                      tIconColor: ColorResources.hintColor,
+                                      tIconColor: Styles.hintColor,
                                       hint:
                                           "${getTranslated("monthly_installment", context)}${" :  "}${(int.parse(loanAmount.text.trim().toString().convertDigits()) ~/ int.parse(numberOfMonths.text.trim().toString().convertDigits())).roundToDouble()}",
                                     ),
@@ -279,9 +279,9 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
               ),
 
               Consumer<AddRequestProvider>(builder: (context,addRequestProvider,child)  {
-                  return CustomButton(textColor: ColorResources.WHITE, text: getTranslated("submit", context),
+                  return CustomButton(textColor: Styles.WHITE, text: getTranslated("submit", context),
                       onTap:()=>addRequestProvider.onSubmit() ,
-                      backgroundColor: ColorResources.PRIMARY);
+                      backgroundColor: Styles.PRIMARY_COLOR);
                 }
               )
             ],

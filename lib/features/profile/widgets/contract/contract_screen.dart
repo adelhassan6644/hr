@@ -32,7 +32,7 @@ class ContractScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT.w),
                     decoration: BoxDecoration(
-                      color: ColorResources.FILL_COLOR,
+                      color: Styles.FILL_COLOR,
                       borderRadius: BorderRadius.circular(12.w),
                     ),
                     child: Column(
@@ -42,11 +42,11 @@ class ContractScreen extends StatelessWidget {
                           child: Text(
                             getTranslated("employment_contract", context),style: AppTextStyles.w600.copyWith(
                               fontSize: 14,
-                              color: ColorResources.HEADER
+                              color: Styles.HEADER
                           ),overflow: TextOverflow.fade,
                           ),
                         ),
-                        titleContainer(title:getTranslated("active", context),color: ColorResources.ACTIVE,textColor: ColorResources.WHITE)
+                        titleContainer(title:getTranslated("active", context),color: Styles.ACTIVE,textColor: Styles.WHITE)
                       ],),
                       SizedBox(height: 24.h,),
                       Row(children: [
@@ -54,13 +54,13 @@ class ContractScreen extends StatelessWidget {
                           child: Text(
                             "${getTranslated("contract_starting_date", context)} : ",style: AppTextStyles.w600.copyWith(
                               fontSize: 14,
-                              color: ColorResources.HEADER
+                              color: Styles.HEADER
                           ),overflow: TextOverflow.fade,
                           ),
                         ),
                         Text(DateTime.now().format("dd-MMM-yyyy"),style: AppTextStyles.w500.copyWith(
                             fontSize: 12,
-                            color: ColorResources.PRIMARY
+                            color: Styles.PRIMARY_COLOR
                         ),overflow: TextOverflow.fade,
                         ),
                       ],),
@@ -70,13 +70,13 @@ class ContractScreen extends StatelessWidget {
                           child: Text(
                             "${getTranslated("contract_duration", context)} : ",style: AppTextStyles.w600.copyWith(
                               fontSize: 14,
-                              color: ColorResources.HEADER
+                              color: Styles.HEADER
                           ),overflow: TextOverflow.fade,
                           ),
                         ),
                         Text(getTranslated("unlimited_time", context),style: AppTextStyles.w500.copyWith(
                             fontSize: 12,
-                            color: ColorResources.PRIMARY
+                            color: Styles.PRIMARY_COLOR
                         ),overflow: TextOverflow.fade,
                         ),
                       ],),
@@ -102,7 +102,7 @@ class ContractScreen extends StatelessWidget {
                 Text(
                   getTranslated("there_is_no_contract", context),style: AppTextStyles.w600.copyWith(
                     fontSize: 14,
-                    color: ColorResources.HEADER,
+                    color: Styles.HEADER,
                 ),overflow: TextOverflow.fade,
                   maxLines: 2,
                 ),

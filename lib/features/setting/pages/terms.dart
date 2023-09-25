@@ -17,7 +17,7 @@ class Terms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorResources.BACKGROUND_COLOR,
+      backgroundColor: Styles.BACKGROUND_COLOR,
       body: SafeArea(
           top: false,
           child: Column(
@@ -37,7 +37,7 @@ class Terms extends StatelessWidget {
                             vertical: Dimensions.PADDING_SIZE_SMALL.h,
                           ),
                           decoration: BoxDecoration(
-                              color: ColorResources.WHITE,
+                              color: Styles.WHITE,
                               borderRadius: BorderRadius.circular(20)),
                           child: ListAnimator(
                             data: [
@@ -45,7 +45,7 @@ class Terms extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: AppTextStyles.w700.copyWith(
                                       fontSize: 22,
-                                      color: ColorResources.PRIMARY)),
+                                      color: Styles.PRIMARY_COLOR)),
                               SizedBox(
                                 height: 24.h,
                               ),
@@ -62,7 +62,7 @@ class Terms extends StatelessWidget {
                     : const Expanded(
                         child: Center(
                           child: CircularProgressIndicator(
-                            color: ColorResources.PRIMARY,
+                            color: Styles.PRIMARY_COLOR,
                           ),
                         ),
                       );
