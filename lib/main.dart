@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hr_project/app/core/un_focus.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +20,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // await Firebase.initializeApp(
-    // options: DefaultFirebaseOptions.currentPlatform,
+  // options: DefaultFirebaseOptions.currentPlatform,
   // );
 
   FirebaseNotifications.init();
@@ -70,7 +69,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(
         context,
-      ).darkTheme ? dark : light,
+      ).darkTheme
+          ? dark
+          : light,
       supportedLocales: locals,
       locale: Provider.of<LocalizationProvider>(
         context,

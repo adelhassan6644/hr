@@ -30,10 +30,9 @@ import '../main_page/dashboard.dart';
 import '../features/splash/page/splash.dart';
 import 'routes.dart';
 
-
 abstract class CustomNavigator {
   static final GlobalKey<NavigatorState> navigatorState =
-  GlobalKey<NavigatorState>();
+      GlobalKey<NavigatorState>();
   static final RouteObserver<PageRoute> routeObserver =
       RouteObserver<PageRoute>();
   static final GlobalKey<ScaffoldMessengerState> scaffoldState =
@@ -56,18 +55,20 @@ abstract class CustomNavigator {
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoardScreen());
       case Routes.REQUESTS_FLOW:
-        return _pageRoute(RequestFlowScreen(model: settings.arguments as Model,));
+        return _pageRoute(RequestFlowScreen(
+          model: settings.arguments as Model,
+        ));
       case Routes.ADD_REQUEST:
-        return _pageRoute( const AddRequestScreen());
+        return _pageRoute(const AddRequestScreen());
       case Routes.LOAN_REQUEST:
-        return _pageRoute( const LoanRequestScreen());
+        return _pageRoute(const LoanRequestScreen());
       case Routes.EXPENSE_CLAIM_REQUEST:
-        return _pageRoute( const ExpenseRequestScreen());
+        return _pageRoute(const ExpenseRequestScreen());
       case Routes.PERMISSIN_REQUEST:
-        return _pageRoute( const PermissionRequestScreen());
+        return _pageRoute(const PermissionRequestScreen());
       case Routes.VACATION_REQUEST:
         return _pageRoute(const VacationRequest());
-      case Routes.BUSINESS_TRIP_REQUEST :
+      case Routes.BUSINESS_TRIP_REQUEST:
         return _pageRoute(const BusinessTripRequest());
       case Routes.LETTER_REQUEST:
         return _pageRoute(const LetterRequest());
@@ -84,10 +85,14 @@ abstract class CustomNavigator {
       case Routes.LANGUAGES:
         return _pageRoute(const LanguageScreen());
       case Routes.PERSONAL:
-        return _pageRoute( PersonalScreen(user: settings.arguments as UserModel,));
+        return _pageRoute(PersonalScreen(
+          user: settings.arguments as UserModel,
+        ));
       case Routes.ORGANIZATION:
-        return _pageRoute( OrganizationScreen(employee: settings.arguments as UserModel,));
-      case Routes.DOCUMENTS :
+        return _pageRoute(OrganizationScreen(
+          employee: settings.arguments as UserModel,
+        ));
+      case Routes.DOCUMENTS:
         return _pageRoute(const DocumentsScreen());
       case Routes.SALARIES_AND_FINANCIAL:
         return _pageRoute(const SalaryScreen());
@@ -102,22 +107,22 @@ abstract class CustomNavigator {
     }
   }
 
-
   static PageRouteBuilder<dynamic> _pageRoute(Widget child) => PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 400),
-      reverseTransitionDuration: const Duration(milliseconds: 400),
+      transitionDuration: const Duration(milliseconds: 100),
+      reverseTransitionDuration: const Duration(milliseconds: 100),
       transitionsBuilder: (c, anim, a2, child) {
-        var begin = const Offset(1.0,0.0);
+        var begin = const Offset(1.0, 0.0);
         var end = Offset.zero;
-        var tween = Tween(begin: begin,end: end);
-        var curveAnimation=CurvedAnimation(
-          parent: anim,curve: Curves.linearToEaseOut);
-        return SlideTransition(position: tween.animate(curveAnimation),child: child,);
-
+        var tween = Tween(begin: begin, end: end);
+        var curveAnimation =
+            CurvedAnimation(parent: anim, curve: Curves.linearToEaseOut);
+        return SlideTransition(
+          position: tween.animate(curveAnimation),
+          child: child,
+        );
       },
       opaque: false,
       pageBuilder: (_, __, ___) => child);
-
 
   static pop({dynamic result}) {
     if (navigatorState.currentState!.canPop()) {
@@ -131,12 +136,12 @@ abstract class CustomNavigator {
       return navigatorState.currentState!.pushNamedAndRemoveUntil(
           routeName, (_) => false,
           arguments: arguments);
-    }
-    else if (replace) {
-      return navigatorState.currentState!
-          .pushReplacementNamed(routeName, arguments: arguments);
-    }
-    else {
+    } else if (replace) {
+      return navigatorState.currentState!.pushReplacementNamed(
+        routeName,
+        arguments: arguments,
+      );
+    } else {
       return navigatorState.currentState!
           .pushNamed(routeName, arguments: arguments);
     }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/images.dart';
@@ -18,9 +17,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    Provider.of<SplashProvider>(CustomNavigator.navigatorState.currentContext!,
-            listen: false)
-        .startTheApp();
+    Provider.of<SplashProvider>(context, listen: false).startTheApp();
     super.initState();
   }
 
