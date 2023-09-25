@@ -9,9 +9,11 @@ import 'app/notifications/my_notification.dart';
 import 'app/theme/dark_theme.dart';
 import 'app/theme/light_theme.dart';
 import 'app/theme/theme_provider/theme_provider.dart';
+import 'data/config/di.dart';
 import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'features/auth/pages/login_screen.dart';
 import 'navigation/custom_navigation.dart';
 import 'navigation/routes.dart';
 import 'package:hr_project/data/config/di.dart' as di;
@@ -67,11 +69,7 @@ class _MyAppState extends State<MyApp> {
       title: AppStrings.appName,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,
       debugShowCheckedModeBanner: false,
-      theme: Provider.of<ThemeProvider>(
-        context,
-      ).darkTheme
-          ? dark
-          : light,
+      theme: sl<ThemeProvider>().darkTheme ? dark : light,
       supportedLocales: locals,
       locale: Provider.of<LocalizationProvider>(
         context,
@@ -82,6 +80,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      home: const LoginScreen(),
     );
   }
 }
