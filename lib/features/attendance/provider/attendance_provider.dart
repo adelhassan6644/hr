@@ -19,7 +19,7 @@ class AttendanceProvider extends ChangeNotifier {
   bool locationPermissionGranted = false;
 
   sendAttendEmployee() async {
-    if (LocationHelper.checkLocation()) {
+    if (await LocationHelper.checkLocation()) {
       try {
         loadingDialog();
         notifyListeners();

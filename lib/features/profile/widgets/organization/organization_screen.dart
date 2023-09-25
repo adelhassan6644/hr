@@ -214,9 +214,7 @@ class OrganizationScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              sl<LocalizationProvider>()
-                                          .locale
-                                          .languageCode ==
+                              sl<LocalizationProvider>().locale.languageCode ==
                                       "en"
                                   ? employee.branch?.enName ?? ""
                                   : employee.branch?.arName ?? "",

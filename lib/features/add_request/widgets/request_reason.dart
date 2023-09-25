@@ -37,16 +37,12 @@ class RequestReason extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 16.h,
+            height: 8.h,
           ),
           CustomTextFormField(
-            // tIcon: Images.question,
-            // removePIcon: false,
-            // sIcon:Images.question ,
-            // tIconColor: Styles.hintColor,
+            pAssetIcon: Images.question,
             hint:getTranslated("reason", context) ,
             controller: reasonController,
-            label: true,
           ),
           SizedBox(
             height: 16.h,

@@ -3,6 +3,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hr_project/app/core/color_resources.dart';
 import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/components/custom_images.dart';
 import 'dart:ui' as ui;
 
 import '../app/core/dimensions.dart';
@@ -33,10 +34,10 @@ loadingDialog() {
                     color: Colors.black.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(25)),
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
-                  Image.asset(
-                    Images.logo,
-                    height: MediaQuery.of(context).size.width * .1,
-                    width: MediaQuery.of(context).size.width * .2,
+                  customImageIcon(
+                    imageName: Images.logo,
+                    height: 100,
+                    width: 250,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(

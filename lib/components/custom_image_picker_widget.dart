@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:hr_project/app/core/dimensions.dart';
 import 'package:hr_project/app/core/extensions.dart';
 
 import '../app/core/color_resources.dart';
@@ -33,10 +34,10 @@ class CustomButtonImagePicker extends StatelessWidget {
           GestureDetector(
             onTap: onTap,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 9),
+              padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
               decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Styles.LIGHT_BORDER_COLOR, width: 1),
+                  border:
+                      Border.all(color: Styles.LIGHT_BORDER_COLOR, width: 1),
                   borderRadius: BorderRadius.circular(8)),
               child: Row(
                 children: [
@@ -62,8 +63,7 @@ class CustomButtonImagePicker extends StatelessWidget {
         if (imageFile != null || imageUrl != null)
           Container(
             decoration: BoxDecoration(
-                border: Border.all(
-                    color: Styles.LIGHT_BORDER_COLOR, width: 1),
+                border: Border.all(color: Styles.LIGHT_BORDER_COLOR, width: 1),
                 borderRadius: BorderRadius.circular(8)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

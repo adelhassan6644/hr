@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/localization/localization/language_constant.dart';
+import '../../../components/loading_dialog.dart';
 import '../../attendance/provider/attendance_provider.dart';
 
 class CheckInCard extends StatelessWidget {
@@ -76,7 +77,7 @@ class CheckInCard extends StatelessWidget {
                   width: 12.w,
                 ),
                 InkWell(
-                  onTap: () => provider.sendAttendEmployee(),
+                  onTap: () =>  loadingDialog(),
                   child: Container(
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(

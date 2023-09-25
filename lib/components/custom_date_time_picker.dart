@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
 import 'package:hr_project/app/core/extensions.dart';
 import 'package:hr_project/app/core/text_styles.dart';
-import 'package:intl/intl.dart' ;
+import 'package:intl/intl.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../app/core/constant.dart';
 import '../app/core/images.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/localization/localization/language_constant.dart';
+import '../helpers/date_time_picker.dart';
 import 'custom_bottom_sheet.dart';
-
 
 class CustomSelectDate extends StatefulWidget {
   final String? initialString;
@@ -55,32 +56,23 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
       readOnly: true,
       onTap: () async {
         if (!widget.showOnly!) {
-          CustomBottomSheet.show(
-              label: widget.label,
-              height: 360.h,
-              onConfirm: () {
-                if (date != null) {
-                  setState(() =>
-                      _date = DateFormat(widget.format??"dd,MMM,yyyy").format(date!));
-                  widget.valueChanged!(date!);
-                  CustomNavigator.pop();
-                } else {
-                  setState(() => _date =
-                      DateFormat(widget.format??"dd,MMM,yyyy").format(DateTime.now()));
-                  widget.valueChanged!(DateTime.now());
-                  CustomNavigator.pop();
-                }
-              },
-              list: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
-                  onDateTimeChanged: (value) => date = value,
-                  initialDateTime: date ?? widget.startDateTime ?? DateTime.now(),
-                  minimumDate: widget.startDateTime != null ? DateTime(
-                          widget.startDateTime!.year,
-                          widget.startDateTime!.month,
-                          widget.startDateTime!.day)
-                      : DateTime(1900),
-                  maximumDate: DateTime(2100)));
+          showMaterialModalBottomSheet(
+              enableDrag: true,
+              clipBehavior: Clip.antiAlias,
+              backgroundColor: Colors.transparent,
+              context: CustomNavigator.navigatorState.currentContext!,
+              expand: false,
+              useRootNavigator: true,
+              isDismissible: true,
+              builder: (_) {
+                return Padding(
+                  padding: MediaQuery.of(
+                          CustomNavigator.navigatorState.currentContext!)
+                      .viewInsets,
+                  child: DateTimePicker(
+                      valueChanged: widget.valueChanged, label: widget.label),
+                );
+              });
         }
         FocusScope.of(context).requestFocus(FocusNode());
       },
@@ -90,18 +82,28 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
         }
         return null;
       },
+      controller: TextEditingController(
+          text: widget.startDateTime?.format("dd/mm/yyyy")),
       decoration: InputDecoration(
-          contentPadding:  EdgeInsets.symmetric(vertical: 22.w, horizontal: 22.w),
-          hintText: _date,
-          alignLabelWithHint: true,
-          enabledBorder: disableBorderStyle,
-          border: disableBorderStyle,
-          hintStyle: AppTextStyles.w500.copyWith(
-            fontSize: 14
-          ),
-          suffixIcon: Padding(
-              padding:  EdgeInsets.symmetric( horizontal: 20.w),
-              child: Image.asset(Images.calenderIcon,height: 20.h,width: 20.w,color: Styles.hintColor,)),),
+        contentPadding: EdgeInsets.symmetric(vertical: 22.w, horizontal: 22.w),
+        hintText: _date,
+        alignLabelWithHint: true,
+        label: Text(
+          widget.label,
+          style: AppTextStyles.w600.copyWith(color: Styles.PRIMARY_COLOR),
+        ),
+        enabledBorder: disableBorderStyle,
+        border: disableBorderStyle,
+        hintStyle: AppTextStyles.w500.copyWith(fontSize: 14),
+        suffixIcon: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Image.asset(
+              Images.calenderIcon,
+              height: 20.h,
+              width: 20.w,
+              color: Styles.hintColor,
+            )),
+      ),
     );
   }
 }

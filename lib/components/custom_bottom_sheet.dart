@@ -99,12 +99,8 @@ abstract class CustomBottomSheet {
                         ),
                         Expanded(
                             child: ListAnimator(
-                          data: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 24.w),
-                              child: list!,
-                            )
-                          ],
+                          customPadding: EdgeInsets.symmetric(horizontal: 24.w),
+                          data: [list!],
                         )),
                       ],
                     ),

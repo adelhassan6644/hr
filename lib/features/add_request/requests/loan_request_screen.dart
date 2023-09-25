@@ -31,7 +31,6 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
   DateTime? installmentStartDate;
   Object? selectedMechanism;
 
-
   @override
   void initState() {
     numberOfMonths = TextEditingController();
@@ -47,89 +46,16 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
       appBar: CustomAppBar(
         title: getTranslated("request_loan", context),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-            vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-        child: SizedBox(
-          height: context.height,
-          child: ListAnimator(
-            data: [
-              /// The Loan Details
-              Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                    vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.w),
-                    border: Border.all(
-                        color: Styles.BORDER_COLOR,
-                        width: 0.5,
-                        style: BorderStyle.solid)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.w,
-                      ),
-                      child: Text(
-                        getTranslated("loan_details", context),
-                        style: AppTextStyles.w600.copyWith(
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    Consumer<AddRequestProvider>(builder: (context,addRequestProvider,child)  {
-                        return CustomDropDownButton(
-                            items: addRequestProvider.loanTypes,
-                            onChange:addRequestProvider.onSelectLoanType,
-                            name: getTranslated("loan_type", context),
-                            // pIcon: Images.salaryIcon,
-                            pIconColor: Styles.hintColor);
-                      }
-                    ),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    CustomTextFormField(
-                      // tIcon: Images.cash,
-                      // removePIcon: false,
-                      // sIcon: Images.question,
-                      // type: TextInputType.number,
-                      sufWidget: Text(
-                        getTranslated("sar", context),
-                        style: AppTextStyles.w500.copyWith(
-                          fontSize: 12,
-                          color: Styles.hintColor,
-                        ),
-                      ),
-                      controller: loanAmount,
-                      // tIconColor: Styles.hintColor,
-                      hint: getTranslated("loan_amount", context),
-                      label: true,
-                    ),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    CustomSelectDate(
-                        valueChanged: (value) {
-                          installmentStartDate = value;
-                        },
-                        label: getTranslated("installment_start_date", context))
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 25.h,
-              ),
-
-              ///  Calculating mechanism of the proposed installment
-              StatefulBuilder(builder: (context, reBuilder) {
-                return Container(
+      body: SafeArea(
+        child: Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+          child: SizedBox(
+            height: context.height,
+            child: ListAnimator(
+              data: [
+                /// The Loan Details
+                Container(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
                       vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
@@ -147,9 +73,7 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                           horizontal: 5.w,
                         ),
                         child: Text(
-                          getTranslated(
-                              "calculating_mechanism_of_the_proposed_installment",
-                              context),
+                          getTranslated("loan_details", context),
                           style: AppTextStyles.w600.copyWith(
                             fontSize: 16.0,
                           ),
@@ -158,72 +82,142 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                       SizedBox(
                         height: 16.h,
                       ),
-                      CustomDropDownButton(
-                          items: [
-                            getTranslated(
-                                "specified_number_of_months", context),
-                            getTranslated(
-                                "A_specified_monthly_amount", context),
-                          ],
-                          name: getTranslated("monthly_installment", context),
-                          // pIcon: Images.cash,
-                          pIconColor: Styles.hintColor,
-                          onChange: (Object? value) {
-                            reBuilder(() {
-                              selectedMechanism = value;
-                              amount.clear();
-                              numberOfMonths.clear();
-                            });
-                          }),
+                      Consumer<AddRequestProvider>(
+                          builder: (context, addRequestProvider, child) {
+                        return CustomDropDownButton(
+                            items: addRequestProvider.loanTypes,
+                            onChange: addRequestProvider.onSelectLoanType,
+                            name: getTranslated("loan_type", context),
+                            pAssetIcon: Images.salaryIcon,
+                            pIconColor: Styles.hintColor);
+                      }),
                       SizedBox(
                         height: 16.h,
                       ),
-                      Visibility(
-                          visible: selectedMechanism != null,
-                          child: Column(
-                            children: [
-                              if (selectedMechanism ==
-                                  getTranslated(
-                                      "specified_number_of_months", context))
-                                CustomTextFormField(
-                                  // tIcon: Images.calenderIcon,
-                                  controller: numberOfMonths,
-                                  // removePIcon: false,
-                                  // type: TextInputType.number,
-                                  // tIconColor: Styles.hintColor,
-                                  hint: getTranslated(
-                                      "number_of_months", context),
-                                  label: true,
-                                ),
-                              if (selectedMechanism ==
-                                  getTranslated(
-                                      "A_specified_monthly_amount", context))
-                                CustomTextFormField(
-                                  // tIcon: Images.cash,
-                                  // removePIcon: false,
-                                  controller: amount,
-                                  // type: TextInputType.number,
-                                  sufWidget: Text(
-                                    getTranslated("sar", context),
-                                    style: AppTextStyles.w500.copyWith(
-                                      fontSize: 12,
-                                      color: Styles.hintColor,
-                                    ),
+                      CustomTextFormField(
+                        pAssetIcon: Images.cash,
+                        inputType: TextInputType.number,
+                        sufWidget: Text(
+                          getTranslated("sar", context),
+                          style: AppTextStyles.w500.copyWith(
+                            fontSize: 12,
+                            color: Styles.hintColor,
+                          ),
+                        ),
+                        controller: loanAmount,
+                        hint: getTranslated("loan_amount", context),
+                        label: true,
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      CustomSelectDate(
+                          valueChanged: (value) {
+                            installmentStartDate = value;
+                          },
+                          startDateTime:installmentStartDate ,
+                          label: getTranslated("installment_start_date", context))
+                    ],
+                  ),
+                ),
+                SizedBox(height: 24.h),
+
+                ///  Calculating mechanism of the proposed installment
+                StatefulBuilder(builder: (context, reBuilder) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                        vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.w),
+                        border: Border.all(
+                            color: Styles.BORDER_COLOR,
+                            width: 0.5,
+                            style: BorderStyle.solid)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 5.w,
+                          ),
+                          child: Text(
+                            getTranslated(
+                                "calculating_mechanism_of_the_proposed_installment",
+                                context),
+                            style: AppTextStyles.w600.copyWith(
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        CustomDropDownButton(
+                            items: [
+                              getTranslated(
+                                  "specified_number_of_months", context),
+                              getTranslated(
+                                  "A_specified_monthly_amount", context),
+                            ],
+                            name: getTranslated("monthly_installment", context),
+                            // pIcon: Images.cash,
+                            pIconColor: Styles.hintColor,
+                            onChange: (Object? value) {
+                              reBuilder(() {
+                                selectedMechanism = value;
+                                amount.clear();
+                                numberOfMonths.clear();
+                              });
+                            }),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        Visibility(
+                            visible: selectedMechanism != null,
+                            child: Column(
+                              children: [
+                                Visibility(
+                                  visible: (selectedMechanism ==
+                                      getTranslated(
+                                          "specified_number_of_months", context)),
+                                  child: CustomTextFormField(
+                                    pAssetIcon: Images.calenderIcon,
+                                    controller: numberOfMonths,
+                                    // removePIcon: false,
+                                    // type: TextInputType.number,
+                                    // tIconColor: Styles.hintColor,
+                                    hint: getTranslated(
+                                        "number_of_months", context),
+                                    label: true,
                                   ),
-                                  // tIconColor: Styles.hintColor,
-                                  hint: getTranslated("amount", context),
-                                  label: true,
                                 ),
-                              if (amount.text.isNotEmpty &&
-                                  loanAmount.text.isNotEmpty)
-                                Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 16.h,
+                                Visibility(
+                                  visible: (selectedMechanism ==
+                                      getTranslated(
+                                          "A_specified_monthly_amount", context)),
+                                  child: CustomTextFormField(
+                                    pAssetIcon: Images.cash,
+                                    controller: amount,
+                                    inputType: TextInputType.number,
+                                    sufWidget: Text(
+                                      getTranslated("sar", context),
+                                      style: AppTextStyles.w500.copyWith(
+                                        fontSize: 12,
+                                        color: Styles.hintColor,
+                                      ),
                                     ),
-                                    CustomTextFormField(
-                                      // tIcon: Images.calenderIcon,
-                                      // removePIcon: false,
+                                    hint: getTranslated("amount", context),
+                                    label: true,
+                                  ),
+                                ),
+                                Visibility(
+                                  visible: (amount.text.isNotEmpty &&
+                                      loanAmount.text.isNotEmpty),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 16.h),
+                                    child: CustomTextFormField(
+                                      pAssetIcon: Images.calenderIcon,
                                       read: true,
                                       sufWidget: Text(
                                         getTranslated("month", context),
@@ -232,23 +226,20 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                           color: Styles.hintColor,
                                         ),
                                       ),
-                                      // tIconColor: Styles.hintColor,
-                                      hint: "${getTranslated("number_of_months", context)}${"  :  "}${(int.parse(loanAmount.text.trim().toString().convertDigits()) ~/ int.parse(amount.text.trim().toString().convertDigits())).roundToDouble()}",
+                                      hint:
+                                          "${getTranslated("number_of_months", context)}${"  :  "}${((int.tryParse(loanAmount.text.trim()) ?? 1) ~/ (int.tryParse(amount.text.trim()) ?? 1)).roundToDouble()}",
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              if (numberOfMonths.text.isNotEmpty &&
-                                  loanAmount.text.isNotEmpty)
-                                Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 16.h,
-                                    ),
-                                    CustomTextFormField(
-                                      // tIcon: Images.cash,
-                                      // removePIcon: false,
+                                Visibility(
+                                  visible: (numberOfMonths.text.isNotEmpty &&
+                                      loanAmount.text.isNotEmpty),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 16.h),
+                                    child: CustomTextFormField(
+                                      pAssetIcon: Images.cash,
                                       read: true,
-                                      // type: TextInputType.number,
+                                      inputType: TextInputType.number,
                                       sufWidget: Text(
                                         getTranslated("sar", context),
                                         style: AppTextStyles.w500.copyWith(
@@ -258,33 +249,34 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                       ),
                                       // tIconColor: Styles.hintColor,
                                       hint:
-                                          "${getTranslated("monthly_installment", context)}${" :  "}${(int.parse(loanAmount.text.trim().toString().convertDigits()) ~/ int.parse(numberOfMonths.text.trim().toString().convertDigits())).roundToDouble()}",
+                                          "${getTranslated("monthly_installment", context)}${" :  "}${((int.tryParse(loanAmount.text.trim()) ?? 1) ~/ (int.tryParse(numberOfMonths.text.trim()) ?? 1)).roundToDouble()}",
                                     ),
-                                  ],
+                                  ),
                                 ),
-                            ],
-                          ))
-                    ],
-                  ),
-                );
-              }),
-              SizedBox(
-                height: 25.h,
-              ),
+                              ],
+                            ))
+                      ],
+                    ),
+                  );
+                }),
 
-              /// The Request Reason
-               RequestReason( reasonController: reason),
-              SizedBox(
-                height: 25.h,
-              ),
+                /// The Request Reason
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 24.h),
+                  child: RequestReason(reasonController: reason),
+                ),
 
-              Consumer<AddRequestProvider>(builder: (context,addRequestProvider,child)  {
-                  return CustomButton(textColor: Styles.WHITE, text: getTranslated("submit", context),
-                      onTap:()=>addRequestProvider.onSubmit() ,
+                Consumer<AddRequestProvider>(
+                    builder: (context, addRequestProvider, child) {
+                  return CustomButton(
+                      textColor: Styles.WHITE,
+                      text: getTranslated("submit", context),
+                      onTap: () => addRequestProvider.onSubmit(),
                       backgroundColor: Styles.PRIMARY_COLOR);
-                }
-              )
-            ],
+                }),
+                SizedBox(height: 12.h,)
+              ],
+            ),
           ),
         ),
       ),

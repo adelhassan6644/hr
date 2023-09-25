@@ -57,7 +57,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
+              padding: EdgeInsets.symmetric(vertical: 16.h),
               child: Container(
                 height: 5.h,
                 width: 36.w,
@@ -68,65 +68,51 @@ class _DateTimePickerState extends State<DateTimePicker> {
               ),
             ),
           ),
-          SizedBox(height: 10.h),
           Text(
             widget.label,
             style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 20.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  SizedBox(height: 16.h),
-                  Expanded(
-                      child: CupertinoDatePicker(
-                          mode: widget.mode ?? CupertinoDatePickerMode.date,
-                          onDateTimeChanged: (value) => date = value,
-                          // showDayOfWeek: true,
+                padding: const EdgeInsets.fromLTRB(24.0, 12, 24.0, 12.0),
+                child: CupertinoDatePicker(
+                    mode: widget.mode ?? CupertinoDatePickerMode.date,
+                    onDateTimeChanged: (value) => date = value,
+                    // showDayOfWeek: true,
 
-                          initialDateTime:
-                              date ?? widget.startDateTime ?? DateTime.now(),
-                          minimumDate: widget.minDateTime != null
-                              ? DateTime(
-                                  widget.minDateTime!.year,
-                                  widget.minDateTime!.month,
-                                  widget.minDateTime!.day)
-                              : widget.startDateTime != null
-                                  ? DateTime(
-                                      widget.startDateTime!.year,
-                                      widget.startDateTime!.month,
-                                      widget.startDateTime!.day)
-                                  : DateTime(1900),
-                          maximumDate: DateTime(2100)))
-                ],
-              ),
+                    initialDateTime:
+                        date ?? widget.startDateTime ?? DateTime.now(),
+                    minimumDate: widget.minDateTime != null
+                        ? DateTime(widget.minDateTime!.year,
+                            widget.minDateTime!.month, widget.minDateTime!.day)
+                        : widget.startDateTime != null
+                            ? DateTime(
+                                widget.startDateTime!.year,
+                                widget.startDateTime!.month,
+                                widget.startDateTime!.day)
+                            : DateTime(1900),
+                    maximumDate: DateTime(2100))),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+            ),
+            child: CustomButton(
+              text: getTranslated('confirm', context),
+              onTap: () {
+                if (date != null) {
+                  widget.valueChanged!(date!);
+                  CustomNavigator.pop();
+                } else {
+                  widget.valueChanged!(widget.startDateTime ?? DateTime.now());
+                  CustomNavigator.pop();
+                }
+              },
+              backgroundColor: Styles.PRIMARY_COLOR,
+              textColor: Styles.WHITE,
             ),
           ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: Dimensions.PADDING_SIZE_DEFAULT,
-              ),
-              child: CustomButton(
-                text: getTranslated('confirm', context),
-                onTap: () {
-                  if (date != null) {
-                    widget.valueChanged!(date!);
-                    CustomNavigator.pop();
-                  } else {
-                    widget
-                        .valueChanged!(widget.startDateTime ?? DateTime.now());
-                    CustomNavigator.pop();
-                  }
-                },
-                backgroundColor: Styles.PRIMARY_COLOR,
-                textColor: Styles.WHITE,
-              ),
-            ),
-          ),
-          SizedBox(height: 16.h),
+          SizedBox(height: 24.h),
         ],
       ),
     );
