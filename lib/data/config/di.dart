@@ -9,6 +9,8 @@ import '../../features/attendance/repo/attendance_repo.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/language/provider/language_provider.dart';
 import '../../features/profile/provider/profile_provider.dart';
+import '../../features/setting/provider/config_provider.dart';
+import '../../features/setting/repo/config_repo.dart';
 import '../../features/splash/provider/splash_provider.dart';
 import '../../features/splash/repo/splash_repo.dart';
 import '../api/end_points.dart';
@@ -33,6 +35,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => AuthRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(() => ProfileRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(() => AttendanceRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => ConfigRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //use Case
 
@@ -46,6 +49,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => ProfileProvider(user: sl(), profileRepo: sl()));
   sl.registerLazySingleton(() => AddRequestProvider());
   sl.registerLazySingleton(() => AttendanceProvider(repo: sl()));
+  sl.registerLazySingleton(() => ConfigProvider(repo: sl()));
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();

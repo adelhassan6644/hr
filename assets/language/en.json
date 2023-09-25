@@ -329,5 +329,27 @@
   "there_are_no_paid_tickets": "There are no paid tickets",
   "reason": "reason",
   "work": "Work",
-  "not_attended": "Not Attended"
+  "not_attended": "Not Attended",
+
+  "resend_code": "Resend the code",
+  "do_not_have_acc": "If you do not have an account ",
+  "have_acc": "Already have an account?",
+  "verify_the_mail": "Verify The Mail",
+  "your_profile_successfully_updated": "Your profile successfully updated",
+  "you_must_change_something": "Oops! you must change something",
+  "please_select_profile_image":"Oops! please select profile image",
+  "please_enter_your_name": "Oops! please enter your name",
+  "please_enter_valid_email": "Oops! please enter valid e-mail",
+  "please_enter_valid_password": "Oops! please enter valid password",
+  "please_enter_valid_new_password": "Oops! please enter valid new password",
+  "please_enter_valid_confirm_password": "Oops! please enter valid confirm password",
+  "password_length_validation": "Oops! The password must be more than 8 characters",
+  "confirm_password_match_validation": "Oops! Confirm password doesn't match the password",
+  "confirm_new_password_match_validation": "Oops! Confirmed new password doesn't match the new password",
+  "new_password_match_validation": "Oops! New password must be different the current password",
+  "your_password_changed_successfully": "Your password changed successfully",
+  "confirm_new_password": "Confirmed new password",
+  "current_password": "Current password",
+  "reset_password_description": "Please,The password must be more than 8 characters ",
+  "there_is_no_schedules": "there is no schedules"
 }

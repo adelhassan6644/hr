@@ -13,7 +13,7 @@ import 'data/config/di.dart';
 import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'features/auth/pages/login_screen.dart';
+import 'features/auth/pages/login.dart';
 import 'navigation/custom_navigation.dart';
 import 'navigation/routes.dart';
 import 'package:hr_project/data/config/di.dart' as di;
@@ -25,7 +25,7 @@ Future<void> main() async {
   // options: DefaultFirebaseOptions.currentPlatform,
   // );
 
-  FirebaseNotifications.init();
+  // FirebaseNotifications.init();
   await di.init();
   runApp(
       MultiProvider(providers: ProviderList.providers, child: const MyApp()));

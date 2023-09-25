@@ -9,6 +9,7 @@ import '../../features/language/provider/language_provider.dart';
 import '../../features/attendance/provider/attendance_provider.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/profile/provider/profile_provider.dart';
+import '../../features/setting/provider/config_provider.dart';
 import '../../features/splash/provider/splash_provider.dart';
 
 abstract class ProviderList {
@@ -22,5 +23,6 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AttendanceProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AttendanceProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<ConfigProvider>()),
   ];
 }

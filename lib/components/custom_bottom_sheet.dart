@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/extensions.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -47,7 +46,7 @@ abstract class CustomBottomSheet {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10.0, 0,0),
+                    padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -64,7 +63,8 @@ abstract class CustomBottomSheet {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w, vertical: 16.h),
+                              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                              vertical: 16.h),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -93,7 +93,9 @@ abstract class CustomBottomSheet {
                             right: 24.w,
                             left: 24.w,
                           ),
-                          child: const Divider(color: Styles.BORDER_COLOR,),
+                          child: const Divider(
+                            color: Styles.BORDER_COLOR,
+                          ),
                         ),
                         Expanded(
                             child: ListAnimator(
@@ -116,7 +118,7 @@ abstract class CustomBottomSheet {
                         vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                     child: child ??
                         CustomButton(
-                          text: getTranslated(buttonText??"confirm",
+                          text: getTranslated(buttonText ?? "confirm",
                               CustomNavigator.navigatorState.currentContext!),
                           onTap: () {
                             onConfirm!();
@@ -131,7 +133,6 @@ abstract class CustomBottomSheet {
       },
     );
   }
-
 
 // Future<T?> customDraggableScrollableSheet<T>(
 //     {required Widget? body, Function()? onClose}) {
@@ -167,7 +168,6 @@ abstract class CustomBottomSheet {
 //         );
 //       }).then((value) => onClose != null ? onClose() : () {});
 // }
-
 }
 
 class CustomModelSheet<T> {
@@ -179,11 +179,11 @@ class CustomModelSheet<T> {
   final dynamic list;
   CustomModelSheet(
       {this.id,
-        this.relatedId,
-        this.list,
-        this.name,
-        this.isSelected = false,
-        this.value});
+      this.relatedId,
+      this.list,
+      this.name,
+      this.isSelected = false,
+      this.value});
 
   toJson() {
     var data = {};

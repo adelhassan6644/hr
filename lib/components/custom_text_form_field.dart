@@ -79,7 +79,7 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   final InputBorder _borders = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(30),
+    borderRadius: BorderRadius.circular(12),
     borderSide: const BorderSide(
       style: BorderStyle.solid,
       color: Styles.PRIMARY_COLOR,
@@ -116,8 +116,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         inputFormatters: widget.inputType == TextInputType.phone
             ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
             : widget.formatter,
-        style: AppTextStyles.w500
-            .copyWith(color: Styles.TITLE, fontSize: 14),
+        style: AppTextStyles.w500.copyWith(color: Styles.TITLE, fontSize: 14),
         cursorColor: Styles.TITLE,
         onChanged: widget.onChanged,
         obscureText: widget.isPassword == true ? _isHidden : false,
@@ -139,8 +138,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       : widget.pSvgIcon != null
                           ? customImageIconSVG(
                               imageName: widget.pSvgIcon!,
-                              color:
-                                  widget.pIconColor ?? Styles.SUBTITLE,
+                              color: widget.pIconColor ?? Styles.SUBTITLE,
                               height: 16.h,
                               width: 16.w,
                             )
@@ -228,22 +226,21 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           isDense: true,
           alignLabelWithHint: true,
           hintText: widget.hint,
-          labelStyle: AppTextStyles.w400
-              .copyWith(color: Styles.SUBTITLE, fontSize: 14),
+          labelStyle:
+              AppTextStyles.w400.copyWith(color: Styles.SUBTITLE, fontSize: 14),
           hintStyle: AppTextStyles.w400
               .copyWith(color: Styles.disabledColor, fontSize: 12),
           labelText: widget.label ? widget.hint : null,
           fillColor: Styles.FILL_COLOR,
-          floatingLabelStyle: AppTextStyles.w400
-              .copyWith(color: Styles.TITLE, fontSize: 12),
+          floatingLabelStyle:
+              AppTextStyles.w400.copyWith(color: Styles.TITLE, fontSize: 12),
           filled: true,
           errorStyle: AppTextStyles.w400.copyWith(
             color: Styles.IN_ACTIVE,
             fontSize: 11,
           ),
           errorMaxLines: 2,
-          prefixIconConstraints:
-              BoxConstraints(maxHeight: 25.h, maxWidth: 70.w),
+          prefixIconConstraints: BoxConstraints(maxHeight: 25.h, maxWidth: 70.w),
           suffixIconConstraints: BoxConstraints(maxHeight: 25.h),
         ),
       ),

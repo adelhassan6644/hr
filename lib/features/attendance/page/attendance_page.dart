@@ -31,8 +31,10 @@ class _AttendanceLeavingScreen extends State<AttendancePage> {
               horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
           child: Column(
             children: [
+              ///Calender
               const CalenderWidget(),
-              const SizedBox(height: 16.0),
+
+              ///Schedules
               Consumer<AttendanceProvider>(builder: (_, provider, child) {
                 return Expanded(
                   child: provider.isGetting
@@ -54,10 +56,11 @@ class _AttendanceLeavingScreen extends State<AttendancePage> {
                                 ),
                               ),
                             )
-                          : const ListAnimator(
+                          : ListAnimator(
                               data: [
                                 EmptyState(
-                                  txt: "there is no schedules",
+                                  txt: getTranslated(
+                                      "there_is_no_schedules", context),
                                 ),
                               ],
                             ),

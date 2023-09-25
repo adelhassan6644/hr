@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../app/core/color_resources.dart';
 import '../app/core/text_styles.dart';
 import '../app/localization/localization/language_constant.dart';
 
@@ -56,7 +57,7 @@ class _CountDownState extends State<CountDown> {
             getTranslated("resend_code", context),
             style: AppTextStyles.w600.copyWith(
               color: _count == 0
-                  ? Colors.white
+                  ? Styles.PRIMARY_COLOR
                   : Colors.black.withOpacity(0.8),
               fontSize: 14,
             ),
@@ -66,7 +67,7 @@ class _CountDownState extends State<CountDown> {
           Text(
               " (${Duration(seconds: _count).inMinutes.remainder(60).toString().padLeft(2, '0')}:${Duration(seconds: _count).inSeconds.remainder(60).toString().padLeft(2, '0')})",
               style: AppTextStyles.w600
-                  .copyWith(color: Colors.white, fontSize: 14)),
+                  .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 14)),
       ],
     );
   }

@@ -14,19 +14,7 @@ class LocalizationProvider extends ChangeNotifier {
   Locale get locale => _locale;
   bool get isLtr => _isLtr;
 
-   bool _isBottomSheet = false;
-  bool get isBottomSheet => _isBottomSheet;
 
-
-  bottomSheetMode(){
-    _isBottomSheet = true;
-    notifyListeners();
-  }
-
-  nonBottomSheetMode(){
-    _isBottomSheet = false;
-    notifyListeners();
-  }
 
   void setLanguage(Locale locale) {
     _locale = locale;

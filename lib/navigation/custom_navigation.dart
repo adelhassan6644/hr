@@ -10,12 +10,12 @@ import '../features/add_request/requests/loan_request_screen.dart';
 import '../features/add_request/requests/permission_details.dart';
 import '../features/add_request/requests/vacation_request.dart';
 import '../features/attendance/page/attendance_page.dart';
-import '../features/auth/pages/forget_password_screen.dart';
-import '../features/auth/pages/login_screen.dart';
-import '../features/auth/pages/reset_password_screen.dart';
-import '../features/auth/pages/verification_screen.dart';
-import '../features/more/edit_password_screen.dart';
-import '../features/more/language_screen.dart';
+import '../features/auth/pages/forget_password.dart';
+import '../features/auth/pages/login.dart';
+import '../features/auth/pages/reset_password.dart';
+import '../features/auth/pages/verification.dart';
+import '../features/auth/pages/change_password.dart';
+import '../features/more/widget/language_bottom_sheet.dart';
 import '../features/more/settings_screen.dart';
 import '../features/profile/widgets/assets/assets_screen.dart';
 import '../features/profile/widgets/contract/contract_screen.dart';
@@ -83,7 +83,7 @@ abstract class CustomNavigator {
       case Routes.CHANGE_PASSWORD:
         return _pageRoute(const EditPasswordScreen());
       case Routes.LANGUAGES:
-        return _pageRoute(const LanguageScreen());
+        return _pageRoute(const LanguageBottomSheet());
       case Routes.PERSONAL:
         return _pageRoute(PersonalScreen(
           user: settings.arguments as UserModel,

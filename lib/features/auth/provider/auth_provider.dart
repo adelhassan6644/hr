@@ -21,27 +21,22 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
       TextEditingController(text: kDebugMode ? "123456789" : '');
   final TextEditingController _newPasswordTEC = TextEditingController();
   final TextEditingController _confirmPasswordTEC = TextEditingController();
+  final TextEditingController codeTEC = TextEditingController();
 
   TextEditingController get emailTEC => _emailTEC;
   TextEditingController get passwordTEC => _passwordTEC;
   TextEditingController get newPasswordTEC => _newPasswordTEC;
   TextEditingController get confirmPasswordTEC => _confirmPasswordTEC;
 
-
   bool _isLoading = false;
-  bool isError = false;
   bool get isLoading => _isLoading;
   // bool samePassword = false;
-
-  late String _otp="";
-  String get otp=>_otp;
 
   bool get isLogin => authRepo.isLoggedIn();
 
   logIn() async {
     try {
       {
-        isError = false;
         _isLoading = true;
         notifyListeners();
         Either<ServerFailure, Response> response = await authRepo.logIn(
@@ -53,7 +48,6 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
                   isFloating: true,
                   backgroundColor: Styles.IN_ACTIVE,
                   borderColor: Styles.transparentColor));
-          isError = true;
           notifyListeners();
         }, (success) {
           // _passwordTEC.clear();
@@ -63,7 +57,6 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
         notifyListeners();
       }
     } catch (e) {
-      isError = true;
       _isLoading = false;
       notifyListeners();
     }
@@ -71,31 +64,26 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
 
   getOTP() async {
     try {
-      {
-        isError = false;
-        _isLoading = true;
+      _isLoading = true;
+      notifyListeners();
+      Either<ServerFailure, Response> response =
+          await authRepo.getVerificationCode(
+        email: _emailTEC.text.trim(),
+      );
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Styles.transparentColor));
         notifyListeners();
-        Either<ServerFailure, Response> response =
-            await authRepo.getVerificationCode(
-          email: _emailTEC.text.trim(),
-        );
-        response.fold((fail) {
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: fail.error,
-                  isFloating: true,
-                  backgroundColor: Styles.IN_ACTIVE,
-                  borderColor: Styles.transparentColor));
-          isError = true;
-          notifyListeners();
-        }, (success) {
-          CustomNavigator.push(Routes.VERIFICATION_CODE, replace: true);
-        });
-        _isLoading = false;
-        notifyListeners();
-      }
+      }, (success) {
+        CustomNavigator.push(Routes.VERIFICATION_CODE, replace: true);
+      });
+      _isLoading = false;
+      notifyListeners();
     } catch (e) {
-      isError = true;
       _isLoading = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
@@ -108,20 +96,14 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
     }
   }
 
-  updateOTP(String value) {
-    _otp=value;
-    notifyListeners();
-  }
-
   sendOTP() async {
     try {
       {
-        isError = false;
         _isLoading = true;
         notifyListeners();
         Either<ServerFailure, Response> response =
             await authRepo.sendVerificationCode(
-          code: _otp,
+          code: codeTEC.text.trim(),
         );
         response.fold((fail) {
           CustomSnackBar.showSnackBar(
@@ -130,17 +112,14 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
                   isFloating: true,
                   backgroundColor: Styles.IN_ACTIVE,
                   borderColor: Styles.transparentColor));
-          isError = true;
           notifyListeners();
         }, (success) {
-          // _otp.clear();
           CustomNavigator.push(Routes.RESET_PASSWORD, replace: true);
         });
         _isLoading = false;
         notifyListeners();
       }
     } catch (e) {
-      isError = true;
       _isLoading = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
@@ -160,36 +139,31 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
 
   resetPassword() async {
     try {
-      {
-        isError = false;
-        _isLoading = true;
+      _isLoading = true;
+      notifyListeners();
+      Either<ServerFailure, Response> response = await authRepo.resetPassword(
+        newPassword: _newPasswordTEC.text.trim(),
+      );
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Styles.transparentColor));
         notifyListeners();
-        Either<ServerFailure, Response> response = await authRepo.resetPassword(
-          newPassword: _newPasswordTEC.text.trim(),
-        );
-        response.fold((fail) {
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: fail.error,
-                  isFloating: true,
-                  backgroundColor: Styles.IN_ACTIVE,
-                  borderColor: Styles.transparentColor));
-          isError = true;
-          notifyListeners();
-        }, (success) {
-          CustomNavigator.push(Routes.LOGIN, clean: true);
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: "Your Password Change successfully !",
-                  isFloating: true,
-                  backgroundColor: Styles.ACTIVE,
-                  borderColor: Styles.transparentColor));
-        });
-        _isLoading = false;
-        notifyListeners();
-      }
+      }, (success) {
+        CustomNavigator.push(Routes.LOGIN, clean: true);
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: "Your Password Change successfully !",
+                isFloating: true,
+                backgroundColor: Styles.ACTIVE,
+                borderColor: Styles.transparentColor));
+      });
+      _isLoading = false;
+      notifyListeners();
     } catch (e) {
-      isError = true;
       _isLoading = false;
       notifyListeners();
     }
@@ -197,41 +171,34 @@ class AuthProvider extends ChangeNotifier with BaseViewModel {
 
   updatePassword() async {
     try {
-      {
-        isError = false;
-        _isLoading = true;
-        notifyListeners();
-        Either<ServerFailure, Response> response =
-            await authRepo.updatePassword(
-          email: _emailTEC.text.trim(),
-          password: _passwordTEC.text.trim(),
-          newPassword: _newPasswordTEC.text.trim(),
-        );
-        response.fold((fail) {
+      _isLoading = true;
+      notifyListeners();
+      Either<ServerFailure, Response> response = await authRepo.updatePassword(
+        email: _emailTEC.text.trim(),
+        password: _passwordTEC.text.trim(),
+        newPassword: _newPasswordTEC.text.trim(),
+      );
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Styles.transparentColor));
 
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: fail.error,
-                  isFloating: true,
-                  backgroundColor: Styles.IN_ACTIVE,
-                  borderColor: Styles.transparentColor));
-
-          isError = true;
-          notifyListeners();
-        }, (success) {
-          CustomNavigator.push(Routes.LOGIN, clean: true);
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: "Your Password updated successfully !",
-                  isFloating: true,
-                  backgroundColor: Styles.ACTIVE,
-                  borderColor: Styles.transparentColor));
-        });
-        _isLoading = false;
         notifyListeners();
-      }
+      }, (success) {
+        CustomNavigator.push(Routes.LOGIN, clean: true);
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: "Your Password updated successfully !",
+                isFloating: true,
+                backgroundColor: Styles.ACTIVE,
+                borderColor: Styles.transparentColor));
+      });
+      _isLoading = false;
+      notifyListeners();
     } catch (e) {
-      isError = true;
       _isLoading = false;
       notifyListeners();
     }

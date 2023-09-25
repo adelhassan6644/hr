@@ -8,7 +8,7 @@ import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
 import '../../../app/localization/localization/language_constant.dart';
-import '../../../components/confirm_bottom_sheet.dart';
+import '../../../components/custom_bottom_sheet.dart';
 import '../../../components/custom_check_box_list_tile.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';

@@ -17,28 +17,15 @@ class SvgImages {
   static const String documentFile = 'assets/svgs/document_text.svg';
   static const String uploadDocument = 'assets/svgs/document_upload.svg';
   static const String sparkles = 'assets/svgs/sparkles.svg';
-  static const String seat = 'assets/svgs/seat.svg';
-  static const String searchIcon = 'assets/svgs/search_icon.svg';
   static const String filter = 'assets/svgs/filter.svg';
-  static const String calendar = 'assets/svgs/calendar.svg';
   static const String wallet = 'assets/svgs/wallet.svg';
-  static const String roadLine = 'assets/svgs/road_line.svg';
-  static const String carPlate = 'assets/svgs/car_plate.svg';
-  static const String carColor = 'assets/svgs/car_color.svg';
-  static const String newOffer = 'assets/svgs/new_offer.svg';
-  static const String alarm = 'assets/svgs/alarm.svg';
   static const String emptyStar = 'assets/svgs/empty_star.svg';
+  static const String alarm = 'assets/svgs/alarm.svg';
   static const String fillStar = 'assets/svgs/fill_star.svg';
   static const String arrowRight = 'assets/svgs/arrow_right.svg';
   static const String maleIcon = 'assets/svgs/male.svg';
   static const String femaleIcon = 'assets/svgs/female.svg';
-  static const String editor = 'assets/svgs/editor.svg';
-  static const String map = 'assets/svgs/map.svg';
-  static const String down = 'assets/svgs/down.svg';
-  static const String userIcon = 'assets/svgs/user.svg';
-  static const String userNumber = 'assets/svgs/user_number.svg';
   static const String notifications = 'assets/svgs/notifications.svg';
-  static const String buildings = 'assets/svgs/buildings.svg';
   static const String house = 'assets/svgs/house.svg';
   static const String card = 'assets/svgs/card.svg';
   static const String rate = 'assets/svgs/rate.svg';
@@ -65,7 +52,6 @@ class SvgImages {
   static const String phoneCallIcon = 'assets/svgs/phone_call.svg';
   static const String arrowLeft = 'assets/svgs/arrow_left.svg';
   static const String tickCircleIcon = 'assets/svgs/tick_circle.svg';
-  static const String homeSearchIcon = 'assets/svgs/home_search.svg';
   static const String deliciousIcon = 'assets/svgs/delicious.svg';
   static const String report = 'assets/svgs/report.svg';
   static const String support = 'assets/icons/technical-support.png';
@@ -78,4 +64,14 @@ class SvgImages {
   static const String send = 'assets/svgs/send.svg';
   static const String trash = 'assets/svgs/trash.svg';
   static const String cancel = 'assets/svgs/cancel.svg';
+
+  static const String banner = 'assets/images/banner.svg';
+  static const String ticket = 'assets/images/ticket.svg';
+  static const String user = 'assets/images/user.svg';
+  static const String save = 'assets/images/bookmark.svg';
+  static const String arrowRightIcon = 'assets/images/arrow-right.svg';
+  static const String saved = 'assets/images/savedbookmark.svg';
+  static const String bell = 'assets/images/bell.svg';
+  static const String searchIcon = 'assets/images/magnifying-glass.svg';
+
 }

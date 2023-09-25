@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/extensions.dart';
 import 'package:provider/provider.dart';
-import '../../app/core/color_resources.dart';
-import '../../app/core/constant.dart';
-import '../../app/core/dimensions.dart';
-import '../../app/core/validation.dart';
-import '../../app/localization/localization/language_constant.dart';
-import '../../components/custom_app_bar.dart';
-import '../../components/custom_button.dart';
-import '../../components/custom_text_form_field.dart';
-import '../auth/provider/auth_provider.dart';
+import '../../../app/core/color_resources.dart';
+import '../../../app/core/constant.dart';
+import '../../../app/core/dimensions.dart';
+import '../../../app/core/validation.dart';
+import '../../../app/localization/localization/language_constant.dart';
+import '../../../components/custom_app_bar.dart';
+import '../../../components/custom_button.dart';
+import '../../../components/custom_text_form_field.dart';
+import '../provider/auth_provider.dart';
 
 class EditPasswordScreen extends StatefulWidget {
   const EditPasswordScreen({Key? key}) : super(key: key);
@@ -116,7 +116,6 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                     Center(
                       child: CustomButton(
                           isLoading: authProvider.isLoading,
-                          isError: authProvider.isError,
                           onTap: () {
                             key.currentState!.save();
                             if(key.currentState!.validate()) {

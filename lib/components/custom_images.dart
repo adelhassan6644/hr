@@ -9,12 +9,12 @@ Widget customImageIcon(
     {required String imageName,
     double? width,
     double? height,
-    BoxFit fit = BoxFit.fill,
+    BoxFit? fit,
     color}) {
   return Image.asset(
     imageName,
     color: color,
-    fit: BoxFit.fill,
+    fit: fit,
     width: width ?? 30,
     height: height ?? 25,
   );
@@ -36,8 +36,7 @@ Widget customCircleSvgIcon(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CircleAvatar(
-          backgroundColor:
-              color ?? Styles.PRIMARY_COLOR.withOpacity(0.1),
+          backgroundColor: color ?? Styles.PRIMARY_COLOR.withOpacity(0.1),
           radius: radius ?? 24.w,
           child: SvgPicture.asset(
             imageName,
@@ -52,8 +51,8 @@ Widget customCircleSvgIcon(
               ),
               Text(
                 title ?? "",
-                style: AppTextStyles.w600.copyWith(
-                    color: Styles.PRIMARY_COLOR, fontSize: 10),
+                style: AppTextStyles.w600
+                    .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 10),
                 overflow: TextOverflow.ellipsis,
               )
             ],
@@ -95,7 +94,7 @@ Widget customContainerSvgIcon(
           borderRadius: BorderRadius.circular(radius ?? 12)),
       child: SvgPicture.asset(
         imageName,
-        color: imageColor??Styles.PRIMARY_COLOR,
+        color: imageColor ?? Styles.PRIMARY_COLOR,
       ),
     ),
   );

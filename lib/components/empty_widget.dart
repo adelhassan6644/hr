@@ -43,10 +43,9 @@ class EmptyState extends StatelessWidget {
           children: [
             !isSvg
                 ? customImageIcon(
-                    imageName: img ?? Images.logo,
+                    imageName: img ?? Images.emptyAsset,
                     width: imgWidth ?? 200,
-                    height:
-                        imgHeight ?? 130)
+                    height: imgHeight ?? 130)
                 : customImageIconSVG(
                     imageName: img ?? SvgImages.appLogo,
                     width: imgWidth ?? 200,
@@ -78,8 +77,10 @@ class EmptyState extends StatelessWidget {
                   child: CustomButton(
                     text: btnText ?? "",
                     onTap: onTap,
-                    backgroundColor: originalButton? Styles.PRIMARY_COLOR:Styles.WHITE,
-                    textColor: originalButton? Styles.WHITE:Styles.PRIMARY_COLOR,
+                    backgroundColor:
+                        originalButton ? Styles.PRIMARY_COLOR : Styles.WHITE,
+                    textColor:
+                        originalButton ? Styles.WHITE : Styles.PRIMARY_COLOR,
                     withShadow: !originalButton,
                   ),
                 ))
