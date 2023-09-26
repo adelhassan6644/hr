@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'app/core/app_storage_keys.dart';
 import 'app/core/app_strings.dart';
 import 'app/localization/localization/app_localization.dart';
-import 'app/localization/provider/localization_provider.dart';
+import 'features/language/provider/localization_provider.dart';
 import 'app/notifications/my_notification.dart';
 import 'app/theme/dark_theme.dart';
 import 'app/theme/light_theme.dart';

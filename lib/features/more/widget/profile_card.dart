@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/localization/provider/localization_provider.dart';
+import '../../language/provider/localization_provider.dart';
 import '../../../data/config/di.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';

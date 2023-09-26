@@ -5,7 +5,7 @@ import 'package:hr_project/app/core/text_styles.dart';
 import 'package:provider/provider.dart';
 import '../../../../../app/core/dimensions.dart';
 import '../../../../../app/localization/localization/language_constant.dart';
-import '../../../../../app/localization/provider/localization_provider.dart';
+import '../../language/provider/localization_provider.dart';
 import '../../../../../components/animated_widget.dart';
 import '../../../../../components/custom_app_bar.dart';
 import '../../../../../data/config/di.dart';

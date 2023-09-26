@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/extensions.dart';
 import 'package:hr_project/components/custom_images.dart';
 import '../../../app/core/color_resources.dart';
-import '../../../app/localization/provider/localization_provider.dart';
+import '../../language/provider/localization_provider.dart';
 import '../../../data/config/di.dart';
 
 class MoreNavigateCard extends StatelessWidget {

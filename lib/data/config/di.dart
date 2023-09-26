@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../app/localization/provider/localization_provider.dart';
+import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/add_request/provider/add_request_provider.dart';
 import '../../features/attendance/provider/attendance_provider.dart';

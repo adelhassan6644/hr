@@ -7,7 +7,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/text_styles.dart';
 import '../../../app/localization/localization/language_constant.dart';
-import '../../../app/localization/provider/localization_provider.dart';
+import '../../language/provider/localization_provider.dart';
 import '../../../data/config/di.dart';
 import '../../../main_providers/user_provider.dart';
 

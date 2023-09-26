@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../features/language/model/language_model.dart';
-import '../../core/app_storage_keys.dart';
+import '../model/language_model.dart';
+import '../../../app/core/app_storage_keys.dart';
 
 class LocalizationProvider extends ChangeNotifier {
   final SharedPreferences sharedPreferences;
@@ -52,6 +52,11 @@ class LocalizationProvider extends ChangeNotifier {
         sharedPreferences.getString(AppStorageKey.languageCode) ?? 'ar',
         sharedPreferences.getString(AppStorageKey.countryCode) ?? 'SA');
     _isLtr = _locale.languageCode == 'en';
+    if (_locale.languageCode == 'en') {
+      _selectIndex = 0;
+    } else {
+      _selectIndex = 1;
+    }
     notifyListeners();
   }
 

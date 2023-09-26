@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../app/localization/provider/localization_provider.dart';
+import '../provider/localization_provider.dart';
 import '../../../components/custom_radio_button.dart';
 
 class LanguageBottomSheet extends StatelessWidget {

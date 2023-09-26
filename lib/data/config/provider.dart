@@ -2,7 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:hr_project/data/config/di.dart' as di;
 
-import '../../app/localization/provider/localization_provider.dart';
+import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/add_request/provider/add_request_provider.dart';
 import '../../features/home/provider/home_provider.dart';

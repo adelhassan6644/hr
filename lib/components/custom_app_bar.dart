@@ -53,9 +53,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       },
                       child: SizedBox(
                         width: actionWidth ?? 40,
-                        child: Icon(Icons.arrow_back,
-                            color:
-                                fromAuth ? Styles.WHITE : Styles.PRIMARY_COLOR),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(Icons.arrow_back,
+                                color:
+                                    fromAuth ? Styles.WHITE : Styles.PRIMARY_COLOR),
+                          ],
+                        ),
                       ))
                   : SizedBox(width: actionWidth ?? 40),
               const Expanded(child: SizedBox()),
