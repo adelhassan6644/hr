@@ -51,8 +51,7 @@ abstract class LocationHelper {
         builder: (_) => CupertinoAlertDialog(
               title:
                   const Text("هل تريد السماح لتطبيق “يسر بلس” باستخدام موقعك؟"),
-              content: const Text(
-                  "لإجراء رحلة مضمونه، يجمع في طريقي بيانات الموقع بداءاً من وقت فتح التطبيق. ويعمل ذلك على تحسين عمليات الالتقاء بالكباتن، ونسب التوافق، وغير ذلك الكثير."),
+              content: const Text(""),
               actions: [
                 CupertinoDialogAction(
                     child: const Text("OK"),
