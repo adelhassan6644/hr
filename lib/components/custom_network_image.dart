@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/extensions.dart';
+import '../app/core/color_resources.dart';
 import '../app/core/images.dart';
 import '../data/api/end_points.dart';
 
@@ -34,7 +35,7 @@ class CustomNetworkImage {
       errorWidget: (a, b, c) => Container(
         width: width ?? 40.w,
         height: height ?? 40.h,
-        padding:padding?? const EdgeInsets.all(12) ,
+        padding: padding ?? const EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: edges
               ? BorderRadius.only(
@@ -42,10 +43,10 @@ class CustomNetworkImage {
                   topLeft: Radius.circular(radius ?? 10))
               : BorderRadius.all(Radius.circular(radius ?? 10.0)),
           image: DecorationImage(
-            fit: fit ?? BoxFit.cover,
+            fit: fit ?? BoxFit.contain,
             image: Image.asset(
               defaultImage ?? Images.logo,
-              fit: fit ?? BoxFit.cover,
+              fit: fit ?? BoxFit.contain,
             ).image,
           ),
         ),
@@ -59,10 +60,10 @@ class CustomNetworkImage {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(radius ?? 15.w),
                   image: DecorationImage(
-                    fit: fit ?? BoxFit.cover,
+                    fit: fit ?? BoxFit.contain,
                     image: Image.asset(
                       defaultImage ?? Images.logo,
-                      fit: fit ?? BoxFit.cover,
+                      fit: fit ?? BoxFit.contain,
                     ).image,
                   ),
                 ),
@@ -81,7 +82,7 @@ class CustomNetworkImage {
                     topRight: Radius.circular(radius ?? 10),
                     topLeft: Radius.circular(radius ?? 10))
                 : BorderRadius.all(Radius.circular(radius ?? 10.0)),
-            image: DecorationImage(fit: fit ?? BoxFit.cover, image: provider),
+            image: DecorationImage(fit: fit ?? BoxFit.contain, image: provider),
           ),
           child: imageWidget,
         );
@@ -112,7 +113,7 @@ class CustomNetworkImage {
             shape: BoxShape.circle),
         child: CircleAvatar(
           radius: radius,
-          backgroundColor: backGroundColor ?? Colors.white,
+          backgroundColor: backGroundColor ?? Styles.PRIMARY_COLOR,
           child: Image.asset(Images.logo),
         ),
       ),
@@ -127,7 +128,7 @@ class CustomNetworkImage {
             shape: BoxShape.circle),
         child: CircleAvatar(
           radius: radius,
-          backgroundColor: backGroundColor ?? Colors.white,
+          backgroundColor: backGroundColor ?? Styles.PRIMARY_COLOR,
           child: Image.asset(Images.logo),
         ),
       ),
@@ -136,12 +137,13 @@ class CustomNetworkImage {
           height: radius! * 2,
           width: radius * 2,
           padding: EdgeInsets.all(padding ?? 0),
-          decoration:
-              BoxDecoration(color: backGroundColor, shape: BoxShape.circle),
+          decoration: BoxDecoration(
+              color: backGroundColor ?? Styles.PRIMARY_COLOR,
+              shape: BoxShape.circle),
           child: CircleAvatar(
             backgroundImage: provider,
             radius: radius,
-            backgroundColor: backGroundColor ?? Colors.white,
+            backgroundColor: backGroundColor ?? Styles.PRIMARY_COLOR,
           ),
         );
       },
@@ -160,8 +162,7 @@ class CustomNetworkImage {
           decoration: BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.cover,
-                  image:
-                      Image.asset(defaultImage ?? "assets/logo.png").image))),
+                  image: Image.asset(defaultImage ?? Images.logo).image))),
       placeholder: (context, url) => Container(
           height: height ?? 40,
           width: width ?? 40,

@@ -6,19 +6,18 @@ import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/localization/localization/language_constant.dart';
-import '../../../components/loading_dialog.dart';
-import '../../attendance/provider/attendance_provider.dart';
+import '../provider/home_provider.dart';
 
 class CheckInCard extends StatelessWidget {
   const CheckInCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AttendanceProvider>(builder: (context, provider, _) {
+    return Consumer<HomeProvider>(builder: (context, provider, _) {
       return Container(
         padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
         decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
             color: Styles.FILL_COLOR),
         child: Column(
           children: [
@@ -77,7 +76,7 @@ class CheckInCard extends StatelessWidget {
                   width: 12.w,
                 ),
                 InkWell(
-                  onTap: () =>  loadingDialog(),
+                  onTap: () => provider.checkIn(),
                   child: Container(
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(

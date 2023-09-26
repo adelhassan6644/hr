@@ -325,5 +325,6 @@
   "confirm_new_password": "كلمة المرور المؤكدة الجديدة",
   "current_password": "كلمة المرور الحالية",
   "your_password_changed_successfully": "تم تغير كلمة المرور الخاصة بك بنجاح",
-  "there_is_no_schedules": "لا يوجد مواعيد"
+  "there_is_no_schedules": "لا يوجد مواعيد",
+  "select_language": "اختر لغة"
 }

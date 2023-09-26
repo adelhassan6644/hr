@@ -1,67 +1,92 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
 import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/app/core/text_styles.dart';
+import 'package:hr_project/components/custom_images.dart';
 
-class CustomRadioButton extends StatefulWidget {
+import '../app/core/dimensions.dart';
+
+class CustomRadioButton extends StatelessWidget {
   final void Function(bool)? onChange;
   final bool check;
   final String title;
-  final Color? selectedColor;
+  final String? icon;
 
   const CustomRadioButton(
-      {super.key, required this.check,
-      this.onChange, this.selectedColor, required this.title});
-  @override
-  State<CustomRadioButton> createState() => _CustomRadioButtonState();
-}
-
-class _CustomRadioButtonState extends State<CustomRadioButton> {
+      {super.key,
+      required this.check,
+      this.onChange,
+      required this.title,
+      this.icon});
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        InkWell(
-            onTap: () {
-              if (widget.onChange != null) widget.onChange!(!widget.check);
-            },
-            child: widget.check ? Container(
-                padding: const EdgeInsets.all(3),
-                width: 18,
-                height: 18,
-                decoration: BoxDecoration(
-                    color: Styles.WHITE,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Styles.PRIMARY_COLOR, width: 1)),
-            child: Container(
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Styles.PRIMARY_COLOR,),
-            ),) : Container(
-              width: 18,
-              height: 18,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Styles.PRIMARY_COLOR, width: 1)),
-              child: Container(
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Styles.WHITE,),
-              ),
-            ),),
-        SizedBox(width: 8.w,),
-        Expanded(
-          child: Text(
-           widget.title,
-            style:TextStyle(
-              fontSize: 14,
-              overflow: TextOverflow.ellipsis,
-              fontWeight:widget.check? FontWeight.w600:FontWeight.w400,
-              color: widget.check? widget.selectedColor?? Styles.WHITE:Styles.hintColor,
-            ),
-          ),
+    return InkWell(
+      onTap: () {
+        if (onChange != null) onChange!(!check);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(
+            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+            vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+        decoration: BoxDecoration(
+          color: check ? Styles.PRIMARY_COLOR.withOpacity(0.15) : null,
+          borderRadius: BorderRadius.circular(12),
         ),
-      ],
+        child: Row(
+          children: [
+            Visibility(
+              visible: icon != null,
+              child: customImageIcon(
+                imageName: icon ?? "",
+                height: 24.h,
+                width: 24.w,
+              ),
+            ),
+            Visibility(visible: icon != null, child: SizedBox(width: 8.w)),
+            Expanded(
+              child: Text(
+                title,
+                style: AppTextStyles.w600.copyWith(
+                  fontSize: 16,
+                  overflow: TextOverflow.ellipsis,
+                  color: Styles.PRIMARY_COLOR,
+                ),
+              ),
+            ),
+            check
+                ? Container(
+                    padding: const EdgeInsets.all(2),
+                    width: 16,
+                    height: 16,
+                    decoration: BoxDecoration(
+                        color: Styles.WHITE,
+                        shape: BoxShape.circle,
+                        border:
+                            Border.all(color: Styles.PRIMARY_COLOR, width: 1)),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Styles.PRIMARY_COLOR,
+                      ),
+                    ),
+                  )
+                : Container(
+                    width: 16,
+                    height: 16,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border:
+                            Border.all(color: Styles.PRIMARY_COLOR, width: 1)),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Styles.WHITE,
+                      ),
+                    ),
+                  ),
+          ],
+        ),
+      ),
     );
   }
 }
-

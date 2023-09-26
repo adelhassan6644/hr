@@ -8,9 +8,8 @@ import '../../../data/error/failures.dart';
 import '../repo/auth_repo.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
-import '../../notifier/base_vm.dart';
 
-class AuthProvider extends ChangeNotifier with BaseViewModel {
+class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
   AuthProvider({
     required this.authRepo,

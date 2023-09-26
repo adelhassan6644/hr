@@ -1,6 +1,6 @@
 class Images {
   static const String logo = 'assets/images/logo.png';
-  static const String splash = 'assets/app_logo.png';
+  static const String appLogo = 'assets/app_logo.png';
   static const String authHeader = 'assets/images/auth_hederl.png';
   static const String home = 'assets/images/home.png';
   static const String period = 'assets/images/period.png';
@@ -72,4 +72,7 @@ static const globalIcon="assets/images/global.png";
   static const String shatra = 'assets/images/hgfpdbwe.png';
   static const String support = 'assets/images/technical-support.png';
   static const String termsConditions = 'assets/images/terms-and-conditions.png';
+  static const String loader = 'assets/images/loader.png';
+  static const String arabic = 'assets/images/saudi-arabia.png';
+  static const String english = 'assets/images/united-states-of-america.png';
 }

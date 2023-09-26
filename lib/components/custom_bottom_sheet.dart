@@ -70,7 +70,7 @@ abstract class CustomBottomSheet {
                             children: [
                               Text(
                                 label ?? "",
-                                style: AppTextStyles.w500.copyWith(
+                                style: AppTextStyles.w700.copyWith(
                                   fontSize: 18,
                                 ),
                               ),

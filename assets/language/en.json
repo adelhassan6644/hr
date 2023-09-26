@@ -351,5 +351,6 @@
   "confirm_new_password": "Confirmed new password",
   "current_password": "Current password",
   "reset_password_description": "Please,The password must be more than 8 characters ",
-  "there_is_no_schedules": "there is no schedules"
+  "there_is_no_schedules": "there is no schedules",
+  "select_language": "Select Language"
 }

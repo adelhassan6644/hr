@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../data/model/user_model.dart';
 import '../features/add_request/page/add_request_screen.dart';
 import '../features/add_request/requests/asset_request.dart';
 import '../features/add_request/requests/business_trip_request.dart';
@@ -9,24 +8,24 @@ import '../features/add_request/requests/letter_request.dart';
 import '../features/add_request/requests/loan_request_screen.dart';
 import '../features/add_request/requests/permission_details.dart';
 import '../features/add_request/requests/vacation_request.dart';
+import '../features/assets/assets_screen.dart';
 import '../features/attendance/page/attendance_page.dart';
 import '../features/auth/pages/forget_password.dart';
 import '../features/auth/pages/login.dart';
 import '../features/auth/pages/reset_password.dart';
 import '../features/auth/pages/verification.dart';
 import '../features/auth/pages/change_password.dart';
-import '../features/more/widget/language_bottom_sheet.dart';
-import '../features/more/settings_screen.dart';
-import '../features/profile/widgets/assets/assets_screen.dart';
-import '../features/profile/widgets/contract/contract_screen.dart';
-import '../features/profile/widgets/documents/documents_screen.dart';
-import '../features/profile/widgets/organization/organization_screen.dart';
-import '../features/profile/widgets/personal/personal_screen.dart';
-import '../features/profile/widgets/salary/salary_details_screen.dart';
-import '../features/profile/widgets/salary/salary_screen.dart';
+import '../features/contract/contract_screen.dart';
+import '../features/documents/documents_screen.dart';
+import '../features/language/page/language_bottom_sheet.dart';
+import '../features/setting/page/settings.dart';
+import '../features/organization/page/organization.dart';
+import '../features/profile/page/profile.dart';
+import '../features/salary/page/salary.dart';
+import '../features/salary/page/salary_details.dart';
 import '../features/requests/request_flow_screen.dart';
 import '../main.dart';
-import '../main_page/dashboard.dart';
+import '../main_page/page/dashboard.dart';
 import '../features/splash/page/splash.dart';
 import 'routes.dart';
 
@@ -84,18 +83,14 @@ abstract class CustomNavigator {
         return _pageRoute(const EditPasswordScreen());
       case Routes.LANGUAGES:
         return _pageRoute(const LanguageBottomSheet());
-      case Routes.PERSONAL:
-        return _pageRoute(PersonalScreen(
-          user: settings.arguments as UserModel,
-        ));
+      case Routes.PROFILE:
+        return _pageRoute(const Profile());
       case Routes.ORGANIZATION:
-        return _pageRoute(OrganizationScreen(
-          employee: settings.arguments as UserModel,
-        ));
+        return _pageRoute(const Organization());
       case Routes.DOCUMENTS:
         return _pageRoute(const DocumentsScreen());
       case Routes.SALARIES_AND_FINANCIAL:
-        return _pageRoute(const SalaryScreen());
+        return _pageRoute(const Salary());
       case Routes.SALARY_DETAILS:
         return _pageRoute(const SalaryDetailsScreen());
       case Routes.ASSETS:

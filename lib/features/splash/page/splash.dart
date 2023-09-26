@@ -38,7 +38,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
           Expanded(
             child: Center(
               child: Image.asset(
-                Images.splash,
+                Images.appLogo,
                 width: context.width * .7,
               ),
             )

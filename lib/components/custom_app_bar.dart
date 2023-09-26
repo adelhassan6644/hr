@@ -5,8 +5,6 @@ import '../../navigation/custom_navigation.dart';
 
 import '../app/core/dimensions.dart';
 import '../app/core/text_styles.dart';
-import '../app/localization/provider/localization_provider.dart';
-import '../data/config/di.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -53,19 +51,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       onTap: () {
                         CustomNavigator.pop();
                       },
-                      child: Transform.scale(
-                        scaleX:
-                            sl<LocalizationProvider>().locale.languageCode ==
-                                    "en"
-                                ? -1
-                                : 1,
-                        child: SizedBox(
-                          width: actionWidth ?? 40,
-                          child: Icon(Icons.arrow_back,
-                              color: fromAuth
-                                  ? Styles.WHITE
-                                  : Styles.PRIMARY_COLOR),
-                        ),
+                      child: SizedBox(
+                        width: actionWidth ?? 40,
+                        child: Icon(Icons.arrow_back,
+                            color:
+                                fromAuth ? Styles.WHITE : Styles.PRIMARY_COLOR),
                       ))
                   : SizedBox(width: actionWidth ?? 40),
               const Expanded(child: SizedBox()),
