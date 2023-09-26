@@ -52,9 +52,9 @@ class AuthRepo extends BaseRepo {
         jsonEncode(jsonData),
       );
 
-      await sharedPreferences.setInt(
+      await sharedPreferences.setString(
         AppStorageKey.userID,
-        jsonData['id'],
+        jsonData['id'].toString(),
       );
     } catch (error) {
       return ServerFailure(ApiErrorHandler.getMessage(error));

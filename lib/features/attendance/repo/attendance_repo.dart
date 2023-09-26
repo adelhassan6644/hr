@@ -14,7 +14,7 @@ class AttendanceRepo extends BaseRepo {
     try {
 
       Response response = await dioClient.get(
-        uri: EndPoints.employeeSchedule(1),
+        uri: EndPoints.employeeSchedule(userId),
       );
       if (response.statusCode == 200) {
         return Right(response);

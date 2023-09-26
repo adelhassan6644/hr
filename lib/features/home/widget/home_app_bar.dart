@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/main_providers/user_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
 import '../../../app/core/images.dart';
+import '../../../data/config/di.dart';
+import '../../language/provider/localization_provider.dart';
 import '../../profile/widgets/profile_image_widget.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -23,13 +27,19 @@ class HomeAppBar extends StatelessWidget {
               children: [
                 const ProfileImageWidget(radius: 18),
                 SizedBox(width: 8.w),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Software Cloud 2", style: titleTextStyle),
-                    Center(child: Text("Manager", style: hintTextStyle)),
-                  ],
-                ),
+                Consumer<UserProvider>(builder: (_, provider, child) {
+                  return  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          sl<LocalizationProvider>().locale.languageCode == "ar"
+                              ? provider.user?.arName ?? ""
+                              : provider.user?.enName ?? "",
+                          style: titleTextStyle),
+                      Center(child: Text(provider.user?.jobType?.name ?? "", style: hintTextStyle)),
+                    ],
+                  );
+                }),
               ],
             ).animate().flip().then(delay: 10.ms).shimmer(),
           ),
