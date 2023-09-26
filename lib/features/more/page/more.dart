@@ -18,48 +18,50 @@ class More extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          ListAnimator(
-            customPadding: EdgeInsets.symmetric(
-              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-              vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
-            ),
-            data: [
-              const ProfileCard(),
-
-              const AnnualLeaveBalanceCard(),
-
-              MoreNavigateCard(
-                  name: getTranslated("personal", context),
-                  iconAsset: Images.personalCardIcon,
-                  onTap: () => CustomNavigator.push(Routes.PROFILE)),
-
-              MoreNavigateCard(
-                name: getTranslated("organization", context),
-                iconAsset: Images.organizationIcon,
-                onTap: () => CustomNavigator.push(Routes.ORGANIZATION),
+          Expanded(
+            child: ListAnimator(
+              customPadding: EdgeInsets.symmetric(
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
               ),
+              data: [
+                const ProfileCard(),
 
-              // MoreNavigateCard(
-              //     name: getTranslated("salary_&_financial", context),
-              //     iconAsset: Images.salaryIcon,
-              //     onTap: () => CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL)
-              // ),
+                const AnnualLeaveBalanceCard(),
 
-              MoreNavigateCard(
-                  name: getTranslated("documents", context),
-                  iconAsset: Images.documentsIcon,
-                  onTap: () => CustomNavigator.push(Routes.DOCUMENTS)),
+                MoreNavigateCard(
+                    name: getTranslated("personal", context),
+                    iconAsset: Images.personalCardIcon,
+                    onTap: () => CustomNavigator.push(Routes.PROFILE)),
 
-              MoreNavigateCard(
-                  name: getTranslated("assets", context),
-                  iconAsset: Images.assetsIcon,
-                  onTap: () => CustomNavigator.push(Routes.ASSETS)),
+                MoreNavigateCard(
+                  name: getTranslated("organization", context),
+                  iconAsset: Images.organizationIcon,
+                  onTap: () => CustomNavigator.push(Routes.ORGANIZATION),
+                ),
 
-              MoreNavigateCard(
-                  name: getTranslated("contract", context),
-                  iconAsset: Images.contractIcon,
-                  onTap: () => CustomNavigator.push(Routes.CONTRACT)),
-            ],
+                // MoreNavigateCard(
+                //     name: getTranslated("salary_&_financial", context),
+                //     iconAsset: Images.salaryIcon,
+                //     onTap: () => CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL)
+                // ),
+
+                MoreNavigateCard(
+                    name: getTranslated("documents", context),
+                    iconAsset: Images.documentsIcon,
+                    onTap: () => CustomNavigator.push(Routes.DOCUMENTS)),
+
+                MoreNavigateCard(
+                    name: getTranslated("assets", context),
+                    iconAsset: Images.assetsIcon,
+                    onTap: () => CustomNavigator.push(Routes.ASSETS)),
+
+                MoreNavigateCard(
+                    name: getTranslated("contract", context),
+                    iconAsset: Images.contractIcon,
+                    onTap: () => CustomNavigator.push(Routes.CONTRACT)),
+              ],
+            ),
           ),
         ],
       ),
