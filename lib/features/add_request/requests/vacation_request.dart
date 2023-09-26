@@ -7,7 +7,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_drop_down_button.dart';
 import '../../../components/animated_widget.dart';

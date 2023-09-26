@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../main_providers/user_provider.dart';
 import '../../../navigation/routes.dart';
 

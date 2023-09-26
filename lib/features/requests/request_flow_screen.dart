@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_project/features/requests/request_details_screen.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 
-import '../../app/localization/localization/language_constant.dart';
+import '../../app/localization/language_constant.dart';
 import '../../components/custom_app_bar.dart';
 import '../../components/custom_tab_bar_2.dart';
 

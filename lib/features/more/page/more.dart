@@ -4,7 +4,7 @@ import 'package:hr_project/components/animated_widget.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../navigation/routes.dart';
 import '../widget/annual_leave_balance_card.dart';
 import '../widget/more_navigate_card.dart';

@@ -5,7 +5,7 @@ import 'package:hr_project/app/core/text_styles.dart';
 import 'package:hr_project/features/requests/widgets/title_container.dart';
 import '../../app/core/dimensions.dart';
 import '../../app/core/images.dart';
-import '../../app/localization/localization/language_constant.dart';
+import '../../app/localization/language_constant.dart';
 import 'request_flow_screen.dart';
 
 class RequestDetailsScreen extends StatelessWidget {

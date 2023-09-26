@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/app/localization/localization/language_constant.dart';
+import 'package:hr_project/app/localization/language_constant.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';

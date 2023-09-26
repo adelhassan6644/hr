@@ -4,7 +4,7 @@ import 'package:hr_project/features/requests/widgets/title_container.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 
 class RequestCard extends StatelessWidget {
   const RequestCard({ this.onTap,required this.status,required this.reason,required this.requestType,Key? key}) : super(key: key);

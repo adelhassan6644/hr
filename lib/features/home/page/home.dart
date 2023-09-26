@@ -7,7 +7,7 @@ import 'package:hr_project/features/home/widget/type_card.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../data/config/di.dart';
 import '../../../main_page/provider/dashboard_provider.dart';
 import '../../../navigation/routes.dart';

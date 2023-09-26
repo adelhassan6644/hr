@@ -7,7 +7,7 @@ import 'package:hr_project/app/core/extensions.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/svg_images.dart';
 import '../app/core/text_styles.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 import '../data/api/end_points.dart';
 import 'custom_images.dart';
 import 'image_pop_up_viewer.dart';

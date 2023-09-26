@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../../navigation/custom_navigation.dart';
-import '../localization/localization/language_constant.dart';
+import '../localization/language_constant.dart';
 import '../../features/language/provider/localization_provider.dart';
 
 //make first letter capital

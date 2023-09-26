@@ -5,7 +5,7 @@ import 'package:hr_project/navigation/custom_navigation.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
 import '../../../navigation/routes.dart';

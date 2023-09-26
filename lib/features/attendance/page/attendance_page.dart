@@ -7,7 +7,7 @@ import 'package:hr_project/components/shimmer/custom_shimmer.dart';
 import 'package:hr_project/features/attendance/provider/attendance_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../widget/attendance_card.dart';
 import '../widget/calender_widget.dart';

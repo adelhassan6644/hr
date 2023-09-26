@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../app/core/app_snack_bar.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 import '../helpers/permission_handler.dart';
 import '../navigation/custom_navigation.dart';
 

@@ -4,7 +4,7 @@ import 'package:hr_project/main_page/provider/dashboard_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../app/core/images.dart';
-import '../../app/localization/localization/language_constant.dart';
+import '../../app/localization/language_constant.dart';
 import 'nav_bar_item.dart';
 
 class NavBar extends StatelessWidget {

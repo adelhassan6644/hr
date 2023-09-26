@@ -4,7 +4,7 @@ import 'package:hr_project/app/core/extensions.dart';
 import 'package:hr_project/app/core/text_styles.dart';
 import '../../../../app/core/dimensions.dart';
 import '../../../../app/core/images.dart';
-import '../../../../app/localization/localization/language_constant.dart';
+import '../../app/localization/language_constant.dart';
 import '../../../../components/animated_widget.dart';
 import '../../../../components/custom_app_bar.dart';
 

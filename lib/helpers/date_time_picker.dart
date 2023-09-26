@@ -3,7 +3,7 @@ import 'package:hr_project/app/core/color_resources.dart';
 import 'package:hr_project/app/core/extensions.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/dimensions.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 import '../components/custom_button.dart';
 
 class DateTimePicker extends StatefulWidget {

@@ -8,7 +8,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../language/provider/localization_provider.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../navigation/routes.dart';

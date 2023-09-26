@@ -5,7 +5,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/dimensions.dart';
 import '../app/core/text_styles.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 import '../navigation/custom_navigation.dart';
 import 'animated_widget.dart';
 import 'custom_button.dart';

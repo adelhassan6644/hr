@@ -6,7 +6,7 @@ import 'package:hr_project/navigation/custom_navigation.dart';
 
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../navigation/routes.dart';

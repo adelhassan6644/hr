@@ -1,5 +1,5 @@
 import '../../../navigation/custom_navigation.dart';
-import '../localization/localization/language_constant.dart';
+import '../localization/language_constant.dart';
 
 class Validations {
   static String? name(String? value) {

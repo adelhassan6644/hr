@@ -8,7 +8,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../app/core/constant.dart';
 import '../app/core/images.dart';
 import '../../navigation/custom_navigation.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 import '../helpers/date_time_picker.dart';
 import 'custom_bottom_sheet.dart';
 

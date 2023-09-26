@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../core/app_storage_keys.dart';
+import '../core/app_storage_keys.dart';
 
 class AppLocalization {
 

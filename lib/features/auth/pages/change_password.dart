@@ -7,7 +7,7 @@ import '../../../app/core/constant.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/svg_images.dart';
 import '../../../app/core/validation.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_text_form_field.dart';
