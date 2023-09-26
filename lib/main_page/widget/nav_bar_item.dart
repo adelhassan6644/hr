@@ -42,7 +42,7 @@ Widget build(BuildContext context) {
           ),
           name != null?
           Text(name??"",style: TextStyle(
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w600,
             color: isSelected? Styles.PRIMARY_COLOR
                 :Styles.disabledColor,
             fontSize: 10,

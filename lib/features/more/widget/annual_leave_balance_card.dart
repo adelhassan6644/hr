@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/navigation/custom_navigation.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/localization/localization/language_constant.dart';
+import '../../../navigation/routes.dart';
 
 class AnnualLeaveBalanceCard extends StatelessWidget {
-  const AnnualLeaveBalanceCard({super.key, this.onTap});
-  final Function()? onTap;
+  const AnnualLeaveBalanceCard({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +34,7 @@ class AnnualLeaveBalanceCard extends StatelessWidget {
                     fontWeight: FontWeight.w600, color: Styles.disabledColor),
               ),
               TextButton(
-                  onPressed: onTap,
+                  onPressed: ()=>CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL),
                   child: Text(
                     getTranslated("view_details", context),
                     style: titleTextStyle.copyWith(
