@@ -10,12 +10,10 @@ class UserProvider extends ChangeNotifier {
   UserRepo repo;
   UserProvider({required this.repo});
 
-  bool isLoading = false;
-
+  bool get isLogin => repo.isLogIn();
   UserModel? user;
   getUserDate() async {
     try {
-      isLoading = true;
       user = null;
       Either<ServerFailure, UserModel> response = await repo.getUser();
       response.fold((fail) {
@@ -28,7 +26,6 @@ class UserProvider extends ChangeNotifier {
       }, (success) {
         user = success;
       });
-      isLoading = false;
       notifyListeners();
     } catch (e) {
       CustomSnackBar.showSnackBar(
@@ -37,7 +34,6 @@ class UserProvider extends ChangeNotifier {
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Styles.transparentColor));
-      isLoading = false;
       notifyListeners();
     }
   }

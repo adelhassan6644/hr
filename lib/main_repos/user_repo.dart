@@ -11,6 +11,11 @@ class UserRepo {
   final SharedPreferences sharedPreferences;
   UserRepo({required this.sharedPreferences});
 
+  bool isLogIn() {
+    return sharedPreferences.containsKey(AppStorageKey.isLogin);
+  }
+
+
   Future<Either<ServerFailure, UserModel>> getUser() async {
     try {
       final String? userObject =

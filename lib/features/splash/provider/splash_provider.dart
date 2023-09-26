@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import '../../../data/config/di.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
 import '../repo/splash_repo.dart';

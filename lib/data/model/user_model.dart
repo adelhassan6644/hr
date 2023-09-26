@@ -352,7 +352,7 @@ class UserModel {
     zipcode: json["zipcode"],
     homePhone: json["home_phone"],
     emergencyName: json["emergency_name"],
-    vacations: json["vactions"],
+    vacations: json["vactions"] ?? 0,
     salary: json["salary"],
     languageId: json["language_id"],
     jobTypeId: json["job_type_id"],
