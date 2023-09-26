@@ -9,21 +9,8 @@ import '../../../components/shimmer/custom_shimmer.dart';
 import '../../../data/config/di.dart';
 import '../provider/attendance_provider.dart';
 
-class CalenderWidget extends StatefulWidget {
+class CalenderWidget extends StatelessWidget {
   const CalenderWidget({Key? key}) : super(key: key);
-
-  @override
-  State<CalenderWidget> createState() => _CalenderWidgetState();
-}
-
-class _CalenderWidgetState extends State<CalenderWidget> {
-  @override
-  void initState() {
-    Future.delayed(Duration.zero, () {
-      sl<AttendanceProvider>().getEmployeeSchedule();
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

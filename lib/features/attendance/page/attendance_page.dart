@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
+import '../../../components/loader_view.dart';
+import '../../../data/config/di.dart';
 import '../widget/attendance_card.dart';
 import '../widget/calender_widget.dart';
 
@@ -21,53 +23,64 @@ class AttendancePage extends StatefulWidget {
 
 class _AttendanceLeavingScreen extends State<AttendancePage> {
   @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      sl<AttendanceProvider>().getEmployeeSchedule();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Styles.BACKGROUND_COLOR,
         appBar:
             CustomAppBar(title: getTranslated("attendance_leaving", context)),
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-          child: Column(
-            children: [
-              ///Calender
-              const CalenderWidget(),
+        body: Consumer<AttendanceProvider>(builder: (_, provider, child) {
+          return provider.isLoading
+              ? const LoaderView()
+              : Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                  child: Column(
+                    children: [
+                      ///Calender
+                      const CalenderWidget(),
 
-              ///Schedules
-              Consumer<AttendanceProvider>(builder: (_, provider, child) {
-                return Expanded(
-                  child: provider.isGetting
-                      ? ListAnimator(
-                          data: List.generate(
-                            provider.daySchedules.length,
-                            (index) => CustomShimmerContainer(
-                              height: 75.h,
-                              radius: 10,
-                            ),
-                          ),
-                        )
-                      : !provider.isGetting && provider.daySchedules.isNotEmpty
-                          ? ListAnimator(
-                              data: List.generate(
-                                provider.daySchedules.length,
-                                (index) => AttendanceCard(
-                                  schedule: provider.daySchedules[index],
+                      ///Schedules
+                      Expanded(
+                        child: provider.isGetting
+                            ? ListAnimator(
+                                data: List.generate(
+                                  provider.daySchedules.length,
+                                  (index) => CustomShimmerContainer(
+                                    height: 75.h,
+                                    radius: 10,
+                                  ),
                                 ),
-                              ),
-                            )
-                          : ListAnimator(
-                              data: [
-                                EmptyState(
-                                  txt: getTranslated(
-                                      "there_is_no_schedules", context),
-                                ),
-                              ],
-                            ),
+                              )
+                            : !provider.isGetting &&
+                                    provider.daySchedules.isNotEmpty
+                                ? ListAnimator(
+                                    data: List.generate(
+                                      provider.daySchedules.length,
+                                      (index) => AttendanceCard(
+                                        schedule: provider.daySchedules[index],
+                                      ),
+                                    ),
+                                  )
+                                : ListAnimator(
+                                    data: [
+                                      EmptyState(
+                                        txt: getTranslated(
+                                            "there_is_no_schedules", context),
+                                      ),
+                                    ],
+                                  ),
+                      )
+                    ],
+                  ),
                 );
-              }),
-            ],
-          ),
-        ));
+        }));
   }
 }

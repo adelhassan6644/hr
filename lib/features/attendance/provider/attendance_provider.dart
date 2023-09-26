@@ -56,10 +56,8 @@ class AttendanceProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        if (success.data["data"]["attendances"]["data"] != null &&
-            success.data["data"]["attendances"]["data"] != []) {
-          schedules = List<ScheduleModel>.from(success.data["data"]
-                  ["attendances"]["data"]
+        if (success.data["data"]["attendances"]["data"] != null ) {
+          schedules = List<ScheduleModel>.from(success.data["data"]["attendances"]["data"]
               .map((x) => ScheduleModel.fromJson(x)));
         }
       });
