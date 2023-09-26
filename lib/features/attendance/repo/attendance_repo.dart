@@ -12,8 +12,9 @@ class AttendanceRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> getEmployeeSchedules() async {
     try {
+
       Response response = await dioClient.get(
-        uri: EndPoints.employeeSchedule(userId),
+        uri: EndPoints.employeeSchedule(1),
       );
       if (response.statusCode == 200) {
         return Right(response);

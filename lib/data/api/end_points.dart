@@ -2,11 +2,11 @@ class EndPoints {
   static const String baseUrl = 'https://erp.softwarecloud2.com/api';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
   static const String imageUrl = 'https://test.fitariki.com/';
-  static const String apiKey = 'eGvviZ/npgc2Blb4/PSymh1tyb/UIt3aq82W6f+Wn4=';
+  static const String apiKey = '123';
   static const String topic = 'fitariki';
 
   static checkIn(id) => '/employee/attendance/attend/$id';
-  static employeeSchedule(id) => '/employee/attendance/schedules/$id';
+  static employeeSchedule(id) => '/employee/attendance/index/$id';
   static daySchedules(id) => '/employee/attendance/schedules/$id';
   static const String register = '';
   static const String login = '/employee/login';

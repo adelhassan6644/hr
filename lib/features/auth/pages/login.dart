@@ -94,7 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         formKey.currentState!.save();
                         if (formKey.currentState!.validate()) {
-                          CustomNavigator.push(Routes.DASHBOARD, clean: true);
+                          authProvider.logIn();
+                          // CustomNavigator.push(Routes.DASHBOARD, clean: true);
                         }
                       },
                       textColor: Styles.WHITE,
