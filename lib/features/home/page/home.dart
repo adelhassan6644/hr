@@ -12,6 +12,7 @@ import '../../../app/localization/language_constant.dart';
 import '../../../data/config/di.dart';
 import '../../../main_page/provider/dashboard_provider.dart';
 import '../../../navigation/routes.dart';
+import '../provider/home_provider.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,7 +28,6 @@ class Home extends StatelessWidget {
           Expanded(
               child: ListAnimator(
             data: [
-
               Padding(
                   padding: EdgeInsets.symmetric(vertical: 24.h),
                   child: const CheckInCard()),

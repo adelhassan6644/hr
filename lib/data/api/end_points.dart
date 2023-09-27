@@ -5,7 +5,9 @@ class EndPoints {
   static const String apiKey = '123';
   static const String topic = 'fitariki';
 
-  static checkIn(id) => '/employee/attendance/attend/$id';
+  static checkAttend(id) => '/employee/attendance/attend/$id';
+  static checkLeave(id) => '/employee/attendance/leave/$id';
+  static checkOnSchedule(id) => 'employee/attendance/closest/schedule/$id';
   static employeeSchedule(id) => '/employee/attendance/schedules/$id';
   static daySchedules(id) => '/employee/attendance/day/schedules/$id';
   static const String register = '';
@@ -15,7 +17,6 @@ class EndPoints {
   static const String sendVerificationCode = '';
   static const String getVerificationCode = '';
   static salaryDetails(id) => ' / $id';
-
 
   ///App Config
   static const String setting = '';

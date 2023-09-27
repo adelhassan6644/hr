@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
 import 'package:hr_project/app/core/extensions.dart';
-import 'package:provider/provider.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/text_styles.dart';
-import '../../language/provider/localization_provider.dart';
 import '../model/schedules_model.dart';
-import '../../../navigation/custom_navigation.dart';
 
 class AttendanceCard extends StatelessWidget {
   final ScheduleModel schedule;
@@ -14,90 +11,68 @@ class AttendanceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      width: context.width,
+      margin: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL.h),
       padding: EdgeInsets.symmetric(
-        vertical: 10.h,
-      ),
-      child: Stack(
+          vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+          horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black54.withOpacity(0.2),
+                blurRadius: 7.0,
+                spreadRadius: -1,
+                offset: const Offset(0, 2))
+          ],
+          gradient: LinearGradient(
+              colors: [Styles.FILL_COLOR, schedule.color ?? Styles.PENDING],
+              stops: const [0.98, 0.98])),
+      child: Column(
         children: [
-          Container(
-            width: context.width,
-            height: 75.h,
-            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-            decoration: BoxDecoration(
-              color: Styles.FILL,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  schedule.start!.day1Format(),
+                  style: AppTextStyles.w600.copyWith(fontSize: 12),
+                ),
+              ),
+              Text(
+                "${schedule.end!.difference(schedule.start!).inHours} Hours",
+                style: AppTextStyles.w600
+                    .copyWith(fontSize: 12, color: schedule.color),
+              ),
+            ],
+          ),
+          SizedBox(height: 8.h),
+          Row(
+            children: [
+              Expanded(
+                child: Row(
                   children: [
                     Text(
-                      schedule.start!.day1Format(),
+                      schedule.start!.time1Format(),
                       style: AppTextStyles.w600.copyWith(fontSize: 12),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          schedule.start!.time1Format(),
-                          style: AppTextStyles.w600.copyWith(fontSize: 12),
-                        ),
-                        Text(
-                          "-",
-                          style: AppTextStyles.w600.copyWith(fontSize: 12),
-                        ),
-                        Text(
-                          schedule.end!.time1Format(),
-                          style: AppTextStyles.w600.copyWith(fontSize: 12),
-                        ),
-                      ],
+                    Text(
+                      "-",
+                      style: AppTextStyles.w600.copyWith(fontSize: 12),
+                    ),
+                    Text(
+                      schedule.end!.time1Format(),
+                      style: AppTextStyles.w600.copyWith(fontSize: 12),
                     ),
                   ],
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "${schedule.end!.difference(schedule.start!).inHours} Hours",
-                      style: AppTextStyles.w600
-                          .copyWith(fontSize: 12, color: schedule.color),
-                    ),
-                    Text(
-                      schedule.title.toString(),
-                      style: AppTextStyles.w600
-                          .copyWith(fontSize: 12, color: schedule.color),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: 5.h,
-            height: 75.h,
-            decoration: BoxDecoration(
-              color: schedule.color,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(Provider.of<LocalizationProvider>(
-                              CustomNavigator.scaffoldState.currentContext!,
-                              listen: false)
-                          .isLtr
-                      ? Dimensions.PADDING_SIZE_DEFAULT
-                      : 0),
-                  topRight: Radius.circular(!Provider.of<LocalizationProvider>(
-                              CustomNavigator.scaffoldState.currentContext!,
-                              listen: false)
-                          .isLtr
-                      ? Dimensions.PADDING_SIZE_DEFAULT
-                      : 0),
-                  bottomRight: Radius.circular(
-                      !Provider.of<LocalizationProvider>(CustomNavigator.scaffoldState.currentContext!, listen: false).isLtr ? Dimensions.PADDING_SIZE_DEFAULT : 0),
-                  bottomLeft: Radius.circular(Provider.of<LocalizationProvider>(CustomNavigator.scaffoldState.currentContext!, listen: false).isLtr ? Dimensions.PADDING_SIZE_DEFAULT : 0)),
-            ),
+              ),
+              Text(
+                schedule.title.toString(),
+                style: AppTextStyles.w600
+                    .copyWith(fontSize: 12, color: schedule.color),
+              ),
+            ],
           ),
         ],
       ),

@@ -7,12 +7,16 @@ class ScheduleModel {
       this.id,
       this.title,
       this.allDay,
+      this.attendedAt,
+      this.leavingAt,
       this.scheduleId,
       this.isAttend,
       this.color = Colors.green});
 
   DateTime? start;
   DateTime? end;
+  DateTime? attendedAt;
+  DateTime? leavingAt;
   int? id;
   String? title;
   bool? allDay;
@@ -43,6 +47,12 @@ class ScheduleModel {
   factory ScheduleModel.fromJson(Map<String, dynamic> json) => ScheduleModel(
       start: json["start"] == null ? null : DateTime.parse(json["start"]),
       end: json["end"] == null ? null : DateTime.parse(json["end"]),
+      attendedAt: json["attended_at"] == null
+          ? null
+          : DateTime.parse(json["attended_at"]),
+      leavingAt: json["leaving_at"] == null
+          ? null
+          : DateTime.parse(json["leaving_at"]),
       id: json["id"],
       title: json["title"],
       allDay: json["allDay"],

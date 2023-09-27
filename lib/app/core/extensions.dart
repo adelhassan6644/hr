@@ -33,7 +33,7 @@ extension DataExtention on DateTime {
 extension DayExtention on DateTime {
   String dayFormat() {
     return DateFormat(
-            "EEEEEEEEEE",
+            "EEEE",
             Provider.of<LocalizationProvider>(
                         CustomNavigator.scaffoldState.currentContext!,
                         listen: false)

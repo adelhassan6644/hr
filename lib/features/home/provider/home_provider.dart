@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:hr_project/features/attendance/model/schedules_model.dart';
 import '../../../app/core/app_snack_bar.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../components/loading_dialog.dart';
@@ -13,14 +14,50 @@ import '../repo/home_repo.dart';
 class HomeProvider extends ChangeNotifier {
   final HomeRepo repo;
   HomeProvider({required this.repo});
-  bool locationPermissionGranted = false;
 
+  bool isLoading = false;
+  ScheduleModel? closestSchedule;
+  checkOnSchedule() async {
+    try {
+      isLoading = true;
+      closestSchedule = null;
+      notifyListeners();
+      Either<ServerFailure, Response> response = await repo.checkOnSchedule();
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Styles.transparentColor));
+      }, (success) {
+        if (success.data["data"] != null) {
+          closestSchedule = ScheduleModel.fromJson(success.data["data"]);
+        }
+      });
+
+      isLoading = false;
+      notifyListeners();
+    } catch (e) {
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Styles.transparentColor));
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  bool locationPermissionGranted = false;
   checkIn() async {
     if (await LocationHelper.checkLocation()) {
       try {
         loadingDialog();
         notifyListeners();
-        Either<ServerFailure, Response> response = await repo.checkIn();
+        Either<ServerFailure, Response> response =
+            await repo.checkIn(id:  closestSchedule?.scheduleId??0, isAttend: closestSchedule?.isAttend??true);
         response.fold((fail) {
           AlertHelper.startAlarm(isEnter: true);
           CustomSnackBar.showSnackBar(
