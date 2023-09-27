@@ -37,7 +37,7 @@ class HomeAppBar extends StatelessWidget {
                             : provider.user?.enName ?? "",
                         style: titleTextStyle),
                     Center(
-                        child: Text(provider.user?.jobType?.name ?? "",
+                        child: Text(provider.user?.jobRole?.jobTitle  ?? "",
                             style: hintTextStyle)),
                   ],
                 );

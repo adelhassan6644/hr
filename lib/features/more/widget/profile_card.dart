@@ -46,7 +46,7 @@ class ProfileCard extends StatelessWidget {
                       style: titleTextStyle),
                 ),
                 Center(
-                    child: Text(provider.user?.description ?? "description",
+                    child: Text(provider.user?.jobRole?.jobTitle ?? "jobTitle",
                         style: hintTextStyle)),
               ],
             );
