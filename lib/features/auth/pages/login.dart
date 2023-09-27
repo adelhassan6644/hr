@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const LoginHeaderWidget(),
+          const AuthHeaderWidget(),
 
           ///Body
           Consumer<AuthProvider>(builder: (child, authProvider, _) {

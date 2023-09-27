@@ -29,7 +29,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const LoginHeaderWidget(withBack: true),
+          const AuthHeaderWidget(withBack: true),
 
           ///Body
           Consumer<AuthProvider>(builder: (child, provider, _) {

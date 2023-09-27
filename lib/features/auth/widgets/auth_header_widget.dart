@@ -8,8 +8,8 @@ import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../components/custom_images.dart';
 
-class LoginHeaderWidget extends StatelessWidget {
-  const LoginHeaderWidget({Key? key, this.withBack = false}) : super(key: key);
+class AuthHeaderWidget extends StatelessWidget {
+  const AuthHeaderWidget({Key? key, this.withBack = false}) : super(key: key);
   final bool withBack;
 
   @override
