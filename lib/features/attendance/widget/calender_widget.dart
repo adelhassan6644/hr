@@ -37,6 +37,7 @@ class CalenderWidget extends StatelessWidget {
                     calendarFormat: provider.calendarFormat,
                     eventLoader: provider.loadSchedule,
                     startingDayOfWeek: StartingDayOfWeek.sunday,
+                    weekendDays: const [DateTime.friday, DateTime.thursday],
                     calendarBuilders: CalendarBuilders(
                         markerBuilder: (context, date, dynamic event) {
                       if (event.isNotEmpty) {

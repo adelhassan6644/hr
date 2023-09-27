@@ -42,12 +42,12 @@ class AttendanceProvider extends ChangeNotifier {
     }
   }
 
-  List<ScheduleModel>? schedules;
+  List<ScheduleModel> schedules = [];
   bool isLoading = false;
   getEmployeeSchedule() async {
     try {
       isLoading = true;
-      schedules?.clear();
+      schedules.clear();
       notifyListeners();
       Either<ServerFailure, Response> response =
           await repo.getEmployeeSchedules();
@@ -68,7 +68,7 @@ class AttendanceProvider extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     } catch (e) {
-      schedules?.clear();
+      schedules.clear();
       isLoading = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
@@ -119,7 +119,7 @@ class AttendanceProvider extends ChangeNotifier {
 
   List loadSchedule(DateTime day) {
     final kEventSource = {
-      for (var item in schedules!)
+      for (var item in schedules)
         item.start!: List.generate(
             item.start!.day, (index) => ('Event $item | ${index + 1}'))
     };
