@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../../app/core/app_snack_bar.dart';
 import '../../../app/core/color_resources.dart';
+import '../../../app/core/extensions.dart';
 import '../../../data/error/failures.dart';
 
 import '../model/schedules_model.dart';
@@ -113,16 +114,16 @@ class AttendanceProvider extends ChangeNotifier {
     }
   }
 
-  // List loadSchedule(DateTime day) {
-  //   final kEventSource = {
-  //     for (var item in schedules!)
-  //       item.start!: List.generate(
-  //           item.startTime!.day, (index) => ('Event $item | ${index + 1}'))
-  //   };
-  //   final kEvents = LinkedHashMap<DateTime, List>(
-  //     equals: isSameDay,
-  //     hashCode: getHashCode,
-  //   )..addAll(kEventSource);
-  //   return kEvents[day] ?? [];
-  // }
+  List loadSchedule(DateTime day) {
+    final kEventSource = {
+      for (var item in schedules!)
+        item.start!: List.generate(
+            item.start, (index) => ('Event $item | ${index + 1}'))
+    };
+    final kEvents = LinkedHashMap<DateTime, List>(
+      equals: isSameDay,
+      hashCode: getHashCode,
+    )..addAll(kEventSource);
+    return kEvents[day] ?? [];
+  }
 }
