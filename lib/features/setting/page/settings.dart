@@ -21,20 +21,20 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: getTranslated("settings", context),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-          child: Column(
-            children: [
-              ///Language
-              Consumer<LocalizationProvider>(
-                  builder: (_, localizationProvider, child) {
-                return MoreNavigateCard(
+    return Consumer<LocalizationProvider>(
+        builder: (_, localizationProvider, child) {
+      return Scaffold(
+        appBar: CustomAppBar(
+          title: getTranslated("settings", context),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+            child: Column(
+              children: [
+                ///Language
+                MoreNavigateCard(
                   name: getTranslated("language", context),
                   iconAsset: Images.languageIcon,
                   onTap: () => CustomBottomSheet.show(
@@ -43,41 +43,44 @@ class SettingsScreen extends StatelessWidget {
                       label: getTranslated("select_language", context),
                       onConfirm: () {
                         CustomNavigator.pop();
-                        localizationProvider.setLanguage(Locale(
-                          AppStorageKey
-                              .languages[localizationProvider.selectIndex]
-                              .languageCode!,
-                          AppStorageKey
-                              .languages[localizationProvider.selectIndex]
-                              .countryCode,
-                        ));
+                        localizationProvider.setLanguage(
+                          Locale(
+                            AppStorageKey
+                                .languages[localizationProvider.selectIndex]
+                                .languageCode!,
+                            AppStorageKey
+                                .languages[localizationProvider.selectIndex]
+                                .countryCode,
+                          ),
+                        );
                       }),
-                );
-              }),
+                ),
 
-              ///Change Password
-              MoreNavigateCard(
-                  name: getTranslated("change_password", context),
-                  iconAsset: Images.lockIcon,
-                  onTap: () => CustomNavigator.push(Routes.CHANGE_PASSWORD)),
-              const Spacer(),
-              Consumer<AuthProvider>(builder: (context, authProvider, widget) {
-                return Padding(
-                  padding: EdgeInsets.only(
-                      bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
-                  child: TextButton(
-                      onPressed: () => authProvider.logOut(),
-                      child: Text(
-                        getTranslated("log_out", context),
-                        style: titleTextStyle.copyWith(
-                            fontSize: 18, color: Styles.WARNING_COLOR),
-                      )),
-                );
-              }),
-            ],
+                ///Change Password
+                MoreNavigateCard(
+                    name: getTranslated("change_password", context),
+                    iconAsset: Images.lockIcon,
+                    onTap: () => CustomNavigator.push(Routes.CHANGE_PASSWORD)),
+                const Spacer(),
+                Consumer<AuthProvider>(
+                    builder: (context, authProvider, widget) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
+                    child: TextButton(
+                        onPressed: () => authProvider.logOut(),
+                        child: Text(
+                          getTranslated("log_out", context),
+                          style: titleTextStyle.copyWith(
+                              fontSize: 18, color: Styles.WARNING_COLOR),
+                        )),
+                  );
+                }),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

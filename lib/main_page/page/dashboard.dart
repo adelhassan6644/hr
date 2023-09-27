@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../data/config/di.dart';
 import '../../data/network/netwok_info.dart';
-import '../../features/attendance/page/attendance_page.dart';
+import '../../features/attendance/page/attendance.dart';
 import '../../features/home/page/home.dart';
 import '../../features/more/page/more.dart';
 import '../../main_providers/user_provider.dart';
-import '../../features/requests/requests_screen.dart';
+import '../../features/requests/page/requests.dart';
 import '../widget/nav_bar.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -33,9 +33,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       case 0:
         return const Home();
       case 1:
-        return const RequestsScreen();
+        return const Requests();
       case 2:
-        return const AttendancePage();
+        return const Attendance();
       case 3:
         return const More();
       default:

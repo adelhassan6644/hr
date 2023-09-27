@@ -9,7 +9,7 @@ import '../features/add_request/requests/loan_request_screen.dart';
 import '../features/add_request/requests/permission_details.dart';
 import '../features/add_request/requests/vacation_request.dart';
 import '../features/assets/assets_screen.dart';
-import '../features/attendance/page/attendance_page.dart';
+import '../features/attendance/page/attendance.dart';
 import '../features/auth/pages/forget_password.dart';
 import '../features/auth/pages/login.dart';
 import '../features/auth/pages/reset_password.dart';
@@ -76,7 +76,7 @@ abstract class CustomNavigator {
       case Routes.CLEAR_ASSET_REQUEST:
         return _pageRoute(const ClearAssetRequest());
       case Routes.ATTENDANCE_LEAVING:
-        return _pageRoute(const AttendancePage());
+        return _pageRoute(const Attendance());
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());
       case Routes.CHANGE_PASSWORD:

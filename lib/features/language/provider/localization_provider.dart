@@ -12,18 +12,14 @@ class LocalizationProvider extends ChangeNotifier {
   }
 
   int _selectIndex = 0;
-
   int get selectIndex => _selectIndex;
-
   void setSelectIndex(int index) {
     _selectIndex = index;
     notifyListeners();
   }
 
   List<LanguageModel> _languages = [];
-
   List<LanguageModel> get languages => _languages;
-
   void initializeAllLanguages() {
     if (_languages.isEmpty) {
       _languages = AppStorageKey.languages;
@@ -40,7 +36,8 @@ class LocalizationProvider extends ChangeNotifier {
     _locale = locale;
     if (_locale.languageCode == 'ar') {
       _isLtr = false;
-    } else {
+    }
+    else {
       _isLtr = true;
     }
     _saveLanguage(_locale);
@@ -61,8 +58,7 @@ class LocalizationProvider extends ChangeNotifier {
   }
 
   _saveLanguage(Locale locale) async {
-    sharedPreferences.setString(
-        AppStorageKey.languageCode, locale.languageCode);
+    sharedPreferences.setString(AppStorageKey.languageCode, locale.languageCode);
     sharedPreferences.setString(AppStorageKey.countryCode, locale.countryCode!);
   }
 }

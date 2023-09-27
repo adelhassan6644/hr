@@ -14,14 +14,14 @@ import '../../../data/config/di.dart';
 import '../widget/attendance_card.dart';
 import '../widget/calender_widget.dart';
 
-class AttendancePage extends StatefulWidget {
-  const AttendancePage({Key? key}) : super(key: key);
+class Attendance extends StatefulWidget {
+  const Attendance({Key? key}) : super(key: key);
 
   @override
-  State<AttendancePage> createState() => _AttendanceLeavingScreen();
+  State<Attendance> createState() => _AttendanceLeavingScreen();
 }
 
-class _AttendanceLeavingScreen extends State<AttendancePage> {
+class _AttendanceLeavingScreen extends State<Attendance> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
