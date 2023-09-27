@@ -20,29 +20,31 @@ class HomeAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          const ProfileImageWidget(radius: 18),
+          SizedBox(width: 8.w),
           Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const ProfileImageWidget(radius: 18),
-                SizedBox(width: 8.w),
-                Consumer<UserProvider>(builder: (_, provider, child) {
-                  return  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          sl<LocalizationProvider>().locale.languageCode == "ar"
-                              ? provider.user?.arName ?? ""
-                              : provider.user?.enName ?? "",
-                          style: titleTextStyle),
-                      Center(child: Text(provider.user?.jobType?.name ?? "", style: hintTextStyle)),
-                    ],
-                  );
-                }),
-              ],
-            ).animate().flip().then(delay: 10.ms).shimmer(),
-          ),
+              child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Consumer<UserProvider>(builder: (_, provider, child) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        sl<LocalizationProvider>().locale.languageCode == "ar"
+                            ? provider.user?.arName ?? ""
+                            : provider.user?.enName ?? "",
+                        style: titleTextStyle),
+                    Center(
+                        child: Text(provider.user?.jobType?.name ?? "",
+                            style: hintTextStyle)),
+                  ],
+                );
+              }),
+            ],
+          )),
+          SizedBox(width: 8.w),
           IconButton(
             icon: Image.asset(
               Images.notification,
@@ -53,6 +55,6 @@ class HomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ).animate().slide().then(delay: 50.ms).shimmer();
   }
 }

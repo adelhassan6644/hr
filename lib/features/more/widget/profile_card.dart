@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
-import '../../../app/core/dimensions.dart';
 import '../../language/provider/localization_provider.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
@@ -18,51 +17,44 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(builder: (_, provider, child) {
-      return Padding(
-        padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 25,
-              child: Center(
-                child: IconButton(
-                    onPressed: () => CustomNavigator.push(Routes.SETTINGS),
-                    icon: const Icon(
-                      Icons.settings,
-                      color: Styles.PRIMARY_COLOR,
-                      size: 25,
-                    )),
-              ),
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 25,
+            child: Center(
+              child: IconButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () => CustomNavigator.push(Routes.SETTINGS),
+                  icon: const Icon(Icons.settings,
+                      color: Styles.PRIMARY_COLOR, size: 25)),
             ),
-            const Expanded(child: SizedBox()),
-            Consumer<LocalizationProvider>(builder: (_, localizationProvider, child) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const ProfileImageWidget(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
-                      child: Text(
-                          localizationProvider.locale.languageCode == "ar"
-                              ? provider.user?.arName ?? "اسم"
-                              : provider.user?.enName ?? "name",
-                          style: titleTextStyle),
-                    ),
-                    Center(
-                        child: Text(provider.user?.description ?? "description",
-                            style: hintTextStyle)),
-                  ],
-                );
-              }
-            ),
-            const Expanded(child: SizedBox()),
-            const SizedBox(
-              width: 25,
-            )
-          ],
-        ).animate().flip().then(delay: 10.ms).shimmer(),
-      );
+          ),
+          const Expanded(child: SizedBox()),
+          Consumer<LocalizationProvider>(
+              builder: (_, localizationProvider, child) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const ProfileImageWidget(),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  child: Text(
+                      localizationProvider.locale.languageCode == "ar"
+                          ? provider.user?.arName ?? "اسم"
+                          : provider.user?.enName ?? "name",
+                      style: titleTextStyle),
+                ),
+                Center(
+                    child: Text(provider.user?.description ?? "description",
+                        style: hintTextStyle)),
+              ],
+            );
+          }),
+          const Expanded(child: SizedBox()),
+          const SizedBox(width: 25)
+        ],
+      ).animate().flip().then(delay: 10.ms).shimmer();
     });
   }
 }
