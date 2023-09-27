@@ -6,7 +6,6 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
-import '../../../data/config/di.dart';
 import '../provider/attendance_provider.dart';
 
 class CalenderWidget extends StatelessWidget {
@@ -29,14 +28,14 @@ class CalenderWidget extends StatelessWidget {
                     headerStyle: const HeaderStyle(
                       leftChevronVisible: false,
                       rightChevronVisible: false,
-                      headerPadding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                      headerPadding: EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10.0),
                       formatButtonVisible: false,
                     ),
                     focusedDay: provider.focusedDay,
                     selectedDayPredicate: (day) => isSameDay(provider.day, day),
                     calendarFormat: provider.calendarFormat,
-                    // eventLoader: provider.loadSchedule,
+                    eventLoader: provider.loadSchedule,
                     startingDayOfWeek: StartingDayOfWeek.sunday,
                     calendarBuilders: CalendarBuilders(
                         markerBuilder: (context, date, dynamic event) {
@@ -53,9 +52,11 @@ class CalenderWidget extends StatelessWidget {
                     calendarStyle: CalendarStyle(
                         outsideDaysVisible: true,
                         selectedDecoration: const BoxDecoration(
-                            color: Styles.PRIMARY_COLOR, shape: BoxShape.circle),
+                            color: Styles.PRIMARY_COLOR,
+                            shape: BoxShape.circle),
                         markerDecoration: const BoxDecoration(
-                            color: Styles.PRIMARY_COLOR, shape: BoxShape.circle),
+                            color: Styles.PRIMARY_COLOR,
+                            shape: BoxShape.circle),
                         rangeHighlightColor: Theme.of(context).primaryColor),
                     onDaySelected: (v1, v2) => provider.onDaySelected(v1, v2),
                     onFormatChanged: provider.onChangeFormat,

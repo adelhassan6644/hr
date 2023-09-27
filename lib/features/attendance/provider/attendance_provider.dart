@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -57,8 +59,9 @@ class AttendanceProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        if (success.data["data"]["attendances"]["data"] != null ) {
-          schedules = List<ScheduleModel>.from(success.data["data"]["attendances"]["data"]
+        if (success.data["data"]["attendances"]["data"] != null) {
+          schedules = List<ScheduleModel>.from(success.data["data"]
+                  ["attendances"]["data"]
               .map((x) => ScheduleModel.fromJson(x)));
         }
       });
@@ -118,7 +121,7 @@ class AttendanceProvider extends ChangeNotifier {
     final kEventSource = {
       for (var item in schedules!)
         item.start!: List.generate(
-            item.start, (index) => ('Event $item | ${index + 1}'))
+            item.start!.day, (index) => ('Event $item | ${index + 1}'))
     };
     final kEvents = LinkedHashMap<DateTime, List>(
       equals: isSameDay,
@@ -126,4 +129,17 @@ class AttendanceProvider extends ChangeNotifier {
     )..addAll(kEventSource);
     return kEvents[day] ?? [];
   }
+
+  // List loadSchedule(DateTime day) {
+  //   final kEventSource = {
+  //     for (var item in schedules!) {
+  //         item.start!: [item.color]
+  //       }
+  //   };
+  //   final kEvents = LinkedHashMap<DateTime, List>(
+  //     equals: isSameDay,
+  //     hashCode: getHashCode,
+  //   )..addAll(kEventSource);
+  //   return kEvents[day] ?? [];
+  // }
 }
