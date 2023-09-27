@@ -118,16 +118,44 @@ class AttendanceProvider extends ChangeNotifier {
   }
 
   List loadSchedule(DateTime day) {
-    final kEventSource = {
-      for (var item in schedules)
-        item.start!: List.generate(
-            item.start!.day, (index) => ('Event $item | ${index + 1}'))
-    };
-    final kEvents = LinkedHashMap<DateTime, List>(
-      equals: isSameDay,
-      hashCode: getHashCode,
-    )..addAll(kEventSource);
-    return kEvents[day] ?? [];
+    {
+      final  attendanceSchedulesMap={};
+      for (var employeeSchedule in attendanceSchedules!.schedules!) {
+
+        if (attendanceSchedulesMap!.containsKey(employeeSchedule.start!)) {
+          attendanceSchedulesMap?.update(employeeSchedule.start!, (value) {
+            List<Schedule> newList= value;
+            if(!newList.contains(employeeSchedule)) {
+              newList.add(employeeSchedule);
+            }
+            return newList;
+          });
+        } else {
+
+          attendanceSchedulesMap?.addAll({
+            employeeSchedule.start!: [
+              employeeSchedule.copyWith(
+                  color:( employeeSchedule.start!.isAfter(DateTime.now())&&(employeeSchedule.isAttend!))?Colors.green:Colors.red
+              )
+            ]
+          });
+        }
+
+      }
+
+
+      /*  attendanceSchedulesMap = {
+      for (var employeeSchedule in attendanceSchedules!.schedules!)
+        employeeSchedule.start!: [Schedule(title: getTranslated("work", CustomNavigator.navigatorState.currentContext!), color: Colors.green)]
+    };*/
+      // log("attendanceSchedulesMap$attendanceSchedulesMap");
+      kSchedules = LinkedHashMap<DateTime, List<Schedule>>(
+        equals: isSameDay,
+        hashCode: getHashCode,
+      )..addAll(attendanceSchedulesMap!);
+
+      return kSchedules![day] ?? [];
+    }
   }
 
   // List loadSchedule(DateTime day) {
