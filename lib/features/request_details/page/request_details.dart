@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/features/requests/request_details_screen.dart';
+import 'package:hr_project/features/request_details/widget/request_details_widget.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 
-import '../../app/localization/language_constant.dart';
-import '../../components/custom_app_bar.dart';
-import '../../components/custom_tab_bar_2.dart';
+import '../../../app/localization/language_constant.dart';
+import '../../../components/custom_app_bar.dart';
+import '../../../components/custom_tab_bar_2.dart';
 
-class RequestFlowScreen extends StatefulWidget {
-  const RequestFlowScreen({
-    Key? key,
-    required this.model,
-  }) : super(key: key);
+class RequestDetails extends StatefulWidget {
+  const RequestDetails({Key? key, required this.model}) : super(key: key);
   final Model model;
 
   @override
-  State<RequestFlowScreen> createState() => _RequestFlowScreenState();
+  State<RequestDetails> createState() => _RequestDetailsState();
 }
 
-class _RequestFlowScreenState extends State<RequestFlowScreen> {
+class _RequestDetailsState extends State<RequestDetails> {
   int currentIndex = 0;
 
   final List<String> tabs = [
@@ -60,7 +57,7 @@ class _RequestFlowScreenState extends State<RequestFlowScreen> {
           ),
           Expanded(
               child: currentIndex == 0
-                  ? RequestDetailsScreen(
+                  ? RequestDetailsWidget(
                       model: widget.model,
                     )
                   : const SizedBox()),

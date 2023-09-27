@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/color_resources.dart';
 import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/features/requests/request_flow_screen.dart';
+import 'package:hr_project/features/request_details/page/request_details.dart';
 import 'package:hr_project/features/requests/widgets/request_card.dart';
 import 'package:hr_project/navigation/custom_navigation.dart';
 
@@ -13,7 +13,6 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../navigation/routes.dart';
-import '../widgets/add_request_button.dart';
 
 class Requests extends StatelessWidget {
   const Requests({Key? key}) : super(key: key);
@@ -21,7 +20,9 @@ class Requests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: getTranslated("requests", context),),
+      appBar: CustomAppBar(
+        title: getTranslated("requests", context),
+      ),
       body: NotificationListener(
         onNotification: (ScrollNotification sn) {
           if (sn is ScrollUpdateNotification &&
@@ -57,11 +58,12 @@ class Requests extends StatelessWidget {
                         status: "rejected",
                         requestType: getTranslated("loan", context),
                         reason: getTranslated("needing", context),
-                        onTap: () => CustomNavigator.push(Routes.REQUESTS_FLOW,
-                            arguments: Model(
-                              requestType: getTranslated("loan", context),
-                              status: "rejected",
-                            )),
+                        onTap: () =>
+                            CustomNavigator.push(Routes.REQUESTS_DETAILS,
+                                arguments: Model(
+                                  requestType: getTranslated("loan", context),
+                                  status: "rejected",
+                                )),
                       ),
                     ),
                     SizedBox(height: 80.h),

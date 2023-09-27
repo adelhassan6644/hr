@@ -23,7 +23,7 @@ import '../features/organization/page/organization.dart';
 import '../features/profile/page/profile.dart';
 import '../features/salary/page/salary.dart';
 import '../features/salary/page/salary_details.dart';
-import '../features/requests/request_flow_screen.dart';
+import '../features/request_details/page/request_details.dart';
 import '../main.dart';
 import '../main_page/page/dashboard.dart';
 import '../features/splash/page/splash.dart';
@@ -53,8 +53,8 @@ abstract class CustomNavigator {
         return _pageRoute(const ResetPasswordScreen());
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoardScreen());
-      case Routes.REQUESTS_FLOW:
-        return _pageRoute(RequestFlowScreen(
+      case Routes.REQUESTS_DETAILS:
+        return _pageRoute(RequestDetails(
           model: settings.arguments as Model,
         ));
       case Routes.ADD_REQUEST:
