@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:hr_project/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -7,6 +8,7 @@ import 'package:table_calendar/table_calendar.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
 import '../provider/attendance_provider.dart';
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 
 class CalenderWidget extends StatelessWidget {
   const CalenderWidget({Key? key}) : super(key: key);
@@ -22,53 +24,44 @@ class CalenderWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(24),
                     color: Styles.WHITE,
                     border: Border.all(color: Styles.LIGHT_BORDER_COLOR)),
-                child: TableCalendar(
-                    firstDay: provider.kFirstDay,
-                    lastDay: provider.kLastDay,
-                    headerStyle: const HeaderStyle(
-                      leftChevronVisible: false,
-                      rightChevronVisible: false,
-                      headerPadding: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 10.0),
-                      formatButtonVisible: false,
-                    ),
-                    focusedDay: provider.focusedDay,
-                    selectedDayPredicate: (day) => isSameDay(provider.day, day),
-                    calendarFormat: provider.calendarFormat,
-                    eventLoader: provider.loadSchedule,
-                    startingDayOfWeek: StartingDayOfWeek.sunday,
-                    weekendDays: const [DateTime.friday, DateTime.thursday],
-                    calendarBuilders: CalendarBuilders(
-                        markerBuilder: (context, date, dynamic event) {
-                      if (event.isNotEmpty) {
-                        return Container(
-                          width: 35,
-                          decoration: BoxDecoration(
-                              color: Styles.PRIMARY_COLOR.withOpacity(0.2),
-                              shape: BoxShape.circle),
-                        );
-                      }
-                      return null;
-                    }),
-                    calendarStyle: CalendarStyle(
-                        outsideDaysVisible: true,
-                        selectedDecoration: const BoxDecoration(
-                            color: Styles.PRIMARY_COLOR,
-                            shape: BoxShape.circle),
-                        markerDecoration: const BoxDecoration(
-                            color: Styles.PRIMARY_COLOR,
-                            shape: BoxShape.circle),
-                        rangeHighlightColor: Theme.of(context).primaryColor),
-                    onDaySelected: (v1, v2) => provider.onDaySelected(v1, v2),
-                    onFormatChanged: provider.onChangeFormat,
-                    onPageChanged: (v) {
-                      provider.focusedDay = v;
-                    },
-                    onCalendarCreated: (v) {
-                      Future.delayed(const Duration(milliseconds: 10), () {
-                        provider.onDaySelected(DateTime.now(), DateTime.now());
-                      });
-                    }),
+                child: CalendarCarousel<Event>(
+                  onCalendarChanged: (x) {
+                    print(x);
+                  },
+                  onDayPressed: (date, events) {
+                    provider.onDaySelected(
+                      date,
+                    );
+                  },
+                  selectedDateTime: provider.day,
+                  selectedDayTextStyle:
+                      const TextStyle(color: Styles.primaryLight, fontSize: 25),
+                  selectedDayBorderColor: Colors.black12,
+                  selectedDayButtonColor: Colors.transparent,
+                  locale: 'ar',
+                  headerMargin: EdgeInsets.symmetric(horizontal: 50.w),
+                  weekendTextStyle: const TextStyle(
+                    color: Styles.PRIMARY_COLOR,
+                  ),
+                  thisMonthDayBorderColor: Colors.grey.withOpacity(.1),
+                  markedDatesMap: provider.eventList,
+
+                  showIconBehindDayText: false,
+                  markedDateShowIcon: true,
+                  todayTextStyle: const TextStyle(
+                    color: Styles.PRIMARY_COLOR,
+                  ),
+                  markedDateIconBuilder: (event) {
+                    return event.icon ?? const Icon(Icons.add_alert_rounded);
+                  },
+                  minSelectedDate:
+                      DateTime.now().subtract(const Duration(days: 360)),
+                  maxSelectedDate:
+                      DateTime.now().add(const Duration(days: 360)),
+                  todayButtonColor: Styles.SACOUNDRY.withOpacity(.2),
+                  todayBorderColor: Colors.grey,
+                  markedDateMoreShowTotal: false,
+                ),
               ).animate().flip().slide().then(delay: 10.ms).shimmer()
             : const _CalenderShimmer();
       }),

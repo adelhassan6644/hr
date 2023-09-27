@@ -13,6 +13,7 @@ extension StringExtension on String {
   }
 }
 
+
 extension DataExtention on DateTime {
   String dateFormat() {
     return DateFormat.yMMMd(Provider.of<LocalizationProvider>(
@@ -23,6 +24,9 @@ extension DataExtention on DateTime {
             : 'ar_SA')
         .format(this);
     // return DateFormat("dd-MMMM ").format(this);
+  }
+  String defaultFormat2() {
+    return DateFormat("yyyy-MM-d").format(this);
   }
 }
 

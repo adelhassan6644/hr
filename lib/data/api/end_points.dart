@@ -6,8 +6,8 @@ class EndPoints {
   static const String topic = 'fitariki';
 
   static checkIn(id) => '/employee/attendance/attend/$id';
-  static employeeSchedule(id) => '/employee/attendance/index/$id';
-  static daySchedules(id) => '/employee/attendance/schedules/$id';
+  static employeeSchedule(id) => '/employee/attendance/schedules/$id';
+  static daySchedules(id) => '/employee/attendance/day/schedules/$id';
   static const String register = '';
   static const String login = '/employee/login';
   static const String updatePassword = '';

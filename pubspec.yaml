@@ -64,6 +64,7 @@ dependencies:
   flutter_widget_from_html: ^0.10.5+3
   shimmer: ^3.0.0
   carousel_slider: ^4.2.1
+  flutter_calendar_carousel:
 
 
 
@@ -75,6 +76,7 @@ dev_dependencies:
 
 flutter_native_splash:
   image: ""
+
   color: "ffffff"
   fill: true
 

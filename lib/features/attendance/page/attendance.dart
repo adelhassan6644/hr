@@ -45,7 +45,7 @@ class _AttendanceLeavingScreen extends State<Attendance> {
                   child: Column(
                     children: [
                       ///Calender
-                      const CalenderWidget(),
+                      Expanded(child:  CalenderWidget()),
 
                       ///Schedules
                       Expanded(

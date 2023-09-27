@@ -3,6 +3,8 @@ import 'dart:collection';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../../app/core/app_snack_bar.dart';
 import '../../../app/core/color_resources.dart';
@@ -32,22 +34,38 @@ class AttendanceProvider extends ChangeNotifier {
   DateTime focusedDay = DateTime.now();
   void onDaySelected(
     DateTime selectedDay,
-    DateTime fDay,
+
   ) {
-    if (!isSameDay(day, selectedDay)) {
+
       day = selectedDay;
-      focusedDay = fDay;
+
       notifyListeners();
       getDaySchedule();
-    }
-  }
 
+  }
+  Map<DateTime, List<Event>> eventsMAP = {};
+  EventList<Event>? eventList;
+  final Widget _holidayStyle = Container(
+    decoration:  BoxDecoration(
+      color: Styles.ACTIVE.withOpacity(.2),
+      borderRadius: BorderRadius.all(Radius.circular(1000)),
+    ),
+  );
+  final Widget _workStyle = Container(
+    decoration:  BoxDecoration(
+      color: Styles.SACOUNDRY.withOpacity(.2),
+      borderRadius: BorderRadius.all(Radius.circular(1000)),
+    ),
+  );
   List<ScheduleModel> schedules = [];
+
   bool isLoading = false;
   getEmployeeSchedule() async {
     try {
       isLoading = true;
       schedules.clear();
+      eventList = null;
+      eventsMAP = {};
       notifyListeners();
       Either<ServerFailure, Response> response =
           await repo.getEmployeeSchedules();
@@ -59,12 +77,21 @@ class AttendanceProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        if (success.data["data"]["attendances"]["data"] != null) {
+        if (success.data["data"]["schedules"] != null) {
           schedules = List<ScheduleModel>.from(success.data["data"]
-                  ["attendances"]["data"]
+                  ["schedules"]
               .map((x) => ScheduleModel.fromJson(x)));
+          for (var element in schedules) {
+            {
+              eventsMAP[DateTime(element.start!.year, element.start!.month, element.start!.day)] = [
+                Event(date: element.start!, icon:element.title=="Holiday"? _holidayStyle:_workStyle)
+              ];
+            }
+          }
+          onDaySelected(DateTime.now(),);
         }
       });
+      eventList = EventList<Event>(events: eventsMAP);
       isLoading = false;
       notifyListeners();
     } catch (e) {
