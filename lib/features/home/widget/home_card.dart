@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_project/app/core/extensions.dart';
+import 'package:hr_project/app/core/text_styles.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 
@@ -19,6 +20,7 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(100),
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
@@ -40,17 +42,18 @@ class HomeCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+              padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
               decoration: BoxDecoration(
                   shape: BoxShape.circle, color: iconColor.withOpacity(0.1)),
               child: icon,
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 12),
             Expanded(
               child: Text(
                 title,
-                style:
-                    const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                style: AppTextStyles.w600.copyWith(
+                  fontSize: 14,
+                ),
               ),
             ),
           ],
