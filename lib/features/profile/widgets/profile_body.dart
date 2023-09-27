@@ -53,8 +53,8 @@ class ProfileBody extends StatelessWidget {
             ProfileDetailsCard(
               title: getTranslated("name", context),
               data: sl<LocalizationProvider>().locale.languageCode == "ar"
-                  ? provider.user?.arName ?? ""
-                  : provider.user?.enName ?? "",
+                  ? provider.user?.arName ?? "صلصثق"
+                  : provider.user?.enName ?? "er",
             ),
 
             ///Email

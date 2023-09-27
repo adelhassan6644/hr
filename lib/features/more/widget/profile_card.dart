@@ -9,7 +9,6 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
 import '../../../app/core/dimensions.dart';
 import '../../language/provider/localization_provider.dart';
-import '../../../data/config/di.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
 
@@ -37,22 +36,25 @@ class ProfileCard extends StatelessWidget {
               ),
             ),
             const Expanded(child: SizedBox()),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const ProfileImageWidget(),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: Text(
-                      sl<LocalizationProvider>().locale.languageCode == "ar"
-                          ? provider.user?.arName ?? "اسم"
-                          : provider.user?.enName ?? "name",
-                      style: titleTextStyle),
-                ),
-                Center(
-                    child: Text(provider.user?.description ?? "description",
-                        style: hintTextStyle)),
-              ],
+            Consumer<LocalizationProvider>(builder: (_, localizationProvider, child) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const ProfileImageWidget(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      child: Text(
+                          localizationProvider.locale.languageCode == "ar"
+                              ? provider.user?.arName ?? "اسم"
+                              : provider.user?.enName ?? "name",
+                          style: titleTextStyle),
+                    ),
+                    Center(
+                        child: Text(provider.user?.description ?? "description",
+                            style: hintTextStyle)),
+                  ],
+                );
+              }
             ),
             const Expanded(child: SizedBox()),
             const SizedBox(

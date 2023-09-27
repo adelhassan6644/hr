@@ -13,6 +13,7 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../navigation/routes.dart';
+import '../widgets/add_request_button.dart';
 
 class Requests extends StatelessWidget {
   const Requests({Key? key}) : super(key: key);
@@ -20,23 +21,7 @@ class Requests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: getTranslated("requests", context),
-      ),
-      resizeToAvoidBottomInset: true,
-      floatingActionButton: FloatingActionButton.extended(
-        isExtended: true,
-        icon: Icon(
-          Icons.add,
-          color: Styles.WHITE,
-          size: 20.h,
-        ),
-        label: Text(getTranslated("add", context),
-            style:
-                AppTextStyles.w600.copyWith(color: Styles.WHITE, fontSize: 14)),
-        onPressed: () => CustomNavigator.push(Routes.ADD_REQUEST),
-        backgroundColor: Styles.PRIMARY_COLOR,
-      ),
+      appBar: CustomAppBar(title: getTranslated("requests", context),),
       body: NotificationListener(
         onNotification: (ScrollNotification sn) {
           if (sn is ScrollUpdateNotification &&
@@ -78,7 +63,8 @@ class Requests extends StatelessWidget {
                               status: "rejected",
                             )),
                       ),
-                    )
+                    ),
+                    SizedBox(height: 80.h),
                   ],
                 ),
               ),

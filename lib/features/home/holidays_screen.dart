@@ -40,7 +40,6 @@ class _HolidaysScreen extends State<HolidaysScreen> {
       backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
         title: getTranslated("holidays", context),
-
       ),
       body: Padding(
         padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT.h),
@@ -48,17 +47,17 @@ class _HolidaysScreen extends State<HolidaysScreen> {
           children: [
             CustomTabBar(
               myTabs: [
-                tab(isSelected: _selectedIndex==0,
-                    label: "weekly"),
-                tab(isSelected: _selectedIndex==1,
-                    label: "monthly"),
-                tab(isSelected: _selectedIndex==2,
-                    label: "yearly"),
+                tab(isSelected: _selectedIndex == 0, label: "weekly"),
+                tab(isSelected: _selectedIndex == 1, label: "monthly"),
+                tab(isSelected: _selectedIndex == 2, label: "yearly"),
               ],
               tabController: _tabController,
-              onTap:  (int index) {
-                setState(() {_selectedIndex = index;});
-              },),
+              onTap: (int index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            ),
             Expanded(
               child: TabBarView(
                 controller: _tabController,
@@ -66,32 +65,46 @@ class _HolidaysScreen extends State<HolidaysScreen> {
                 children: [
                   Center(
                       child: Column(
-                        children: const [
-                          HolidayCard( reason: "national day",),
-                          HolidayCard( reason: "اليوم القومي",),
-                          HolidayCard( reason: "Christmas Day",),
-
-                        ],
-                      )),
+                    children: const [
+                      HolidayCard(
+                        reason: "national day",
+                      ),
+                      HolidayCard(
+                        reason: "اليوم القومي",
+                      ),
+                      HolidayCard(
+                        reason: "Christmas Day",
+                      ),
+                    ],
+                  )),
                   Center(
                       child: Column(
-                        children: const [
-                          HolidayCard( reason: "national day",),
-                          HolidayCard( reason: "اليوم القومي",),
-                          HolidayCard( reason: "Christmas Day",),
-
-                        ],
-                      )),
+                    children: const [
+                      HolidayCard(
+                        reason: "national day",
+                      ),
+                      HolidayCard(
+                        reason: "اليوم القومي",
+                      ),
+                      HolidayCard(
+                        reason: "Christmas Day",
+                      ),
+                    ],
+                  )),
                   Center(
                       child: Column(
-                        children: const [
-                          HolidayCard( reason: "national day",),
-                          HolidayCard( reason: "اليوم القومي",),
-                          HolidayCard( reason: "Christmas Day",),
-
-                        ],
-                      )),
-
+                    children: const [
+                      HolidayCard(
+                        reason: "national day",
+                      ),
+                      HolidayCard(
+                        reason: "اليوم القومي",
+                      ),
+                      HolidayCard(
+                        reason: "Christmas Day",
+                      ),
+                    ],
+                  )),
                 ],
               ),
             ),

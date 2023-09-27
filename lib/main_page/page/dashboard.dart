@@ -47,9 +47,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Styles.BACKGROUND_COLOR,
-        bottomNavigationBar: const NavBar(),
-        body: Consumer<DashboardProvider>(builder: (_, provider, child) {
-          return fragment(provider.selectedIndex);
-        }));
+        body: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Consumer<DashboardProvider>(builder: (_, provider, child) {
+              return fragment(provider.selectedIndex);
+            }),
+            const NavBar(),
+          ],
+        ));
   }
 }

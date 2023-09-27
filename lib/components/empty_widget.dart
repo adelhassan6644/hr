@@ -37,7 +37,7 @@ class EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: emptyHeight ?? 500,
+      height: emptyHeight ?? 300,
       child: Center(
         child: Column(
           children: [

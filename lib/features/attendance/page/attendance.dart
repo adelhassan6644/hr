@@ -51,30 +51,35 @@ class _AttendanceLeavingScreen extends State<Attendance> {
                       Expanded(
                         child: provider.isGetting
                             ? ListAnimator(
-                                data: List.generate(
-                                  provider.daySchedules.length,
-                                  (index) => CustomShimmerContainer(
-                                    height: 75.h,
-                                    radius: 10,
+                                data: [
+                                  ...List.generate(
+                                    provider.daySchedules.length,
+                                    (index) => CustomShimmerContainer(
+                                      height: 75.h,
+                                      radius: 10,
+                                    ),
                                   ),
-                                ),
+                                  SizedBox(height: 80.h),
+                                ],
                               )
                             : !provider.isGetting &&
                                     provider.daySchedules.isNotEmpty
-                                ? ListAnimator(
-                                    data: List.generate(
+                                ? ListAnimator(data: [
+                                    ...List.generate(
                                       provider.daySchedules.length,
                                       (index) => AttendanceCard(
                                         schedule: provider.daySchedules[index],
                                       ),
                                     ),
-                                  )
+                                    SizedBox(height: 80.h),
+                                  ])
                                 : ListAnimator(
                                     data: [
                                       EmptyState(
                                         txt: getTranslated(
                                             "there_is_no_schedules", context),
                                       ),
+                                      SizedBox(height: 80.h),
                                     ],
                                   ),
                       )

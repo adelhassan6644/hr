@@ -3,12 +3,12 @@ import 'package:hr_project/app/core/extensions.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 
-class TypeCard extends StatelessWidget {
+class HomeCard extends StatelessWidget {
   final String title;
   final Widget icon;
   final Color iconColor;
   final VoidCallback onTap;
-  const TypeCard(
+  const HomeCard(
       {required this.onTap,
       required this.icon,
       required this.title,

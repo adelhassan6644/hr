@@ -60,6 +60,9 @@ class More extends StatelessWidget {
                     name: getTranslated("contract", context),
                     iconAsset: Images.contractIcon,
                     onTap: () => CustomNavigator.push(Routes.CONTRACT)),
+
+                SizedBox(height: 80.h),
+
               ],
             ),
           ),
