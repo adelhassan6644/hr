@@ -34,29 +34,21 @@ class AttendanceProvider extends ChangeNotifier {
   DateTime focusedDay = DateTime.now();
   void onDaySelected(
     DateTime selectedDay,
-
   ) {
+    day = selectedDay;
 
-      day = selectedDay;
-
-      notifyListeners();
-      getDaySchedule();
-
+    notifyListeners();
+    getDaySchedule();
   }
+
   Map<DateTime, List<Event>> eventsMAP = {};
   EventList<Event>? eventList;
-  final Widget _holidayStyle = Container(
-    decoration:  BoxDecoration(
-      color: Styles.ACTIVE.withOpacity(.2),
-      borderRadius: BorderRadius.all(Radius.circular(1000)),
-    ),
-  );
-  final Widget _workStyle = Container(
-    decoration:  BoxDecoration(
-      color: Styles.SACOUNDRY.withOpacity(.2),
-      borderRadius: BorderRadius.all(Radius.circular(1000)),
-    ),
-  );
+  Widget _iconStyle(color) => Container(
+        decoration: BoxDecoration(
+          color: color.withOpacity(.4),
+          borderRadius: BorderRadius.circular(1000),
+        ),
+      );
   List<ScheduleModel> schedules = [];
 
   bool isLoading = false;
@@ -78,17 +70,19 @@ class AttendanceProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (success.data["data"]["schedules"] != null) {
-          schedules = List<ScheduleModel>.from(success.data["data"]
-                  ["schedules"]
+          schedules = List<ScheduleModel>.from(success.data["data"]["schedules"]
               .map((x) => ScheduleModel.fromJson(x)));
           for (var element in schedules) {
             {
-              eventsMAP[DateTime(element.start!.year, element.start!.month, element.start!.day)] = [
-                Event(date: element.start!, icon:element.title=="Holiday"? _holidayStyle:_workStyle)
+              eventsMAP[DateTime(element.start!.year, element.start!.month,
+                  element.start!.day)] = [
+                Event(date: element.start!, icon: _iconStyle(element.color))
               ];
             }
           }
-          onDaySelected(DateTime.now(),);
+          onDaySelected(
+            DateTime.now(),
+          );
         }
       });
       eventList = EventList<Event>(events: eventsMAP);

@@ -3,10 +3,10 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:hr_project/app/core/extensions.dart';
 import 'package:provider/provider.dart';
-import 'package:table_calendar/table_calendar.dart';
-
 import '../../../app/core/color_resources.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
+import '../../../data/config/di.dart';
+import '../../language/provider/localization_provider.dart';
 import '../provider/attendance_provider.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 
@@ -34,18 +34,17 @@ class CalenderWidget extends StatelessWidget {
                     );
                   },
                   selectedDateTime: provider.day,
-                  selectedDayTextStyle:
-                      const TextStyle(color: Styles.primaryLight, fontSize: 25),
+                  selectedDayTextStyle: const TextStyle(
+                      color: Styles.PRIMARY_COLOR, fontSize: 25),
                   selectedDayBorderColor: Colors.black12,
-                  selectedDayButtonColor: Colors.transparent,
-                  locale: 'ar',
+                  selectedDayButtonColor: Styles.PRIMARY_COLOR.withOpacity(0.2),
+                  locale: sl<LocalizationProvider>().locale.languageCode,
                   headerMargin: EdgeInsets.symmetric(horizontal: 50.w),
                   weekendTextStyle: const TextStyle(
                     color: Styles.PRIMARY_COLOR,
                   ),
-                  thisMonthDayBorderColor: Colors.grey.withOpacity(.1),
+                  thisMonthDayBorderColor: Styles.LIGHT_BORDER_COLOR,
                   markedDatesMap: provider.eventList,
-
                   showIconBehindDayText: false,
                   markedDateShowIcon: true,
                   todayTextStyle: const TextStyle(
@@ -59,7 +58,6 @@ class CalenderWidget extends StatelessWidget {
                   maxSelectedDate:
                       DateTime.now().add(const Duration(days: 360)),
                   todayButtonColor: Styles.SACOUNDRY.withOpacity(.2),
-                  todayBorderColor: Colors.grey,
                   markedDateMoreShowTotal: false,
                 ),
               ).animate().flip().slide().then(delay: 10.ms).shimmer()

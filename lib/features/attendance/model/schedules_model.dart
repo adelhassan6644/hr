@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../app/core/color_resources.dart';
+
 class ScheduleModel {
   ScheduleModel(
       {this.start,
@@ -58,10 +60,12 @@ class ScheduleModel {
       allDay: json["allDay"],
       scheduleId: json["schedule_id"],
       isAttend: json["is_attend"] ?? true,
-      color: (DateTime.parse(json["start"]).isAfter(DateTime.now()) &&
-              json["is_attend"] == true)
-          ? Colors.green
-          : Colors.red);
+      color: json["title"] == "Holiday"
+          ? Styles.ACTIVE
+          : (DateTime.parse(json["start"]).isAfter(DateTime.now()) &&
+                  json["is_attend"] == true)
+              ? Styles.PRIMARY_COLOR
+              : Styles.IN_ACTIVE);
 
   Map<String, dynamic> toJson() => {
         "start": start?.toIso8601String(),
