@@ -245,7 +245,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_settings: 017320c6a680cdc94c799949d95b84cb69389ebc
-  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
+  audio_session: 8d5c1acf6b89d47b4091705a31a3d3e6b07368ad
   audioplayers_darwin: 877d9a4d06331c5c374595e46e16453ac7eafa40
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   device_info_plus: 7545d84d8d1b896cb16a4ff98c19f07ec4b298ea

@@ -7,7 +7,7 @@ class EndPoints {
 
   static checkAttend(id) => '/employee/attendance/attend/$id';
   static checkLeave(id) => '/employee/attendance/leave/$id';
-  static checkOnSchedule(id) => 'employee/attendance/closest/schedule/$id';
+  static checkOnSchedule(id) => '/employee/attendance/closest/schedule/$id';
   static employeeSchedule(id) => '/employee/attendance/schedules/$id';
   static daySchedules(id) => '/employee/attendance/day/schedules/$id';
   static const String register = '';
