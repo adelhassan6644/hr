@@ -67,22 +67,22 @@ class _CheckInCardState extends State<CheckInCard> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   ///Title
-                                  Text(
-                                    provider.closestSchedule?.isAttend == true
-                                        ? getTranslated(
-                                            "check_in_leaving", context)
-                                        : getTranslated(
-                                            "check_in_attendance", context),
-                                    style: const TextStyle(
-                                        color: Styles.PRIMARY_COLOR,
-                                        fontWeight: FontWeight.w800,
-                                        fontSize: 14),
-                                  ),
+                                  // Text(
+                                  //   (provider.closestSchedule?.attendedAt != null&&provider.closestSchedule?.leavingAt != null)
+                                  //       ? getTranslated(
+                                  //           "check_in_leaving", context)
+                                  //       : getTranslated(
+                                  //           "check_in_attendance", context),
+                                  //   style: const TextStyle(
+                                  //       color: Styles.PRIMARY_COLOR,
+                                  //       fontWeight: FontWeight.w800,
+                                  //       fontSize: 14),
+                                  // ),
 
                                   ///Time of now
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        vertical: 5.0),
+                                        vertical: 1.0),
                                     child: Text(
                                       DateTime.now().timeFormat(),
                                       style: const TextStyle(
@@ -91,27 +91,74 @@ class _CheckInCardState extends State<CheckInCard> {
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
+                                  if(provider.closestSchedule?.attendedAt ==null)
+                                    RichText(
+                                      text: TextSpan(
+                                        text:
+                                        '${getTranslated(( "work_start_at"), context)} ',
+                                        style: AppTextStyles.w500.copyWith(
+                                            fontSize: 16,
+                                            color: Styles.hintColor),
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                            (
+                                                provider
+                                                .closestSchedule
+                                                ?.start)
+                                                ?.timeFormat() ??
+                                                "",
+                                            style: AppTextStyles.w700.copyWith(
+                                                fontSize: 16,
+                                                color: Styles.PRIMARY_COLOR),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  if(provider.closestSchedule?.leavingAt ==null)
+                                    RichText(
+                                      text: TextSpan(
+                                        text:
+                                        '${getTranslated(( "work_end_at"), context)} ',
+                                        style: AppTextStyles.w500.copyWith(
+                                            fontSize: 16,
+                                            color: Styles.hintColor),
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                            (
+                                                provider
+                                                .closestSchedule
+                                                ?.start)
+                                                ?.timeFormat() ??
+                                                "",
+                                            style: AppTextStyles.w700.copyWith(
+                                                fontSize: 16,
+                                                color: Styles.PRIMARY_COLOR),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
 
                                   ///Is Attended / Leaving At
+                                  if(provider.closestSchedule?.attendedAt !=null)
                                   RichText(
                                     text: TextSpan(
                                       text:
-                                          '${getTranslated((provider.closestSchedule?.isAttend == true ? "check_in_leaving_at" : "check_in_attendance_at"), context)} ',
+                                          '${getTranslated(((provider.closestSchedule?.attendedAt != null&&provider.closestSchedule?.leavingAt != null) ? "check_in_leaving_at" : "check_in_attendance_at"), context)} ',
                                       style: AppTextStyles.w500.copyWith(
                                           fontSize: 16,
                                           color: Styles.hintColor),
                                       children: [
                                         TextSpan(
                                           text:
-                                              (provider.closestSchedule
-                                                                  ?.isAttend ==
-                                                              true
+                                              ((provider.closestSchedule?.attendedAt != null&&provider.closestSchedule?.leavingAt != null)
                                                           ? provider
                                                               .closestSchedule
-                                                              ?.attendedAt
+                                                              ?.leavingAt
                                                           : provider
                                                               .closestSchedule
-                                                              ?.leavingAt)
+                                                              ?.attendedAt)
                                                       ?.timeFormat() ??
                                                   "",
                                           style: AppTextStyles.w700.copyWith(

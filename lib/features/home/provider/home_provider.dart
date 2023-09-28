@@ -53,11 +53,12 @@ class HomeProvider extends ChangeNotifier {
   bool locationPermissionGranted = false;
   checkIn() async {
     if (await LocationHelper.checkLocation()) {
-      try {
+      // try {
         loadingDialog();
         notifyListeners();
+        print(closestSchedule?.scheduleId);
         Either<ServerFailure, Response> response =
-            await repo.checkIn(id:  closestSchedule?.scheduleId??0, isAttend: closestSchedule?.isAttend??true);
+            await repo.checkIn(scheduleModel:  closestSchedule!, isAttend: closestSchedule?.isAttend??true);
         response.fold((fail) {
           AlertHelper.startAlarm(isEnter: true);
           CustomSnackBar.showSnackBar(
@@ -67,10 +68,11 @@ class HomeProvider extends ChangeNotifier {
                   backgroundColor: Styles.IN_ACTIVE,
                   borderColor: Styles.transparentColor));
         }, (success) {
+          checkOnSchedule();
           AlertHelper.startAlarm(isEnter: true);
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
-                  message: success.data["message"],
+                  message: success.data["message"]??"",
                   isFloating: true,
                   backgroundColor: Styles.ACTIVE,
                   borderColor: Styles.transparentColor));
@@ -78,16 +80,16 @@ class HomeProvider extends ChangeNotifier {
 
         CustomNavigator.pop();
         notifyListeners();
-      } catch (e) {
-        CustomNavigator.pop();
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: e.toString(),
-                isFloating: true,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Styles.transparentColor));
-        notifyListeners();
-      }
+      // } catch (e) {
+      //   CustomNavigator.pop();
+      //   CustomSnackBar.showSnackBar(
+      //       notification: AppNotification(
+      //           message: e.toString(),
+      //           isFloating: true,
+      //           backgroundColor: Styles.IN_ACTIVE,
+      //           borderColor: Styles.transparentColor));
+      //   notifyListeners();
+      // }
     }
   }
 }

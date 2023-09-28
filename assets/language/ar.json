@@ -189,7 +189,10 @@
   "yes": "نعم",
   "no": "لا",
   "start_at": "تبداء في",
+
   "end_at":"تنتهي يوم",
+  "work_start_at": "بداية الدوام في",
+  "work_end_at":"نهاية الدوام في",
   "your_account_has_been_successfully_updated_✔": "تم تحديث حسابك بنجاح ✔",
   "your_request_has_been_sent_successfully_!":" تم ارسال طلبك بنجاح !",
   "we_will_contact_with_you_soon":"سنقوم بالتواصل معك قريبا",
