@@ -240,7 +240,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             fontSize: 11,
           ),
           errorMaxLines: 2,
-          prefixIconConstraints: BoxConstraints(maxHeight: 25.h, maxWidth: 70.w),
+          prefixIconConstraints:
+              BoxConstraints(maxHeight: 25.h, maxWidth: 70.w),
           suffixIconConstraints: BoxConstraints(maxHeight: 25.h),
         ),
       ),
