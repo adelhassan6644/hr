@@ -1,37 +1,32 @@
 class Routes {
-  static const APP = "/APP";
-  static const SPLASH = "/SPLASH";
-  static const LOGIN = "/LOGIN";
-  static const FORGET_PASSWORD = "/FORGET_PASSWORD";
-  static const VERIFICATION_CODE = "/VERIFICATION_CODE";
-  static const RESET_PASSWORD = "/RESET_PASSWORD";
-  static const DASHBOARD = "/DASHBOARD";
-  // static const HOME_PAGE = "/HOME_PAGE";
-  // static const PROFILE_PAGE = "/PROFILE_PAGE";
-  // static const REQUESTS_PAGE= "/REQUESTS_PAGE";
-  static const ADD_REQUEST = "/ADD_REQUEST";
-  static const LOAN_REQUEST = "/LOAN_REQUEST";
-  static const EXPENSE_CLAIM_REQUEST = "/EXPENSE_CLAIM_REQUEST";
-  static const PERMISSIN_REQUEST = "/PERMISSIN_REQUEST";
-  static const VACATION_REQUEST = "/VACATION_REQUEST";
-  static const LETTER_REQUEST = "/LETTER_REQUEST";
-  static const ASSET_REQUEST = "/ASSET_REQUEST";
-  static const CLEAR_ASSET_REQUEST = "/CLEAR_ASSET_REQUEST";
-  static const BUSINESS_TRIP_REQUEST = "/BUSINESS_TRIP_REQUEST";
+  static const APP = "APP";
+  static const SPLASH = "SPLASH";
+  static const LOGIN = "LOGIN";
+  static const FORGET_PASSWORD = "FORGET_PASSWORD";
+  static const VERIFICATION_CODE = "VERIFICATION_CODE";
+  static const RESET_PASSWORD = "RESET_PASSWORD";
+  static const DASHBOARD = "DASHBOARD";
+  static const ADD_REQUEST = "ADD_REQUEST";
+  static const LOAN_REQUEST = "LOAN_REQUEST";
+  static const EXPENSE_CLAIM_REQUEST = "EXPENSE_CLAIM_REQUEST";
+  static const PERMISSIN_REQUEST = "PERMISSION_REQUEST";
+  static const VACATION_REQUEST = "VACATION_REQUEST";
+  static const LETTER_REQUEST = "LETTER_REQUEST";
+  static const ASSET_REQUEST = "ASSET_REQUEST";
+  static const CLEAR_ASSET_REQUEST = "CLEAR_ASSET_REQUEST";
+  static const BUSINESS_TRIP_REQUEST = "BUSINESS_TRIP_REQUEST";
 
-  static const REQUESTS_DETAILS = "/REQUESTS_DETAILS";
-  // static const ATTENDANCE_PAGE = "/ATTENDANCE_PAGE";
-  static const ATTENDANCE_LEAVING = "/ATTENDANCE_LEAVING";
-  static const SALARIES_AND_FINANCIAL = "/SALARIES_AND_FINANCIAL";
-  static const SALARY_DETAILS = "/SALARY_DETAILS";
-  static const SETTINGS = "/SETTINGS";
-  static const CHANGE_PASSWORD = "/CHANGE_PASSWORD";
-  static const LANGUAGES = "/LANGUAGES";
-  static const PROFILE = "/PROFILE";
-  static const ORGANIZATION = "/ORGANIZATION";
-  static const ASSETS = "/ASSETS";
-  static const DOCUMENTS = "/DOCUMENTS";
-  static const CONTRACT = "/CONTRACT";
+  static const REQUESTS_DETAILS = "REQUESTS_DETAILS";
+  static const SALARIES_AND_FINANCIAL = "SALARIES_AND_FINANCIAL";
+  static const SALARY_DETAILS = "SALARY_DETAILS";
+  static const SETTINGS = "SETTINGS";
+  static const CHANGE_PASSWORD = "CHANGE_PASSWORD";
+  static const LANGUAGES = "LANGUAGES";
+  static const PROFILE = "PROFILE";
+  static const ORGANIZATION = "ORGANIZATION";
+  static const ASSETS = "ASSETS";
+  static const DOCUMENTS = "DOCUMENTS";
+  static const CONTRACT = "CONTRACT";
 }
 
 //

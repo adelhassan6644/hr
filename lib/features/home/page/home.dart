@@ -12,7 +12,6 @@ import '../../../app/localization/language_constant.dart';
 import '../../../data/config/di.dart';
 import '../../../main_page/provider/dashboard_provider.dart';
 import '../../../navigation/routes.dart';
-import '../provider/home_provider.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,17 +19,15 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: Dimensions.PADDING_SIZE_DEFAULT),
+      padding:
+          EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
       child: Column(
         children: [
           const HomeAppBar(),
           Expanded(
               child: ListAnimator(
             data: [
-              Padding(
-                  padding: EdgeInsets.symmetric(vertical: 24.h),
-                  child: const CheckInCard()),
+              const CheckInCard(),
 
               ///Add Request
               Padding(

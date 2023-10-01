@@ -9,7 +9,6 @@ import '../features/add_request/requests/loan_request_screen.dart';
 import '../features/add_request/requests/permission_details.dart';
 import '../features/add_request/requests/vacation_request.dart';
 import '../features/assets/assets_screen.dart';
-import '../features/attendance/page/attendance.dart';
 import '../features/auth/pages/forget_password.dart';
 import '../features/auth/pages/login.dart';
 import '../features/auth/pages/reset_password.dart';
@@ -41,10 +40,13 @@ abstract class CustomNavigator {
     switch (settings.name) {
       case Routes.APP:
         return _pageRoute(const MyApp());
+
       case Routes.SPLASH:
         return _pageRoute(const Splash());
+
       case Routes.LOGIN:
         return _pageRoute(const LoginScreen());
+
       case Routes.FORGET_PASSWORD:
         return _pageRoute(const ForgetPasswordScreen());
       case Routes.VERIFICATION_CODE:
@@ -57,26 +59,35 @@ abstract class CustomNavigator {
         return _pageRoute(RequestDetails(
           model: settings.arguments as Model,
         ));
+
+      ///Requests
       case Routes.ADD_REQUEST:
         return _pageRoute(const AddRequestScreen());
+
       case Routes.LOAN_REQUEST:
         return _pageRoute(const LoanRequestScreen());
+
       case Routes.EXPENSE_CLAIM_REQUEST:
         return _pageRoute(const ExpenseRequestScreen());
+
       case Routes.PERMISSIN_REQUEST:
         return _pageRoute(const PermissionRequestScreen());
+
       case Routes.VACATION_REQUEST:
         return _pageRoute(const VacationRequest());
+
       case Routes.BUSINESS_TRIP_REQUEST:
         return _pageRoute(const BusinessTripRequest());
+
       case Routes.LETTER_REQUEST:
         return _pageRoute(const LetterRequest());
+
       case Routes.ASSET_REQUEST:
         return _pageRoute(const AssetRequest());
+
       case Routes.CLEAR_ASSET_REQUEST:
         return _pageRoute(const ClearAssetRequest());
-      case Routes.ATTENDANCE_LEAVING:
-        return _pageRoute(const Attendance());
+
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());
       case Routes.CHANGE_PASSWORD:

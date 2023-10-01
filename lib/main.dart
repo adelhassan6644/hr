@@ -12,7 +12,6 @@ import 'data/config/di.dart';
 import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'features/auth/pages/login.dart';
 import 'navigation/custom_navigation.dart';
 import 'navigation/routes.dart';
 import 'package:hr_project/data/config/di.dart' as di;
@@ -79,7 +78,6 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const LoginScreen(),
     );
   }
 }
