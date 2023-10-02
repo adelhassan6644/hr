@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/features/profile/widgets/profile_image_widget.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/features/profile/widgets/profile_image_widget.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
@@ -20,9 +20,10 @@ class Profile extends StatelessWidget {
               child: ListAnimator(
                 customPadding: EdgeInsets.symmetric(
                     horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                data:   [
+                data: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                    padding: EdgeInsets.symmetric(
+                        vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                     child: const Center(child: ProfileImageWidget()),
                   ),
                   const ProfileBody()

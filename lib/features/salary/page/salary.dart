@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/components/animated_widget.dart';
-import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/components/animated_widget.dart';
+import 'package:yusrPlus/navigation/custom_navigation.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';

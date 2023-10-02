@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/dimensions.dart';
 import '../app/core/images.dart';

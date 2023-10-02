@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/main_page/provider/dashboard_provider.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/main_page/provider/dashboard_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../app/core/images.dart';

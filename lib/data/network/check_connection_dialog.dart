@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../../app/core/text_styles.dart';
 import '../../app/localization/language_constant.dart';
 
 class CheckConnectionDialog extends StatelessWidget {
-  const CheckConnectionDialog(
-      {required this.isConnected,
-      Key? key})
+  const CheckConnectionDialog({required this.isConnected, Key? key})
       : super(key: key);
-final bool isConnected;
+  final bool isConnected;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +22,7 @@ final bool isConnected;
           height: 16.h,
         ),
         Text(
-          getTranslated( isConnected?"connected":"no_connection", context),
+          getTranslated(isConnected ? "connected" : "no_connection", context),
           textAlign: TextAlign.center,
           style: AppTextStyles.w400.copyWith(
             fontSize: 14,

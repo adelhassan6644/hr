@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../app/core/color_resources.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/dimensions.dart';
@@ -10,7 +10,12 @@ class CustomTabBar extends StatefulWidget {
   final Function(int)? onTap;
   final List<Tab> myTabs;
   final TabController tabController;
-  const CustomTabBar({required this.myTabs,required this.tabController, required this.onTap,Key? key}) : super(key: key);
+  const CustomTabBar(
+      {required this.myTabs,
+      required this.tabController,
+      required this.onTap,
+      Key? key})
+      : super(key: key);
 
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
@@ -20,7 +25,9 @@ class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(vertical: 10.h,),
+      padding: EdgeInsets.symmetric(
+        vertical: 10.h,
+      ),
       child: Container(
         height: 60.h,
         width: context.width,
@@ -32,9 +39,8 @@ class _CustomTabBarState extends State<CustomTabBar> {
           child: TabBar(
             onTap: widget.onTap,
             controller: widget.tabController,
-            tabs:widget.myTabs,
-            labelPadding:
-            const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+            tabs: widget.myTabs,
+            labelPadding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
             // indicatorSize: TabBarIndicatorSize.label,
             indicatorColor: Colors.transparent,
           ),
@@ -44,7 +50,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
   }
 }
 
-Tab tab ({required bool isSelected,required String label}){
+Tab tab({required bool isSelected, required String label}) {
   return Tab(
     child: Center(
       child: Container(
@@ -57,15 +63,10 @@ Tab tab ({required bool isSelected,required String label}){
         ),
         child: Center(
           child: Text(
-            getTranslated(
-                label,
-                CustomNavigator
-                    .scaffoldState.currentContext!),
+            getTranslated(label, CustomNavigator.scaffoldState.currentContext!),
             style: AppTextStyles.w600.copyWith(
               fontSize: 12,
-              color: isSelected
-                  ? Styles.WHITE
-                  : Styles.disabledColor,
+              color: isSelected ? Styles.WHITE : Styles.disabledColor,
             ),
           ),
         ),

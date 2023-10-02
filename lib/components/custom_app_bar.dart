@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../../navigation/custom_navigation.dart';
 
 import '../app/core/dimensions.dart';
@@ -57,8 +57,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Icon(Icons.arrow_back,
-                                color:
-                                    fromAuth ? Styles.WHITE : Styles.PRIMARY_COLOR),
+                                color: fromAuth
+                                    ? Styles.WHITE
+                                    : Styles.PRIMARY_COLOR),
                           ],
                         ),
                       ))

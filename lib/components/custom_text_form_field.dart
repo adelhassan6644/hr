@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/svg_images.dart';
 import '../app/core/text_styles.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';
@@ -68,26 +68,25 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                               pAssetIcon: Images.salaryIcon,
                               pIconColor: Styles.hintColor);
                         }),
-                        SizedBox(
-                          height: 16.h,
-                        ),
-                        CustomTextFormField(
-                          pAssetIcon: Images.cash,
-                          inputType: TextInputType.number,
-                          sufWidget: Text(
-                            getTranslated("sar", context),
-                            style: AppTextStyles.w500.copyWith(
-                              fontSize: 12,
-                              color: Styles.hintColor,
+
+                        Padding(
+                          padding:  EdgeInsets.symmetric(vertical:16.h),
+                          child: CustomTextFormField(
+                            pAssetIcon: Images.cash,
+                            inputType: TextInputType.number,
+                            sufWidget: Text(
+                              getTranslated("sar", context),
+                              style: AppTextStyles.w500.copyWith(
+                                fontSize: 12,
+                                color: Styles.hintColor,
+                              ),
                             ),
+                            controller: loanAmount,
+                            hint: getTranslated("loan_amount", context),
+                            label: true,
                           ),
-                          controller: loanAmount,
-                          hint: getTranslated("loan_amount", context),
-                          label: true,
                         ),
-                        SizedBox(
-                          height: 16.h,
-                        ),
+
                         CustomSelectDate(
                             valueChanged: (value) {
                               installmentStartDate = value;
@@ -151,7 +150,10 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                           ),
                                         ),
                                         Visibility(
-                                          visible: (selectedMechanism == getTranslated("A_specified_monthly_amount", context)),
+                                          visible: (selectedMechanism ==
+                                              getTranslated(
+                                                  "A_specified_monthly_amount",
+                                                  context)),
                                           child: CustomTextFormField(
                                             pAssetIcon: Images.cash,
                                             controller: amount,
@@ -164,12 +166,14 @@ class _LoanRequestScreenState extends State<LoanRequestScreen> {
                                                 color: Styles.hintColor,
                                               ),
                                             ),
-                                            hint: getTranslated("amount", context),
+                                            hint: getTranslated(
+                                                "amount", context),
                                             label: true,
                                           ),
                                         ),
                                         Visibility(
-                                          visible: (amount.text.isNotEmpty && loanAmount.text.isNotEmpty),
+                                          visible: (amount.text.isNotEmpty &&
+                                              loanAmount.text.isNotEmpty),
                                           child: Padding(
                                             padding: EdgeInsets.only(top: 16.h),
                                             child: CustomTextFormField(

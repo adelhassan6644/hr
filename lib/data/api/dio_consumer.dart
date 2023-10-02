@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
-import 'package:hr_project/data/config/di.dart' as di;
+import 'package:yusrPlus/data/config/di.dart' as di;
 import '../error/exceptions.dart';
 import 'api_consumer.dart';
 import 'app_interceptors.dart';

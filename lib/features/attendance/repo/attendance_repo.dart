@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../../../data/api/end_points.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -30,9 +30,8 @@ class AttendanceRepo extends BaseRepo {
   Future<Either<ServerFailure, Response>> getDaySchedules(DateTime day) async {
     try {
       Response response = await dioClient.post(
-        uri: EndPoints.daySchedules(userId),
-          data: {"day": day.defaultFormat2()}
-      );
+          uri: EndPoints.daySchedules(userId),
+          data: {"day": day.defaultFormat2()});
       if (response.statusCode == 200) {
         return Right(response);
       } else {

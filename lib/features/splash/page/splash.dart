@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/images.dart';
 import '../../../data/config/di.dart';

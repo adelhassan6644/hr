@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'app_strings.dart';
 import 'color_resources.dart';
 import 'dimensions.dart';
 
-
- const OutlineInputBorder disableBorderStyle =   OutlineInputBorder(
+const OutlineInputBorder disableBorderStyle = OutlineInputBorder(
   borderRadius: BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
@@ -16,7 +14,7 @@ import 'dimensions.dart';
   ),
 );
 
- const OutlineInputBorder focusBorderStyle =   OutlineInputBorder(
+const OutlineInputBorder focusBorderStyle = OutlineInputBorder(
   borderRadius: BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
@@ -26,7 +24,7 @@ import 'dimensions.dart';
   ),
 );
 
-  OutlineInputBorder errorOutLineInputBorderStyle =   const OutlineInputBorder(
+OutlineInputBorder errorOutLineInputBorderStyle = const OutlineInputBorder(
   borderRadius: BorderRadius.all(
     Radius.circular(Dimensions.PADDING_SIZE_DEFAULT),
   ),
@@ -37,30 +35,22 @@ import 'dimensions.dart';
   ),
 );
 
-const TextStyle darkTextStyle = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w700);
+const TextStyle darkTextStyle =
+    TextStyle(fontSize: 14, fontWeight: FontWeight.w700);
 
 const TextStyle hintTextStyle = TextStyle(
-    fontSize: 12,
-    color: Styles.hintColor,
-    fontWeight: FontWeight.w600);
+    fontSize: 12, color: Styles.hintColor, fontWeight: FontWeight.w600);
 
-const TextStyle titleTextStyle = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w700);
+const TextStyle titleTextStyle =
+    TextStyle(fontSize: 14, fontWeight: FontWeight.w700);
 
-const TextStyle headLineTextStyle = TextStyle(
-    fontSize: 26,
-    fontWeight: FontWeight.w900);
-const TextStyle subHeadLineTextStyle = TextStyle(
-    fontSize: 22,
-    fontWeight: FontWeight.w900);
+const TextStyle headLineTextStyle =
+    TextStyle(fontSize: 26, fontWeight: FontWeight.w900);
+const TextStyle subHeadLineTextStyle =
+    TextStyle(fontSize: 22, fontWeight: FontWeight.w900);
 
 const TextStyle errorHintTextStyle = TextStyle(
-    fontSize: 13,
-    color: Styles.errorHintColor,
-    fontWeight: FontWeight.w600);
+    fontSize: 13, color: Styles.errorHintColor, fontWeight: FontWeight.w600);
 
 const TextStyle selectTextStyle = TextStyle(
     color: Styles.PRIMARY_COLOR,
@@ -73,32 +63,24 @@ const TextStyle unSelectTextStyle = TextStyle(
     fontFamily: AppStrings.fontFamily,
     fontWeight: FontWeight.w500);
 
-
- BoxDecoration decoration1 = BoxDecoration(
-  borderRadius:  const BorderRadius.all(
-      Radius.circular(Dimensions.PADDING_SIZE_DEFAULT)),
+BoxDecoration decoration1 = BoxDecoration(
+  borderRadius:
+      const BorderRadius.all(Radius.circular(Dimensions.PADDING_SIZE_DEFAULT)),
   border: Border.all(
-      width: 1.00,
-      color: Styles.shadowColor,
-      style: BorderStyle.solid),
+      width: 1.00, color: Styles.shadowColor, style: BorderStyle.solid),
 );
 
- BoxDecoration decoration =BoxDecoration(
+BoxDecoration decoration = BoxDecoration(
     borderRadius: const BorderRadius.all(
         Radius.circular(Dimensions.PADDING_SIZE_DEFAULT)),
-    border: Border.all(
-        color: Styles.transparentColor,
-        style: BorderStyle.solid),
+    border:
+        Border.all(color: Styles.transparentColor, style: BorderStyle.solid),
     color: Styles.FILL);
 
-
-
-
- Widget hSpace =  SizedBox(
-   height: Dimensions.PADDING_SIZE_LARGE.h,
- );
-
-Widget wSpace =  SizedBox(
-  width:Dimensions.PADDING_SIZE_LARGE.w,
+Widget hSpace = SizedBox(
+  height: Dimensions.PADDING_SIZE_LARGE.h,
 );
 
+Widget wSpace = SizedBox(
+  width: Dimensions.PADDING_SIZE_LARGE.w,
+);

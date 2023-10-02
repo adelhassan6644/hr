@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
 import '../../../app/core/app_snack_bar.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';

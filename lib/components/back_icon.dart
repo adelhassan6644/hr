@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
 import '../app/core/svg_images.dart';
 import 'custom_images.dart';
 

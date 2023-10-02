@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 
 import '../app/core/text_styles.dart';
-
 
 class CheckBoxListTile extends StatelessWidget {
   const CheckBoxListTile({
@@ -31,9 +30,7 @@ class CheckBoxListTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(2),
                 color: Styles.WHITE,
                 border: Border.all(
-                    color: check
-                        ? Styles.PRIMARY_COLOR
-                        : Styles.disabledColor,
+                    color: check ? Styles.PRIMARY_COLOR : Styles.disabledColor,
                     width: 1)),
             child: check
                 ? const Icon(
@@ -49,9 +46,7 @@ class CheckBoxListTile extends StatelessWidget {
               title,
               style: AppTextStyles.w500.copyWith(
                   fontSize: 14,
-                  color: check
-                      ? Styles.PRIMARY_COLOR
-                      : Styles.disabledColor),
+                  color: check ? Styles.PRIMARY_COLOR : Styles.disabledColor),
             ),
           ),
           if (description != null)
@@ -59,9 +54,7 @@ class CheckBoxListTile extends StatelessWidget {
               description!,
               style: AppTextStyles.w900.copyWith(
                   fontSize: 10,
-                  color: check
-                      ? Styles.PRIMARY_COLOR
-                      : Styles.SUBTITLE),
+                  color: check ? Styles.PRIMARY_COLOR : Styles.SUBTITLE),
             )
         ],
       ),

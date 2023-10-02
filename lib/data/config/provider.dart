@@ -1,6 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:hr_project/data/config/di.dart' as di;
+import 'package:yusrPlus/data/config/di.dart' as di;
 
 import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';

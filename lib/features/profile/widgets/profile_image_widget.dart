@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/components/custom_network_image.dart';
-import 'package:hr_project/main_providers/user_provider.dart';
+import 'package:yusrPlus/components/custom_network_image.dart';
+import 'package:yusrPlus/main_providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';

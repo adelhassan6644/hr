@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/features/home/widget/money_card.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/features/home/widget/money_card.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';

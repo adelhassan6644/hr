@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/app/core/text_styles.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/text_styles.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../app/core/images.dart';
 import '../../navigation/custom_navigation.dart';

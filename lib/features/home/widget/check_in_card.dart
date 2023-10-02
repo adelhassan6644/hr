@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/app/core/text_styles.dart';
-import 'package:hr_project/components/custom_images.dart';
-import 'package:hr_project/components/shimmer/custom_shimmer.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/text_styles.dart';
+import 'package:yusrPlus/components/custom_images.dart';
+import 'package:yusrPlus/components/shimmer/custom_shimmer.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/app/localization/language_constant.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/app/localization/language_constant.dart';
 import '../../../app/core/images.dart';
 import '../../../components/custom_expansion_tile.dart';
 import '../../../components/custom_image_picker_widget.dart';

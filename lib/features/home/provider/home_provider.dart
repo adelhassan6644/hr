@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hr_project/features/attendance/model/schedules_model.dart';
+import 'package:yusrPlus/features/attendance/model/schedules_model.dart';
 import '../../../app/core/app_snack_bar.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../components/loading_dialog.dart';
@@ -54,32 +54,33 @@ class HomeProvider extends ChangeNotifier {
   checkIn() async {
     if (await LocationHelper.checkLocation()) {
       // try {
-        loadingDialog();
-        notifyListeners();
-        print(closestSchedule?.scheduleId);
-        Either<ServerFailure, Response> response =
-            await repo.checkIn(scheduleModel:  closestSchedule!, isAttend: closestSchedule?.isAttend??true);
-        response.fold((fail) {
-          AlertHelper.startAlarm(isEnter: true);
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: fail.error,
-                  isFloating: true,
-                  backgroundColor: Styles.IN_ACTIVE,
-                  borderColor: Styles.transparentColor));
-        }, (success) {
-          checkOnSchedule();
-          AlertHelper.startAlarm(isEnter: true);
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: success.data["message"]??"",
-                  isFloating: true,
-                  backgroundColor: Styles.ACTIVE,
-                  borderColor: Styles.transparentColor));
-        });
+      loadingDialog();
+      notifyListeners();
+      print(closestSchedule?.scheduleId);
+      Either<ServerFailure, Response> response = await repo.checkIn(
+          scheduleModel: closestSchedule!,
+          isAttend: closestSchedule?.isAttend ?? true);
+      response.fold((fail) {
+        AlertHelper.startAlarm(isEnter: true);
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Styles.transparentColor));
+      }, (success) {
+        checkOnSchedule();
+        AlertHelper.startAlarm(isEnter: true);
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: success.data["message"] ?? "",
+                isFloating: true,
+                backgroundColor: Styles.ACTIVE,
+                borderColor: Styles.transparentColor));
+      });
 
-        CustomNavigator.pop();
-        notifyListeners();
+      CustomNavigator.pop();
+      notifyListeners();
       // } catch (e) {
       //   CustomNavigator.pop();
       //   CustomSnackBar.showSnackBar(

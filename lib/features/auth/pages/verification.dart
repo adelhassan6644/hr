@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
@@ -42,7 +42,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     subTitle: getTranslated(
                         "please_enter_verification_code", context),
                   ),
-
                   Form(
                     key: formKey,
                     child: Column(
@@ -53,17 +52,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             vertical: 12.h,
                           ),
                           child: Directionality(
-                              textDirection:
-                              TextDirection.ltr,
+                              textDirection: TextDirection.ltr,
                               child: CustomPinCodeField(
                                   validation: Validations.code,
-                                  controller:
-                                  provider.codeTEC,
+                                  controller: provider.codeTEC,
                                   onChanged: (v) {})),
                         ),
                         Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             CountDown(
                               onCount: () => provider.reSendOTP(),

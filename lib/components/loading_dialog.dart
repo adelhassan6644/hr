@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/components/custom_images.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/components/custom_images.dart';
 import 'dart:ui' as ui;
 
 import '../app/core/dimensions.dart';

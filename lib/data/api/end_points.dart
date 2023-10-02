@@ -18,6 +18,11 @@ class EndPoints {
   static const String getVerificationCode = '';
   static salaryDetails(id) => ' / $id';
 
+  ///Requests
+  static const String loanRequest = 'employee/loan/request/store';
+  static  deleteLoanRequest(id) => 'employee/loan/request/destroy/$id';
+
+
   ///App Config
   static const String setting = '';
   static const String contact = '';

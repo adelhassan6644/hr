@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/main_page/provider/dashboard_provider.dart';
+import 'package:yusrPlus/main_page/provider/dashboard_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../data/config/di.dart';

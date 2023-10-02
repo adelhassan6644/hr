@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../components/shimmer/custom_shimmer.dart';

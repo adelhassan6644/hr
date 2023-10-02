@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/components/animated_widget.dart';
-import 'package:hr_project/components/empty_widget.dart';
-import 'package:hr_project/components/shimmer/custom_shimmer.dart';
-import 'package:hr_project/features/attendance/provider/attendance_provider.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/components/animated_widget.dart';
+import 'package:yusrPlus/components/empty_widget.dart';
+import 'package:yusrPlus/components/shimmer/custom_shimmer.dart';
+import 'package:yusrPlus/features/attendance/provider/attendance_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/localization/language_constant.dart';
@@ -45,7 +45,7 @@ class _AttendanceLeavingScreen extends State<Attendance> {
                   child: Column(
                     children: [
                       ///Calender
-                      Expanded(child:  CalenderWidget()),
+                      Expanded(child: CalenderWidget()),
 
                       ///Schedules
                       Expanded(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/features/profile/widgets/profile_image_widget.dart';
-import 'package:hr_project/main_providers/user_provider.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/features/profile/widgets/profile_image_widget.dart';
+import 'package:yusrPlus/main_providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';

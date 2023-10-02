@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/app/core/text_styles.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/text_styles.dart';
 import '../../../../app/core/dimensions.dart';
 import '../../../../app/core/images.dart';
 import '../../app/localization/language_constant.dart';
@@ -15,15 +15,18 @@ class DocumentsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(
-          title:getTranslated("documents",context),
+          title: getTranslated("documents", context),
         ),
-        body:  SizedBox(
+        body: SizedBox(
           height: context.height,
           child: ListAnimator(
             data: [
-              SizedBox(height: 24.h,),
+              SizedBox(
+                height: 24.h,
+              ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
                 child: Container(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -37,10 +40,15 @@ class DocumentsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(getTranslated("personal_documents", context),style: AppTextStyles.w600.copyWith(
-                        fontSize: 16.0,
-                      ),),
-                      SizedBox(height: 24.h,),
+                      Text(
+                        getTranslated("personal_documents", context),
+                        style: AppTextStyles.w600.copyWith(
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
@@ -49,28 +57,45 @@ class DocumentsScreen extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            Image.asset(Images.document,color: Styles.disabledColor,height: 20.h,width: 20.w,),
-                            SizedBox(width: 10.w,),
-                            Expanded(
-                              child: Text("Passport",style: AppTextStyles.w500.copyWith(
-                                color: Styles.HEADER,
-                                fontSize: 16,
-                              ),),
+                            Image.asset(
+                              Images.document,
+                              color: Styles.disabledColor,
+                              height: 20.h,
+                              width: 20.w,
                             ),
-                            Icon(Icons.download,size: 20.w,color: Styles.disabledColor,)
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Passport",
+                                style: AppTextStyles.w500.copyWith(
+                                  color: Styles.HEADER,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            Icon(
+                              Icons.download,
+                              size: 20.w,
+                              color: Styles.disabledColor,
+                            )
                           ],
                         ),
                       ),
-                      SizedBox(height: 24.h,),
-
-
+                      SizedBox(
+                        height: 24.h,
+                      ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 24.h,),
+              SizedBox(
+                height: 24.h,
+              ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
                 child: Container(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -84,10 +109,15 @@ class DocumentsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(getTranslated("employee_documents", context),style: AppTextStyles.w600.copyWith(
-                        fontSize: 16.0,
-                      ),),
-                      SizedBox(height: 24.h,),
+                      Text(
+                        getTranslated("employee_documents", context),
+                        style: AppTextStyles.w600.copyWith(
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
@@ -96,28 +126,45 @@ class DocumentsScreen extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            Image.asset(Images.document,color: Styles.disabledColor,height: 20.h,width: 20.w,),
-                            SizedBox(width: 10.w,),
-                            Expanded(
-                              child: Text("Employee file",style: AppTextStyles.w500.copyWith(
-                                color: Styles.HEADER,
-                                fontSize: 16,
-                              ),),
+                            Image.asset(
+                              Images.document,
+                              color: Styles.disabledColor,
+                              height: 20.h,
+                              width: 20.w,
                             ),
-                            Icon(Icons.download,size: 20.w,color: Styles.disabledColor,)
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Employee file",
+                                style: AppTextStyles.w500.copyWith(
+                                  color: Styles.HEADER,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            Icon(
+                              Icons.download,
+                              size: 20.w,
+                              color: Styles.disabledColor,
+                            )
                           ],
                         ),
                       ),
-                      SizedBox(height: 24.h,),
-
-
+                      SizedBox(
+                        height: 24.h,
+                      ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 24.h,),
+              SizedBox(
+                height: 24.h,
+              ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
                 child: Container(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -131,10 +178,15 @@ class DocumentsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(getTranslated("company_documents", context),style: AppTextStyles.w600.copyWith(
-                        fontSize: 16.0,
-                      ),),
-                      SizedBox(height: 24.h,),
+                      Text(
+                        getTranslated("company_documents", context),
+                        style: AppTextStyles.w600.copyWith(
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
@@ -143,31 +195,44 @@ class DocumentsScreen extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            Image.asset(Images.document,color: Styles.disabledColor,height: 20.h,width: 20.w,),
-                            SizedBox(width: 10.w,),
-                            Expanded(
-                              child: Text("Company file",style: AppTextStyles.w500.copyWith(
-                                color: Styles.HEADER,
-                                fontSize: 16,
-                              ),),
+                            Image.asset(
+                              Images.document,
+                              color: Styles.disabledColor,
+                              height: 20.h,
+                              width: 20.w,
                             ),
-                            Icon(Icons.download,size: 20.w,color: Styles.disabledColor,)
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Company file",
+                                style: AppTextStyles.w500.copyWith(
+                                  color: Styles.HEADER,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            Icon(
+                              Icons.download,
+                              size: 20.w,
+                              color: Styles.disabledColor,
+                            )
                           ],
                         ),
                       ),
-                      SizedBox(height: 24.h,),
-
-
+                      SizedBox(
+                        height: 24.h,
+                      ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 24.h,),
-
+              SizedBox(
+                height: 24.h,
+              ),
             ],
           ),
-        )
-
-    );
+        ));
   }
 }

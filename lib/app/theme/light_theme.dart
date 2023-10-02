@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
 
 import '../core/app_strings.dart';
 import '../core/dimensions.dart';
 import '../core/text_styles.dart';
-
 
 ThemeData light = ThemeData(
   fontFamily: AppStrings.fontFamily,
@@ -13,8 +12,7 @@ ThemeData light = ThemeData(
   brightness: Brightness.light,
   // accentColor: Colors.white,
   colorScheme: const ColorScheme.light(
-      primary: Styles.PRIMARY_COLOR,
-      secondary: Styles.PRIMARY_COLOR),
+      primary: Styles.PRIMARY_COLOR, secondary: Styles.PRIMARY_COLOR),
 
   scaffoldBackgroundColor: Styles.BACKGROUND_COLOR,
   focusColor: const Color(0xFFADC4C8),

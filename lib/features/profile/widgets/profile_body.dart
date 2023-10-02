@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/features/profile/widgets/profile_details_card.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/features/profile/widgets/profile_details_card.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';

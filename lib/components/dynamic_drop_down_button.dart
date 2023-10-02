@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/dimensions.dart';
 import '../app/core/text_styles.dart';
@@ -154,9 +154,7 @@ class _DynamicDropDownButtonState extends State<DynamicDropDownButton> {
               ),
             ),
             borderSide: BorderSide(
-                color: Styles.IN_ACTIVE,
-                width: 1,
-                style: BorderStyle.solid),
+                color: Styles.IN_ACTIVE, width: 1, style: BorderStyle.solid),
           ),
           focusedErrorBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
@@ -165,9 +163,7 @@ class _DynamicDropDownButtonState extends State<DynamicDropDownButton> {
               ),
             ),
             borderSide: BorderSide(
-                color: Styles.IN_ACTIVE,
-                width: 1,
-                style: BorderStyle.solid),
+                color: Styles.IN_ACTIVE, width: 1, style: BorderStyle.solid),
           ),
           contentPadding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
           prefixIconConstraints: BoxConstraints(

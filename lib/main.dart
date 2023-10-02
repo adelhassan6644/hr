@@ -1,5 +1,5 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hr_project/app/core/un_focus.dart';
+import 'package:yusrPlus/app/core/un_focus.dart';
 import 'package:provider/provider.dart';
 import 'app/core/app_storage_keys.dart';
 import 'app/core/app_strings.dart';
@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'navigation/custom_navigation.dart';
 import 'navigation/routes.dart';
-import 'package:hr_project/data/config/di.dart' as di;
+import 'package:yusrPlus/data/config/di.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

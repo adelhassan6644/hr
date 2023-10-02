@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';
@@ -23,13 +23,11 @@ class AssetRequest extends StatefulWidget {
 class _AssetRequestState extends State<AssetRequest> {
   late TextEditingController reason;
 
-
   @override
   void initState() {
     reason = TextEditingController();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +43,6 @@ class _AssetRequestState extends State<AssetRequest> {
           height: context.height,
           child: ListAnimator(
             data: [
-
               /// The Letter Details
               Container(
                 padding: EdgeInsets.symmetric(
@@ -76,14 +73,13 @@ class _AssetRequestState extends State<AssetRequest> {
                     ),
                     Consumer<AddRequestProvider>(
                         builder: (context, addRequestProvider, child) {
-                          return CustomDropDownButton(
-                              items: addRequestProvider.loanTypes,
-                              onChange: addRequestProvider.onSelectLoanType,
-                              name: getTranslated("asset_type", context),
-                              // pIcon: Images.assetsIcon,
-                              pIconColor: Styles.hintColor);
-                        }
-                    ),
+                      return CustomDropDownButton(
+                          items: addRequestProvider.loanTypes,
+                          onChange: addRequestProvider.onSelectLoanType,
+                          name: getTranslated("asset_type", context),
+                          // pIcon: Images.assetsIcon,
+                          pIconColor: Styles.hintColor);
+                    }),
                   ],
                 ),
               ),
@@ -100,12 +96,12 @@ class _AssetRequestState extends State<AssetRequest> {
               ///Submit
               Consumer<AddRequestProvider>(
                   builder: (context, addRequestProvider, child) {
-                    return CustomButton(
-                        textColor: Styles.WHITE,
-                        text: getTranslated("submit", context),
-                        onTap: () => addRequestProvider.onSubmit(),
-                        backgroundColor: Styles.PRIMARY_COLOR);
-                  })
+                return CustomButton(
+                    textColor: Styles.WHITE,
+                    text: getTranslated("submit", context),
+                    onTap: () => addRequestProvider.onSubmit(),
+                    backgroundColor: Styles.PRIMARY_COLOR);
+              })
             ],
           ),
         ),

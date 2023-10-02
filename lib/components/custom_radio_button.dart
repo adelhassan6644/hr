@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/app/core/text_styles.dart';
-import 'package:hr_project/components/custom_images.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/text_styles.dart';
+import 'package:yusrPlus/components/custom_images.dart';
 
 import '../app/core/dimensions.dart';
 

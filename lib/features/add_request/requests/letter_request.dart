@@ -1,11 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
@@ -25,12 +24,10 @@ class LetterRequest extends StatefulWidget {
 }
 
 class _LetterRequestState extends State<LetterRequest> {
-
   late TextEditingController reason;
 
   DateTime? date;
   File? image;
-
 
   @override
   void initState() {
@@ -52,24 +49,20 @@ class _LetterRequestState extends State<LetterRequest> {
           height: context.height,
           child: ListAnimator(
             data: [
-
               /// The Letter Details
               Container(
                 padding: EdgeInsets.symmetric(
                     horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
                     vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.w),
-                    border: Border.all(
-                        color: Styles.BORDER_COLOR,
-                        width: 0.5,
-                        style: BorderStyle.solid)),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Styles.BORDER_COLOR)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.w,
+                      padding: EdgeInsets.only(
+                        bottom:  16.h,
                       ),
                       child: Text(
                         getTranslated("letter_details", context),
@@ -78,19 +71,16 @@ class _LetterRequestState extends State<LetterRequest> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 16.h,
-                    ),
+
                     Consumer<AddRequestProvider>(
                         builder: (context, addRequestProvider, child) {
-                          return CustomDropDownButton(
-                              items: addRequestProvider.loanTypes,
-                              onChange: addRequestProvider.onSelectLoanType,
-                              name: getTranslated("letter_type", context),
-                              // pIcon: Images.letter,
-                              pIconColor: Styles.hintColor);
-                        }
-                    ),
+                      return CustomDropDownButton(
+                          items: addRequestProvider.loanTypes,
+                          onChange: addRequestProvider.onSelectLoanType,
+                          name: getTranslated("letter_type", context),
+                          // pIcon: Images.letter,
+                          pIconColor: Styles.hintColor);
+                    }),
                     SizedBox(
                       height: 16.h,
                     ),
@@ -101,8 +91,7 @@ class _LetterRequestState extends State<LetterRequest> {
                             date = value;
                           });
                         },
-                        label: getTranslated("date", context)
-                    ),
+                        label: getTranslated("date", context)),
                     SizedBox(
                       height: 16.h,
                     ),
@@ -112,7 +101,7 @@ class _LetterRequestState extends State<LetterRequest> {
                       // removePIcon: false,
                       // tIconColor: Styles.hintColor,
                       hint: getTranslated("subject_to_en", context),
-                      onTap: (){},
+                      onTap: () {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -123,7 +112,7 @@ class _LetterRequestState extends State<LetterRequest> {
                       label: true,
                       // tIconColor: Styles.hintColor,
                       hint: getTranslated("subject_to_ar", context),
-                      onTap: (){},
+                      onTap: () {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -144,12 +133,12 @@ class _LetterRequestState extends State<LetterRequest> {
               ///Submit
               Consumer<AddRequestProvider>(
                   builder: (context, addRequestProvider, child) {
-                    return CustomButton(
-                        textColor: Styles.WHITE,
-                        text: getTranslated("submit", context),
-                        onTap: () => addRequestProvider.onSubmit(),
-                        backgroundColor: Styles.PRIMARY_COLOR);
-                  })
+                return CustomButton(
+                    textColor: Styles.WHITE,
+                    text: getTranslated("submit", context),
+                    onTap: () => addRequestProvider.onSubmit(),
+                    backgroundColor: Styles.PRIMARY_COLOR);
+              })
             ],
           ),
         ),

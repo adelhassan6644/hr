@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/svg_images.dart';
@@ -58,7 +58,7 @@ class ConfirmationDialog extends StatelessWidget {
               onTap: () => CustomNavigator.pop(),
               text: txtBtn2 ?? "رجوع",
               backgroundColor: Styles.PRIMARY_COLOR.withOpacity(0.1),
-              textColor:Styles.PRIMARY_COLOR,
+              textColor: Styles.PRIMARY_COLOR,
             ))
           ],
         )

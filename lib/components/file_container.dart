@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/svg_images.dart';
 import '../app/core/text_styles.dart';
@@ -56,8 +56,8 @@ class FileContainer extends StatelessWidget {
                             Text(
                               FilePickerHelper.getName(
                                   attachments![index].path),
-                              style: AppTextStyles.w700.copyWith(
-                                  color: Styles.HEADER, fontSize: 12),
+                              style: AppTextStyles.w700
+                                  .copyWith(color: Styles.HEADER, fontSize: 12),
                             ),
                             SizedBox(
                               height: 8.h,
@@ -70,8 +70,7 @@ class FileContainer extends StatelessWidget {
                                 return Text(
                                   snapshot.hasData ? "${snapshot.data}" : "",
                                   style: AppTextStyles.w700.copyWith(
-                                      color: Styles.HEADER
-                                          .withOpacity(0.4),
+                                      color: Styles.HEADER.withOpacity(0.4),
                                       fontSize: 10),
                                 );
                               },

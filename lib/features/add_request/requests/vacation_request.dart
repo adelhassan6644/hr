@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';
@@ -107,8 +107,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                 child: Text(
                                   getTranslated("start_date", context),
                                   style: AppTextStyles.w500.copyWith(
-                                      fontSize: 13,
-                                      color: Styles.SUBTITLE),
+                                      fontSize: 13, color: Styles.SUBTITLE),
                                 ),
                               ),
                               SizedBox(
@@ -138,8 +137,7 @@ class _VacationRequestState extends State<VacationRequest> {
                                 child: Text(
                                   getTranslated("end_date", context),
                                   style: AppTextStyles.w500.copyWith(
-                                      fontSize: 13,
-                                      color: Styles.SUBTITLE),
+                                      fontSize: 13, color: Styles.SUBTITLE),
                                 ),
                               ),
                               SizedBox(

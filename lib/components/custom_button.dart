@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/text_styles.dart';
 import 'custom_images.dart';
@@ -61,7 +61,7 @@ class CustomButton extends StatelessWidget {
           }
         },
         child: Container(
-          width:  width ?? context.width,
+          width: width ?? context.width,
           height: height ?? 50.h,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           decoration: BoxDecoration(

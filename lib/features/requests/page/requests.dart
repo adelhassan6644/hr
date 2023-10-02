@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/features/request_details/page/request_details.dart';
-import 'package:hr_project/features/requests/widgets/request_card.dart';
-import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/features/request_details/page/request_details.dart';
+import 'package:yusrPlus/features/requests/widgets/request_card.dart';
+import 'package:yusrPlus/navigation/custom_navigation.dart';
 
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/text_styles.dart';

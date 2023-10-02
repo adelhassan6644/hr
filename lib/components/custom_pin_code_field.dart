@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../app/core/color_resources.dart';
@@ -34,8 +34,7 @@ class CustomPinCodeField extends StatelessWidget {
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
       textStyle: AppTextStyles.w700.copyWith(color: Styles.PRIMARY_COLOR),
-      pastedTextStyle:
-          AppTextStyles.w700.copyWith(color: Styles.HEADER),
+      pastedTextStyle: AppTextStyles.w700.copyWith(color: Styles.HEADER),
       textInputAction: TextInputAction.done,
       pinTheme: PinTheme(
         borderWidth: 1,

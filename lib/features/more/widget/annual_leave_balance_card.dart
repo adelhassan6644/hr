@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/navigation/custom_navigation.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/navigation/custom_navigation.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';

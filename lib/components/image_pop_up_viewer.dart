@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../app/core/color_resources.dart';
 import '../app/core/text_styles.dart';
 import '../navigation/custom_navigation.dart';
@@ -34,8 +34,7 @@ class ImagePopUpViewer extends StatelessWidget {
               height: 35.h,
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                  color: Styles.WHITE,
-                  borderRadius: BorderRadius.circular(40)),
+                  color: Styles.WHITE, borderRadius: BorderRadius.circular(40)),
               child: Center(
                 child: Icon(
                   Icons.close,

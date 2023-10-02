@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/color_resources.dart';
+import 'package:yusrPlus/app/core/color_resources.dart';
 import '../app/core/dimensions.dart';
 import 'custom_images.dart';
 
@@ -92,7 +92,9 @@ class TabWidget extends StatelessWidget {
             LayoutBuilder(builder: (context, constr) {
               return Container(
                 padding: EdgeInsets.zero,
-                width: expand? constr.maxWidth: (width ?? 50 + (2 * innerHPadding)),
+                width: expand
+                    ? constr.maxWidth
+                    : (width ?? 50 + (2 * innerHPadding)),
                 height: 4,
                 margin: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(

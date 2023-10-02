@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/extensions.dart';
-import 'package:hr_project/features/requests/widgets/title_container.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/features/requests/widgets/title_container.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
@@ -29,7 +29,8 @@ class RequestCard extends StatelessWidget {
       highlightColor: Colors.transparent,
       child: Container(
         width: context.width,
-        margin: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
+        margin: EdgeInsets.symmetric(
+            vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
         padding:
             EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
         decoration: BoxDecoration(

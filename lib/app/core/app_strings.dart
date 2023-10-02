@@ -1,5 +1,5 @@
 class AppStrings {
-  static const String appName = 'Hr';
+  static const String appName = 'يُسر بلس';
   static const String fontFamily = 'URWDINArabic';
   static const String noRouteFound = 'No Route Found';
   static const String cachedRandomQuote = 'CACHED_RANDOM_QUOTE';

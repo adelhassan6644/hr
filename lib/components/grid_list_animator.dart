@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 
 class GridListAnimatorWidget extends StatelessWidget {
   const GridListAnimatorWidget(
-      {this.aspectRatio, required this.items,this.physics ,Key? key})
+      {this.aspectRatio, required this.items, this.physics, Key? key})
       : super(key: key);
   final List<Widget> items;
   final double? aspectRatio;
@@ -13,7 +13,7 @@ class GridListAnimatorWidget extends StatelessWidget {
     return GridView.count(
       padding: EdgeInsets.only(top: 20.h),
       crossAxisCount: 2,
-      physics: physics?? const BouncingScrollPhysics(),
+      physics: physics ?? const BouncingScrollPhysics(),
       shrinkWrap: true,
       addAutomaticKeepAlives: true,
       mainAxisSpacing: 8.h,

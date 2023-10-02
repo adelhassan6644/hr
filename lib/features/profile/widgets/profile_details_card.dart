@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_project/app/core/dimensions.dart';
-import 'package:hr_project/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/dimensions.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/text_styles.dart';
