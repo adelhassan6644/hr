@@ -66,19 +66,39 @@ class _LoanRequestState extends State<LoanRequest> {
                                 ),
                                 controller: TextEditingController(
                                     text:
-                                        provider.selectedLoanType?.title ?? ""),
+                                        provider.selectedLoanType?.name ?? ""),
                                 hint: getTranslated("loan_type", context),
                                 read: true,
-                                onTap: () => CustomBottomSheet.show(
-                                    label: getTranslated("loan_type", context),
-                                    height: 400.h,
-                                    list: CustomSingleSelector(
-                                      onConfirm: provider.onSelectLoanType,
-                                      list: provider.loanTypes,
-                                      initialValue:
-                                          provider.selectedLoanType?.id,
-                                    ),
-                                    onConfirm: () => CustomNavigator.pop()),
+                                onTap: () {
+                                  if(provider.isGetting){
+                                    CustomSnackBar.showSnackBar(
+                                        notification: AppNotification(
+                                            message: getTranslated("please_wait", context),
+                                            isFloating: true,
+                                            backgroundColor: Styles.PENDING,
+                                            borderColor: Colors.transparent));
+                                  }else if (!provider.isGetting && provider.loanTypes.isEmpty){
+                                    CustomSnackBar.showSnackBar(
+                                        notification: AppNotification(
+                                            message: getTranslated("there_is_no_data", context),
+                                            isFloating: true,
+                                            backgroundColor: Styles.PENDING,
+                                            borderColor: Colors.transparent));
+                                  }
+                                  else {
+                                    CustomBottomSheet.show(
+                                        label:
+                                            getTranslated("loan_type", context),
+                                        height: 400.h,
+                                        list: CustomSingleSelector(
+                                          onConfirm: provider.onSelectLoanType,
+                                          list: provider.loanTypes,
+                                          initialValue:
+                                              provider.selectedLoanType?.id,
+                                        ),
+                                        onConfirm: () => CustomNavigator.pop());
+                                  }
+                                },
                                 valid: (v) => Validations.required(v,
                                     getTranslated("select_loan_type", context)),
                               ),
@@ -133,7 +153,7 @@ class _LoanRequestState extends State<LoanRequest> {
                                 ),
                                 controller: TextEditingController(
                                     text: provider.selectedInstallmentMethods
-                                            ?.title ??
+                                            ?.name ??
                                         ""),
                                 hint: getTranslated(
                                     "type_monthly_installment", context),

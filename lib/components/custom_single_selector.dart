@@ -61,7 +61,7 @@ class _CustomSingleSelectorState extends State<CustomSingleSelector> {
                   children: [
                     Expanded(
                       child: Text(
-                        widget.list[index].title ?? "",
+                        widget.list[index].name ?? "",
                         style: const TextStyle(
                           fontSize: 14.0,
                           color: Styles.PRIMARY_COLOR,

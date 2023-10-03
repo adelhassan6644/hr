@@ -11,15 +11,11 @@ import '../repo/permission_request_repo.dart';
 
 class PermissionRequestProvider extends ChangeNotifier {
   final PermissionRequestRepo repo;
-  PermissionRequestProvider({required this.repo});
+  PermissionRequestProvider({required this.repo}){
+    getTypes();
+  }
 
   final TextEditingController reason = TextEditingController();
-
-  List<CustomSelectModel> permissionTypes = [
-    CustomSelectModel(id: 1, title: "title"),
-    CustomSelectModel(id: 2, title: "title2"),
-    CustomSelectModel(id: 3, title: "title3"),
-  ];
 
   CustomSelectModel? selectedPermissionType;
   onSelectLoanType(v) {
@@ -56,6 +52,41 @@ class PermissionRequestProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<CustomSelectModel> types = [];
+  bool isGetting = false;
+  getTypes() async {
+    try {
+      isGetting = true;
+      types.clear();
+      notifyListeners();
+
+      Either<ServerFailure, Response> response = await repo.getTypes();
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Colors.transparent));
+      }, (success) {
+        if (success.data["data"] != null) {
+          types = List<CustomSelectModel>.from(
+              success.data["data"].map((x) => CustomSelectModel.fromJson(x)));
+        }
+      });
+      isGetting = false;
+      notifyListeners();
+    } catch (e) {
+      isGetting = false;
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+      notifyListeners();
+    }
+  }
 
   bool isLoading = false;
   onSubmit() async {

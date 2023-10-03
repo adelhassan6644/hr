@@ -52,7 +52,7 @@ class More extends StatelessWidget {
                     onTap: () => CustomNavigator.push(Routes.DOCUMENTS)),
 
                 MoreNavigateCard(
-                    name: getTranslated("assets", context),
+                    name: getTranslated("covenant", context),
                     iconAsset: Images.assetsIcon,
                     onTap: () => CustomNavigator.push(Routes.ASSETS)),
 

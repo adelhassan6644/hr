@@ -6,6 +6,8 @@ import '../../features/add_request/requests/expenses_request/repo/expenses_reque
 import '../../features/add_request/requests/loan_request/repo/loan_request_repo.dart';
 import '../../features/add_request/requests/permission_request/repo/permission_request_repo.dart';
 import '../../features/add_request/requests/vacation_request/repo/vacation_request_repo.dart';
+import '../../features/covenant/provider/covenant_provider.dart';
+import '../../features/covenant/repo/covenant_repo.dart';
 import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/attendance/provider/attendance_provider.dart';
@@ -46,6 +48,9 @@ Future<void> init() async {
   sl.registerLazySingleton(
       () => SalaryRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
+      () => CovenantRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
       () => AttendanceRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => ConfigRepo(sharedPreferences: sl(), dioClient: sl()));
@@ -79,7 +84,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => DashboardProvider());
   sl.registerLazySingleton(() => HomeProvider(repo: sl()));
   sl.registerLazySingleton(() => SalaryProvider(repo: sl()));
-
+  sl.registerLazySingleton(() => CovenantProvider(repo: sl()));
   sl.registerLazySingleton(() => AttendanceProvider(repo: sl()));
   sl.registerLazySingleton(() => RequestsProvider(repo: sl()));
   sl.registerLazySingleton(() => ConfigProvider(repo: sl()));

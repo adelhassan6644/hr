@@ -7,7 +7,6 @@ import '../../data/network/netwok_info.dart';
 import '../../features/attendance/page/attendance.dart';
 import '../../features/home/page/home.dart';
 import '../../features/more/page/more.dart';
-import '../../main_providers/user_provider.dart';
 import '../../features/requests/page/requests.dart';
 import '../widget/nav_bar.dart';
 
@@ -22,9 +21,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   void initState() {
     NetworkInfo.checkConnectivity();
-    Future.delayed(Duration.zero, () {
-      sl<UserProvider>().getUserDate();
-    });
+    Future.delayed(Duration.zero, () => sl<DashboardProvider>().init());
     super.initState();
   }
 

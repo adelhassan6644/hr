@@ -23,4 +23,20 @@ class LoanRequestRepo extends BaseRepo {
       return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
+
+
+  Future<Either<ServerFailure, Response>> getTypes() async {
+    try {
+      Response response =
+          await dioClient.get(uri: EndPoints.loanTypes);
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return left(ServerFailure(
+            ApiErrorHandler.getMessage(response.data['message'])));
+      }
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+    }
+  }
 }

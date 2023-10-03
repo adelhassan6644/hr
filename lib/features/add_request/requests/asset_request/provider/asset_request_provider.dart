@@ -11,15 +11,11 @@ import '../repo/asset_request_repo.dart';
 
 class AssetRequestProvider extends ChangeNotifier {
   final AssetRequestRepo repo;
-  AssetRequestProvider({required this.repo});
+  AssetRequestProvider({required this.repo}) {
+    getTypes();
+  }
 
   final TextEditingController reason = TextEditingController();
-
-  List<CustomSelectModel> assetTypes = [
-    CustomSelectModel(id: 1, title: "title"),
-    CustomSelectModel(id: 2, title: "title2"),
-    CustomSelectModel(id: 3, title: "title3"),
-  ];
 
   CustomSelectModel? selectedAssetType;
   onSelectLoanType(v) {
@@ -36,6 +32,42 @@ class AssetRequestProvider extends ChangeNotifier {
   onRemoveAttachments(v) {
     attachments = v;
     notifyListeners();
+  }
+
+  List<CustomSelectModel> types = [];
+  bool isGetting = false;
+  getTypes() async {
+    try {
+      isGetting = true;
+      types.clear();
+      notifyListeners();
+
+      Either<ServerFailure, Response> response = await repo.getTypes();
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Colors.transparent));
+      }, (success) {
+        if (success.data["data"] != null) {
+          types = List<CustomSelectModel>.from(
+              success.data["data"].map((x) => CustomSelectModel.fromJson(x)));
+        }
+      });
+      isGetting = false;
+      notifyListeners();
+    } catch (e) {
+      isGetting = false;
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+      notifyListeners();
+    }
   }
 
   bool isLoading = false;

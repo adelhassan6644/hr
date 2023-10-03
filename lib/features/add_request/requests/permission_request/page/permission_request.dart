@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../app/core/app_snack_bar.dart';
 import '../../../../../app/core/color_resources.dart';
 import '../../../../../app/core/dimensions.dart';
 import '../../../../../app/core/text_styles.dart';
@@ -66,21 +67,42 @@ class _PermissionRequestState extends State<PermissionRequest> {
                               ),
                               controller: TextEditingController(
                                   text:
-                                      provider.selectedPermissionType?.title ??
+                                      provider.selectedPermissionType?.name ??
                                           ""),
                               hint: getTranslated("permission_type", context),
                               read: true,
-                              onTap: () => CustomBottomSheet.show(
-                                  label:
-                                      getTranslated("permission_type", context),
-                                  height: 400.h,
-                                  list: CustomSingleSelector(
-                                    onConfirm: provider.onSelectLoanType,
-                                    list: provider.permissionTypes,
-                                    initialValue:
-                                        provider.selectedPermissionType?.id,
-                                  ),
-                                  onConfirm: () => CustomNavigator.pop()),
+                              onTap: () {
+                                if (provider.isGetting) {
+                                  CustomSnackBar.showSnackBar(
+                                      notification: AppNotification(
+                                          message: getTranslated(
+                                              "please_wait", context),
+                                          isFloating: true,
+                                          backgroundColor: Styles.PENDING,
+                                          borderColor: Colors.transparent));
+                                } else if (!provider.isGetting &&
+                                    provider.types.isEmpty) {
+                                  CustomSnackBar.showSnackBar(
+                                      notification: AppNotification(
+                                          message: getTranslated(
+                                              "there_is_no_data", context),
+                                          isFloating: true,
+                                          backgroundColor: Styles.PENDING,
+                                          borderColor: Colors.transparent));
+                                } else {
+                                  CustomBottomSheet.show(
+                                      label: getTranslated(
+                                          "permission_type", context),
+                                      height: 400.h,
+                                      list: CustomSingleSelector(
+                                        onConfirm: provider.onSelectLoanType,
+                                        list: provider.types,
+                                        initialValue:
+                                            provider.selectedPermissionType?.id,
+                                      ),
+                                      onConfirm: () => CustomNavigator.pop());
+                                }
+                              },
                               valid: (v) => Validations.required(
                                   v,
                                   getTranslated(

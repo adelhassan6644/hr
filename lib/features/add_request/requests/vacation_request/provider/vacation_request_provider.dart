@@ -13,16 +13,13 @@ import '../repo/vacation_request_repo.dart';
 
 class VacationRequestProvider extends ChangeNotifier {
   final VacationRequestRepo repo;
-  VacationRequestProvider({required this.repo});
+  VacationRequestProvider({required this.repo}){
+    getTypes();
+  }
 
   final TextEditingController reason = TextEditingController();
   String? duration;
 
-  List<CustomSelectModel> vacationTypes = [
-    CustomSelectModel(id: 1, title: "title"),
-    CustomSelectModel(id: 2, title: "title2"),
-    CustomSelectModel(id: 3, title: "title3"),
-  ];
 
   CustomSelectModel? selectedVacationType;
   onSelectVacationType(v) {
@@ -63,6 +60,43 @@ class VacationRequestProvider extends ChangeNotifier {
     attachments = v;
     notifyListeners();
   }
+
+  List<CustomSelectModel> types = [];
+  bool isGetting = false;
+  getTypes() async {
+    try {
+      isGetting = true;
+      types.clear();
+      notifyListeners();
+
+      Either<ServerFailure, Response> response = await repo.getTypes();
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Colors.transparent));
+      }, (success) {
+        if (success.data["data"] != null) {
+          types = List<CustomSelectModel>.from(
+              success.data["data"].map((x) => CustomSelectModel.fromJson(x)));
+        }
+      });
+      isGetting = false;
+      notifyListeners();
+    } catch (e) {
+      isGetting = false;
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+      notifyListeners();
+    }
+  }
+
 
   bool isLoading = false;
   onSubmit() async {

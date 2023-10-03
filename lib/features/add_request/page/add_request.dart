@@ -146,7 +146,7 @@ class AddRequest extends StatelessWidget {
                         height: 8.h,
                       ),
                       RequestActionWidget(
-                          title: getTranslated("asset", context),
+                          title: getTranslated("a_covenant", context),
                           astIcon: Images.assetsIcon,
                           onTap: () =>
                               CustomNavigator.push(Routes.ASSET_REQUEST)),

@@ -13,18 +13,14 @@ import '../repo/loan_request_repo.dart';
 
 class LoanRequestProvider extends ChangeNotifier {
   final LoanRequestRepo repo;
-  LoanRequestProvider({required this.repo});
+  LoanRequestProvider({required this.repo}){
+    getTypes();
+  }
 
   final TextEditingController amount = TextEditingController();
   final TextEditingController reason = TextEditingController();
   final TextEditingController loanAmount = TextEditingController();
   final TextEditingController numberOfMonths = TextEditingController();
-
-  List<CustomSelectModel> loanTypes = [
-    CustomSelectModel(id: 1, title: "title"),
-    CustomSelectModel(id: 2, title: "title2"),
-    CustomSelectModel(id: 3, title: "title3"),
-  ];
 
   CustomSelectModel? selectedLoanType;
   onSelectLoanType(v) {
@@ -35,11 +31,11 @@ class LoanRequestProvider extends ChangeNotifier {
   List<CustomSelectModel> installmentMethods = [
     CustomSelectModel(
         id: 1,
-        title: getTranslated("specified_number_of_months",
+        name: getTranslated("specified_number_of_months",
             CustomNavigator.navigatorState.currentContext!)),
     CustomSelectModel(
         id: 2,
-        title: getTranslated("A_specified_monthly_amount",
+        name: getTranslated("A_specified_monthly_amount",
             CustomNavigator.navigatorState.currentContext!)),
   ];
   CustomSelectModel? selectedInstallmentMethods;
@@ -65,6 +61,42 @@ class LoanRequestProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<CustomSelectModel> loanTypes = [];
+  bool isGetting = false;
+  getTypes() async {
+    try {
+      isGetting = true;
+      loanTypes.clear();
+      notifyListeners();
+
+      Either<ServerFailure, Response> response = await repo.getTypes();
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Colors.transparent));
+      }, (success) {
+        if (success.data["data"] != null) {
+          loanTypes = List<CustomSelectModel>.from(
+              success.data["data"].map((x) => CustomSelectModel.fromJson(x)));
+        }
+      });
+      isGetting = false;
+      notifyListeners();
+    } catch (e) {
+      isGetting = false;
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+      notifyListeners();
+    }
+  }
+
   bool isLoading = false;
   onSubmit() async {
     try {
@@ -84,7 +116,8 @@ class LoanRequestProvider extends ChangeNotifier {
         });
       }
 
-      Either<ServerFailure, Response> response = await repo.sendLoadRequest(body);
+      Either<ServerFailure, Response> response =
+          await repo.sendLoadRequest(body);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(

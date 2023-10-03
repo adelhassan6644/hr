@@ -6,7 +6,7 @@ import '../features/add_request/requests/expenses_request/page/expense_request.d
 import '../features/add_request/requests/loan_request/page/loan_request.dart';
 import '../features/add_request/requests/permission_request/page/permission_request.dart';
 import '../features/add_request/requests/vacation_request/page/vacation_request.dart';
-import '../features/assets/assets_screen.dart';
+import '../features/covenant/page/covenant.dart';
 import '../features/auth/pages/forget_password.dart';
 import '../features/auth/pages/login.dart';
 import '../features/auth/pages/reset_password.dart';
@@ -97,7 +97,7 @@ abstract class CustomNavigator {
       case Routes.SALARY_DETAILS:
         return _pageRoute(const SalaryDetailsScreen());
       case Routes.ASSETS:
-        return _pageRoute(const AssetsScreen());
+        return _pageRoute(const Covenant());
       case Routes.CONTRACT:
         return _pageRoute(const ContractScreen());
       default:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../app/core/app_snack_bar.dart';
 import '../../../../../app/core/color_resources.dart';
 import '../../../../../app/core/dimensions.dart';
 import '../../../../../app/core/validation.dart';
@@ -38,7 +39,7 @@ class _AssetRequestState extends State<AssetRequest> {
             Consumer<AssetRequestProvider>(builder: (context, provider, child) {
           return Scaffold(
             appBar:
-                CustomAppBar(title: getTranslated("asset_request", context)),
+                CustomAppBar(title: getTranslated("covenant_request", context)),
             body: Form(
               key: formKey,
               child: Column(
@@ -53,7 +54,7 @@ class _AssetRequestState extends State<AssetRequest> {
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
                           child: CustomExpansionTile(
-                            title: getTranslated("asset_details", context),
+                            title: getTranslated("covenant_details", context),
                             children: [
                               CustomTextFormField(
                                 sufWidget: const Icon(
@@ -62,24 +63,47 @@ class _AssetRequestState extends State<AssetRequest> {
                                   size: 18,
                                 ),
                                 controller: TextEditingController(
-                                    text: provider.selectedAssetType?.title ??
+                                    text: provider.selectedAssetType?.name ??
                                         ""),
-                                hint: getTranslated("asset_type", context),
+                                hint: getTranslated("covenant_type", context),
                                 read: true,
-                                onTap: () => CustomBottomSheet.show(
-                                    label: getTranslated("asset_type", context),
-                                    height: 400.h,
-                                    list: CustomSingleSelector(
-                                      onConfirm: provider.onSelectLoanType,
-                                      list: provider.assetTypes,
-                                      initialValue:
-                                          provider.selectedAssetType?.id,
-                                    ),
-                                    onConfirm: () => CustomNavigator.pop()),
+                                onTap: () {
+                                  if (provider.isGetting) {
+                                    CustomSnackBar.showSnackBar(
+                                        notification: AppNotification(
+                                            message: getTranslated(
+                                                "please_wait", context),
+                                            isFloating: true,
+                                            backgroundColor: Styles.PENDING,
+                                            borderColor: Colors.transparent));
+                                  } else if (!provider.isGetting &&
+                                      provider.types.isEmpty) {
+                                    CustomSnackBar.showSnackBar(
+                                        notification: AppNotification(
+                                            message: getTranslated(
+                                                "there_is_no_covenant",
+                                                context),
+                                            isFloating: true,
+                                            backgroundColor: Styles.PENDING,
+                                            borderColor: Colors.transparent));
+                                  } else {
+                                    CustomBottomSheet.show(
+                                        label: getTranslated(
+                                            "covenant_type", context),
+                                        height: 400.h,
+                                        list: CustomSingleSelector(
+                                          onConfirm: provider.onSelectLoanType,
+                                          list: provider.types,
+                                          initialValue:
+                                              provider.selectedAssetType?.id,
+                                        ),
+                                        onConfirm: () => CustomNavigator.pop());
+                                  }
+                                },
                                 valid: (v) => Validations.required(
                                     v,
                                     getTranslated(
-                                        "select_asset_type", context)),
+                                        "select_covenant_type", context)),
                               ),
                             ],
                           ),

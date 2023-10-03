@@ -1,17 +1,17 @@
 class EndPoints {
-  static const String baseUrl = 'https://erp.softwarecloud2.com/api';
+  static const String baseUrl = 'https://erp.softwarecloud2.com/api/';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
   static const String imageUrl = 'https://test.fitariki.com/';
   static const String apiKey = '123';
   static const String topic = 'fitariki';
 
-  static checkAttend(id) => '/employee/attendance/attend/$id';
-  static checkLeave(id) => '/employee/attendance/leave/$id';
-  static checkOnSchedule(id) => '/employee/attendance/closest/schedule/$id';
-  static employeeSchedule(id) => '/employee/attendance/schedules/$id';
-  static daySchedules(id) => '/employee/attendance/day/schedules/$id';
+  static checkAttend(id) => 'employee/attendance/attend/$id';
+  static checkLeave(id) => 'employee/attendance/leave/$id';
+  static checkOnSchedule(id) => 'employee/attendance/closest/schedule/$id';
+  static employeeSchedule(id) => 'employee/attendance/schedules/$id';
+  static daySchedules(id) => 'employee/attendance/day/schedules/$id';
   static const String register = '';
-  static const String login = '/employee/login';
+  static const String login = 'employee/login';
   static const String updatePassword = '';
   static const String resetPassword = '';
   static const String sendVerificationCode = '';
@@ -19,20 +19,24 @@ class EndPoints {
   static salaryDetails(id) => ' / $id';
 
   ///Requests
-  static  request(id) => 'employee/loan/request/destroy/$id';
+  static request(id) => 'employee/loan/request/destroy/$id';
 
   static const String loanRequest = 'employee/loan/request/store';
-  static  deleteLoanRequest(id) => 'employee/loan/request/destroy/$id';
+  static const String loanTypes = 'employee/loan/types/index';
+  static deleteLoanRequest(id) => 'employee/loan/request/destroy/$id';
 
+  static getCovenantRequest(id) => 'employee/loan/request/destroy/$id';
+  static const String covenantTypes = 'employee/pledge/types/index';
   static const String assetRequest = 'employee/loan/request/store';
-  static  deleteAssetRequest(id) => 'employee/loan/request/destroy/$id';
+  static deleteAssetRequest(id) => 'employee/loan/request/destroy/$id';
 
   static const String permissionRequest = 'employee/loan/request/store';
-  static  deletePermissionRequest(id) => 'employee/loan/request/destroy/$id';
+  static const String permissionTypes = 'employee/permission/types/index';
+  static deletePermissionRequest(id) => 'employee/loan/request/destroy/$id';
 
+  static const String vacationTypes = 'employee/vacation/types/index';
   static const String vacationRequest = 'employee/loan/request/store';
-  static  deleteVacationRequest(id) => 'employee/loan/request/destroy/$id';
-
+  static deleteVacationRequest(id) => 'employee/loan/request/destroy/$id';
 
   ///App Config
   static const String setting = '';

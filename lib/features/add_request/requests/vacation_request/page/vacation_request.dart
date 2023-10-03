@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../app/core/app_snack_bar.dart';
 import '../../../../../app/core/color_resources.dart';
 import '../../../../../app/core/dimensions.dart';
 import '../../../../../app/core/text_styles.dart';
@@ -63,21 +64,43 @@ class _VacationRequestState extends State<VacationRequest> {
                                 size: 18,
                               ),
                               controller: TextEditingController(
-                                  text: provider.selectedVacationType?.title ??
+                                  text: provider.selectedVacationType?.name ??
                                       ""),
                               hint: getTranslated("vacation_type", context),
                               read: true,
-                              onTap: () => CustomBottomSheet.show(
-                                  label:
-                                      getTranslated("vacation_type", context),
-                                  height: 400.h,
-                                  list: CustomSingleSelector(
-                                    onConfirm: provider.onSelectVacationType,
-                                    list: provider.vacationTypes,
-                                    initialValue:
-                                        provider.selectedVacationType?.id,
-                                  ),
-                                  onConfirm: () => CustomNavigator.pop()),
+                              onTap: () {
+                                if (provider.isGetting) {
+                                  CustomSnackBar.showSnackBar(
+                                      notification: AppNotification(
+                                          message: getTranslated(
+                                              "please_wait", context),
+                                          isFloating: true,
+                                          backgroundColor: Styles.PENDING,
+                                          borderColor: Colors.transparent));
+                                } else if (!provider.isGetting &&
+                                    provider.types.isEmpty) {
+                                  CustomSnackBar.showSnackBar(
+                                      notification: AppNotification(
+                                          message: getTranslated(
+                                              "there_is_no_data", context),
+                                          isFloating: true,
+                                          backgroundColor: Styles.PENDING,
+                                          borderColor: Colors.transparent));
+                                } else {
+                                  CustomBottomSheet.show(
+                                      label: getTranslated(
+                                          "vacation_type", context),
+                                      height: 400.h,
+                                      list: CustomSingleSelector(
+                                        onConfirm:
+                                            provider.onSelectVacationType,
+                                        list: provider.types,
+                                        initialValue:
+                                            provider.selectedVacationType?.id,
+                                      ),
+                                      onConfirm: () => CustomNavigator.pop());
+                                }
+                              },
                               valid: (v) => Validations.required(
                                   v,
                                   getTranslated(
