@@ -66,9 +66,8 @@ class _PermissionRequestState extends State<PermissionRequest> {
                                 size: 18,
                               ),
                               controller: TextEditingController(
-                                  text:
-                                      provider.selectedPermissionType?.name ??
-                                          ""),
+                                  text: provider.selectedPermissionType?.name ??
+                                      ""),
                               hint: getTranslated("permission_type", context),
                               read: true,
                               onTap: () {
@@ -206,6 +205,7 @@ class _PermissionRequestState extends State<PermissionRequest> {
             ),
             child: CustomButton(
               text: getTranslated("submit", context),
+              isLoading: provider.isLoading,
               onTap: () {
                 if (formKey.currentState!.validate()) {
                   provider.onSubmit();

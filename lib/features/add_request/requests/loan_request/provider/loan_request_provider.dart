@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/navigation/custom_navigation.dart';
 import '../../../../../app/core/app_snack_bar.dart';
 import '../../../../../app/core/color_resources.dart';
@@ -17,7 +18,7 @@ class LoanRequestProvider extends ChangeNotifier {
     getTypes();
   }
 
-  final TextEditingController amount = TextEditingController();
+  final TextEditingController amountPerMounth = TextEditingController();
   final TextEditingController reason = TextEditingController();
   final TextEditingController loanAmount = TextEditingController();
   final TextEditingController numberOfMonths = TextEditingController();
@@ -97,16 +98,24 @@ class LoanRequestProvider extends ChangeNotifier {
     }
   }
 
+  clear() {
+    selectedLoanType = null;
+    amountPerMounth.clear();
+    installmentStartDate = null;
+    reason.clear();
+    attachments.clear();
+  }
   bool isLoading = false;
   onSubmit() async {
     try {
       isLoading = true;
       notifyListeners();
       var body = {
-        "loan_type": selectedLoanType,
+        "loan_type_id": selectedLoanType,
+        "employee_id": repo.userId,
         "loan_amount": loanAmount.text.trim(),
-        "start_date": installmentStartDate,
-        "amount_per_month": amount.text.trim(),
+        "start_date": installmentStartDate?.postDateFormat(),
+        "amount_per_month": amountPerMounth.text.trim(),
         "number_of_months": numberOfMonths.text.trim(),
         "reason": reason.text.trim()
       };
@@ -125,7 +134,17 @@ class LoanRequestProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-      }, (success) {});
+      }, (success) {
+        clear();
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: getTranslated(
+                    "your_request_has_been_sent_successfully",
+                    CustomNavigator.navigatorState.currentContext!),
+                isFloating: true,
+                backgroundColor: Styles.ACTIVE,
+                borderColor: Colors.transparent));
+      });
       isLoading = false;
       notifyListeners();
     } catch (e) {

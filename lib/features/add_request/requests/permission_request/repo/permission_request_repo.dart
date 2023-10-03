@@ -11,8 +11,8 @@ class PermissionRequestRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> sendRequest(body) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.permissionRequest, data: body);
+      Response response = await dioClient.post(
+          uri: EndPoints.permissionRequest, data: FormData.fromMap(body));
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -26,8 +26,7 @@ class PermissionRequestRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> getTypes() async {
     try {
-      Response response =
-      await dioClient.get(uri: EndPoints.permissionTypes);
+      Response response = await dioClient.get(uri: EndPoints.permissionTypes);
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -38,5 +37,4 @@ class PermissionRequestRepo extends BaseRepo {
       return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
-
 }

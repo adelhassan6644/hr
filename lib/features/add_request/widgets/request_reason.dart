@@ -32,11 +32,11 @@ class RequestReason extends StatelessWidget {
       title: getTranslated("reason", context),
       children: [
         CustomTextFormField(
-          // pAssetIcon: Images.question,
           hint: getTranslated("reason", context),
           controller: reasonController,
           label: true,
           maxLine: 5,
+          autoValidateMode: AutovalidateMode.onUserInteraction,
           keyboardAction: TextInputAction.newline,
           valid: (v) =>
               Validations.required(v, getTranslated("enter_reason", context)),

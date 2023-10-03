@@ -11,7 +11,7 @@ class RequestsRepo extends BaseRepo {
   Future<Either<ServerFailure, Response>> getRequests() async {
     try {
       Response response =
-          await dioClient.get(uri: EndPoints.request(userId));
+          await dioClient.get(uri: EndPoints.allRequest(userId));
       if (response.statusCode == 200) {
         return Right(response);
       } else {

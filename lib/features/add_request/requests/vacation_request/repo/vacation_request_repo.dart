@@ -11,8 +11,8 @@ class VacationRequestRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> sendVacationRequest(body) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.vacationRequest, data: body);
+      Response response = await dioClient.post(
+          uri: EndPoints.vacationRequest, data: FormData.fromMap(body));
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -26,8 +26,7 @@ class VacationRequestRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> getTypes() async {
     try {
-      Response response =
-      await dioClient.get(uri: EndPoints.vacationTypes);
+      Response response = await dioClient.get(uri: EndPoints.vacationTypes);
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -38,5 +37,4 @@ class VacationRequestRepo extends BaseRepo {
       return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
-
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/components/animated_widget.dart';
 import 'package:yusrPlus/navigation/custom_navigation.dart';
@@ -8,6 +9,7 @@ import '../../../app/core/dimensions.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
+import '../../../main_providers/download_provider.dart';
 import '../../../navigation/routes.dart';
 
 class Salary extends StatelessWidget {
@@ -152,24 +154,38 @@ class Salary extends StatelessWidget {
                                 color: Styles.blackColor,
                                 fontWeight: FontWeight.w600),
                           ),
-                          const SizedBox(
-                            height: 10,
+
+                          ///Open Invoice
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 12.h,
+                                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                            child: CustomButton(
+                              onTap: () => CustomNavigator.push(Routes.PDF,
+                                  arguments: ""),
+                              text: getTranslated("details", context),
+                            ),
                           ),
-                          CustomButton(
-                            textColor: Styles.WHITE,
-                            text: getTranslated("details", context),
-                            backgroundColor: Styles.PRIMARY_COLOR,
-                            // onTap: () => CustomNavigator.push(Routes.SALARY_DETAILS,
-                            // ),
+                          ChangeNotifierProvider(
+                            create: (_) => DownloadProvider(),
+                            child: Consumer<DownloadProvider>(
+                                builder: (_, provider, child) {
+                              return CustomButton(
+                                  textColor: Styles.PRIMARY_COLOR,
+                                  text: getTranslated("download", context),
+                                  onTap: () async {
+                                    if (!provider.downloaded) {
+                                      provider.download("", "".split("/").last);
+                                    }
+                                  },
+                                  isLoading: provider.isLoading,
+                                  lIconWidget: const Icon(
+                                    Icons.download,
+                                    color: Styles.PRIMARY_COLOR,
+                                  ),
+                                  backgroundColor: Styles.WHITE);
+                            }),
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          CustomButton(
-                              textColor: Styles.PRIMARY_COLOR,
-                              text: getTranslated("download", context),
-                              // icon: Icons.download,
-                              backgroundColor: Styles.WHITE),
                         ],
                       )),
                 ),

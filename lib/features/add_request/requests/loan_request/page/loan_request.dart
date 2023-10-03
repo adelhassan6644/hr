@@ -223,7 +223,7 @@ class _LoanRequestState extends State<LoanRequest> {
                                               2,
                                           child: CustomTextFormField(
                                             pAssetIcon: Images.cash,
-                                            controller: provider.amount,
+                                            controller: provider.amountPerMounth,
                                             inputType: TextInputType.number,
                                             formatter: [
                                               FilteringTextInputFormatter.allow(
@@ -272,6 +272,7 @@ class _LoanRequestState extends State<LoanRequest> {
               ),
               child: CustomButton(
                 text: getTranslated("submit", context),
+                isLoading: provider.isLoading,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     provider.onSubmit();

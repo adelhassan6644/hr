@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/navigation/custom_navigation.dart';
 import '../../../../../app/core/app_snack_bar.dart';
 import '../../../../../app/core/color_resources.dart';
@@ -13,13 +14,12 @@ import '../repo/vacation_request_repo.dart';
 
 class VacationRequestProvider extends ChangeNotifier {
   final VacationRequestRepo repo;
-  VacationRequestProvider({required this.repo}){
+  VacationRequestProvider({required this.repo}) {
     getTypes();
   }
 
   final TextEditingController reason = TextEditingController();
   String? duration;
-
 
   CustomSelectModel? selectedVacationType;
   onSelectVacationType(v) {
@@ -97,6 +97,13 @@ class VacationRequestProvider extends ChangeNotifier {
     }
   }
 
+  clear() {
+    selectedVacationType = null;
+    startDate = null;
+    endDate = null;
+    reason.clear();
+    attachments.clear();
+  }
 
   bool isLoading = false;
   onSubmit() async {
@@ -104,7 +111,10 @@ class VacationRequestProvider extends ChangeNotifier {
       isLoading = true;
       notifyListeners();
       var body = {
-        "vacation_type": selectedVacationType,
+        "vaction_type_id": selectedVacationType?.id,
+        "employee_id": repo.userId,
+        "start_at": startDate?.postDateFormat(),
+        "end_at": endDate?.postDateFormat(),
         "reason": reason.text.trim()
       };
       for (int i = 0; i < attachments.length; i++) {
@@ -114,7 +124,7 @@ class VacationRequestProvider extends ChangeNotifier {
       }
 
       Either<ServerFailure, Response> response =
-          await repo.sendVacationRequest("");
+          await repo.sendVacationRequest(body);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -122,7 +132,17 @@ class VacationRequestProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-      }, (success) {});
+      }, (success) {
+        clear();
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: getTranslated(
+                    "your_request_has_been_sent_successfully",
+                    CustomNavigator.navigatorState.currentContext!),
+                isFloating: true,
+                backgroundColor: Styles.ACTIVE,
+                borderColor: Colors.transparent));
+      });
       isLoading = false;
       notifyListeners();
     } catch (e) {

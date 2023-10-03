@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +12,6 @@ extension StringExtension on String {
   }
 }
 
-
 extension DataExtention on DateTime {
   String dateFormat() {
     return DateFormat.yMMMd(Provider.of<LocalizationProvider>(
@@ -25,6 +23,7 @@ extension DataExtention on DateTime {
         .format(this);
     // return DateFormat("dd-MMMM ").format(this);
   }
+
   String defaultFormat2() {
     return DateFormat("yyyy-MM-d").format(this);
   }
@@ -113,6 +112,19 @@ extension Format on DateTime {
   }
 }
 
+extension PostDateExtention on DateTime {
+  String postDateFormat() {
+    return DateFormat("yyyy-MM-dd", 'en_US').format(this);
+  }
+}
+
+extension PostTimeExtention on DateTime {
+  String postTimeFormat() {
+    return DateFormat("hh:mm:ss",'en_US').format(this);
+  }
+}
+
+
 extension IsoDataTimeExtention on DateTime {
   String isoDateTimeFormat() {
     return DateFormat.yMEd(Provider.of<LocalizationProvider>(
@@ -193,9 +205,6 @@ int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;
 }
 
-
-
-
 extension MediaQueryValues on BuildContext {
   double get height => MediaQuery.of(this).size.height;
 
@@ -254,10 +263,11 @@ extension Difference on DateTime {
   }
 }
 
-String localeCode =  Provider.of<LocalizationProvider>(
-    CustomNavigator.navigatorState.currentContext!,
-    listen: false)
-    .locale.languageCode ;
+String localeCode = Provider.of<LocalizationProvider>(
+        CustomNavigator.navigatorState.currentContext!,
+        listen: false)
+    .locale
+    .languageCode;
 
 extension ConvertDigits on String {
   String convertDigits() {

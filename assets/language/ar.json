@@ -348,5 +348,6 @@
   "enter_financial_compensation_amount": "عفوا، يجب عليك قيمة التعويض المالي",
   "select_covenant_release_type": "عفوا، يجب عليك اختيار نوع العهدة",
   "start_time": "بداية الوقت",
-  "end_time":"نهاية الوقت"
+  "end_time":"نهاية الوقت",
+  "your_request_has_been_sent_successfully": "تم ارسال طلبك بنجاح"
 }

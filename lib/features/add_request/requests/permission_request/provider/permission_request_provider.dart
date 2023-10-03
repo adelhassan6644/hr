@@ -3,15 +3,18 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:yusrPlus/app/core/extensions.dart';
 import '../../../../../app/core/app_snack_bar.dart';
 import '../../../../../app/core/color_resources.dart';
+import '../../../../../app/localization/language_constant.dart';
 import '../../../../../data/error/failures.dart';
 import '../../../../../main_models/custom_select_model.dart';
+import '../../../../../navigation/custom_navigation.dart';
 import '../repo/permission_request_repo.dart';
 
 class PermissionRequestProvider extends ChangeNotifier {
   final PermissionRequestRepo repo;
-  PermissionRequestProvider({required this.repo}){
+  PermissionRequestProvider({required this.repo}) {
     getTypes();
   }
 
@@ -50,6 +53,15 @@ class PermissionRequestProvider extends ChangeNotifier {
   onRemoveAttachments(v) {
     attachments = v;
     notifyListeners();
+  }
+
+  clear() {
+    selectedPermissionType = null;
+    selectedDate = null;
+    startDate = null;
+    endDate = null;
+    reason.clear();
+    attachments.clear();
   }
 
   List<CustomSelectModel> types = [];
@@ -94,8 +106,11 @@ class PermissionRequestProvider extends ChangeNotifier {
       isLoading = true;
       notifyListeners();
       var body = {
-        "permission_type": selectedPermissionType,
-        "date": selectedDate,
+        "permission_type": selectedPermissionType?.id,
+        "employee_id": repo.userId,
+        "day": selectedDate?.postDateFormat(),
+        "come_time": startDate?.postTimeFormat(),
+        "leave_time": endDate?.postTimeFormat(),
         "reason": reason.text.trim()
       };
       for (int i = 0; i < attachments.length; i++) {
@@ -104,7 +119,7 @@ class PermissionRequestProvider extends ChangeNotifier {
         });
       }
 
-      Either<ServerFailure, Response> response = await repo.sendRequest("");
+      Either<ServerFailure, Response> response = await repo.sendRequest(body);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -112,7 +127,17 @@ class PermissionRequestProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-      }, (success) {});
+      }, (success) {
+        clear();
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: getTranslated(
+                    "your_request_has_been_sent_successfully",
+                    CustomNavigator.navigatorState.currentContext!),
+                isFloating: true,
+                backgroundColor: Styles.ACTIVE,
+                borderColor: Colors.transparent));
+      });
       isLoading = false;
       notifyListeners();
     } catch (e) {

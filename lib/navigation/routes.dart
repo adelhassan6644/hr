@@ -26,6 +26,7 @@ class Routes {
   static const ASSETS = "ASSETS";
   static const DOCUMENTS = "DOCUMENTS";
   static const CONTRACT = "CONTRACT";
+  static const PDF = "PDF";
 }
 
 //

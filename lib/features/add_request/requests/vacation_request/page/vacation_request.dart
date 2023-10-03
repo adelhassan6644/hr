@@ -215,6 +215,7 @@ class _VacationRequestState extends State<VacationRequest> {
             ),
             child: CustomButton(
               text: getTranslated("submit", context),
+              isLoading: provider.isLoading,
               onTap: () {
                 if (formKey.currentState!.validate()) {
                   provider.onSubmit();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/custom_pdf.dart';
 import '../features/add_request/page/add_request.dart';
 import '../features/add_request/requests/asset_request/page/asset_request.dart';
 import '../features/add_request/requests/asset_request/page/clear_asset_request.dart';
@@ -100,6 +101,10 @@ abstract class CustomNavigator {
         return _pageRoute(const Covenant());
       case Routes.CONTRACT:
         return _pageRoute(const ContractScreen());
+      case Routes.PDF:
+        return _pageRoute(CustomPDF(
+          url: settings.arguments as String,
+        ));
       default:
         return MaterialPageRoute(builder: (_) => const MyApp());
     }

@@ -19,7 +19,7 @@ class EndPoints {
   static salaryDetails(id) => ' / $id';
 
   ///Requests
-  static request(id) => 'employee/loan/request/destroy/$id';
+  static allRequest(id) => 'employee/request/index/$id';
 
   static const String loanRequest = 'employee/loan/request/store';
   static const String loanTypes = 'employee/loan/types/index';
@@ -30,12 +30,12 @@ class EndPoints {
   static const String assetRequest = 'employee/loan/request/store';
   static deleteAssetRequest(id) => 'employee/loan/request/destroy/$id';
 
-  static const String permissionRequest = 'employee/loan/request/store';
+  static const String permissionRequest = 'employee/permission/request/store';
   static const String permissionTypes = 'employee/permission/types/index';
   static deletePermissionRequest(id) => 'employee/loan/request/destroy/$id';
 
-  static const String vacationTypes = 'employee/vacation/types/index';
-  static const String vacationRequest = 'employee/loan/request/store';
+  static const String vacationTypes = 'employee/vaction/types/index';
+  static const String vacationRequest = 'employee/vacation/request/store';
   static deleteVacationRequest(id) => 'employee/loan/request/destroy/$id';
 
   ///App Config

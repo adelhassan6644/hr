@@ -63,8 +63,8 @@ class _AssetRequestState extends State<AssetRequest> {
                                   size: 18,
                                 ),
                                 controller: TextEditingController(
-                                    text: provider.selectedAssetType?.name ??
-                                        ""),
+                                    text:
+                                        provider.selectedAssetType?.name ?? ""),
                                 hint: getTranslated("covenant_type", context),
                                 read: true,
                                 onTap: () {
@@ -132,6 +132,7 @@ class _AssetRequestState extends State<AssetRequest> {
               ),
               child: CustomButton(
                 text: getTranslated("submit", context),
+                isLoading: provider.isLoading,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     provider.onSubmit();

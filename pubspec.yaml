@@ -65,6 +65,7 @@ dependencies:
   flutter_calendar_carousel:
   dotted_border: ^2.1.0
   open_file_plus: ^3.4.1
+  advance_pdf_viewer_fork: ^2.0.0
 
 
 

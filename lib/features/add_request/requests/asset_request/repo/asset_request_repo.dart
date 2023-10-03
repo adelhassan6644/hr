@@ -12,7 +12,7 @@ class AssetRequestRepo extends BaseRepo {
   Future<Either<ServerFailure, Response>> sendAssetRequest(body) async {
     try {
       Response response =
-          await dioClient.post(uri: EndPoints.assetRequest, data: body);
+          await dioClient.post(uri: EndPoints.assetRequest, data: FormData.fromMap(body));
       if (response.statusCode == 200) {
         return Right(response);
       } else {

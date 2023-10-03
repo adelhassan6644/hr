@@ -372,5 +372,6 @@
   "covenant_release_request": "Covenant Release Request",
   "covenant_release_details": "Covenant Release Details",
   "covenant_release_type": "Covenant Release Type",
-  "select_covenant_release_type": "Oops, You must select covenant release type"
+  "select_covenant_release_type": "Oops, You must select covenant release type",
+  "your_request_has_been_sent_successfully": "Your Request has been sent successfully"
 }
