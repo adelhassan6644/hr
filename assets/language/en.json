@@ -55,7 +55,6 @@
   "subject_to_ar":"Subject to (AR)",
   "asset_request": "Asset Request",
   "asset_details": "Asset Details",
-  "asset_type": "Asset Type",
   "asset_status": "Asset Status",
   "car": "car",
   "join_date": "Join Date",
@@ -261,7 +260,7 @@
   "type": "Type",
   "num_of_installment": "Number of installment",
   "loan_amount": "loan amount",
-  "monthly_installment": "Monthly Installment",
+  "type_monthly_installment": "Monthly Installment Type",
   "period_of_installment": "Period of installment",
   "results":"Results",
   "days": "days",
@@ -358,5 +357,15 @@
   "current_password": "Current password",
   "reset_password_description": "Please,The password must be more than 8 characters ",
   "there_is_no_schedules": "there is no schedules",
-  "select_language": "Select Language"
+  "select_language": "Select Language",
+  "select_loan_amount": "Oops, you must select loan amount first!",
+  "select_permission_type": "Oops, you must select permission type first!",
+  "permission_type": "Permission Type",
+  "select_loan_type": "Oops, You must select loan type",
+  "select_monthly_installment": "Oops, You must select monthly installment type",
+  "enter_reason":  "Oops, You must enter your reason",
+  "select_asset_type": "Oops, You must select asset type",
+  "select_vacation_type": "Oops, You must select vacation type",
+  "asset_type": "Asset Type",
+  "upload_attachment": "Upload Attachment"
 }

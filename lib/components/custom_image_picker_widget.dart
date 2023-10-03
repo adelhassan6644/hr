@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:yusrPlus/app/core/dimensions.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
-
 import '../app/core/color_resources.dart';
 import '../app/core/svg_images.dart';
 import '../app/core/text_styles.dart';
@@ -18,6 +16,7 @@ class CustomButtonImagePicker extends StatelessWidget {
     Key? key,
     this.imageFile,
     this.imageUrl,
+    this.canEdit = true,
     required this.title,
     required this.onTap,
   }) : super(key: key);
@@ -25,6 +24,7 @@ class CustomButtonImagePicker extends StatelessWidget {
   final String? imageUrl;
   final String title;
   final void Function() onTap;
+  final bool canEdit;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,7 +34,7 @@ class CustomButtonImagePicker extends StatelessWidget {
           GestureDetector(
             onTap: onTap,
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 9),
               decoration: BoxDecoration(
                   border:
                       Border.all(color: Styles.LIGHT_BORDER_COLOR, width: 1),
@@ -84,14 +84,6 @@ class CustomButtonImagePicker extends StatelessWidget {
                                 title: "",
                               );
                             })),
-
-                    // onTap: ()=>  Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => ImageViewer(
-                    //     ),
-                    //   ),
-                    // ),
                     child: Container(
                       height: 50.h,
                       decoration: BoxDecoration(
@@ -113,17 +105,20 @@ class CustomButtonImagePicker extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 10.w),
-                Expanded(
-                  flex: 2,
-                  child: GestureDetector(
-                    onTap: onTap,
-                    child: Text(getTranslated("edit", context),
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.w400.copyWith(
-                            fontSize: 10,
-                            overflow: TextOverflow.ellipsis,
-                            color: Styles.PRIMARY_COLOR)),
+                Visibility(visible: canEdit, child: SizedBox(width: 10.w)),
+                Visibility(
+                  visible: canEdit,
+                  child: Expanded(
+                    flex: 2,
+                    child: GestureDetector(
+                      onTap: onTap,
+                      child: Text(getTranslated("edit", context),
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.w400.copyWith(
+                              fontSize: 10,
+                              overflow: TextOverflow.ellipsis,
+                              color: Colors.blueAccent)),
+                    ),
                   ),
                 ),
               ],

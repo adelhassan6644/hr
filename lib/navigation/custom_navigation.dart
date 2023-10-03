@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../features/add_request/page/add_request_screen.dart';
-import '../features/add_request/requests/asset_request.dart';
+import '../features/add_request/requests/asset_request/page/asset_request.dart';
 import '../features/add_request/requests/business_trip_request.dart';
 import '../features/add_request/requests/clear_asset_request.dart';
 import '../features/add_request/requests/expense_request_Screen.dart';
 import '../features/add_request/requests/letter_request.dart';
-import '../features/add_request/requests/loan_request_screen.dart';
-import '../features/add_request/requests/permission_details.dart';
-import '../features/add_request/requests/vacation_request.dart';
+import '../features/add_request/requests/loan_request/page/loan_request.dart';
+import '../features/add_request/requests/permission_request/page/permission_request.dart';
+import '../features/add_request/requests/vacation_request/page/vacation_request.dart';
 import '../features/assets/assets_screen.dart';
 import '../features/auth/pages/forget_password.dart';
 import '../features/auth/pages/login.dart';
@@ -65,13 +65,13 @@ abstract class CustomNavigator {
         return _pageRoute(const AddRequestScreen());
 
       case Routes.LOAN_REQUEST:
-        return _pageRoute(const LoanRequestScreen());
+        return _pageRoute(const LoanRequest());
 
       case Routes.EXPENSE_CLAIM_REQUEST:
         return _pageRoute(const ExpenseRequestScreen());
 
       case Routes.PERMISSIN_REQUEST:
-        return _pageRoute(const PermissionRequestScreen());
+        return _pageRoute(const PermissionRequest());
 
       case Routes.VACATION_REQUEST:
         return _pageRoute(const VacationRequest());

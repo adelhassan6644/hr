@@ -66,12 +66,13 @@ abstract class CustomBottomSheet {
                               horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
                               vertical: 16.h),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                label ?? "",
-                                style: AppTextStyles.w700.copyWith(
-                                  fontSize: 18,
+                              Expanded(
+                                child: Text(
+                                  label ?? "",
+                                  style: AppTextStyles.w700.copyWith(
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
                               GestureDetector(

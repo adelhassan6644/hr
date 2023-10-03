@@ -84,8 +84,9 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
         }
         return null;
       },
+      style: AppTextStyles.w500.copyWith(fontSize: 14, color: Styles.SUBTITLE),
       controller: TextEditingController(
-          text: widget.startDateTime?.format("dd / MM / yyyy")),
+          text: widget.startDateTime?.format(widget.format??"dd / MM / yyyy")),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
         hintText: _date,
@@ -104,11 +105,16 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
         fillColor: Styles.FILL_COLOR,
         label: Text(
           widget.label,
-          style: AppTextStyles.w600.copyWith(color: Styles.PRIMARY_COLOR),
+          style: AppTextStyles.w500.copyWith(fontSize: 14, color: Styles.disabledColor),
         ),
-        hintStyle: AppTextStyles.w500.copyWith(fontSize: 14),
+        errorStyle: AppTextStyles.w500.copyWith(
+          color: Styles.IN_ACTIVE,
+          fontSize: 12,
+        ),
+        errorMaxLines: 2,
+        hintStyle: AppTextStyles.w400.copyWith(fontSize: 14, color: Styles.disabledColor),
         suffixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Image.asset(
               Images.calenderIcon,
               height: 20.h,

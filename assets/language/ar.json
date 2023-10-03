@@ -33,7 +33,7 @@
   "weekly": "اسبوعي",
   "vacation_request": "طلب إجازة",
   "vacation_details": "تفاصيل الإجازة",
-  "vacation_type": "نوع الإجازة",
+
   "vacation_duration": "مدة الإجازة",
   "business_trip_duration": "مدة رحلة العمل",
   "flight_ticket": "تذاكر السفر",
@@ -246,7 +246,7 @@
   "loan_type": "نوع السٌلفة",
   "num_of_installment": "عدد الدفعات",
   "loan_amount": "قيمة السٌلفة",
-  "monthly_installment": "القسط الشهري",
+  "type_monthly_installment": "نوع القسط الشهري",
   "period_of_installment": "فترة السداد",
   "results":"النتائج",
   "today": "اليوم",
@@ -273,7 +273,6 @@
   "view_details": "عرض التفاصيل",
   "asset":"عهدة",
   "assets":"عهد",
-  "asset_type": "نوع العهدة",
   "asset_status": "حالة العهدة",
   "car": "سيارة",
   "join_date": "تاريخ الالتحاق",
@@ -332,5 +331,16 @@
   "current_password": "كلمة المرور الحالية",
   "your_password_changed_successfully": "تم تغير كلمة المرور الخاصة بك بنجاح",
   "there_is_no_schedules": "لا يوجد مواعيد",
-  "select_language": "اختر لغة"
+  "select_language": "اختر لغة",
+  "select_loan_amount": "عفوًا، يجب عليك تحديد مبلغ القرض أولاً!",
+  "select_loan_type": "عفوًا، يجب عليك تحديد نوع السٌلفة",
+  "select_permission_type": "عفوًا، يجب عليك تحديد نوع الاذن أولاً!",
+  "permission_type": "نوع الإذن",
+  "select_asset_type": "عفوًا، يجب عليك تحديد نوع العهدة أولاً!",
+  "asset_type": "نوع العهدة",
+  "select_monthly_installment": "عفوًا، يجب عليك تحديد نوع القسط الشهري",
+  "enter_reason": "عفوا، يجب عليك إدخال السبب",
+  "vacation_type": "نوع الإجازة",
+  "select_vacation_type": "عفوًا، يجب عليك تحديد نوع الإجازة",
+  "upload_attachment": "ارفاق ملف"
 }

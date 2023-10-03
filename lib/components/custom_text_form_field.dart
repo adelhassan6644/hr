@@ -122,42 +122,47 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         obscureText: widget.isPassword == true ? _isHidden : false,
         decoration: InputDecoration(
           counterText: "",
-          prefixIcon: Row(
-            children: [
-              SizedBox(
-                width: 24.w,
-              ),
-              widget.prefixWidget ??
-                  (widget.pAssetIcon != null
-                      ? Image.asset(
-                          widget.pAssetIcon!,
-                          height: 16.h,
-                          width: 16.w,
-                          color: widget.pIconColor,
-                        )
-                      : widget.pSvgIcon != null
-                          ? customImageIconSVG(
-                              imageName: widget.pSvgIcon!,
-                              color: widget.pIconColor ?? Styles.SUBTITLE,
-                              height: 16.h,
-                              width: 16.w,
-                            )
-                          : const SizedBox()),
-              const Expanded(child: SizedBox()),
-              Container(
-                height: 100,
-                width: 1,
-                decoration: BoxDecoration(
-                    color: Styles.disabledColor,
-                    borderRadius: BorderRadius.circular(100)),
-                child: const SizedBox(),
-              ),
-              const Expanded(child: SizedBox()),
-            ],
-          ),
+          prefixIcon: widget.pAssetIcon != null ||
+                  widget.pSvgIcon != null ||
+                  widget.prefixWidget != null
+              ? Row(
+                  children: [
+                    SizedBox(
+                      width: 16.w,
+                    ),
+                    widget.prefixWidget ??
+                        (widget.pAssetIcon != null
+                            ? Image.asset(
+                                widget.pAssetIcon!,
+                                height: 16.h,
+                                width: 16.w,
+                                color: widget.pIconColor ?? Styles.hintColor,
+                              )
+                            : widget.pSvgIcon != null
+                                ? customImageIconSVG(
+                                    imageName: widget.pSvgIcon!,
+                                    color:
+                                        widget.pIconColor ?? Styles.hintColor,
+                                    height: 16.h,
+                                    width: 16.w,
+                                  )
+                                : const SizedBox()),
+                    const Expanded(child: SizedBox()),
+                    Container(
+                      height: 100,
+                      width: 1,
+                      decoration: BoxDecoration(
+                          color: Styles.disabledColor,
+                          borderRadius: BorderRadius.circular(100)),
+                      child: const SizedBox(),
+                    ),
+                    const Expanded(child: SizedBox()),
+                  ],
+                )
+              : null,
           suffixIcon: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: 8.w,
+              horizontal: 16.w,
             ),
             child: widget.sufWidget ??
                 (widget.sufAssetIcon != null
@@ -235,9 +240,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           floatingLabelStyle:
               AppTextStyles.w400.copyWith(color: Styles.TITLE, fontSize: 12),
           filled: true,
-          errorStyle: AppTextStyles.w400.copyWith(
+          errorStyle: AppTextStyles.w500.copyWith(
             color: Styles.IN_ACTIVE,
-            fontSize: 11,
+            fontSize: 12,
           ),
           errorMaxLines: 2,
           prefixIconConstraints:

@@ -115,4 +115,12 @@ class Validations {
       return null;
     }
   }
+
+  static String? required(String? value , String? title) {
+    if (value!.toString().isEmpty) {
+      return title;
+    } else {
+      return null;
+    }
+  }
 }

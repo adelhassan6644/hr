@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../features/add_request/requests/asset_request/repo/asset_request_repo.dart';
+import '../../features/add_request/requests/loan_request/repo/loan_request_repo.dart';
+import '../../features/add_request/requests/permission_request/repo/permission_request_repo.dart';
+import '../../features/add_request/requests/vacation_request/repo/vacation_request_repo.dart';
 import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/add_request/provider/add_request_provider.dart';
@@ -43,6 +47,17 @@ Future<void> init() async {
       () => AttendanceRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => ConfigRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
+      () => LoanRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
+      () => AssetRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(
+      () => PermissionRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
+      () => VacationRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //use Case
 

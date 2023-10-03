@@ -9,10 +9,10 @@ import '../helpers/file_picker_helper.dart';
 import 'custom_images.dart';
 
 class FileContainer extends StatelessWidget {
-  const FileContainer({Key? key, this.attachments, this.onRemove})
+  const FileContainer({Key? key, this.attachments,required this.onRemove})
       : super(key: key);
   final List<File>? attachments;
-  final Function()? onRemove;
+  final Function(List<File>?) onRemove;
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +83,7 @@ class FileContainer extends StatelessWidget {
                             width: 20,
                             onTap: () {
                               attachments!.removeAt(index);
+                              onRemove(attachments);
                             }),
                       ],
                     ),

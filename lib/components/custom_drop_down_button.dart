@@ -51,7 +51,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           child: Text(
             item,
             style:
-                AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 13),
+                AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
           ),
         );
       }).toList(),
@@ -66,34 +66,35 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       icon: widget.icon ??
           const Icon(
             Icons.keyboard_arrow_down_rounded,
-            color: Styles.PRIMARY_COLOR,
+            color: Styles.hintColor,
           ),
       iconSize: widget.iconSize,
-      borderRadius:
-          const BorderRadius.all(Radius.circular(Dimensions.RADIUS_DEFAULT)),
+      borderRadius: BorderRadius.circular(Dimensions.RADIUS_DEFAULT),
       decoration: InputDecoration(
-        hintStyle: AppTextStyles.w400
-            .copyWith(color: Styles.disabledColor, fontSize: 14),
+        hintStyle:
+            AppTextStyles.w400.copyWith(color: Styles.hintColor, fontSize: 14),
         hintText: widget.name,
-        prefixIcon: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 8.w,
-          ),
-          child: widget.pAssetIcon != null
-              ? Image.asset(
-                  widget.pAssetIcon!,
-                  height: 20.h,
-                  width: 20.w,
-                  color: widget.pIconColor ?? Colors.black,
-                )
-              : widget.pSvgIcon != null
-                  ? customImageIconSVG(
-                      imageName: widget.pSvgIcon!,
-                      color: widget.pIconColor ?? Colors.black,
-                      height: 20.h,
-                    )
-                  : null,
-        ),
+        prefixIcon: widget.pAssetIcon != null || widget.pSvgIcon != null
+            ? Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.w,
+                ),
+                child: widget.pAssetIcon != null
+                    ? Image.asset(
+                        widget.pAssetIcon!,
+                        height: 20.h,
+                        width: 20.w,
+                        color: widget.pIconColor ?? Styles.hintColor,
+                      )
+                    : widget.pSvgIcon != null
+                        ? customImageIconSVG(
+                            imageName: widget.pSvgIcon!,
+                            color: widget.pIconColor ?? Styles.hintColor,
+                            height: 20.h,
+                          )
+                        : null,
+              )
+            : null,
         fillColor: Styles.FILL_COLOR,
         filled: true,
         border: const OutlineInputBorder(
