@@ -113,7 +113,7 @@ class LoanRequestProvider extends ChangeNotifier {
       var body = {
         "loan_type_id": selectedLoanType,
         "employee_id": repo.userId,
-        "loan_amount": loanAmount.text.trim(),
+        "amount": loanAmount.text.trim(),
         "start_date": installmentStartDate?.postDateFormat(),
         "amount_per_month": amountPerMounth.text.trim(),
         "number_of_months": numberOfMonths.text.trim(),
