@@ -20,9 +20,7 @@ class Requests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: getTranslated("requests", context),
-      ),
+      appBar: CustomAppBar(title: getTranslated("requests", context)),
       body: NotificationListener(
         onNotification: (ScrollNotification sn) {
           if (sn is ScrollUpdateNotification &&

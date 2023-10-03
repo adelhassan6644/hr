@@ -13,6 +13,8 @@ import '../../features/attendance/repo/attendance_repo.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/home/repo/home_repo.dart';
+import '../../features/requests/provider/requests_provider.dart';
+import '../../features/requests/repo/requests_repo.dart';
 import '../../main_providers/user_provider.dart';
 import '../../features/salary/provider/salary_provider.dart';
 import '../../features/salary/repo/salary_repo.dart';
@@ -49,15 +51,20 @@ Future<void> init() async {
       () => ConfigRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
+      () => RequestsRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
       () => LoanRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
       () => AssetRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+
   sl.registerLazySingleton(
       () => PermissionRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
       () => VacationRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+
   sl.registerLazySingleton(
       () => ExpensesRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
@@ -74,6 +81,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SalaryProvider(repo: sl()));
 
   sl.registerLazySingleton(() => AttendanceProvider(repo: sl()));
+  sl.registerLazySingleton(() => RequestsProvider(repo: sl()));
   sl.registerLazySingleton(() => ConfigProvider(repo: sl()));
 
   // External

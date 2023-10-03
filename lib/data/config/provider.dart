@@ -7,6 +7,7 @@ import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/attendance/provider/attendance_provider.dart';
 import '../../features/auth/provider/auth_provider.dart';
+import '../../features/requests/provider/requests_provider.dart';
 import '../../main_providers/user_provider.dart';
 import '../../features/salary/provider/salary_provider.dart';
 import '../../features/config/provider/config_provider.dart';
@@ -24,6 +25,7 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (context) => di.sl<HomeProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AttendanceProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<SalaryProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<RequestsProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<ConfigProvider>()),
   ];
 }

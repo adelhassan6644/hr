@@ -19,6 +19,8 @@ class EndPoints {
   static salaryDetails(id) => ' / $id';
 
   ///Requests
+  static  request(id) => 'employee/loan/request/destroy/$id';
+
   static const String loanRequest = 'employee/loan/request/store';
   static  deleteLoanRequest(id) => 'employee/loan/request/destroy/$id';
 
