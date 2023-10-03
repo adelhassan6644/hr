@@ -159,8 +159,8 @@ class Salary extends StatelessWidget {
                             textColor: Styles.WHITE,
                             text: getTranslated("details", context),
                             backgroundColor: Styles.PRIMARY_COLOR,
-                            onTap: () =>
-                                CustomNavigator.push(Routes.SALARY_DETAILS),
+                            // onTap: () => CustomNavigator.push(Routes.SALARY_DETAILS,
+                            // ),
                           ),
                           const SizedBox(
                             height: 10,
