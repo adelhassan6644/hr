@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
-import 'package:yusrPlus/navigation/custom_navigation.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/color_resources.dart';
@@ -8,7 +7,6 @@ import '../../../app/core/constant.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../main_providers/user_provider.dart';
-import '../../../navigation/routes.dart';
 
 class AnnualLeaveBalanceCard extends StatelessWidget {
   const AnnualLeaveBalanceCard({super.key});
@@ -22,9 +20,16 @@ class AnnualLeaveBalanceCard extends StatelessWidget {
         margin:
             EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
         decoration: BoxDecoration(
-          color: Styles.FILL_COLOR,
-          borderRadius: BorderRadius.circular(12),
-        ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: const Offset(0, 2),
+              )
+            ],
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            color: Styles.FILL_COLOR),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,20 +37,23 @@ class AnnualLeaveBalanceCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  getTranslated("annual_leave_balance", context),
-                  style: titleTextStyle.copyWith(
-                      fontWeight: FontWeight.w600, color: Styles.disabledColor),
+                Expanded(
+                  child: Text(
+                    getTranslated("annual_leave_balance", context),
+                    style: titleTextStyle.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Styles.disabledColor),
+                  ),
                 ),
-                TextButton(
-                    onPressed: () =>
-                        CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL),
-                    child: Text(
-                      getTranslated("view_details", context),
-                      style: titleTextStyle.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Styles.PRIMARY_COLOR),
-                    ))
+                // TextButton(
+                //     onPressed: () =>
+                //         CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL),
+                //     child: Text(
+                //       getTranslated("view_details", context),
+                //       style: titleTextStyle.copyWith(
+                //           fontWeight: FontWeight.w600,
+                //           color: Styles.PRIMARY_COLOR),
+                //     ))
               ],
             ),
             const SizedBox(

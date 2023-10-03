@@ -19,14 +19,14 @@ import '../../../widgets/request_reason.dart';
 import '../provider/asset_request_provider.dart';
 import '../repo/asset_request_repo.dart';
 
-class AssetRequest extends StatefulWidget {
-  const AssetRequest({Key? key}) : super(key: key);
+class ClearAssetRequest extends StatefulWidget {
+  const ClearAssetRequest({Key? key}) : super(key: key);
 
   @override
-  State<AssetRequest> createState() => _AssetRequestState();
+  State<ClearAssetRequest> createState() => _ClearAssetRequestState();
 }
 
-class _AssetRequestState extends State<AssetRequest> {
+class _ClearAssetRequestState extends State<ClearAssetRequest> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -38,7 +38,7 @@ class _AssetRequestState extends State<AssetRequest> {
             Consumer<AssetRequestProvider>(builder: (context, provider, child) {
           return Scaffold(
             appBar: CustomAppBar(
-                title: getTranslated("asset_request", context)),
+                title: getTranslated("covenant_release_request", context)),
             body: Form(
               key: formKey,
               child: Column(
@@ -53,7 +53,8 @@ class _AssetRequestState extends State<AssetRequest> {
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
                           child: CustomExpansionTile(
-                            title: getTranslated("asset_details", context),
+                            title: getTranslated(
+                                "covenant_release_details", context),
                             children: [
                               CustomTextFormField(
                                 sufWidget: const Icon(
@@ -64,10 +65,12 @@ class _AssetRequestState extends State<AssetRequest> {
                                 controller: TextEditingController(
                                     text: provider.selectedAssetType?.title ??
                                         ""),
-                                hint: getTranslated("asset_type", context),
+                                hint: getTranslated(
+                                    "covenant_release_type", context),
                                 read: true,
                                 onTap: () => CustomBottomSheet.show(
-                                    label: getTranslated("asset_type", context),
+                                    label: getTranslated(
+                                        "covenant_release_type", context),
                                     height: 400.h,
                                     list: CustomSingleSelector(
                                       onConfirm: provider.onSelectLoanType,
@@ -79,7 +82,8 @@ class _AssetRequestState extends State<AssetRequest> {
                                 valid: (v) => Validations.required(
                                     v,
                                     getTranslated(
-                                        "select_asset_type", context)),
+                                        "select_covenant_release_type",
+                                        context)),
                               ),
                             ],
                           ),

@@ -78,10 +78,6 @@
   "employment_contract": "Employment contract",
   "there_is_no_contract": "There is no contract",
   "there_is_no_asset": "There is no asset",
-
-  "clear_asset_request": "Clear Asset Request",
-  "clear_asset_details": "Clear Asset Details",
-  "clear_asset_type": "Clear Asset Type",
   "business_trip_request": "Business Trip Request",
   "business_trip_duration": "Business Trip Duration",
   "business_trip": "Business Trip",
@@ -285,7 +281,6 @@
   "asset":"Asset",
   "asset_items": "Asset Items",
   "assets":"Assets",
-  "asset_clear": "Asset Clear",
   "personal": "Personal",
   "view_details": "View Details",
   "organization": "Organization",
@@ -372,5 +367,9 @@
   "enter_financial_compensation_amount": "Oops, You must enter financial compensation",
   "start_time": "Start time",
   "end_time":"End time",
-  "asset_clear_request": "Request/Clear Asset"
+  "covenant_release": "Covenant Release",
+  "covenant_release_request": "Covenant Release Request",
+  "covenant_release_details": "Covenant Release Details",
+  "covenant_release_type": "Covenant Release Type",
+  "select_covenant_release_type": "Oops, You must select covenant release type"
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../features/add_request/page/add_request.dart';
 import '../features/add_request/requests/asset_request/page/asset_request.dart';
+import '../features/add_request/requests/asset_request/page/clear_asset_request.dart';
 import '../features/add_request/requests/expenses_request/page/expense_request.dart';
 import '../features/add_request/requests/loan_request/page/loan_request.dart';
 import '../features/add_request/requests/permission_request/page/permission_request.dart';
@@ -75,6 +76,9 @@ abstract class CustomNavigator {
 
       case Routes.ASSET_REQUEST:
         return _pageRoute(const AssetRequest());
+
+      case Routes.CLEAR_ASSET_REQUEST:
+        return _pageRoute(const ClearAssetRequest());
 
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());

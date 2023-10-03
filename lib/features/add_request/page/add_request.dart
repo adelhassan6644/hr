@@ -35,10 +35,50 @@ class AddRequest extends StatelessWidget {
                   ),
                 ),
 
-                ///Finance Request
-                SizedBox(
-                  height: 16.h,
+                ///Attendance Request
+                SizedBox(height: 16.h),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                      vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Styles.BORDER_COLOR,
+                        width: 1.0.h,
+                      )),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        getTranslated("attendance", context),
+                        style: AppTextStyles.w600.copyWith(
+                          color: Styles.PRIMARY_COLOR,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      RequestActionWidget(
+                          title: getTranslated("permission", context),
+                          astIcon: Images.exit,
+                          onTap: () =>
+                              CustomNavigator.push(Routes.PERMISSIN_REQUEST)),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      RequestActionWidget(
+                          title: getTranslated("vacation", context),
+                          astIcon: Images.vacations,
+                          onTap: () =>
+                              CustomNavigator.push(Routes.VACATION_REQUEST)),
+                    ],
+                  ),
                 ),
+
+                ///Finance Request
+                SizedBox(height: 16.h),
                 Container(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -80,54 +120,8 @@ class AddRequest extends StatelessWidget {
                   ),
                 ),
 
-                ///Attendance Request
-                SizedBox(
-                  height: 16.h,
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                      vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Styles.BORDER_COLOR,
-                        width: 1.0.h,
-                      )),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        getTranslated("attendance", context),
-                        style: AppTextStyles.w600.copyWith(
-                          color: Styles.PRIMARY_COLOR,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16.h,
-                      ),
-                      RequestActionWidget(
-                          title: getTranslated("permission", context),
-                          astIcon: Images.exit,
-                          onTap: () =>
-                              CustomNavigator.push(Routes.PERMISSIN_REQUEST)),
-                      SizedBox(
-                        height: 16.h,
-                      ),
-                      RequestActionWidget(
-                          title: getTranslated("vacation", context),
-                          astIcon: Images.vacations,
-                          onTap: () =>
-                              CustomNavigator.push(Routes.VACATION_REQUEST)),
-                    ],
-                  ),
-                ),
-
                 ///other Request
-                SizedBox(
-                  height: 16.h,
-                ),
+                SizedBox(height: 16.h),
                 Container(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -156,6 +150,14 @@ class AddRequest extends StatelessWidget {
                           astIcon: Images.assetsIcon,
                           onTap: () =>
                               CustomNavigator.push(Routes.ASSET_REQUEST)),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      RequestActionWidget(
+                          title: getTranslated("covenant_release", context),
+                          astIcon: Images.assetsIcon,
+                          onTap: () =>
+                              CustomNavigator.push(Routes.CLEAR_ASSET_REQUEST)),
                     ],
                   ),
                 ),

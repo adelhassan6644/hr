@@ -84,7 +84,7 @@ class LoanRequestProvider extends ChangeNotifier {
         });
       }
 
-      Either<ServerFailure, Response> response = await repo.sendLoadRequest("");
+      Either<ServerFailure, Response> response = await repo.sendLoadRequest(body);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
