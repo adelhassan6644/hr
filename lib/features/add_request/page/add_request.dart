@@ -67,15 +67,15 @@ class AddRequest extends StatelessWidget {
                           astIcon: Images.salaries,
                           onTap: () =>
                               CustomNavigator.push(Routes.LOAN_REQUEST)),
-                      SizedBox(
-                        height: 8.h,
-                      ),
-                      RequestActionWidget(
-                          title:
-                              getTranslated("financial_compensation", context),
-                          astIcon: Images.expenses,
-                          onTap: () => CustomNavigator.push(
-                              Routes.EXPENSE_CLAIM_REQUEST)),
+                      // SizedBox(
+                      //   height: 8.h,
+                      // ),
+                      // RequestActionWidget(
+                      //     title:
+                      //         getTranslated("financial_compensation", context),
+                      //     astIcon: Images.expenses,
+                      //     onTap: () => CustomNavigator.push(
+                      //         Routes.EXPENSE_CLAIM_REQUEST)),
                     ],
                   ),
                 ),

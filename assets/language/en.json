@@ -371,5 +371,6 @@
   "enter_description": "Oops, You must enter description",
   "enter_financial_compensation_amount": "Oops, You must enter financial compensation",
   "start_time": "Start time",
-  "end_time":"End time"
+  "end_time":"End time",
+  "asset_clear_request": "Request/Clear Asset"
 }

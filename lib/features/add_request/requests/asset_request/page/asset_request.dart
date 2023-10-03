@@ -38,8 +38,7 @@ class _AssetRequestState extends State<AssetRequest> {
             Consumer<AssetRequestProvider>(builder: (context, provider, child) {
           return Scaffold(
             appBar: CustomAppBar(
-              title: getTranslated("asset_request", context),
-            ),
+                title: getTranslated("asset_clear_request", context)),
             body: Form(
               key: formKey,
               child: Column(

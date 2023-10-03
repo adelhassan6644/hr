@@ -48,6 +48,7 @@
   "subject_to_en": "موجه الي (بالانجليزية)",
   "subject_to_ar":"موجه الي (بالعربية)",
   "asset_request": "طلب عهدة",
+  "asset_clear_request": "طلب/اخلاء عهدة",
   "asset_details": "تفاصيل العهدة",
   "clear_asset_request": "طلب إخلاء العهدة",
   "clear_asset_details": "تفاصيل إخلاء العهدة",
