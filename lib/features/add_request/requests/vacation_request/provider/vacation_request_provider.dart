@@ -49,7 +49,7 @@ class VacationRequestProvider extends ChangeNotifier {
   DateTime? endDate;
   onSelectEndDate(v) {
     endDate = v;
-
+    getDuration();
     notifyListeners();
   }
 

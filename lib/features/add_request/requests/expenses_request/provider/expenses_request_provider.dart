@@ -6,44 +6,22 @@ import 'package:flutter/material.dart';
 import '../../../../../app/core/app_snack_bar.dart';
 import '../../../../../app/core/color_resources.dart';
 import '../../../../../data/error/failures.dart';
-import '../../../../../main_models/custom_select_model.dart';
-import '../repo/permission_request_repo.dart';
+import '../repo/expenses_request_repo.dart';
 
-class PermissionRequestProvider extends ChangeNotifier {
-  final PermissionRequestRepo repo;
-  PermissionRequestProvider({required this.repo});
+class ExpensesRequestProvider extends ChangeNotifier {
+  final ExpensesRequestRepo repo;
+  ExpensesRequestProvider({required this.repo});
 
   final TextEditingController reason = TextEditingController();
+  final TextEditingController title = TextEditingController();
+  final TextEditingController amount = TextEditingController();
+  final TextEditingController description = TextEditingController();
 
-  List<CustomSelectModel> permissionTypes = [
-    CustomSelectModel(id: 1, title: "title"),
-    CustomSelectModel(id: 2, title: "title2"),
-    CustomSelectModel(id: 3, title: "title3"),
-  ];
-
-  CustomSelectModel? selectedPermissionType;
-  onSelectLoanType(v) {
-    selectedPermissionType = v;
-    notifyListeners();
-  }
-
-  DateTime? selectedDate;
-  onSelectDate(v) {
-    selectedDate = v;
-    notifyListeners();
-  }
-
-  DateTime? startDate;
-  onSelectStartDate(v) {
-    startDate = v;
-    notifyListeners();
-  }
-
-  DateTime? endDate;
-  onSelectEndDate(v) {
-    endDate = v;
-    notifyListeners();
-  }
+  // DateTime? date;
+  // onSelectDate(v) {
+  //   date = v;
+  //   notifyListeners();
+  // }
 
   List<File> attachments = [];
   onSelectAttachments(v) {
@@ -56,16 +34,16 @@ class PermissionRequestProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
   bool isLoading = false;
   onSubmit() async {
     try {
       isLoading = true;
       notifyListeners();
-      var body = {
-        "permission_type": selectedPermissionType,
-        "date": selectedDate,
-        "reason": reason.text.trim()
+      Map<String, dynamic> body = {
+        "title": title.text.trim(),
+        "amount": amount.text.trim(),
+        "description": description.text.trim(),
+        "reason": reason.text.trim(),
       };
       for (int i = 0; i < attachments.length; i++) {
         body.addAll({
@@ -73,7 +51,8 @@ class PermissionRequestProvider extends ChangeNotifier {
         });
       }
 
-      Either<ServerFailure, Response> response = await repo.sendLoadRequest("");
+      Either<ServerFailure, Response> response =
+          await repo.sendExpensesRequest("");
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(

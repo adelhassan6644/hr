@@ -10,10 +10,10 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../navigation/routes.dart';
-import '../widgets/tab_request.dart';
+import '../widgets/request_action_widget.dart';
 
-class AddRequestScreen extends StatelessWidget {
-  const AddRequestScreen({Key? key}) : super(key: key);
+class AddRequest extends StatelessWidget {
+  const AddRequest({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,22 +62,17 @@ class AddRequestScreen extends StatelessWidget {
                       SizedBox(
                         height: 16.h,
                       ),
-                      tabRequest(
+                      RequestActionWidget(
                           title: getTranslated("loan", context),
-                          textColor: Styles.SUBTITLE,
-                          textSize: 14,
-                          iconColor: Styles.SUBTITLE,
                           astIcon: Images.salaries,
                           onTap: () =>
                               CustomNavigator.push(Routes.LOAN_REQUEST)),
                       SizedBox(
                         height: 8.h,
                       ),
-                      tabRequest(
-                          title: getTranslated("expense_claim", context),
-                          textColor: Styles.SUBTITLE,
-                          textSize: 14,
-                          iconColor: Styles.SUBTITLE,
+                      RequestActionWidget(
+                          title:
+                              getTranslated("financial_compensation", context),
                           astIcon: Images.expenses,
                           onTap: () => CustomNavigator.push(
                               Routes.EXPENSE_CLAIM_REQUEST)),
@@ -112,14 +107,19 @@ class AddRequestScreen extends StatelessWidget {
                       SizedBox(
                         height: 16.h,
                       ),
-                      tabRequest(
+                      RequestActionWidget(
                           title: getTranslated("permission", context),
-                          textColor: Styles.SUBTITLE,
-                          textSize: 14,
-                          iconColor: Styles.SUBTITLE,
                           astIcon: Images.exit,
                           onTap: () =>
                               CustomNavigator.push(Routes.PERMISSIN_REQUEST)),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      RequestActionWidget(
+                          title: getTranslated("vacation", context),
+                          astIcon: Images.vacations,
+                          onTap: () =>
+                              CustomNavigator.push(Routes.VACATION_REQUEST)),
                     ],
                   ),
                 ),
@@ -149,60 +149,13 @@ class AddRequestScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 16.h,
-                      ),
-                      tabRequest(
-                          title: getTranslated("vacation", context),
-                          textColor: Styles.SUBTITLE,
-                          textSize: 14,
-                          iconColor: Styles.SUBTITLE,
-                          astIcon: Images.vacations,
-                          onTap: () =>
-                              CustomNavigator.push(Routes.VACATION_REQUEST)),
-                      SizedBox(
                         height: 8.h,
                       ),
-                      tabRequest(
-                          title: getTranslated("business_trip", context),
-                          textColor: Styles.SUBTITLE,
-                          textSize: 14,
-                          iconColor: Styles.SUBTITLE,
-                          astIcon: Images.plane,
-                          onTap: () => CustomNavigator.push(
-                              Routes.BUSINESS_TRIP_REQUEST)),
-                      SizedBox(
-                        height: 8.h,
-                      ),
-                      tabRequest(
-                          title: getTranslated("letter", context),
-                          textColor: Styles.SUBTITLE,
-                          textSize: 14,
-                          iconColor: Styles.SUBTITLE,
-                          astIcon: Images.letter,
-                          onTap: () =>
-                              CustomNavigator.push(Routes.LETTER_REQUEST)),
-                      SizedBox(
-                        height: 8.h,
-                      ),
-                      tabRequest(
+                      RequestActionWidget(
                           title: getTranslated("asset", context),
-                          textColor: Styles.SUBTITLE,
-                          textSize: 14,
-                          iconColor: Styles.SUBTITLE,
                           astIcon: Images.assetsIcon,
                           onTap: () =>
                               CustomNavigator.push(Routes.ASSET_REQUEST)),
-                      SizedBox(
-                        height: 8.h,
-                      ),
-                      tabRequest(
-                          title: getTranslated("asset_clear", context),
-                          textColor: Styles.SUBTITLE,
-                          textSize: 14,
-                          iconColor: Styles.SUBTITLE,
-                          astIcon: Images.assetsIcon,
-                          onTap: () =>
-                              CustomNavigator.push(Routes.CLEAR_ASSET_REQUEST)),
                     ],
                   ),
                 ),

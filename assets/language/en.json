@@ -113,8 +113,7 @@
   "yearly": "Yearly",
   "dates":"dates",
   "date": "Date",
-  "item_name": "Item Name",
-  "items": "Items",
+  "title": "Title",
   "description": "Description",
   "delete_all":  "Delete All",
   "filter_search": "Filter search",
@@ -274,9 +273,9 @@
   "sec": "sec",
   "permission": "Permission",
   "vacation": "Vacation",
-  "expense_claim_request": "Expense Claim Request",
+  "financial_compensation_request": "Financial  Compensation Request",
+  "financial_details": "Financial  Compensation details",
   "financial_expenses": "Financial Expenses",
-  "expense_claim": "Expense Claim",
   "permission_request": "Permission Request",
   "permission_details": "Permission Details",
   "financial_compensation": "Financial Compensation",
@@ -367,5 +366,10 @@
   "select_asset_type": "Oops, You must select asset type",
   "select_vacation_type": "Oops, You must select vacation type",
   "asset_type": "Asset Type",
-  "upload_attachment": "Upload Attachment"
+  "upload_attachment": "Upload Attachment",
+  "enter_title":"Oops, You must enter title",
+  "enter_description": "Oops, You must enter description",
+  "enter_financial_compensation_amount": "Oops, You must enter financial compensation",
+  "start_time": "Start time",
+  "end_time":"End time"
 }

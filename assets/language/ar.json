@@ -18,8 +18,7 @@
   "every": "الجميع",
   "dates":"المواعيد",
   "date": "التاريخ",
-  "item_name": "اسم العنصر",
-  "items": "العناصر",
+  "title": "العنوان",
   "description": "الوصف",
   "select_from_available_dates": "اختر من المواعيد المتاحة",
   "select": "اختر",
@@ -265,8 +264,8 @@
   "financial_expenses": "مصاريف مالية",
   "financial_compensation": "تعويض مالي",
   "finance": "المالية",
-  "expense_claim": "تعويض مالي",
-  "expense_claim_request": "طلب تعويض مالي",
+  "financial_compensation_request": "طلب تعويض مالي",
+  "financial_details": "تفاصيل التعويض المالي",
   "hr": "أخري",
   "leaves": "الإجازات",
   "letter": "خطاب",
@@ -342,5 +341,10 @@
   "enter_reason": "عفوا، يجب عليك إدخال السبب",
   "vacation_type": "نوع الإجازة",
   "select_vacation_type": "عفوًا، يجب عليك تحديد نوع الإجازة",
-  "upload_attachment": "ارفاق ملف"
+  "upload_attachment": "ارفاق ملف",
+  "enter_title": "عفوا، يجب عليك إدخال العنوان",
+  "enter_description": "عفوا، يجب عليك إدخال الوصف",
+  "enter_financial_compensation_amount": "عفوا، يجب عليك قيمة التعويض المالي",
+  "start_time": "بداية الوقت",
+  "end_time":"نهاية الوقت"
 }

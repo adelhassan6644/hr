@@ -31,92 +31,94 @@ class _AssetRequestState extends State<AssetRequest> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AssetRequestProvider(repo: sl<AssetRequestRepo>()),
-      child:
-          Consumer<AssetRequestProvider>(builder: (context, provider, child) {
-        return Scaffold(
-          appBar: CustomAppBar(
-            title: getTranslated("asset_request", context),
-          ),
-          body: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListAnimator(
-                    customPadding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                        vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                    data: [
-                      /// The Asset Details
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12.h),
-                        child: CustomExpansionTile(
-                          title: getTranslated("asset_details", context),
-                          children: [
-                            CustomTextFormField(
-                              sufWidget: const Icon(
-                                Icons.keyboard_arrow_down_outlined,
-                                color: Styles.disabledColor,
-                                size: 18,
+    return SafeArea(
+      child: ChangeNotifierProvider(
+        create: (_) => AssetRequestProvider(repo: sl<AssetRequestRepo>()),
+        child:
+            Consumer<AssetRequestProvider>(builder: (context, provider, child) {
+          return Scaffold(
+            appBar: CustomAppBar(
+              title: getTranslated("asset_request", context),
+            ),
+            body: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListAnimator(
+                      customPadding: EdgeInsets.symmetric(
+                          horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                          vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                      data: [
+                        /// The Asset Details
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 12.h),
+                          child: CustomExpansionTile(
+                            title: getTranslated("asset_details", context),
+                            children: [
+                              CustomTextFormField(
+                                sufWidget: const Icon(
+                                  Icons.keyboard_arrow_down_outlined,
+                                  color: Styles.disabledColor,
+                                  size: 18,
+                                ),
+                                controller: TextEditingController(
+                                    text: provider.selectedAssetType?.title ??
+                                        ""),
+                                hint: getTranslated("asset_type", context),
+                                read: true,
+                                onTap: () => CustomBottomSheet.show(
+                                    label: getTranslated("asset_type", context),
+                                    height: 400.h,
+                                    list: CustomSingleSelector(
+                                      onConfirm: provider.onSelectLoanType,
+                                      list: provider.assetTypes,
+                                      initialValue:
+                                          provider.selectedAssetType?.id,
+                                    ),
+                                    onConfirm: () => CustomNavigator.pop()),
+                                valid: (v) => Validations.required(
+                                    v,
+                                    getTranslated(
+                                        "select_asset_type", context)),
                               ),
-                              controller: TextEditingController(
-                                  text:
-                                  provider.selectedAssetType?.title ?? ""),
-                              hint: getTranslated("asset_type", context),
-                              read: true,
-                              onTap: () => CustomBottomSheet.show(
-                                  label: getTranslated("asset_type", context),
-                                  height: 400.h,
-                                  list: CustomSingleSelector(
-                                    onConfirm: provider.onSelectLoanType,
-                                    list: provider.assetTypes,
-                                    initialValue:
-                                    provider.selectedAssetType?.id,
-                                  ),
-                                  onConfirm: () => CustomNavigator.pop()),
-                              valid: (v) => Validations.required(v,
-                                  getTranslated("select_asset_type", context)),
-                            ),
-
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
 
-                      /// The Request Reason
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12.h),
-                        child: RequestReason(
-                          reasonController: provider.reason,
-                          attachments: provider.attachments,
-                          onGet: provider.onSelectAttachments,
-                          onRemove: provider.onRemoveAttachments,
+                        /// The Request Reason
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 12.h),
+                          child: RequestReason(
+                            reasonController: provider.reason,
+                            attachments: provider.attachments,
+                            onGet: provider.onSelectAttachments,
+                            onRemove: provider.onRemoveAttachments,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          bottomNavigationBar: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-              vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+            bottomNavigationBar: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+              ),
+              child: CustomButton(
+                text: getTranslated("submit", context),
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    provider.onSubmit();
+                  }
+                },
+              ),
             ),
-            child: CustomButton(
-              text: getTranslated("submit", context),
-              onTap: () {
-                if (formKey.currentState!.validate()) {
-                  provider.onSubmit();
-                }
-              },
-            ),
-          ),
-
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

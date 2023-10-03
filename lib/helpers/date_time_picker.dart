@@ -7,10 +7,8 @@ import '../app/localization/language_constant.dart';
 import '../components/custom_button.dart';
 
 class DateTimePicker extends StatefulWidget {
-  final String? initialString;
+  final DateTime? initialValue;
   final String? format;
-  final bool? isNotEmptyValue;
-  final DateTime? startDateTime;
   final DateTime? minDateTime;
   final ValueChanged<DateTime>? valueChanged;
   final String label;
@@ -19,12 +17,10 @@ class DateTimePicker extends StatefulWidget {
   const DateTimePicker(
       {Key? key,
       this.mode,
-      this.initialString,
+      this.initialValue,
       this.minDateTime,
       this.format,
       required this.valueChanged,
-      this.isNotEmptyValue = false,
-      this.startDateTime,
       required this.label})
       : super(key: key);
 
@@ -38,9 +34,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
   @override
   void initState() {
     setState(() {
-      if (widget.isNotEmptyValue!) {
-        date = DateTime.parse(widget.initialString!);
-      }
+      date = widget.initialValue ?? DateTime.now();
     });
     super.initState();
   }
@@ -78,19 +72,11 @@ class _DateTimePickerState extends State<DateTimePicker> {
                 child: CupertinoDatePicker(
                     mode: widget.mode ?? CupertinoDatePickerMode.date,
                     onDateTimeChanged: (value) => date = value,
-                    // showDayOfWeek: true,
-
-                    initialDateTime:
-                        date ?? widget.startDateTime ?? DateTime.now(),
+                    initialDateTime: date,
                     minimumDate: widget.minDateTime != null
                         ? DateTime(widget.minDateTime!.year,
                             widget.minDateTime!.month, widget.minDateTime!.day)
-                        : widget.startDateTime != null
-                            ? DateTime(
-                                widget.startDateTime!.year,
-                                widget.startDateTime!.month,
-                                widget.startDateTime!.day)
-                            : DateTime(1900),
+                        : DateTime(1900),
                     maximumDate: DateTime(2100))),
           ),
           Padding(
@@ -104,7 +90,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                   widget.valueChanged!(date!);
                   CustomNavigator.pop();
                 } else {
-                  widget.valueChanged!(widget.startDateTime ?? DateTime.now());
+                  widget.valueChanged!(widget.initialValue ?? DateTime.now());
                   CustomNavigator.pop();
                 }
               },

@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../../../../../app/core/color_resources.dart';
 import '../../../../../app/core/dimensions.dart';
-import '../../../../../app/core/images.dart';
 import '../../../../../app/core/text_styles.dart';
 import '../../../../../app/core/validation.dart';
 import '../../../../../app/localization/language_constant.dart';
@@ -149,23 +148,23 @@ class _VacationRequestState extends State<VacationRequest> {
                                 ],
                               ),
                             ),
-                            Visibility(
-                              visible: (provider.startDate != null &&
-                                  provider.endDate != null),
-                              child: CustomTextFormField(
-                                pAssetIcon: Images.calenderIcon,
-                                controller: TextEditingController(
-                                    text: provider.duration),
-                                sufWidget: Text(
-                                  getTranslated("day", context),
-                                  style: AppTextStyles.w500.copyWith(
-                                    fontSize: 13,
-                                    color: Styles.hintColor,
-                                  ),
-                                ),
-                                read: true,
-                              ),
-                            ),
+                            // Visibility(
+                            //   visible: (provider.startDate != null &&
+                            //       provider.endDate != null),
+                            //   child: CustomTextFormField(
+                            //     pAssetIcon: Images.calenderIcon,
+                            //     controller: TextEditingController(
+                            //         text: provider.duration),
+                            //     sufWidget: Text(
+                            //       getTranslated("day", context),
+                            //       style: AppTextStyles.w500.copyWith(
+                            //         fontSize: 13,
+                            //         color: Styles.hintColor,
+                            //       ),
+                            //     ),
+                            //     read: true,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

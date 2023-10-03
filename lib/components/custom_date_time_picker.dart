@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/color_resources.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
@@ -13,8 +14,10 @@ class CustomSelectDate extends StatefulWidget {
   final bool? isNotEmptyValue;
   final bool? showOnly;
   final DateTime? startDateTime;
+  final DateTime? minDate;
   final ValueChanged<DateTime>? valueChanged;
   final String label;
+  final CupertinoDatePickerMode? mode;
 
   const CustomSelectDate(
       {Key? key,
@@ -22,8 +25,10 @@ class CustomSelectDate extends StatefulWidget {
       required this.valueChanged,
       this.isNotEmptyValue = false,
       this.showOnly = false,
+      this.minDate,
       this.startDateTime,
-      required this.label})
+      required this.label,
+      this.mode})
       : super(key: key);
 
   @override
@@ -72,7 +77,11 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
                           CustomNavigator.navigatorState.currentContext!)
                       .viewInsets,
                   child: DateTimePicker(
-                      valueChanged: widget.valueChanged, label: widget.label),
+                      minDateTime: widget.minDate ?? DateTime.now(),
+                      initialValue: widget.startDateTime,
+                      mode: widget.mode,
+                      valueChanged: widget.valueChanged,
+                      label: widget.label),
                 );
               });
         }
@@ -86,7 +95,8 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
       },
       style: AppTextStyles.w500.copyWith(fontSize: 14, color: Styles.SUBTITLE),
       controller: TextEditingController(
-          text: widget.startDateTime?.format(widget.format??"dd / MM / yyyy")),
+          text:
+              widget.startDateTime?.format(widget.format ?? "dd / MM / yyyy")),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
         hintText: _date,
@@ -105,14 +115,16 @@ class _CustomSelectDateState extends State<CustomSelectDate> {
         fillColor: Styles.FILL_COLOR,
         label: Text(
           widget.label,
-          style: AppTextStyles.w500.copyWith(fontSize: 14, color: Styles.disabledColor),
+          style: AppTextStyles.w500
+              .copyWith(fontSize: 14, color: Styles.disabledColor),
         ),
         errorStyle: AppTextStyles.w500.copyWith(
           color: Styles.IN_ACTIVE,
           fontSize: 12,
         ),
         errorMaxLines: 2,
-        hintStyle: AppTextStyles.w400.copyWith(fontSize: 14, color: Styles.disabledColor),
+        hintStyle: AppTextStyles.w400
+            .copyWith(fontSize: 14, color: Styles.disabledColor),
         suffixIcon: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Image.asset(
