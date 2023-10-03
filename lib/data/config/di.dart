@@ -8,7 +8,6 @@ import '../../features/add_request/requests/permission_request/repo/permission_r
 import '../../features/add_request/requests/vacation_request/repo/vacation_request_repo.dart';
 import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
-import '../../features/add_request/provider/add_request_provider.dart';
 import '../../features/attendance/provider/attendance_provider.dart';
 import '../../features/attendance/repo/attendance_repo.dart';
 import '../../features/auth/provider/auth_provider.dart';
@@ -73,7 +72,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => DashboardProvider());
   sl.registerLazySingleton(() => HomeProvider(repo: sl()));
   sl.registerLazySingleton(() => SalaryProvider(repo: sl()));
-  sl.registerLazySingleton(() => AddRequestProvider());
+
   sl.registerLazySingleton(() => AttendanceProvider(repo: sl()));
   sl.registerLazySingleton(() => ConfigProvider(repo: sl()));
 

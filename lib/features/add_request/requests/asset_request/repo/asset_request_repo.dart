@@ -9,10 +9,10 @@ import '../../../../../main_repos/base_repo.dart';
 class AssetRequestRepo extends BaseRepo {
   AssetRequestRepo({required super.sharedPreferences, required super.dioClient});
 
-  Future<Either<ServerFailure, Response>> sendLoadRequest(body) async {
+  Future<Either<ServerFailure, Response>> sendAssetRequest(body) async {
     try {
       Response response =
-          await dioClient.post(uri: EndPoints.loanRequest, data: body);
+          await dioClient.post(uri: EndPoints.assetRequest, data: body);
       if (response.statusCode == 200) {
         return Right(response);
       } else {

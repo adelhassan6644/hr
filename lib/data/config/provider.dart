@@ -4,7 +4,6 @@ import 'package:yusrPlus/data/config/di.dart' as di;
 
 import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
-import '../../features/add_request/provider/add_request_provider.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/attendance/provider/attendance_provider.dart';
 import '../../features/auth/provider/auth_provider.dart';
@@ -18,7 +17,6 @@ abstract class ProviderList {
   static List<SingleChildWidget> providers = [
     ChangeNotifierProvider(create: (context) => di.sl<ThemeProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<DashboardProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<AddRequestProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<SplashProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<UserProvider>()),

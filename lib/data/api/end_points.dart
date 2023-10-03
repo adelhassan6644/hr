@@ -22,6 +22,15 @@ class EndPoints {
   static const String loanRequest = 'employee/loan/request/store';
   static  deleteLoanRequest(id) => 'employee/loan/request/destroy/$id';
 
+  static const String assetRequest = 'employee/loan/request/store';
+  static  deleteAssetRequest(id) => 'employee/loan/request/destroy/$id';
+
+  static const String permissionRequest = 'employee/loan/request/store';
+  static  deletePermissionRequest(id) => 'employee/loan/request/destroy/$id';
+
+  static const String vacationRequest = 'employee/loan/request/store';
+  static  deleteVacationRequest(id) => 'employee/loan/request/destroy/$id';
+
 
   ///App Config
   static const String setting = '';

@@ -53,7 +53,8 @@ class AssetRequestProvider extends ChangeNotifier {
         });
       }
 
-      Either<ServerFailure, Response> response = await repo.sendLoadRequest("");
+      Either<ServerFailure, Response> response =
+          await repo.sendAssetRequest(body);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(

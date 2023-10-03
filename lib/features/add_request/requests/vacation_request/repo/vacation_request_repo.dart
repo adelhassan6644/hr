@@ -5,14 +5,14 @@ import '../../../../../data/error/api_error_handler.dart';
 import '../../../../../data/error/failures.dart';
 import '../../../../../main_repos/base_repo.dart';
 
-
 class VacationRequestRepo extends BaseRepo {
-  VacationRequestRepo({required super.sharedPreferences, required super.dioClient});
+  VacationRequestRepo(
+      {required super.sharedPreferences, required super.dioClient});
 
   Future<Either<ServerFailure, Response>> sendVacationRequest(body) async {
     try {
       Response response =
-          await dioClient.post(uri: EndPoints.loanRequest, data: body);
+          await dioClient.post(uri: EndPoints.vacationRequest, data: body);
       if (response.statusCode == 200) {
         return Right(response);
       } else {

@@ -73,7 +73,7 @@ class PermissionRequestProvider extends ChangeNotifier {
         });
       }
 
-      Either<ServerFailure, Response> response = await repo.sendLoadRequest("");
+      Either<ServerFailure, Response> response = await repo.sendRequest("");
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
