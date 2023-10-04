@@ -355,5 +355,8 @@
   "end_time":"نهاية الوقت",
   "your_request_has_been_sent_successfully": "تم ارسال طلبك بنجاح",
   "there_is_no_requests": "لا يوجد طلبات",
-  "not_supported_yet": "لم يتم الدعم بعد"
+  "not_supported_yet": "لم يتم الدعم بعد",
+  "logged_in_successfully": "تم تسجيل الدخول بنجاح!",
+  "logged_out_successfully": "تم تسجيل الخروج بنجاح!"
+
 }

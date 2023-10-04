@@ -3,7 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:yusrPlus/app/localization/language_constant.dart';
+import 'package:yusrPlus/main_page/provider/dashboard_provider.dart';
 import '../../../app/core/app_snack_bar.dart';
+import '../../../data/config/di.dart';
 import '../../../data/error/failures.dart';
 import '../repo/auth_repo.dart';
 import '../../../navigation/custom_navigation.dart';
@@ -33,6 +36,11 @@ class AuthProvider extends ChangeNotifier {
 
   bool get isLogin => authRepo.isLoggedIn();
 
+  clear() {
+    _emailTEC.clear();
+    _passwordTEC.clear();
+  }
+
   logIn() async {
     try {
       {
@@ -49,8 +57,15 @@ class AuthProvider extends ChangeNotifier {
                   borderColor: Styles.transparentColor));
           notifyListeners();
         }, (success) {
-          // _passwordTEC.clear();
+          CustomSnackBar.showSnackBar(
+              notification: AppNotification(
+                  message: getTranslated("logged_in_successfully",
+                      CustomNavigator.navigatorState.currentContext!),
+                  isFloating: true,
+                  backgroundColor: Styles.ACTIVE,
+                  borderColor: Styles.transparentColor));
           CustomNavigator.push(Routes.DASHBOARD, clean: true);
+          // clear();
         });
         _isLoading = false;
         notifyListeners();
@@ -205,10 +220,15 @@ class AuthProvider extends ChangeNotifier {
 
   logOut() async {
     CustomNavigator.push(Routes.LOGIN, clean: true);
-    await authRepo.clearSharedData();
+    Future.delayed(Duration.zero, () async {
+      sl<DashboardProvider>().updateDashboardIndex(0);
+      await authRepo.clearSharedData();
+    });
+
     CustomSnackBar.showSnackBar(
         notification: AppNotification(
-            message: "You logged out successfully !",
+            message: getTranslated("logged_out_successfully",
+                CustomNavigator.navigatorState.currentContext!),
             isFloating: true,
             backgroundColor: Styles.ACTIVE,
             borderColor: Styles.transparentColor));

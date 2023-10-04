@@ -379,5 +379,7 @@
   "pledge_release_type": "Pledge Release Type",
   "your_request_has_been_sent_successfully": "Your Request has been sent successfully",
   "there_is_no_requests": "There is no requests",
-  "not_supported_yet": "Not Supported Yet"
+  "not_supported_yet": "Not Supported Yet",
+  "logged_in_successfully": "You logged in successfully!",
+  "logged_out_successfully": "You logged out successfully!"
 }
