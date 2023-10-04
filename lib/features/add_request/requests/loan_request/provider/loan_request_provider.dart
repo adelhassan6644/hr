@@ -20,12 +20,12 @@ class LoanRequestProvider extends ChangeNotifier {
 
   final TextEditingController amountPerMounth = TextEditingController();
   final TextEditingController reason = TextEditingController();
-  final TextEditingController loanAmount = TextEditingController();
+  final TextEditingController amount = TextEditingController();
   final TextEditingController numberOfMonths = TextEditingController();
 
-  CustomSelectModel? selectedLoanType;
+  CustomSelectModel? selectedType;
   onSelectLoanType(v) {
-    selectedLoanType = v;
+    selectedType = v;
     notifyListeners();
   }
 
@@ -99,8 +99,10 @@ class LoanRequestProvider extends ChangeNotifier {
   }
 
   clear() {
-    selectedLoanType = null;
+    selectedType = null;
+    amount.clear();
     amountPerMounth.clear();
+    numberOfMonths.clear();
     installmentStartDate = null;
     reason.clear();
     attachments.clear();
@@ -120,9 +122,9 @@ class LoanRequestProvider extends ChangeNotifier {
       }
 
       var body = {
-        "loan_type_id": selectedLoanType,
+        "loan_type_id": selectedType?.id,
         "employee_id": repo.userId,
-        "amount": loanAmount.text.trim(),
+        "amount": amount.text.trim(),
         "start_date": installmentStartDate?.postDateFormat(),
         "amount_per_month": amountPerMounth.text.trim(),
         "number_of_months": numberOfMonths.text.trim(),

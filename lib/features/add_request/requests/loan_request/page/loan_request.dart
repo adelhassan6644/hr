@@ -66,7 +66,7 @@ class _LoanRequestState extends State<LoanRequest> {
                                 ),
                                 controller: TextEditingController(
                                     text:
-                                        provider.selectedLoanType?.name ?? ""),
+                                        provider.selectedType?.name ?? ""),
                                 hint: getTranslated("loan_type", context),
                                 read: true,
                                 onTap: () {
@@ -96,7 +96,7 @@ class _LoanRequestState extends State<LoanRequest> {
                                           onConfirm: provider.onSelectLoanType,
                                           list: provider.loanTypes,
                                           initialValue:
-                                              provider.selectedLoanType?.id,
+                                              provider.selectedType?.id,
                                         ),
                                         onConfirm: () => CustomNavigator.pop());
                                   }
@@ -120,7 +120,7 @@ class _LoanRequestState extends State<LoanRequest> {
                                       color: Styles.hintColor,
                                     ),
                                   ),
-                                  controller: provider.loanAmount,
+                                  controller: provider.amount,
                                   hint: getTranslated("loan_amount", context),
                                   label: true,
                                   valid: (v) => Validations.required(
@@ -165,7 +165,7 @@ class _LoanRequestState extends State<LoanRequest> {
                                         "select_monthly_installment", context)),
                                 read: true,
                                 onTap: () {
-                                  if (provider.loanAmount.text
+                                  if (provider.amount.text
                                       .trim()
                                       .isNotEmpty) {
                                     CustomBottomSheet.show(

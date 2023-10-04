@@ -23,22 +23,19 @@ abstract class EndPoints {
 
   static const String loanRequest = 'employee/loan/request/store';
   static const String loanTypes = 'employee/loan/types/index';
-  static deleteLoanRequest(id) => 'employee/loan/request/destroy/$id';
 
   static const String covenantTypes = 'employee/pledge/types/index';
   static const String pledgeRequest = 'employee/pledge/request/store';
   static const String cancelPledgeRequest =
       'employee/pledge/transfer/request/store';
   static deletePledgeRequest(id) => 'employee/loan/request/destroy/$id';
-  static myPledge(id) => 'employee/pledge/transfer/request/index/$id';
+  static myCovenant(id) => 'employee/pledge/request/index/$id';
 
   static const String permissionRequest = 'employee/permission/request/store';
   static const String permissionTypes = 'employee/permission/types/index';
-  static deletePermissionRequest(id) => 'employee/loan/request/destroy/$id';
 
   static const String vacationTypes = 'employee/vaction/types/index';
   static const String vacationRequest = 'employee/vacation/request/store';
-  static deleteVacationRequest(id) => 'employee/loan/request/destroy/$id';
 
   ///App Config
   static const String setting = '';

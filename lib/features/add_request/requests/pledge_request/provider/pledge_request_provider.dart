@@ -93,14 +93,14 @@ class PledgeRequestProvider extends ChangeNotifier {
       }
 
       var body = {
-        "pledge_id": selectedType?.id,
+        isCancel ? "employee_pledge_id" : "pledge_id": selectedType?.id,
         "employee_id": repo.userId,
-        "comment": reason.text.trim(),
+        isCancel ? "reason" : "comment": reason.text.trim(),
         "photos": files
       };
 
       Either<ServerFailure, Response> response =
-          await repo.sendPledgeRequest(body,isCancel: isCancel);
+          await repo.sendPledgeRequest(body, isCancel: isCancel);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -133,5 +133,4 @@ class PledgeRequestProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-
 }

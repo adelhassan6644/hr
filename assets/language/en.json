@@ -373,7 +373,7 @@
   "enter_financial_compensation_amount": "Oops, You must enter financial compensation",
   "start_time": "Start time",
   "end_time":"End time",
-  "pledge_release": "Pledge Release",
+  "pledge_release": "Release Pledge",
   "pledge_release_request": "Pledge Release Request",
   "pledge_release_details": "Pledge Release Details",
   "pledge_release_type": "Pledge Release Type",

@@ -52,7 +52,7 @@ class RequestCard extends StatelessWidget {
                 ),
                 CustomButton(
                   text: getTranslated(requestType(request?.type), context),
-                  width: 90,
+                  width: 110,
                   radius: 6,
                   height: 30,
                   textColor: Styles.PRIMARY_COLOR,
@@ -75,7 +75,7 @@ class RequestCard extends StatelessWidget {
                 CustomButton(
                   text: getTranslated(
                       AppStrings.status(request?.status), context),
-                  width: 120,
+                  width: 110,
                   radius: 6,
                   height: 30,
                   textColor: Styles.requestStatus(request?.status),
@@ -120,6 +120,8 @@ class RequestCard extends StatelessWidget {
         return "pledge";
       case 4:
         return "permission";
+      case 5:
+        return "pledge_release";
       default:
         return "non";
     }
