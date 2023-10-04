@@ -13,6 +13,7 @@ import '../../../components/loader_view.dart';
 import '../../../main_providers/download_provider.dart';
 import '../../../navigation/routes.dart';
 import '../provider/salary_provider.dart';
+import '../widget/salary_details_card.dart';
 
 class Salary extends StatelessWidget {
   const Salary({Key? key}) : super(key: key);
@@ -79,58 +80,13 @@ class Salary extends StatelessWidget {
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      getTranslated("base_salary", context),
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          color: Styles.PRIMARY_COLOR,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    const Text(
-                                      "5675.8",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Styles.grayColor,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      getTranslated(
-                                          "health_insurance", context),
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          color: Styles.GOLD_COLOR,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    const Text(
-                                      "534.34",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Styles.grayColor,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      getTranslated(
-                                          "family_allowance", context),
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          color: Styles.GOLD_COLOR,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    const Text(
-                                      "5675.8",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Styles.grayColor,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
+                                  children: List.generate(
+                                      provider.salaryModel?.salaryDetailsModel
+                                              ?.length ??
+                                          0,
+                                      (index) => SalaryDetailsCard(
+                                          salary: provider.salaryModel
+                                              ?.salaryDetailsModel?[index])),
                                 )
                               ],
                             ),

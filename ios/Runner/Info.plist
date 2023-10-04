@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -24,23 +26,24 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera for profile photo update and scanning for order verification code.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We does not access to microphone</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your gallery for profile photo.</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-		<key>NSCameraUsageDescription</key>
-    		<string>We need access to your camera for profile photo update and scanning for order verification code.</string>
-    		<key>NSLocationAlwaysUsageDescription</key>
-    		<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
-    		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    		<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
-    		<key>NSLocationWhenInUseUsageDescription</key>
-    		<string>We need access to your location to show nearby vendors and share your location with customer when delivering their order.</string>
-    		<key>NSPhotoLibraryUsageDescription</key>
-    		<string>We need access to your gallery for profile photo.</string>
-    		<key>NSMicrophoneUsageDescription</key>
-    		<string>We does not access to microphone</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -56,9 +59,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
 </dict>
 </plist>
