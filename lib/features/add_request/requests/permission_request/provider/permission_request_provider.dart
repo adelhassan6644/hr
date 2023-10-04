@@ -122,7 +122,7 @@ class PermissionRequestProvider extends ChangeNotifier {
         "come_time": startDate?.postTimeFormat(),
         "leave_time": endDate?.postTimeFormat(),
         "reason": reason.text.trim(),
-        "photos": files
+        "photos[]": files
       };
 
       Either<ServerFailure, Response> response = await repo.sendRequest(body);

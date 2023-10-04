@@ -129,7 +129,7 @@ class LoanRequestProvider extends ChangeNotifier {
         "amount_per_month": amountPerMounth.text.trim(),
         "number_of_months": numberOfMonths.text.trim(),
         "comment": reason.text.trim(),
-        "photos": files
+        "photos[]": files
       };
 
       Either<ServerFailure, Response> response =
