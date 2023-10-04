@@ -142,7 +142,7 @@ extension IsoDataTimeExtention on DateTime {
 extension TimeExtention on DateTime {
   String timeFormat() {
     return DateFormat(
-            "hh:mm a",
+            "h:mm a",
             Provider.of<LocalizationProvider>(
                         CustomNavigator.scaffoldState.currentContext!,
                         listen: false)
