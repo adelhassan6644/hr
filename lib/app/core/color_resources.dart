@@ -121,6 +121,16 @@ abstract class Styles {
   static const Color SUB_TEXT1 = Color(0xFFBFBFBF);
   static const Color SUB_TEXT = Color(0xFF8C8C8C);
 
+  static requestStatus(int? status) {
+    if (status == 2) {
+      return WARNING_COLOR;
+    } else if (status == 1) {
+      return GREEN_COLOR;
+    } else {
+      return PENDING;
+    }
+  }
+
   static const Map<int, Color> colorMap = {
     50: Color(0x10192D6B),
     100: Color(0x20192D6B),

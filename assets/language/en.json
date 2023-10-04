@@ -245,6 +245,8 @@
   "my_requests": "My Requests",
   "select_your_request_type": "Select your request type ",
   "request_type": "Request Type",
+  "request_status": "Request Status",
+  "request_date": "Request Date",
   "request_details": "Request Details",
   "workflow_comments": "Workflow & Comments",
   "needing": "needing",
@@ -373,5 +375,6 @@
   "covenant_release_details": "Covenant Release Details",
   "covenant_release_type": "Covenant Release Type",
   "select_covenant_release_type": "Oops, You must select covenant release type",
-  "your_request_has_been_sent_successfully": "Your Request has been sent successfully"
+  "your_request_has_been_sent_successfully": "Your Request has been sent successfully",
+  "there_is_no_requests": "There is no requests"
 }

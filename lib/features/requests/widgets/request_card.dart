@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:yusrPlus/app/core/app_strings.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
-import 'package:yusrPlus/features/requests/widgets/title_container.dart';
+import 'package:yusrPlus/app/core/text_styles.dart';
+import 'package:yusrPlus/app/localization/language_constant.dart';
+import 'package:yusrPlus/components/custom_button.dart';
+import 'package:yusrPlus/features/requests/model/request_model.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/localization/language_constant.dart';
 
 class RequestCard extends StatelessWidget {
-  const RequestCard(
-      {this.onTap,
-      required this.status,
-      required this.reason,
-      required this.requestType,
-      Key? key})
-      : super(key: key);
-  final Function()? onTap;
-  final String status;
-  final String requestType;
-  final String reason;
-
+  const RequestCard({this.request, super.key});
+  final RequestModel? request;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      // onTap: () => CustomNavigator.push(Routes.REQUESTS_DETAILS),
       splashColor: Colors.transparent,
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
@@ -31,96 +24,103 @@ class RequestCard extends StatelessWidget {
         width: context.width,
         margin: EdgeInsets.symmetric(
             vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
-        padding:
-            EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+        padding: EdgeInsets.symmetric(
+            vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Styles.LIGHT_BORDER_COLOR),
-          color: Styles.WHITE,
-          boxShadow: kElevationToShadow[1],
-        ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: const Offset(0, 2),
+              )
+            ],
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            color: Styles.FILL_COLOR),
         child: Column(
           children: [
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  titleContainer(
-                      title: status == "rejected"
-                          ? getTranslated(status, context)
-                              .replaceAll("ال", "")
-                              .replaceAll("ة", "")
-                          : getTranslated(status, context),
-                      color: Styles.getStatusColor(status),
-                      textColor: Colors.white),
-                  titleContainer(
-                    title: DateTime.now().format("EEEE dd MMMM"),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Container(
-              height: 1,
-              color: Styles.BORDER_COLOR,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT),
-              child: SizedBox(
-                width: context.width,
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      ...List.generate(
-                        5,
-                        (index) => titleContainer(
-                            title: requestType,
-                            color: Styles.PRIMARY_COLOR,
-                            textColor: Colors.white),
-                      )
-                    ],
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    getTranslated("request_type", context),
+                    style: AppTextStyles.w600
+                        .copyWith(color: Styles.HEADER, fontSize: 14),
                   ),
                 ),
-              ),
+                CustomButton(
+                  text: getTranslated(requestType(request?.type), context),
+                  width: 90,
+                  radius: 6,
+                  height: 30,
+                  textColor: Styles.PRIMARY_COLOR,
+                  textSize: 14,
+                  backgroundColor: Styles.PRIMARY_COLOR.withOpacity(0.1),
+                  withBorderColor: true,
+                )
+              ],
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT),
-              child: SizedBox(
-                width: context.width,
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      titleContainer(
-                        title: reason,
-                        icon: Icons.question_mark,
-                      ),
-                    ],
+            SizedBox(height: 8.h),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    getTranslated("request_status", context),
+                    style: AppTextStyles.w600
+                        .copyWith(color: Styles.HEADER, fontSize: 14),
                   ),
                 ),
-              ),
+                CustomButton(
+                  text: getTranslated(
+                      AppStrings.status(request?.status), context),
+                  width: 120,
+                  radius: 6,
+                  height: 30,
+                  textColor: Styles.requestStatus(request?.status),
+                  textSize: 14,
+                  backgroundColor:
+                      Styles.requestStatus(request?.status).withOpacity(0.1),
+                  withBorderColor: true,
+                  borderColor: Styles.requestStatus(request?.status),
+                )
+              ],
+            ),
+            SizedBox(height: 8.h),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    getTranslated("request_date", context),
+                    style: AppTextStyles.w600
+                        .copyWith(color: Styles.HEADER, fontSize: 14),
+                  ),
+                ),
+                Text(
+                  request?.createdAt?.format("EEEE, d/MMM/yyy") ?? "",
+                  style: AppTextStyles.w400
+                      .copyWith(color: Styles.SUBTITLE, fontSize: 12),
+                ),
+              ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  requestType(type) {
+    switch (type) {
+      case 1:
+        return "vacation";
+      case 2:
+        return "loan";
+      case 3:
+        return "a_covenant";
+      case 4:
+        return "permission";
+      default:
+        return "non";
+    }
   }
 }

@@ -23,9 +23,9 @@
   "select_from_available_dates": "اختر من المواعيد المتاحة",
   "select": "اختر",
   "all": "الكل",
-  "pending": "المعلقة",
-  "accepted": "المقبولة",
-  "rejected": "المرفوضة",
+  "pending": "معلق",
+  "accepted": "تم الموافقة",
+  "rejected": "تم رفضه",
   "attachment": "مرفق",
   "sick_leave": "إجازة مرضية",
   "edit": "تعديل",
@@ -238,6 +238,8 @@
   "my_requests": "طلباتي",
   "select_your_request_type": "إختر نوع طلبك ",
   "request_type": "نوع الطلب",
+  "request_status": "حالة الطلب",
+  "request_date": "تاريخ الطلب",
   "request_details": "تفاصيل الطلب",
   "workflow_comments": "الموافقات والتعليقات",
   "needing": "احتياج",
@@ -349,5 +351,6 @@
   "select_covenant_release_type": "عفوا، يجب عليك اختيار نوع العهدة",
   "start_time": "بداية الوقت",
   "end_time":"نهاية الوقت",
-  "your_request_has_been_sent_successfully": "تم ارسال طلبك بنجاح"
+  "your_request_has_been_sent_successfully": "تم ارسال طلبك بنجاح",
+  "there_is_no_requests": "لا يوجد طلبات"
 }

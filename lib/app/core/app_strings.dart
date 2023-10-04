@@ -12,4 +12,13 @@ class AppStrings {
   static const String arabicCode = 'ar';
   static const String locale = 'locale';
 
+  static status(int? status) {
+    if (status == 2) {
+      return "rejected";
+    }else if (status == 1) {
+      return "accepted";
+    }else {
+      return "pending";
+    }
+  }
 }

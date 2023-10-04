@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import '../../../../../app/core/app_snack_bar.dart';
 import '../../../../../app/core/color_resources.dart';
 import '../../../../../data/error/failures.dart';
+import '../model/request_model.dart';
 import '../repo/requests_repo.dart';
 
 class RequestsProvider extends ChangeNotifier {
   final RequestsRepo repo;
   RequestsProvider({required this.repo});
 
+  List<RequestModel> requests = [];
   bool isLoading = false;
   getRequests() async {
     try {
@@ -24,12 +26,16 @@ class RequestsProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-      }, (success) {});
+      }, (success) {
+        if (success.data["data"] != null) {
+          requests = List<RequestModel>.from(
+              success.data["data"].map((x) => RequestModel.fromJson(x)));
+        }
+      });
       isLoading = false;
       notifyListeners();
     } catch (e) {
       isLoading = false;
-
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),
