@@ -130,7 +130,7 @@ class _CheckInCardState extends State<CheckInCard> {
                                           children: [
                                             TextSpan(
                                               text: (provider.closestSchedule
-                                                          ?.start)
+                                                          ?.end)
                                                       ?.timeFormat() ??
                                                   "",
                                               style: AppTextStyles.w700
