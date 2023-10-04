@@ -16,7 +16,7 @@ abstract class EndPoints {
   static const String resetPassword = '';
   static const String sendVerificationCode = '';
   static const String getVerificationCode = '';
-  static salaryDetails(id) => ' / $id';
+  static salaryDetails(id) => 'employee/salary/details/index/$id';
 
   ///Requests
   static allRequest(id) => 'employee/request/index/$id';

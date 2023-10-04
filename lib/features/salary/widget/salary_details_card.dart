@@ -1,32 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/app/core/text_styles.dart';
+import 'package:yusrPlus/app/localization/language_constant.dart';
 
 import '../../../app/core/color_resources.dart';
-import '../model/salary_model.dart';
 
 class SalaryDetailsCard extends StatelessWidget {
-  const SalaryDetailsCard({super.key, this.salary});
-  final SalaryDetailsModel? salary;
+  const SalaryDetailsCard(
+      {super.key, this.name, this.amount, this.isNet = false});
+  final String? name, amount;
+  final bool isNet;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.h),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            salary?.name ?? "",
+            name ?? "",
             style: AppTextStyles.w500.copyWith(
               fontSize: 14,
-              color: Styles.grayColor,
+              color: isNet ? Styles.PRIMARY_COLOR : Styles.GOLD_COLOR,
             ),
           ),
           Text(
-            salary?.amount ?? "",
+            "${amount ?? ".."} ${getTranslated("sar", context)}",
             style: AppTextStyles.w500.copyWith(
               fontSize: 14,
-              color: Styles.grayColor,
+              color: isNet ? Styles.PRIMARY_COLOR : Styles.GOLD_COLOR,
             ),
           ),
         ],

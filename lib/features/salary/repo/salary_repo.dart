@@ -12,7 +12,7 @@ class SalaryRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> getSalaryDetails() async {
     try {
-      Response response = await dioClient.post(
+      Response response = await dioClient.get(
         uri: EndPoints.salaryDetails(userId),
       );
       if (response.statusCode == 200) {
