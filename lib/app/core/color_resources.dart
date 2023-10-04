@@ -16,18 +16,6 @@ abstract class Styles {
     return const Color(0xFFF5F5F5);
   }
 
-  static Color getStatusColor(String status) {
-    switch (status) {
-      case "approved":
-        return ACTIVE;
-      case "pending":
-        return PENDING;
-      case "rejected":
-        return WARNING_COLOR;
-      default:
-        return ACTIVE;
-    }
-  }
 
   static Color getStatusColorOfVacation(String status) {
     switch (status) {

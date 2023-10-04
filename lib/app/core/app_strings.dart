@@ -16,17 +16,10 @@ class AppStrings {
     if (status == 2) {
       return "rejected";
     } else if (status == 1) {
-      return "accepted";
+      return "approved";
     } else {
       return "pending";
     }
   }
 
-  static activationStatus(int? status) {
-    if (status == 1) {
-      return "in_active";
-    } else {
-      return "active";
-    }
-  }
 }
