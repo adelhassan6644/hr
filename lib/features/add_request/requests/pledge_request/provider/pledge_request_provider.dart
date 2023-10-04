@@ -9,19 +9,19 @@ import '../../../../../app/localization/language_constant.dart';
 import '../../../../../data/error/failures.dart';
 import '../../../../../main_models/custom_select_model.dart';
 import '../../../../../navigation/custom_navigation.dart';
-import '../repo/asset_request_repo.dart';
+import '../repo/pledge_request_repo.dart';
 
-class AssetRequestProvider extends ChangeNotifier {
-  final AssetRequestRepo repo;
-  AssetRequestProvider({required this.repo}) {
+class PledgeRequestProvider extends ChangeNotifier {
+  final PledgeRequestRepo repo;
+  PledgeRequestProvider({required this.repo}) {
     getTypes();
   }
 
   final TextEditingController reason = TextEditingController();
 
-  CustomSelectModel? selectedAssetType;
+  CustomSelectModel? selectedType;
   onSelectLoanType(v) {
-    selectedAssetType = v;
+    selectedType = v;
     notifyListeners();
   }
 
@@ -37,7 +37,7 @@ class AssetRequestProvider extends ChangeNotifier {
   }
 
   clear() {
-    selectedAssetType = null;
+    selectedType = null;
     reason.clear();
     attachments.clear();
   }
@@ -93,14 +93,54 @@ class AssetRequestProvider extends ChangeNotifier {
       }
 
       var body = {
-        "pledge_id": selectedAssetType?.id,
+        "pledge_id": selectedType?.id,
         "employee_id": repo.userId,
         "comment": reason.text.trim(),
         "photos": files
       };
 
       Either<ServerFailure, Response> response =
-          await repo.sendAssetRequest(body);
+          await repo.sendPledgeRequest(body);
+      response.fold((fail) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Colors.transparent));
+      }, (success) {
+        clear();
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: getTranslated(
+                    "your_request_has_been_sent_successfully",
+                    CustomNavigator.navigatorState.currentContext!),
+                isFloating: true,
+                backgroundColor: Styles.ACTIVE,
+                borderColor: Colors.transparent));
+      });
+      isLoading = false;
+      notifyListeners();
+    } catch (e) {
+      isLoading = false;
+
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+      notifyListeners();
+    }
+  }
+
+  onDelete() async {
+    try {
+      isLoading = true;
+      notifyListeners();
+
+      Either<ServerFailure, Response> response =
+          await repo.deletePledge(selectedType?.id);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(

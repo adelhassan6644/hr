@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../components/custom_pdf.dart';
 import '../features/add_request/page/add_request.dart';
-import '../features/add_request/requests/asset_request/page/asset_request.dart';
-import '../features/add_request/requests/asset_request/page/clear_asset_request.dart';
 import '../features/add_request/requests/expenses_request/page/expense_request.dart';
 import '../features/add_request/requests/loan_request/page/loan_request.dart';
 import '../features/add_request/requests/permission_request/page/permission_request.dart';
+import '../features/add_request/requests/pledge_request/page/delete_pledge_request.dart';
+import '../features/add_request/requests/pledge_request/page/pledge_request.dart';
 import '../features/add_request/requests/vacation_request/page/vacation_request.dart';
 import '../features/covenant/page/covenant.dart';
 import '../features/auth/pages/forget_password.dart';
@@ -55,9 +55,7 @@ abstract class CustomNavigator {
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoardScreen());
       case Routes.REQUESTS_DETAILS:
-        return _pageRoute(RequestDetails(
-          model: settings.arguments as Model,
-        ));
+        return _pageRoute(const RequestDetails());
 
       ///Requests
       case Routes.ADD_REQUEST:
@@ -76,10 +74,10 @@ abstract class CustomNavigator {
         return _pageRoute(const VacationRequest());
 
       case Routes.ASSET_REQUEST:
-        return _pageRoute(const AssetRequest());
+        return _pageRoute(const PledgeRequest());
 
       case Routes.CLEAR_ASSET_REQUEST:
-        return _pageRoute(const ClearAssetRequest());
+        return _pageRoute(const DeletePledgeRequest());
 
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());

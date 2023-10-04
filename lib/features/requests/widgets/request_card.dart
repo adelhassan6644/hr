@@ -12,6 +12,7 @@ import '../../../app/core/dimensions.dart';
 class RequestCard extends StatelessWidget {
   const RequestCard({this.request, super.key});
   final RequestModel? request;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -116,7 +117,7 @@ class RequestCard extends StatelessWidget {
       case 2:
         return "loan";
       case 3:
-        return "a_covenant";
+        return "pledge";
       case 4:
         return "permission";
       default:

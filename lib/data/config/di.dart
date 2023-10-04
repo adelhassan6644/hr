@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../features/add_request/requests/asset_request/repo/asset_request_repo.dart';
 import '../../features/add_request/requests/expenses_request/repo/expenses_request_repo.dart';
 import '../../features/add_request/requests/loan_request/repo/loan_request_repo.dart';
 import '../../features/add_request/requests/permission_request/repo/permission_request_repo.dart';
+import '../../features/add_request/requests/pledge_request/repo/pledge_request_repo.dart';
 import '../../features/add_request/requests/vacation_request/repo/vacation_request_repo.dart';
 import '../../features/covenant/provider/covenant_provider.dart';
 import '../../features/covenant/repo/covenant_repo.dart';
@@ -62,7 +62,7 @@ Future<void> init() async {
       () => LoanRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
-      () => AssetRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+      () => PledgeRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
       () => PermissionRequestRepo(sharedPreferences: sl(), dioClient: sl()));

@@ -1,4 +1,4 @@
-class EndPoints {
+abstract class EndPoints {
   static const String baseUrl = 'https://erp.softwarecloud2.com/api/';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
   static const String imageUrl = 'https://test.fitariki.com/';
@@ -25,10 +25,10 @@ class EndPoints {
   static const String loanTypes = 'employee/loan/types/index';
   static deleteLoanRequest(id) => 'employee/loan/request/destroy/$id';
 
-  static getCovenantRequest(id) => 'employee/loan/request/destroy/$id';
   static const String covenantTypes = 'employee/pledge/types/index';
-  static const String assetRequest = 'employee/loan/request/store';
-  static deleteAssetRequest(id) => 'employee/loan/request/destroy/$id';
+  static const String pledgeRequest = 'employee/pledge/request/store';
+  static deletePledgeRequest(id) => 'employee/loan/request/destroy/$id';
+  static myPledge(id) => 'employee/loan/request/destroy/$id';
 
   static const String permissionRequest = 'employee/permission/request/store';
   static const String permissionTypes = 'employee/permission/types/index';

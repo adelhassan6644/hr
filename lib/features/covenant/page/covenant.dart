@@ -10,7 +10,7 @@ import '../../../../../components/custom_app_bar.dart';
 import '../../../components/loader_view.dart';
 import '../../../data/config/di.dart';
 import '../provider/covenant_provider.dart';
-import '../widget/covenant_card.dart';
+import '../widget/pledge_card.dart';
 
 class Covenant extends StatefulWidget {
   const Covenant({Key? key}) : super(key: key);
@@ -38,16 +38,19 @@ class _CovenantState extends State<Covenant> {
                 ? const LoaderView()
                 : Column(
                     children: [
-                      const CovenantCard(),
+                      const PledgeCard(),
                       Expanded(
                           child: ListAnimator(
                         customPadding: EdgeInsets.symmetric(
                             vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
                             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
                         data: (!provider.isLoading &&
-                                provider.covenants.isNotEmpty)
-                            ? List.generate(provider.covenants.length,
-                                (index) => const CovenantCard())
+                                provider.covenant.isNotEmpty)
+                            ? List.generate(
+                                provider.covenant.length,
+                                (index) => PledgeCard(
+                                      pledgeModel: provider.covenant[index],
+                                    ))
                             : [
                                 EmptyState(
                                   img: Images.emptyAsset,

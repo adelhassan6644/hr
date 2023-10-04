@@ -10,8 +10,7 @@ class CovenantRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> getCovenant() async {
     try {
-      Response response =
-          await dioClient.get(uri: EndPoints.getCovenantRequest(userId));
+      Response response = await dioClient.get(uri: EndPoints.myPledge(userId));
       if (response.statusCode == 200) {
         return Right(response);
       } else {

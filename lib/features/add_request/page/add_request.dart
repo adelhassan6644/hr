@@ -146,7 +146,7 @@ class AddRequest extends StatelessWidget {
                         height: 8.h,
                       ),
                       RequestActionWidget(
-                          title: getTranslated("a_covenant", context),
+                          title: getTranslated("pledge", context),
                           astIcon: Images.assetsIcon,
                           onTap: () =>
                               CustomNavigator.push(Routes.ASSET_REQUEST)),
@@ -154,7 +154,7 @@ class AddRequest extends StatelessWidget {
                         height: 16.h,
                       ),
                       RequestActionWidget(
-                          title: getTranslated("covenant_release", context),
+                          title: getTranslated("pledge_release", context),
                           astIcon: Images.assetsIcon,
                           onTap: () =>
                               CustomNavigator.push(Routes.CLEAR_ASSET_REQUEST)),

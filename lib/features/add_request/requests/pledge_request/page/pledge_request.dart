@@ -17,29 +17,29 @@ import '../../../../../components/custom_text_form_field.dart';
 import '../../../../../data/config/di.dart';
 import '../../../../../navigation/custom_navigation.dart';
 import '../../../widgets/request_reason.dart';
-import '../provider/asset_request_provider.dart';
-import '../repo/asset_request_repo.dart';
+import '../provider/pledge_request_provider.dart';
+import '../repo/pledge_request_repo.dart';
 
-class AssetRequest extends StatefulWidget {
-  const AssetRequest({Key? key}) : super(key: key);
+class PledgeRequest extends StatefulWidget {
+  const PledgeRequest({Key? key}) : super(key: key);
 
   @override
-  State<AssetRequest> createState() => _AssetRequestState();
+  State<PledgeRequest> createState() => _PledgeRequestState();
 }
 
-class _AssetRequestState extends State<AssetRequest> {
+class _PledgeRequestState extends State<PledgeRequest> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: ChangeNotifierProvider(
-        create: (_) => AssetRequestProvider(repo: sl<AssetRequestRepo>()),
+        create: (_) => PledgeRequestProvider(repo: sl<PledgeRequestRepo>()),
         child:
-            Consumer<AssetRequestProvider>(builder: (context, provider, child) {
+            Consumer<PledgeRequestProvider>(builder: (context, provider, child) {
           return Scaffold(
             appBar:
-                CustomAppBar(title: getTranslated("covenant_request", context)),
+                CustomAppBar(title: getTranslated("pledge_request", context)),
             body: Form(
               key: formKey,
               child: Column(
@@ -54,7 +54,7 @@ class _AssetRequestState extends State<AssetRequest> {
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
                           child: CustomExpansionTile(
-                            title: getTranslated("covenant_details", context),
+                            title: getTranslated("pledge_details", context),
                             children: [
                               CustomTextFormField(
                                 sufWidget: const Icon(
@@ -64,8 +64,8 @@ class _AssetRequestState extends State<AssetRequest> {
                                 ),
                                 controller: TextEditingController(
                                     text:
-                                        provider.selectedAssetType?.name ?? ""),
-                                hint: getTranslated("covenant_type", context),
+                                        provider.selectedType?.name ?? ""),
+                                hint: getTranslated("pledge_type", context),
                                 read: true,
                                 onTap: () {
                                   if (provider.isGetting) {
@@ -89,13 +89,13 @@ class _AssetRequestState extends State<AssetRequest> {
                                   } else {
                                     CustomBottomSheet.show(
                                         label: getTranslated(
-                                            "covenant_type", context),
+                                            "pledge_type", context),
                                         height: 400.h,
                                         list: CustomSingleSelector(
                                           onConfirm: provider.onSelectLoanType,
                                           list: provider.types,
                                           initialValue:
-                                              provider.selectedAssetType?.id,
+                                              provider.selectedType?.id,
                                         ),
                                         onConfirm: () => CustomNavigator.pop());
                                   }
@@ -103,7 +103,7 @@ class _AssetRequestState extends State<AssetRequest> {
                                 valid: (v) => Validations.required(
                                     v,
                                     getTranslated(
-                                        "select_covenant_type", context)),
+                                        "select_pledge_type", context)),
                               ),
                             ],
                           ),

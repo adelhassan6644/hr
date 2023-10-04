@@ -5,14 +5,29 @@ import '../../../../../data/error/api_error_handler.dart';
 import '../../../../../data/error/failures.dart';
 import '../../../../../main_repos/base_repo.dart';
 
-class AssetRequestRepo extends BaseRepo {
-  AssetRequestRepo(
+class PledgeRequestRepo extends BaseRepo {
+  PledgeRequestRepo(
       {required super.sharedPreferences, required super.dioClient});
 
-  Future<Either<ServerFailure, Response>> sendAssetRequest(body) async {
+  Future<Either<ServerFailure, Response>> sendPledgeRequest(body) async {
     try {
       Response response = await dioClient.post(
-          uri: EndPoints.assetRequest, data: FormData.fromMap(body));
+          uri: EndPoints.pledgeRequest, data: FormData.fromMap(body));
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return left(ServerFailure(
+            ApiErrorHandler.getMessage(response.data['message'])));
+      }
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+    }
+  }
+
+  Future<Either<ServerFailure, Response>> deletePledge(id) async {
+    try {
+      Response response =
+          await dioClient.post(uri: EndPoints.deletePledgeRequest(id));
       if (response.statusCode == 200) {
         return Right(response);
       } else {

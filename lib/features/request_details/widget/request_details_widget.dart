@@ -6,11 +6,9 @@ import 'package:yusrPlus/features/requests/widgets/title_container.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/localization/language_constant.dart';
-import '../page/request_details.dart';
 
 class RequestDetailsWidget extends StatelessWidget {
-  const RequestDetailsWidget({required this.model, Key? key}) : super(key: key);
-  final Model model;
+  const RequestDetailsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +54,7 @@ class RequestDetailsWidget extends StatelessWidget {
                             ),
                           ),
                           titleContainer(
-                              title: model.requestType,
+                              title:"",
                               color: Styles.PRIMARY_COLOR,
                               textColor: Colors.white),
                         ],
@@ -86,12 +84,7 @@ class RequestDetailsWidget extends StatelessWidget {
                         ),
                       ),
                       titleContainer(
-                          title: model.status == "rejected"
-                              ? getTranslated(model.status, context)
-                                  .replaceAll("ال", "")
-                                  .replaceAll("ة", "")
-                              : getTranslated(model.status, context),
-                          color: Styles.getStatusColor(model.status),
+                          title:  "",
                           textColor: Colors.white),
                     ],
                   ),
@@ -100,7 +93,7 @@ class RequestDetailsWidget extends StatelessWidget {
                   height: 1.h,
                   color: Styles.BORDER_COLOR,
                 ),
-                if (model.requestType == getTranslated("asset_items", context))
+
                   Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
@@ -118,12 +111,11 @@ class RequestDetailsWidget extends StatelessWidget {
                           ),
                         ),
                         titleContainer(
-                            title: model.status,
+                            title: "",
                             color: Styles.GREEN_COLOR.withOpacity(0.2)),
                       ],
                     ),
                   ),
-                if (model.requestType == getTranslated("loan", context))
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,

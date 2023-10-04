@@ -19,17 +19,17 @@ import '../../../../../main_models/custom_select_model.dart';
 import '../../../../../navigation/custom_navigation.dart';
 import '../../../../covenant/provider/covenant_provider.dart';
 import '../../../widgets/request_reason.dart';
-import '../provider/asset_request_provider.dart';
-import '../repo/asset_request_repo.dart';
+import '../provider/pledge_request_provider.dart';
+import '../repo/pledge_request_repo.dart';
 
-class ClearAssetRequest extends StatefulWidget {
-  const ClearAssetRequest({Key? key}) : super(key: key);
+class DeletePledgeRequest extends StatefulWidget {
+  const DeletePledgeRequest({Key? key}) : super(key: key);
 
   @override
-  State<ClearAssetRequest> createState() => _ClearAssetRequestState();
+  State<DeletePledgeRequest> createState() => _DeletePledgeRequestState();
 }
 
-class _ClearAssetRequestState extends State<ClearAssetRequest> {
+class _DeletePledgeRequestState extends State<DeletePledgeRequest> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -42,12 +42,12 @@ class _ClearAssetRequestState extends State<ClearAssetRequest> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: ChangeNotifierProvider(
-        create: (_) => AssetRequestProvider(repo: sl<AssetRequestRepo>()),
-        child:
-            Consumer<AssetRequestProvider>(builder: (context, provider, child) {
+        create: (_) => PledgeRequestProvider(repo: sl<PledgeRequestRepo>()),
+        child: Consumer<PledgeRequestProvider>(
+            builder: (context, provider, child) {
           return Scaffold(
             appBar: CustomAppBar(
-                title: getTranslated("covenant_release_request", context)),
+                title: getTranslated("pledge_release_request", context)),
             body: Form(
               key: formKey,
               child: Column(
@@ -63,7 +63,7 @@ class _ClearAssetRequestState extends State<ClearAssetRequest> {
                           padding: EdgeInsets.symmetric(vertical: 12.h),
                           child: CustomExpansionTile(
                             title: getTranslated(
-                                "covenant_release_details", context),
+                                "pledge_release_details", context),
                             children: [
                               Consumer<CovenantProvider>(
                                   builder: (_, covenantProvider, child) {
@@ -74,10 +74,9 @@ class _ClearAssetRequestState extends State<ClearAssetRequest> {
                                     size: 18,
                                   ),
                                   controller: TextEditingController(
-                                      text: provider.selectedAssetType?.name ??
-                                          ""),
+                                      text: provider.selectedType?.name ?? ""),
                                   hint: getTranslated(
-                                      "covenant_release_type", context),
+                                      "pledge_release_type", context),
                                   read: true,
                                   onTap: () {
                                     if (covenantProvider.isLoading) {
@@ -89,7 +88,7 @@ class _ClearAssetRequestState extends State<ClearAssetRequest> {
                                               backgroundColor: Styles.PENDING,
                                               borderColor: Colors.transparent));
                                     } else if (!covenantProvider.isLoading &&
-                                        covenantProvider.covenants.isEmpty) {
+                                        covenantProvider.covenant.isEmpty) {
                                       CustomSnackBar.showSnackBar(
                                           notification: AppNotification(
                                               message: getTranslated(
@@ -101,19 +100,19 @@ class _ClearAssetRequestState extends State<ClearAssetRequest> {
                                     } else {
                                       CustomBottomSheet.show(
                                           label: getTranslated(
-                                              "covenant_release_type", context),
+                                              "pledge_release_type", context),
                                           height: 400.h,
                                           list: CustomSingleSelector(
                                             onConfirm:
                                                 provider.onSelectLoanType,
-                                            list: covenantProvider.covenants
+                                            list: covenantProvider.covenant
                                                 .map((e) => CustomSelectModel(
                                                       id: e.id,
                                                       name: e.name,
                                                     ))
                                                 .toList(),
                                             initialValue:
-                                                provider.selectedAssetType?.id,
+                                                provider.selectedType?.id,
                                           ),
                                           onConfirm: () =>
                                               CustomNavigator.pop());
@@ -122,8 +121,7 @@ class _ClearAssetRequestState extends State<ClearAssetRequest> {
                                   valid: (v) => Validations.required(
                                       v,
                                       getTranslated(
-                                          "select_covenant_release_type",
-                                          context)),
+                                          "select_pledge_type", context)),
                                 );
                               }),
                             ],
@@ -155,7 +153,7 @@ class _ClearAssetRequestState extends State<ClearAssetRequest> {
                 text: getTranslated("submit", context),
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    provider.onSubmit();
+                    provider.onDelete();
                   }
                 },
               ),

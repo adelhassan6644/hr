@@ -7,8 +7,7 @@ import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_tab_bar_2.dart';
 
 class RequestDetails extends StatefulWidget {
-  const RequestDetails({Key? key, required this.model}) : super(key: key);
-  final Model model;
+  const RequestDetails({super.key});
 
   @override
   State<RequestDetails> createState() => _RequestDetailsState();
@@ -29,7 +28,7 @@ class _RequestDetailsState extends State<RequestDetails> {
     return Scaffold(
       appBar: CustomAppBar(
         title:
-            "${widget.model.requestType} ${getTranslated("request", context)} ",
+            "${getTranslated("request", context)} ",
       ),
       body: Column(
         mainAxisSize: MainAxisSize.min,
@@ -57,18 +56,10 @@ class _RequestDetailsState extends State<RequestDetails> {
           ),
           Expanded(
               child: currentIndex == 0
-                  ? RequestDetailsWidget(
-                      model: widget.model,
-                    )
+                  ? RequestDetailsWidget()
                   : const SizedBox()),
         ],
       ),
     );
   }
-}
-
-class Model {
-  final String status;
-  final String requestType;
-  Model({required this.status, required this.requestType});
 }
