@@ -49,34 +49,32 @@ class SalaryDetailsModel {
 class BaseSalaryModel {
   final int? id;
   final String? salary;
-  final DateTime? startAt;
+  final String? netSalary;
+  final DateTime? date;
   final String? url;
-  final dynamic status;
 
   BaseSalaryModel({
     this.id,
     this.salary,
-    this.startAt,
+    this.netSalary,
+    this.date,
     this.url,
-    this.status,
   });
 
   factory BaseSalaryModel.fromJson(Map<String, dynamic> json) =>
       BaseSalaryModel(
         id: json["id"],
-        salary: json["salary"].toString(),
-        startAt:
-            json["start_at"] == null ? null : DateTime.parse(json["start_at"]),
-        status: json["status"],
+        salary: json["salary"] != null?  json["salary"].toString():null,
+        netSalary: json["net_salary"] != null?  json["net_salary"].toString():null,
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
         url: json["url"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "salary": salary,
-        "start_at":
-            "${startAt!.year.toString().padLeft(4, '0')}-${startAt!.month.toString().padLeft(2, '0')}-${startAt!.day.toString().padLeft(2, '0')}",
-        "status": status,
+        "net_salary": netSalary,
+        "date": date,
         "url": url,
       };
 }

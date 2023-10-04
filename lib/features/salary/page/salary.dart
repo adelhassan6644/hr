@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/app/core/text_styles.dart';
 import 'package:yusrPlus/components/animated_widget.dart';
 import 'package:yusrPlus/navigation/custom_navigation.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -10,13 +13,26 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/loader_view.dart';
+import '../../../data/config/di.dart';
 import '../../../main_providers/download_provider.dart';
 import '../../../navigation/routes.dart';
 import '../provider/salary_provider.dart';
 import '../widget/salary_details_card.dart';
 
-class Salary extends StatelessWidget {
+class Salary extends StatefulWidget {
   const Salary({Key? key}) : super(key: key);
+
+  @override
+  State<Salary> createState() => _SalaryState();
+}
+
+class _SalaryState extends State<Salary> {
+  @override
+  void initState() {
+    Future.delayed(
+        Duration.zero, () => sl<SalaryProvider>().getSalaryDetails());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,25 +64,26 @@ class Salary extends StatelessWidget {
                               children: [
                                 CircularPercentIndicator(
                                   radius: 70.0,
-                                  lineWidth: 12.0,
-                                  percent: 0.2,
+                                  lineWidth: 15.0,
+                                  percent: calcPercent(
+                                      provider.salaryModel?.salary?.netSalary,
+                                      provider.salaryModel?.salary?.salary),
                                   center: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Text(
-                                        "10217.50",
-                                        style: TextStyle(
+                                      Text(
+                                        provider.salaryModel?.salary?.salary ??
+                                            "",
+                                        style: AppTextStyles.w500.copyWith(
                                           fontSize: 16,
                                           color: Styles.blackColor,
-                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
                                       Text(
                                         getTranslated("sar", context),
-                                        style: const TextStyle(
+                                        style: AppTextStyles.w500.copyWith(
                                           fontSize: 16,
                                           color: Styles.blackColor,
-                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
                                     ],
@@ -80,13 +97,27 @@ class Salary extends StatelessWidget {
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: List.generate(
-                                      provider.salaryModel?.salaryDetailsModel
-                                              ?.length ??
-                                          0,
-                                      (index) => SalaryDetailsCard(
-                                          salary: provider.salaryModel
-                                              ?.salaryDetailsModel?[index])),
+                                  children: [
+                                    SalaryDetailsCard(
+                                        isNet: true,
+                                        name: getTranslated(
+                                            "net_salary", context),
+                                        amount: provider
+                                            .salaryModel?.salary?.netSalary),
+                                    ...List.generate(
+                                        provider.salaryModel?.salaryDetailsModel
+                                                ?.length ??
+                                            0,
+                                        (index) => SalaryDetailsCard(
+                                            name: provider
+                                                .salaryModel
+                                                ?.salaryDetailsModel?[index]
+                                                .name,
+                                            amount: provider
+                                                .salaryModel
+                                                ?.salaryDetailsModel?[index]
+                                                .amount))
+                                  ],
                                 )
                               ],
                             ),
@@ -114,11 +145,13 @@ class Salary extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      DateTime.now().monthFormat(),
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          color: Styles.blackColor,
-                                          fontWeight: FontWeight.w600),
+                                      provider.salaryModel?.salary?.date
+                                              ?.monthFormat() ??
+                                          "",
+                                      style: AppTextStyles.w600.copyWith(
+                                        fontSize: 14,
+                                        color: Styles.blackColor,
+                                      ),
                                     ),
 
                                     ///Open Invoice
@@ -130,25 +163,34 @@ class Salary extends StatelessWidget {
                                       child: CustomButton(
                                         onTap: () => CustomNavigator.push(
                                             Routes.PDF,
-                                            arguments: ""),
+                                            arguments: provider
+                                                    .salaryModel?.salary?.url ??
+                                                ""),
                                         text: getTranslated("details", context),
                                       ),
                                     ),
                                     ChangeNotifierProvider(
                                       create: (_) => DownloadProvider(),
-                                      child: Consumer<DownloadProvider>(
-                                          builder: (_, provider, child) {
+                                      child: Consumer<DownloadProvider>(builder:
+                                          (_, downloadProvider, child) {
                                         return CustomButton(
                                             textColor: Styles.PRIMARY_COLOR,
                                             text: getTranslated(
                                                 "download", context),
                                             onTap: () async {
-                                              if (!provider.downloaded) {
-                                                provider.download(
-                                                    "", "".split("/").last);
+                                              if (!downloadProvider
+                                                  .downloaded) {
+                                                downloadProvider.download(
+                                                    provider.salaryModel?.salary
+                                                            ?.url ??
+                                                        "",
+                                                    provider.salaryModel?.salary
+                                                            ?.url ??
+                                                        "".split("/").last);
                                               }
                                             },
-                                            isLoading: provider.isLoading,
+                                            isLoading:
+                                                downloadProvider.isLoading,
                                             lIconWidget: const Icon(
                                               Icons.download,
                                               color: Styles.PRIMARY_COLOR,
@@ -167,5 +209,11 @@ class Salary extends StatelessWidget {
         }),
       ),
     );
+  }
+
+  double calcPercent(net, salary) {
+    log("=====>$net");
+    log("=====>$salary");
+    return (int.parse(net ?? "1") / int.parse(salary ?? "1"));
   }
 }
