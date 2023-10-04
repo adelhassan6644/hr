@@ -129,8 +129,8 @@ class _CheckInCardState extends State<CheckInCard> {
                                               color: Styles.hintColor),
                                           children: [
                                             TextSpan(
-                                              text: (provider.closestSchedule
-                                                          ?.end)
+                                              text: (provider
+                                                          .closestSchedule?.end)
                                                       ?.timeFormat() ??
                                                   "",
                                               style: AppTextStyles.w700

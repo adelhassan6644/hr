@@ -39,17 +39,13 @@ loadingDialog() {
                     height: 100,
                     width: 250,
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                        vertical: Dimensions.PADDING_SIZE_SMALL.h),
-                    child: Text(
-                      getTranslated("please_wait", context),
-                      style: AppTextStyles.w700.copyWith(
-                          fontSize: 18.0,
-                          color: Styles.PRIMARY_COLOR,
-                          decoration: TextDecoration.none),
-                    ),
+                  Text(
+                    getTranslated("please_wait", context),
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.w700.copyWith(
+                        fontSize: 18.0,
+                        color: Styles.PRIMARY_COLOR,
+                        decoration: TextDecoration.none),
                   ),
                   const SpinKitThreeBounce(
                     color: Styles.PRIMARY_COLOR,

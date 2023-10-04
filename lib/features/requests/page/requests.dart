@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yusrPlus/app/core/color_resources.dart';
@@ -13,7 +11,7 @@ import '../../../app/core/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';
-import '../../../components/shimmer/custom_shimmer.dart';
+import '../../../components/loader_view.dart';
 import '../../../data/config/di.dart';
 
 class Requests extends StatefulWidget {
@@ -36,47 +34,24 @@ class _RequestsState extends State<Requests>
     super.build(context);
     return Scaffold(
       appBar: CustomAppBar(title: getTranslated("requests", context)),
-      body: NotificationListener(
-        onNotification: (ScrollNotification sn) {
-          if (sn is ScrollUpdateNotification &&
-              sn.metrics.pixels == sn.metrics.maxScrollExtent &&
-              sn.metrics.axisDirection == AxisDirection.down) {
-            log("Pagination");
-          }
-          return true;
-        },
-        child: Consumer<RequestsProvider>(builder: (_, provider, child) {
-          return RefreshIndicator(
-            onRefresh: () async {
-              if (!provider.isLoading) {
-                await provider.getRequests();
-              }
-            },
-            color: Styles.PRIMARY_COLOR,
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListAnimator(
-                    customPadding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                    data: [
-                      provider.isLoading
-                          ? Column(
-                              children: [
-                                ...List.generate(
-                                    8,
-                                    (index) => Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: Dimensions
-                                                  .PADDING_SIZE_EXTRA_SMALL.h),
-                                          child: CustomShimmerContainer(
-                                            height: 180.h,
-                                            radius: 12,
-                                          ),
-                                        ))
-                              ],
-                            )
-                          : !provider.isLoading && provider.requests.isNotEmpty
+      body: Consumer<RequestsProvider>(builder: (_, provider, child) {
+        return provider.isLoading
+            ? const LoaderView()
+            : RefreshIndicator(
+                onRefresh: () async {
+                  if (!provider.isLoading) {
+                    await provider.getRequests();
+                  }
+                },
+                color: Styles.PRIMARY_COLOR,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListAnimator(
+                        customPadding: EdgeInsets.symmetric(
+                            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                        data: [
+                          !provider.isLoading && provider.requests.isNotEmpty
                               ? Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -112,15 +87,14 @@ class _RequestsState extends State<Requests>
                                     ),
                                   ],
                                 ),
-                      SizedBox(height: 80.h),
-                    ],
-                  ),
+                          SizedBox(height: 80.h),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          );
-        }),
-      ),
+              );
+      }),
     );
   }
 
