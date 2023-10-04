@@ -27,6 +27,7 @@ abstract class EndPoints {
 
   static const String covenantTypes = 'employee/pledge/types/index';
   static const String pledgeRequest = 'employee/pledge/request/store';
+  static const String cancelPledgeRequest = 'employee/pledge/request/store';
   static deletePledgeRequest(id) => 'employee/loan/request/destroy/$id';
   static myPledge(id) => 'employee/loan/request/destroy/$id';
 

@@ -22,14 +22,14 @@ import '../../../widgets/request_reason.dart';
 import '../provider/pledge_request_provider.dart';
 import '../repo/pledge_request_repo.dart';
 
-class DeletePledgeRequest extends StatefulWidget {
-  const DeletePledgeRequest({Key? key}) : super(key: key);
+class CancelPledgeRequest extends StatefulWidget {
+  const CancelPledgeRequest({Key? key}) : super(key: key);
 
   @override
-  State<DeletePledgeRequest> createState() => _DeletePledgeRequestState();
+  State<CancelPledgeRequest> createState() => _CancelPledgeRequestState();
 }
 
-class _DeletePledgeRequestState extends State<DeletePledgeRequest> {
+class _CancelPledgeRequestState extends State<CancelPledgeRequest> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -153,7 +153,7 @@ class _DeletePledgeRequestState extends State<DeletePledgeRequest> {
                 text: getTranslated("submit", context),
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    provider.onDelete();
+                    provider.onSubmit(isCancel: true);
                   }
                 },
               ),

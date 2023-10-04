@@ -79,7 +79,7 @@ class PledgeRequestProvider extends ChangeNotifier {
   }
 
   bool isLoading = false;
-  onSubmit() async {
+  onSubmit({bool isCancel = false}) async {
     try {
       isLoading = true;
       notifyListeners();
@@ -100,7 +100,7 @@ class PledgeRequestProvider extends ChangeNotifier {
       };
 
       Either<ServerFailure, Response> response =
-          await repo.sendPledgeRequest(body);
+          await repo.sendPledgeRequest(body,isCancel: isCancel);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -134,43 +134,4 @@ class PledgeRequestProvider extends ChangeNotifier {
     }
   }
 
-  onDelete() async {
-    try {
-      isLoading = true;
-      notifyListeners();
-
-      Either<ServerFailure, Response> response =
-          await repo.deletePledge(selectedType?.id);
-      response.fold((fail) {
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: fail.error,
-                isFloating: true,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Colors.transparent));
-      }, (success) {
-        clear();
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: getTranslated(
-                    "your_request_has_been_sent_successfully",
-                    CustomNavigator.navigatorState.currentContext!),
-                isFloating: true,
-                backgroundColor: Styles.ACTIVE,
-                borderColor: Colors.transparent));
-      });
-      isLoading = false;
-      notifyListeners();
-    } catch (e) {
-      isLoading = false;
-
-      CustomSnackBar.showSnackBar(
-          notification: AppNotification(
-              message: e.toString(),
-              isFloating: true,
-              backgroundColor: Styles.IN_ACTIVE,
-              borderColor: Colors.transparent));
-      notifyListeners();
-    }
-  }
 }

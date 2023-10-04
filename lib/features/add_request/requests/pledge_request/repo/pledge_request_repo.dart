@@ -9,10 +9,14 @@ class PledgeRequestRepo extends BaseRepo {
   PledgeRequestRepo(
       {required super.sharedPreferences, required super.dioClient});
 
-  Future<Either<ServerFailure, Response>> sendPledgeRequest(body) async {
+  Future<Either<ServerFailure, Response>> sendPledgeRequest(body,
+      {required bool isCancel}) async {
     try {
       Response response = await dioClient.post(
-          uri: EndPoints.pledgeRequest, data: FormData.fromMap(body));
+          uri: isCancel
+              ? EndPoints.cancelPledgeRequest
+              : EndPoints.pledgeRequest,
+          data: FormData.fromMap(body));
       if (response.statusCode == 200) {
         return Right(response);
       } else {

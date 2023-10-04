@@ -4,7 +4,7 @@ import '../features/add_request/page/add_request.dart';
 import '../features/add_request/requests/expenses_request/page/expense_request.dart';
 import '../features/add_request/requests/loan_request/page/loan_request.dart';
 import '../features/add_request/requests/permission_request/page/permission_request.dart';
-import '../features/add_request/requests/pledge_request/page/delete_pledge_request.dart';
+import '../features/add_request/requests/pledge_request/page/cancel_pledge_request.dart';
 import '../features/add_request/requests/pledge_request/page/pledge_request.dart';
 import '../features/add_request/requests/vacation_request/page/vacation_request.dart';
 import '../features/covenant/page/covenant.dart';
@@ -77,7 +77,7 @@ abstract class CustomNavigator {
         return _pageRoute(const PledgeRequest());
 
       case Routes.CLEAR_ASSET_REQUEST:
-        return _pageRoute(const DeletePledgeRequest());
+        return _pageRoute(const CancelPledgeRequest());
 
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());
