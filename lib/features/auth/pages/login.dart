@@ -70,19 +70,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           hint: getTranslated("enter_your_password", context),
                           valid: Validations.password,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: () =>
-                                  CustomNavigator.push(Routes.FORGET_PASSWORD),
-                              child: Text(
-                                  getTranslated("forget_password", context),
-                                  style: titleTextStyle.copyWith(
-                                      color: Styles.PRIMARY_COLOR)),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.end,
+                        //   children: [
+                        //     TextButton(
+                        //       onPressed: () =>
+                        //           CustomNavigator.push(Routes.FORGET_PASSWORD),
+                        //       child: Text(
+                        //           getTranslated("forget_password", context),
+                        //           style: titleTextStyle.copyWith(
+                        //               color: Styles.PRIMARY_COLOR)),
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     ),
                   ),
