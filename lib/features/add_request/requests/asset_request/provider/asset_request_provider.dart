@@ -83,17 +83,21 @@ class AssetRequestProvider extends ChangeNotifier {
     try {
       isLoading = true;
       notifyListeners();
+
+      List<dynamic> files = [];
+      if (attachments.isNotEmpty) {
+        for (int i = 0; i < attachments.length; i++) {
+          files.add(MultipartFile.fromFileSync(attachments[i].path,
+              filename: attachments[i].path.split('/').last));
+        }
+      }
+
       var body = {
         "pledge_id": selectedAssetType?.id,
         "employee_id": repo.userId,
-        "reason": reason.text.trim()
+        "comment": reason.text.trim(),
+        "photos": files
       };
-
-      for (int i = 0; i < attachments.length; i++) {
-        body.addAll({
-          'attachments[$i]': await MultipartFile.fromFile(attachments[i].path)
-        });
-      }
 
       Either<ServerFailure, Response> response =
           await repo.sendAssetRequest(body);

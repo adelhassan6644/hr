@@ -5,14 +5,14 @@ import '../../../../../data/error/api_error_handler.dart';
 import '../../../../../data/error/failures.dart';
 import '../../../../../main_repos/base_repo.dart';
 
-
 class AssetRequestRepo extends BaseRepo {
-  AssetRequestRepo({required super.sharedPreferences, required super.dioClient});
+  AssetRequestRepo(
+      {required super.sharedPreferences, required super.dioClient});
 
   Future<Either<ServerFailure, Response>> sendAssetRequest(body) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.assetRequest, data: FormData.fromMap(body));
+      Response response = await dioClient.post(
+          uri: EndPoints.assetRequest, data: FormData.fromMap(body));
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -26,8 +26,7 @@ class AssetRequestRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> getTypes() async {
     try {
-      Response response =
-      await dioClient.get(uri: EndPoints.covenantTypes);
+      Response response = await dioClient.get(uri: EndPoints.covenantTypes);
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -38,5 +37,4 @@ class AssetRequestRepo extends BaseRepo {
       return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
-
 }

@@ -105,19 +105,25 @@ class PermissionRequestProvider extends ChangeNotifier {
     try {
       isLoading = true;
       notifyListeners();
+
+      List<dynamic> files = [];
+
+      if (attachments.isNotEmpty) {
+        for (int i = 0; i < attachments.length; i++) {
+          files.add(MultipartFile.fromFileSync(attachments[i].path,
+              filename: attachments[i].path.split('/').last));
+        }
+      }
+
       var body = {
         "permission_type": selectedPermissionType?.id,
         "employee_id": repo.userId,
         "day": selectedDate?.postDateFormat(),
         "come_time": startDate?.postTimeFormat(),
         "leave_time": endDate?.postTimeFormat(),
-        "reason": reason.text.trim()
+        "reason": reason.text.trim(),
+        "photos": files
       };
-      for (int i = 0; i < attachments.length; i++) {
-        body.addAll({
-          'attachments[$i]': await MultipartFile.fromFile(attachments[i].path)
-        });
-      }
 
       Either<ServerFailure, Response> response = await repo.sendRequest(body);
       response.fold((fail) {

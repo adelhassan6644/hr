@@ -38,6 +38,7 @@ class _CovenantState extends State<Covenant> {
                 ? const LoaderView()
                 : Column(
                     children: [
+                      const CovenantCard(),
                       Expanded(
                           child: ListAnimator(
                         customPadding: EdgeInsets.symmetric(

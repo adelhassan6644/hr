@@ -131,6 +131,14 @@ abstract class Styles {
     }
   }
 
+  static activationStatus(int? status) {
+    if (status == 0) {
+      return WARNING_COLOR;
+    } else {
+      return GREEN_COLOR;
+    }
+  }
+
   static const Map<int, Color> colorMap = {
     50: Color(0x10192D6B),
     100: Color(0x20192D6B),

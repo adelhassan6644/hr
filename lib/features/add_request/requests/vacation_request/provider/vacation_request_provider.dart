@@ -110,18 +110,23 @@ class VacationRequestProvider extends ChangeNotifier {
     try {
       isLoading = true;
       notifyListeners();
-      var body = {
+
+      List<dynamic> files = [];
+      if (attachments.isNotEmpty) {
+        for (int i = 0; i < attachments.length; i++) {
+          files.add(MultipartFile.fromFileSync(attachments[i].path,
+              filename: attachments[i].path.split('/').last));
+        }
+      }
+
+      Map<String, dynamic> body = {
         "vaction_type_id": selectedVacationType?.id,
         "employee_id": repo.userId,
         "start_at": startDate?.postDateFormat(),
         "end_at": endDate?.postDateFormat(),
-        "reason": reason.text.trim()
+        "reason": reason.text.trim(),
+        "photos": files
       };
-      for (int i = 0; i < attachments.length; i++) {
-        body.addAll({
-          'attachments[$i]': await MultipartFile.fromFile(attachments[i].path)
-        });
-      }
 
       Either<ServerFailure, Response> response =
           await repo.sendVacationRequest(body);

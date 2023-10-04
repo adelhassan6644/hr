@@ -47,6 +47,7 @@
   "letter_type": "نوع الخطاب",
   "subject_to_en": "موجه الي (بالانجليزية)",
   "subject_to_ar":"موجه الي (بالعربية)",
+  "covenant_date": "تاريخ استلام العهدة",
   "covenant_request": "طلب عهدة",
   "covenant_details": "تفاصيل العهدة",
   "covenant_release_request": "طلب إخلاء عهدة",

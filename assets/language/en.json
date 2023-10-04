@@ -364,6 +364,7 @@
   "select_covenant_type": "Oops, You must select covenant type",
   "select_vacation_type": "Oops, You must select vacation type",
   "covenant_type": "Covenant Type",
+  "covenant_date": "Covenant Date",
   "upload_attachment": "Upload Attachment",
   "enter_title":"Oops, You must enter title",
   "enter_description": "Oops, You must enter description",
