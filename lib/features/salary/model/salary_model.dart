@@ -36,7 +36,7 @@ class SalaryDetailsModel {
 
   factory SalaryDetailsModel.fromJson(Map<String, dynamic> json) =>
       SalaryDetailsModel(
-        amount: json["amount"].toString(),
+        amount: json["amount"] != null ? json["amount"].toString() : null,
         name: json["name"],
       );
 
@@ -64,8 +64,9 @@ class BaseSalaryModel {
   factory BaseSalaryModel.fromJson(Map<String, dynamic> json) =>
       BaseSalaryModel(
         id: json["id"],
-        salary: json["salary"] != null?  json["salary"].toString():null,
-        netSalary: json["net_salary"] != null?  json["net_salary"].toString():null,
+        salary: json["salary"] != null ? json["salary"].toString() : null,
+        netSalary:
+            json["net_salary"] != null ? json["net_salary"].toString() : null,
         date: json["date"] == null ? null : DateTime.parse(json["date"]),
         url: json["url"],
       );
