@@ -68,8 +68,11 @@
   "information_about_organization": "Information about Organization",
   "personal_information": "Personal Information",
   "personal_documents": "Personal Documents",
+  "passport": "Passport",
   "employee_documents": "Employee Documents",
+  "employee_file": "Employee File",
   "company_documents": "Company Documents",
+  "company_file": "Company File",
   "active": "active",
   "inactive": "inactive",
   "unlimited_time": "Unlimited Time",
@@ -375,5 +378,6 @@
   "pledge_release_details": "Pledge Release Details",
   "pledge_release_type": "Pledge Release Type",
   "your_request_has_been_sent_successfully": "Your Request has been sent successfully",
-  "there_is_no_requests": "There is no requests"
+  "there_is_no_requests": "There is no requests",
+  "not_supported_yet": "Not Supported Yet"
 }

@@ -70,22 +70,24 @@ class _LoanRequestState extends State<LoanRequest> {
                                 hint: getTranslated("loan_type", context),
                                 read: true,
                                 onTap: () {
-                                  if(provider.isGetting){
+                                  if (provider.isGetting) {
                                     CustomSnackBar.showSnackBar(
                                         notification: AppNotification(
-                                            message: getTranslated("please_wait", context),
+                                            message: getTranslated(
+                                                "please_wait", context),
                                             isFloating: true,
                                             backgroundColor: Styles.PENDING,
                                             borderColor: Colors.transparent));
-                                  }else if (!provider.isGetting && provider.loanTypes.isEmpty){
+                                  } else if (!provider.isGetting &&
+                                      provider.loanTypes.isEmpty) {
                                     CustomSnackBar.showSnackBar(
                                         notification: AppNotification(
-                                            message: getTranslated("there_is_no_data", context),
+                                            message: getTranslated(
+                                                "there_is_no_data", context),
                                             isFloating: true,
                                             backgroundColor: Styles.PENDING,
                                             borderColor: Colors.transparent));
-                                  }
-                                  else {
+                                  } else {
                                     CustomBottomSheet.show(
                                         label:
                                             getTranslated("loan_type", context),
@@ -152,8 +154,8 @@ class _LoanRequestState extends State<LoanRequest> {
                                   size: 18,
                                 ),
                                 controller: TextEditingController(
-                                    text: provider.selectedInstallmentMethods
-                                            ?.name ??
+                                    text: provider
+                                            .selectedInstallmentMethods?.name ??
                                         ""),
                                 hint: getTranslated(
                                     "type_monthly_installment", context),
@@ -223,7 +225,8 @@ class _LoanRequestState extends State<LoanRequest> {
                                               2,
                                           child: CustomTextFormField(
                                             pAssetIcon: Images.cash,
-                                            controller: provider.amountPerMounth,
+                                            controller:
+                                                provider.amountPerMounth,
                                             inputType: TextInputType.number,
                                             formatter: [
                                               FilteringTextInputFormatter.allow(

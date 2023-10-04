@@ -288,8 +288,11 @@
   "information_about_organization": "معلومات عن العمل",
   "personal_information": "معلومات شخصية",
   "personal_documents": "وثائق شخصية",
+  "passport": "جواز سفر",
   "employee_documents": "وثائق الموظف",
+  "employee_file": "ملف الموظف",
   "company_documents": "وثائق الشركة",
+  "company_file": "ملف الشركة",
   "type": "النوع",
   "active": "فعال",
   "inactive": "غير فعال",
@@ -351,5 +354,6 @@
   "start_time": "بداية الوقت",
   "end_time":"نهاية الوقت",
   "your_request_has_been_sent_successfully": "تم ارسال طلبك بنجاح",
-  "there_is_no_requests": "لا يوجد طلبات"
+  "there_is_no_requests": "لا يوجد طلبات",
+  "not_supported_yet": "لم يتم الدعم بعد"
 }
