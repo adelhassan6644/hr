@@ -38,7 +38,6 @@ class _CovenantState extends State<Covenant> {
                 ? const LoaderView()
                 : Column(
                     children: [
-                      const PledgeCard(),
                       Expanded(
                           child: ListAnimator(
                         customPadding: EdgeInsets.symmetric(
@@ -52,6 +51,9 @@ class _CovenantState extends State<Covenant> {
                                       pledgeModel: provider.covenant[index],
                                     ))
                             : [
+                                SizedBox(
+                                  height: 80.h,
+                                ),
                                 EmptyState(
                                   img: Images.emptyAsset,
                                   txt: getTranslated(

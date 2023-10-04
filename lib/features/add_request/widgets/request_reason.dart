@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/app/core/svg_images.dart';
@@ -51,11 +52,8 @@ class RequestReason extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 12.h),
               child: GestureDetector(
-                onTap: () {
-                  FilePickerHelper.pickFile(
-                    onSelected: onGet,
-                  );
-                },
+                onTap: () => FilePickerHelper.pickFile(
+                    onSelected: onGet, type: FileType.image),
                 child: DottedBorder(
                   color: Styles.PRIMARY_COLOR,
                   strokeCap: StrokeCap.square,

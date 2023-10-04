@@ -40,7 +40,8 @@ class Salary extends StatelessWidget {
                                 Dimensions.PADDING_SIZE_DEFAULT),
                             decoration: const BoxDecoration(
                               color: Styles.FILL_COLOR,
-                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
                             ),
                             child: Row(
                               children: [
@@ -97,7 +98,8 @@ class Salary extends StatelessWidget {
                                       height: 10,
                                     ),
                                     Text(
-                                      getTranslated("health_insurance", context),
+                                      getTranslated(
+                                          "health_insurance", context),
                                       style: const TextStyle(
                                           fontSize: 14,
                                           color: Styles.GOLD_COLOR,
@@ -114,7 +116,8 @@ class Salary extends StatelessWidget {
                                       height: 10,
                                     ),
                                     Text(
-                                      getTranslated("family_allowance", context),
+                                      getTranslated(
+                                          "family_allowance", context),
                                       style: const TextStyle(
                                           fontSize: 14,
                                           color: Styles.GOLD_COLOR,
@@ -166,8 +169,8 @@ class Salary extends StatelessWidget {
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           vertical: 12.h,
-                                          horizontal:
-                                              Dimensions.PADDING_SIZE_DEFAULT.w),
+                                          horizontal: Dimensions
+                                              .PADDING_SIZE_DEFAULT.w),
                                       child: CustomButton(
                                         onTap: () => CustomNavigator.push(
                                             Routes.PDF,
