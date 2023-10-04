@@ -96,7 +96,7 @@ class PledgeRequestProvider extends ChangeNotifier {
         isCancel ? "employee_pledge_id" : "pledge_id": selectedType?.id,
         "employee_id": repo.userId,
         isCancel ? "reason" : "comment": reason.text.trim(),
-        "photos": files
+        "photos[]": files
       };
 
       Either<ServerFailure, Response> response =

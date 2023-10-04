@@ -125,7 +125,7 @@ class VacationRequestProvider extends ChangeNotifier {
         "start_at": startDate?.postDateFormat(),
         "end_at": endDate?.postDateFormat(),
         "reason": reason.text.trim(),
-        "photos": files
+        "photos[]": files
       };
 
       Either<ServerFailure, Response> response =
