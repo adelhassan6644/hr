@@ -37,6 +37,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
         ),
         body: Column(
           children: [
+            NotificationCard(),
             Expanded(child:
                 Consumer<NotificationsProvider>(builder: (_, provider, child) {
               return provider.isLoading

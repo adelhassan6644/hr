@@ -78,7 +78,6 @@ class _RequestsState extends State<Requests>
                                     SizedBox(height: 80.h),
                                     Center(
                                       child: EmptyState(
-                                        emptyHeight: 450,
                                         imgHeight: 200,
                                         imgWidth: 200,
                                         txt: getTranslated(

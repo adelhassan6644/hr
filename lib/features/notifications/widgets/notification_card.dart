@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/core/svg_images.dart';
+import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
 import '../../../components/custom_images.dart';
 import '../../../data/config/di.dart';
@@ -48,34 +48,35 @@ class _NotificationCardState extends State<NotificationCard> {
                 : null),
         child: Row(
           children: [
-            customImageIconSVG(
-              imageName: SvgImages.notifications,
+            customImageIcon(
+              imageName: Images.notification,
               height: 25,
               width: 25,
-              color: Colors.black,
+              color: Styles.PRIMARY_COLOR,
             ),
             SizedBox(
               width: 8.w,
             ),
             Expanded(
-              child: Row(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child:Text(widget.notification?.notificationBody?.title ?? "",
-                        maxLines: 5,
-                        textAlign: TextAlign.start,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.w600
-                            .copyWith(fontSize: 16, color: widget.notification?.isRead == true
-                            ? Styles.disabledColor
-                            : Styles.SUBTITLE)),
-                  ),
+                  Text(
+                      widget.notification?.notificationBody?.title ?? "fgrtg5g",
+                      maxLines: 5,
+                      textAlign: TextAlign.start,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.w600.copyWith(
+                          fontSize: 16,
+                          color: widget.notification?.isRead == true
+                              ? Styles.disabledColor
+                              : Styles.SUBTITLE)),
                   SizedBox(
-                    width: 8.w,
+                    width: 4.w,
                   ),
                   Text(
-                      widget.notification?.createdAt?.format("EEE dd/mm") ?? "",
+                      widget.notification?.createdAt?.format("EEE dd/mm") ??
+                          "g5",
                       style: AppTextStyles.w400
                           .copyWith(fontSize: 14, color: Styles.disabledColor)),
                 ],
