@@ -319,8 +319,6 @@
   "support": "Support",
   "send_a_message_!": "Send a Message !",
   "guest": "Guest",
-  "notifications": "Notifications",
-  "there_are_no_notifications": "There are no notifications",
   "show_more": "Show more",
   "show_less": "Show less",
   "guest_mode": "Guest Mode",
@@ -381,5 +379,8 @@
   "there_is_no_requests": "There is no requests",
   "not_supported_yet": "Not Supported Yet",
   "logged_in_successfully": "You logged in successfully!",
-  "logged_out_successfully": "You logged out successfully!"
+  "logged_out_successfully": "You logged out successfully!",
+  "something_went_wrong": "Something went wrong !",
+  "notifications": "Notifications",
+  "there_are_no_notifications": "There are no notifications"
 }

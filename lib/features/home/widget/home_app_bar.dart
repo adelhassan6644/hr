@@ -3,6 +3,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/main_providers/user_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:yusrPlus/navigation/custom_navigation.dart';
+import 'package:yusrPlus/navigation/routes.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
 import '../../../app/core/images.dart';
@@ -51,7 +53,7 @@ class HomeAppBar extends StatelessWidget {
               color: Styles.PRIMARY_COLOR,
               height: 25,
             ),
-            onPressed: () {},
+            onPressed: () => CustomNavigator.push(Routes.NOTIFICATIONS),
           ),
         ],
       ),

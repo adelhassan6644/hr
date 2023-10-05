@@ -15,6 +15,8 @@ import '../../features/attendance/repo/attendance_repo.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/home/repo/home_repo.dart';
+import '../../features/notifications/provider/notifications_provider.dart';
+import '../../features/notifications/repo/notifications_repo.dart';
 import '../../features/requests/provider/requests_provider.dart';
 import '../../features/requests/repo/requests_repo.dart';
 import '../../main_providers/user_provider.dart';
@@ -73,6 +75,9 @@ Future<void> init() async {
   sl.registerLazySingleton(
       () => ExpensesRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
+  sl.registerLazySingleton(
+      () => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
+
   //use Case
 
   //provider
@@ -87,6 +92,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CovenantProvider(repo: sl()));
   sl.registerLazySingleton(() => AttendanceProvider(repo: sl()));
   sl.registerLazySingleton(() => RequestsProvider(repo: sl()));
+  sl.registerLazySingleton(() => NotificationsProvider(repo: sl()));
   sl.registerLazySingleton(() => ConfigProvider(repo: sl()));
 
   // External

@@ -37,6 +37,12 @@ abstract class EndPoints {
   static const String vacationTypes = 'employee/vaction/types/index';
   static const String vacationRequest = 'employee/vacation/request/store';
 
+  ///Notification
+  static getNotifications(id) => 'notification/$id';
+  static readNotification(userId,id) => 'notification/read/$userId/$id';
+  static deleteNotification(userId,id) => 'notification/delete/$userId/$id';
+
+
   ///App Config
   static const String setting = '';
   static const String contact = '';

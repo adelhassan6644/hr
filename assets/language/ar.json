@@ -231,6 +231,7 @@
   "you_did_not_receive_a_verification_email_?":"لم تستقبل رسالة تحقق بالبريد الإلكتروني؟",
   "resend_the_code":"إعادة إرسال الرمز",
   "notifications": "الإشعارات",
+  "there_are_no_notifications": "لا يوجد إشعارات",
   "home": "الرئيسية",
   "requests": "الطلبات",
   "request": "طلب",
@@ -357,6 +358,7 @@
   "there_is_no_requests": "لا يوجد طلبات",
   "not_supported_yet": "لم يتم الدعم بعد",
   "logged_in_successfully": "تم تسجيل الدخول بنجاح!",
-  "logged_out_successfully": "تم تسجيل الخروج بنجاح!"
+  "logged_out_successfully": "تم تسجيل الخروج بنجاح!",
+  "something_went_wrong": "حدث خطأ ما !"
 
 }

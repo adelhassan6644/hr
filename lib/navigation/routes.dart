@@ -1,4 +1,4 @@
-class Routes {
+abstract class Routes {
   static const APP = "APP";
   static const SPLASH = "SPLASH";
   static const LOGIN = "LOGIN";
@@ -26,6 +26,7 @@ class Routes {
   static const ASSETS = "ASSETS";
   static const DOCUMENTS = "DOCUMENTS";
   static const CONTRACT = "CONTRACT";
+  static const NOTIFICATIONS = "NOTIFICATIONS";
   static const PDF = "PDF";
 }
 

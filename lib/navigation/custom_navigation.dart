@@ -16,6 +16,7 @@ import '../features/auth/pages/change_password.dart';
 import '../features/contract/page/contract.dart';
 import '../features/documents/page/documents.dart';
 import '../features/language/page/language_bottom_sheet.dart';
+import '../features/notifications/page/notifications_page.dart';
 import '../features/setting/page/settings.dart';
 import '../features/organization/page/organization.dart';
 import '../features/profile/page/profile.dart';
@@ -87,6 +88,10 @@ abstract class CustomNavigator {
         return _pageRoute(const LanguageBottomSheet());
       case Routes.PROFILE:
         return _pageRoute(const Profile());
+
+      case Routes.NOTIFICATIONS:
+        return _pageRoute(const NotificationsPage());
+
       case Routes.ORGANIZATION:
         return _pageRoute(const Organization());
       case Routes.DOCUMENTS:
