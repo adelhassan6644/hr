@@ -20,20 +20,18 @@ class DocumentFileCard extends StatelessWidget {
         child:
             Consumer<DownloadProvider>(builder: (_, downloadProvider, child) {
           return CustomButton(
-              textColor: Styles.PRIMARY_COLOR,
-              text: title,
-              onTap: () async {
-                if (!downloadProvider.downloaded) {
-                  downloadProvider.download(
-                      url ?? "", url ?? "".split("/").last);
-                }
-              },
-              isLoading: downloadProvider.isLoading,
-              lIconWidget: const Icon(
-                Icons.download,
-                color: Styles.PRIMARY_COLOR,
-              ),
-              backgroundColor: Styles.WHITE);
+            text: title,
+            onTap: () async {
+              if (!downloadProvider.downloaded) {
+                downloadProvider.download(url ?? "", url ?? "".split("/").last);
+              }
+            },
+            isLoading: downloadProvider.isLoading,
+            lIconWidget: const Icon(
+              Icons.download,
+              color: Styles.WHITE,
+            ),
+          );
         }),
       ),
     );
