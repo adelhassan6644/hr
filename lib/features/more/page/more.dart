@@ -60,11 +60,11 @@ class More extends StatelessWidget {
                 MoreNavigateCard(
                   name: getTranslated("contract", context),
                   iconAsset: Images.contractIcon,
-                  onTap: () =>
-                      showToast(getTranslated("not_supported_yet", context)),
-                ),
+                //   onTap: () =>
+                //       showToast(getTranslated("not_supported_yet", context)),
+                // ),
 
-                // onTap: () => CustomNavigator.push(Routes.CONTRACT)),
+                onTap: () => CustomNavigator.push(Routes.CONTRACT)),
 
                 SizedBox(height: 80.h),
               ],

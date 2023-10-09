@@ -35,7 +35,7 @@ class HomeRepo extends BaseRepo {
               ? EndPoints.checkLeave(scheduleModel.attendanceId)
               : EndPoints.checkAttend(userId),
           data: {
-            "schedule_id":scheduleModel. id,
+            "schedule_id":scheduleModel.scheduleId,
             "lat": position.latitude,
             "long": position.longitude
           }
