@@ -52,11 +52,10 @@ class DocumentsScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 12.h),
                     child: CustomExpansionTile(
                         title: getTranslated("company_documents", context),
-                        children:  [
+                        children: [
                           DocumentFileCard(
                             title: getTranslated("company_file", context),
                           )
-
                         ]),
                   ),
                 ],
