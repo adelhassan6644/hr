@@ -22,6 +22,12 @@ class DocumentFileCard extends StatelessWidget {
           return CustomButton(
             text: title,
             onTap: () async {
+              if (url==
+                  null) {
+                showToast(getTranslated(
+                    "notـreleased", context));
+                return;
+              }
               if (!downloadProvider.downloaded) {
                 downloadProvider.download(url ?? "", url ?? "".split("/").last);
               }

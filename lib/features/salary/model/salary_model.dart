@@ -68,7 +68,7 @@ class BaseSalaryModel {
         netSalary:
             json["salary"] != null ? json["salary"].toString() : null,
         date: json["date"] == null ? null : DateTime.parse(json["date"]),
-        url: json["url"],
+        url: json["pdf_url"],
       );
 
   Map<String, dynamic> toJson() => {
