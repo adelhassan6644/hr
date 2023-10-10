@@ -49,7 +49,7 @@ class DownloadProvider extends ChangeNotifier {
             },
           ),
         ); isLoading = false;
-        downloaded = true;
+        downloaded = false;
         OpenFilex.open("$path");
 
         notifyListeners();

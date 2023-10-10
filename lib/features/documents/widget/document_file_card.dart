@@ -14,34 +14,32 @@ class DocumentFileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => showToast(getTranslated("not_supported_yet", context)),
-      child: ChangeNotifierProvider(
-        create: (_) => DownloadProvider(),
-        child:
-            Consumer<DownloadProvider>(builder: (_, downloadProvider, child) {
-          return CustomButton(
-            text: title,
-            onTap: () async {
-              if (url==
-                  null) {
-                showToast(getTranslated(
-                    "notـreleased", context));
-                return;
-              }
-              if (!downloadProvider.downloaded) {
+    return ChangeNotifierProvider(
+      create: (_) => DownloadProvider(),
+      child:
+          Consumer<DownloadProvider>(builder: (_, downloadProvider, child) {
+        return CustomButton(
+          text: title,
+          onTap: () async {
 
-                downloadProvider.download(EndPoints.imageUrl + url! ,  (url ?? "".split("/").last));
-              }
-            },
-            isLoading: downloadProvider.isLoading,
-            lIconWidget: const Icon(
-              Icons.download,
-              color: Styles.WHITE,
-            ),
-          );
-        }),
-      ),
+            if (url==
+                null) {
+              showToast(getTranslated(
+                  "notـreleased", context));
+              return;
+            }
+            if (!downloadProvider.downloaded) {
+
+              downloadProvider.download(EndPoints.imageUrl + url! ,  (url ?? "".split("/").last));
+            }
+          },
+          isLoading: downloadProvider.isLoading,
+          lIconWidget: const Icon(
+            Icons.download,
+            color: Styles.WHITE,
+          ),
+        );
+      }),
     );
   }
 }
