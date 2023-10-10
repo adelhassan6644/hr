@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../api/end_points.dart';
-import 'api_clinet.dart';
+import 'api_client.dart';
 import 'logging_interceptor.dart';
 
 class DioClient extends ApiClient {
