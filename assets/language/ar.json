@@ -298,6 +298,7 @@
   "active": "فعال",
   "inactive": "غير فعال",
   "contract_duration": "مدة العقد",
+  "personal_id": "الهوية الشخصية",
   "contract_type": "نوع العقد",
   "contract_starting_date": "تاريخ بداية العقد",
   "employment_contract": "عقد عمل",

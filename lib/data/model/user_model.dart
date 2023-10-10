@@ -265,6 +265,7 @@ class UserModel {
     this.countryId,
     this.createdAt,
     this.updatedAt,
+    this.applicationDocument,
     this.jobNumber,
     this.state,
     this.zipcode,
@@ -302,6 +303,7 @@ class UserModel {
   final String? phone;
   final String? password;
   final String? address;
+  final String? applicationDocument;
   final dynamic description;
   final dynamic otp;
   final DateTime? dateOfBirth;
@@ -354,6 +356,7 @@ class UserModel {
         image: json["image"],
         phone: json["phone"],
         password: json["password"],
+        applicationDocument: json["application_document"],
         address: json["address"],
         description: json["description"],
         otp: json["otp"],
@@ -434,6 +437,7 @@ class UserModel {
         "image": image,
         "phone": phone,
         "password": password,
+        "application_document": applicationDocument,
         "address": address,
         "description": description,
         "otp": otp,
@@ -729,7 +733,7 @@ class EmployeeInfo {
   final int? insideKindom;
   final String? idNumber;
   final dynamic idType;
-  final dynamic idDocument;
+  final String? idDocument;
   final DateTime? idIssueDate;
   final DateTime? idIssueExpire;
   final String? idIssuePlace;

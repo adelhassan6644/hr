@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import '../../../../../app/core/dimensions.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../../../components/animated_widget.dart';
 import '../../../../../components/custom_app_bar.dart';
 import '../../../components/custom_expansion_tile.dart';
+import '../../../main_providers/user_provider.dart';
 import '../widget/document_file_card.dart';
 
 class DocumentsScreen extends StatelessWidget {
@@ -13,10 +15,11 @@ class DocumentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(
-          title: getTranslated("documents", context),
-        ),
-        body: Column(
+      appBar: CustomAppBar(
+        title: getTranslated("documents", context),
+      ),
+      body: Consumer<UserProvider>(builder: (_, provider, child) {
+        return Column(
           children: [
             Expanded(
               child: ListAnimator(
@@ -30,8 +33,16 @@ class DocumentsScreen extends StatelessWidget {
                         title: getTranslated("personal_documents", context),
                         children: [
                           DocumentFileCard(
+                            title: getTranslated("personal_id", context),
+                            url: provider.user?.employeeInfo?.idDocument,
+                          ),
+                          SizedBox(
+                            height: 12.h,
+                          ),
+                          DocumentFileCard(
                             title: getTranslated("passport", context),
-                          )
+                            url: provider.user?.employeeInfo?.passportDocument,
+                          ),
                         ]),
                   ),
 
@@ -43,6 +54,7 @@ class DocumentsScreen extends StatelessWidget {
                         children: [
                           DocumentFileCard(
                             title: getTranslated("employee_file", context),
+                            url: provider.user?.applicationDocument,
                           )
                         ]),
                   ),
@@ -62,6 +74,8 @@ class DocumentsScreen extends StatelessWidget {
               ),
             ),
           ],
-        ));
+        );
+      }),
+    );
   }
 }

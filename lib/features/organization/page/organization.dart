@@ -18,108 +18,107 @@ class Organization extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(
-          title: getTranslated("organization", context),
-        ),
-        body: Consumer<UserProvider>(builder: (_, provider, child) {
-          return Column(
-            children: [
-              Expanded(
-                child: ListAnimator(
-                  customPadding: EdgeInsets.symmetric(
-                      vertical: Dimensions.PADDING_SIZE_DEFAULT.w,
-                      horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                  data: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                          vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.w),
-                          border: Border.all(
-                            color: Styles.LIGHT_BORDER_COLOR,
-                          )),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            getTranslated(
-                                "information_about_organization", context),
-                            style: AppTextStyles.w600.copyWith(
-                              fontSize: 16.0,
-                            ),
+      appBar: CustomAppBar(
+        title: getTranslated("organization", context),
+      ),
+      body: Consumer<UserProvider>(builder: (_, provider, child) {
+        return Column(
+          children: [
+            Expanded(
+              child: ListAnimator(
+                customPadding: EdgeInsets.symmetric(
+                    vertical: Dimensions.PADDING_SIZE_DEFAULT.w,
+                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                data: [
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                        vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.w),
+                        border: Border.all(
+                          color: Styles.LIGHT_BORDER_COLOR,
+                        )),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          getTranslated(
+                              "information_about_organization", context),
+                          style: AppTextStyles.w600.copyWith(
+                            fontSize: 16.0,
                           ),
-                          SizedBox(
-                            height: 24.h,
-                          ),
+                        ),
+                        SizedBox(
+                          height: 24.h,
+                        ),
 
-                          ///Job Data
-                          ProfileDetailsCard(
-                            title: getTranslated("join_date", context),
-                            data: provider.user?.dateOfJoining
-                                    ?.format("dd-MMMM-yyyy") ??
-                                "",
-                          ),
+                        ///Job Data
+                        ProfileDetailsCard(
+                          title: getTranslated("join_date", context),
+                          data: provider.user?.dateOfJoining
+                                  ?.format("dd-MMMM-yyyy") ??
+                              "",
+                        ),
 
-                          ///Job Title
-                          ProfileDetailsCard(
-                            title: getTranslated("job_title", context),
-                            data: provider.user?.jobRole?.jobTitle ?? "",
-                          ),
+                        ///Job Title
+                        ProfileDetailsCard(
+                          title: getTranslated("job_title", context),
+                          data: provider.user?.jobRole?.jobTitle ?? "",
+                        ),
 
-                          ///Job Type
-                          ProfileDetailsCard(
-                            title: getTranslated("job_type", context),
-                            data: provider.user?.jobType?.name ?? "",
-                          ),
+                        ///Job Type
+                        ProfileDetailsCard(
+                          title: getTranslated("job_type", context),
+                          data: provider.user?.jobType?.name ?? "",
+                        ),
 
-                          ///Department
-                          ProfileDetailsCard(
-                            title: getTranslated("department", context),
-                            data: provider.user?.jobCategory?.name ?? "",
-                          ),
+                        ///Department
+                        ProfileDetailsCard(
+                          title: getTranslated("department", context),
+                          data: provider.user?.jobCategory?.name ?? "",
+                        ),
 
-                          ///Department
-                          ProfileDetailsCard(
-                            title: getTranslated("job_unit", context),
-                            data: provider.user?.jobUnit?.name ?? "",
-                          ),
+                        ///Department
+                        ProfileDetailsCard(
+                          title: getTranslated("job_unit", context),
+                          data: provider.user?.jobUnit?.name ?? "",
+                        ),
 
-                          ///Location
-                          ProfileDetailsCard(
-                            title: getTranslated("location", context),
-                            data: sl<LocalizationProvider>()
-                                        .locale
-                                        .languageCode ==
-                                    "en"
-                                ? provider.user?.branch?.enName ?? ""
-                                : provider.user?.branch?.arName ?? "",
-                          ),
+                        ///Location
+                        ProfileDetailsCard(
+                          title: getTranslated("location", context),
+                          data:
+                              sl<LocalizationProvider>().locale.languageCode ==
+                                      "en"
+                                  ? provider.user?.branch?.enName ?? ""
+                                  : provider.user?.branch?.arName ?? "",
+                        ),
 
-                          ///Grade
-                          ProfileDetailsCard(
-                            title: getTranslated("grade", context),
-                            data: provider.user?.jobLevel?.name ?? "",
-                          ),
+                        ///Grade
+                        ProfileDetailsCard(
+                          title: getTranslated("grade", context),
+                          data: provider.user?.jobLevel?.name ?? "",
+                        ),
 
-                          ///Line Manager
-                          ProfileDetailsCard(
-                            title: getTranslated("line_manager", context),
-                            data: sl<LocalizationProvider>()
-                                        .locale
-                                        .languageCode ==
-                                    "en"
-                                ? provider.user?.directManager?.enName ?? ""
-                                : provider.user?.directManager?.arName ?? "",
-                          ),
-                        ],
-                      ),
+                        ///Line Manager
+                        ProfileDetailsCard(
+                          title: getTranslated("line_manager", context),
+                          data:
+                              sl<LocalizationProvider>().locale.languageCode ==
+                                      "en"
+                                  ? provider.user?.directManager?.enName ?? ""
+                                  : provider.user?.directManager?.arName ?? "",
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              )
-            ],
-          );
-        }));
+                  ),
+                ],
+              ),
+            )
+          ],
+        );
+      }),
+    );
   }
 }
