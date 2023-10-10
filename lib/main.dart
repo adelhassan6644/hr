@@ -1,58 +1,46 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hr_project/navigation/custom_navigation.dart';
-import 'package:hr_project/presentation/auth/login_screen.dart';
-import 'package:hr_project/presentation/notifier/localization_provider.dart';
-import 'package:hr_project/presentation/notifier/theme_provider.dart';
+import 'package:yusrPlus/app/core/un_focus.dart';
 import 'package:provider/provider.dart';
-import 'package:upgrader/upgrader.dart';
-import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
-import 'app/core/utils/app_storage_keys.dart';
-import 'app/core/utils/un_focus.dart';
+import 'app/core/app_storage_keys.dart';
+import 'app/core/app_strings.dart';
+import 'app/localization/app_localization.dart';
+import 'features/language/provider/localization_provider.dart';
 import 'app/theme/dark_theme.dart';
 import 'app/theme/light_theme.dart';
-import 'di.dart' as di;
+import 'app/theme/theme_provider/theme_provider.dart';
+import 'data/config/di.dart';
+import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'app/core/utils/app_strings.dart';
-import 'domain/localization/app_localization.dart';
+import 'navigation/custom_navigation.dart';
 import 'navigation/routes.dart';
-import 'presentation/notifier/attendance_schedules_provider.dart';
-import 'presentation/notifier/add_request_provider.dart';
-import 'presentation/notifier/attendance_provider.dart';
-import 'presentation/notifier/auth_provider.dart';
-import 'presentation/notifier/language_provider.dart';
-import 'presentation/notifier/profile_provider.dart';
+import 'package:yusrPlus/data/config/di.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
+  // options: DefaultFirebaseOptions.currentPlatform,
   // );
 
-  if (kDebugMode) {
-    await Upgrader.clearSavedSettings();
-  }
-
+  // FirebaseNotifications.init();
   await di.init();
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (context) => di.sl<ThemeProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<AddRequestProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<ProfileProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<LanguageProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<AttendanceProvider>()),
-    ChangeNotifierProvider(
-        create: (context) => di.sl<AttendanceScheduleProvider>()),
-  ], child: const MyApp()));
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.light,
-      statusBarColor: Colors.transparent));
+  runApp(
+      MultiProvider(providers: ProviderList.providers, child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,29 +48,27 @@ class MyApp extends StatelessWidget {
     for (var language in AppStorageKey.languages) {
       locals.add(Locale(language.languageCode!, language.countryCode));
     }
+
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light));
+
     return MaterialApp(
       builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-          child: Unfocus(child: child!)),
+          child: UnFocus(child: child!)),
       initialRoute: Routes.SPLASH,
       navigatorKey: CustomNavigator.navigatorState,
       onGenerateRoute: CustomNavigator.onCreateRoute,
-      // navigatorObservers: [CustomNavigator.routeObserver],
+      navigatorObservers: [CustomNavigator.routeObserver],
       title: AppStrings.appName,
-      supportedLocales: locals,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,
       debugShowCheckedModeBanner: false,
-      theme: Provider.of<ThemeProvider>(
-        context,
-      ).darkTheme
-          ? dark
-          : light,
+      theme: sl<ThemeProvider>().darkTheme ? dark : light,
+      supportedLocales: locals,
       locale: Provider.of<LocalizationProvider>(
         context,
       ).locale,
@@ -92,7 +78,6 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const LoginScreen(),
     );
   }
 }

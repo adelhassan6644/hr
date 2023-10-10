@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import '../core/utils/app_strings.dart';
-import '../core/utils/dimensions.dart';
+
+import '../core/app_strings.dart';
+import '../core/dimensions.dart';
 
 ThemeData dark = ThemeData(
   fontFamily: AppStrings.fontFamily,
   primaryColor: const Color(0xFF7338A4),
   brightness: Brightness.dark,
   scaffoldBackgroundColor: Colors.black,
-  accentColor: const Color(0xFF252525),
+  // accentColor: const Color(0xFF252525),
   hintColor: const Color(0xFFE7F6F8),
   appBarTheme: const AppBarTheme(
     backgroundColor:Colors.black,
