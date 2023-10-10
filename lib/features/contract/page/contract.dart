@@ -1,126 +1,70 @@
 import 'package:flutter/material.dart';
-import 'package:yusrPlus/app/core/color_resources.dart';
+import 'package:provider/provider.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
-import 'package:yusrPlus/app/core/text_styles.dart';
-import 'package:yusrPlus/features/requests/widgets/title_container.dart';
+import 'package:yusrPlus/features/contract/provider/contract_provider.dart';
+import 'package:yusrPlus/features/contract/widgets/contract_card.dart';
 
 import '../../../../../app/core/dimensions.dart';
+import '../../../app/core/images.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../../../components/animated_widget.dart';
 import '../../../../../components/custom_app_bar.dart';
+import '../../../components/empty_widget.dart';
+import '../../../components/loader_view.dart';
+import '../../../data/config/di.dart';
 
-class ContractScreen extends StatelessWidget {
+class ContractScreen extends StatefulWidget {
   const ContractScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ContractScreen> createState() => _ContractScreenState();
+}
+
+class _ContractScreenState extends State<ContractScreen> {
+  @override
+  void initState() {
+    sl<ContractProvider>().getContracts();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
-          title: getTranslated("contract", context),
-        ),
-        body: Column(
-          children: [
-            Expanded(
-              child: ListAnimator(
-                customPadding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                data: [
-                  Column(
+          appBar: CustomAppBar(
+            title: getTranslated("contracts", context),
+          ),
+          body: Consumer<ContractProvider>(builder: (_, provider, child) {
+            return provider.isLoading
+                ? const LoaderView()
+                : Column(
                     children: [
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(
+                      Expanded(
+                          child: ListAnimator(
+                        customPadding: EdgeInsets.symmetric(
                             vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
                             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                spreadRadius: 2,
-                                blurRadius: 4,
-                                offset: const Offset(0, 2),
-                              )
-                            ],
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(12)),
-                            color: Styles.FILL_COLOR),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    getTranslated(
-                                        "employment_contract", context),
-                                    style: AppTextStyles.w600.copyWith(
-                                        fontSize: 14, color: Styles.HEADER),
-                                    overflow: TextOverflow.fade,
-                                  ),
+                        data: (!provider.isLoading &&
+                                provider.contracts.isNotEmpty)
+                            ? List.generate(
+                                provider.contracts.length,
+                                (index) => ContractCard(
+                                      contractModel: provider.contracts[index],
+                                    ))
+                            : [
+                                SizedBox(
+                                  height: 80.h,
                                 ),
-                                titleContainer(
-                                    title: getTranslated("active", context),
-                                    color: Styles.ACTIVE,
-                                    textColor: Styles.WHITE)
+                                EmptyState(
+                                  img: Images.emptyAsset,
+                                  txt: getTranslated(
+                                      "there_is_no_contracts", context),
+                                )
                               ],
-                            ),
-                            SizedBox(
-                              height: 24.h,
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "${getTranslated("contract_starting_date", context)} : ",
-                                    style: AppTextStyles.w600.copyWith(
-                                        fontSize: 14, color: Styles.HEADER),
-                                    overflow: TextOverflow.fade,
-                                  ),
-                                ),
-                                Text(
-                                  DateTime.now().format("dd-MMM-yyyy"),
-                                  style: AppTextStyles.w500.copyWith(
-                                      fontSize: 12,
-                                      color: Styles.PRIMARY_COLOR),
-                                  overflow: TextOverflow.fade,
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 24.h,
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "${getTranslated("contract_duration", context)} : ",
-                                    style: AppTextStyles.w600.copyWith(
-                                        fontSize: 14, color: Styles.HEADER),
-                                    overflow: TextOverflow.fade,
-                                  ),
-                                ),
-                                Text(
-                                  getTranslated("unlimited_time", context),
-                                  style: AppTextStyles.w500.copyWith(
-                                      fontSize: 12,
-                                      color: Styles.PRIMARY_COLOR),
-                                  overflow: TextOverflow.fade,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                      ))
                     ],
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+                  );
+          })),
     );
   }
 }

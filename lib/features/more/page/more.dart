@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/components/animated_widget.dart';
 import 'package:yusrPlus/navigation/custom_navigation.dart';
-import '../../../app/core/app_snack_bar.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/localization/language_constant.dart';
@@ -58,13 +57,9 @@ class More extends StatelessWidget {
                     onTap: () => CustomNavigator.push(Routes.ASSETS)),
 
                 MoreNavigateCard(
-                  name: getTranslated("contract", context),
-                  iconAsset: Images.contractIcon,
-                  onTap: () =>
-                      showToast(getTranslated("not_supported_yet", context)),
-                ),
-
-                // onTap: () => CustomNavigator.push(Routes.CONTRACT)),
+                    name: getTranslated("contracts", context),
+                    iconAsset: Images.contractIcon,
+                    onTap: () => CustomNavigator.push(Routes.CONTRACT)),
 
                 SizedBox(height: 80.h),
               ],

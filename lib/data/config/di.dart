@@ -6,6 +6,8 @@ import '../../features/add_request/requests/loan_request/repo/loan_request_repo.
 import '../../features/add_request/requests/permission_request/repo/permission_request_repo.dart';
 import '../../features/add_request/requests/pledge_request/repo/pledge_request_repo.dart';
 import '../../features/add_request/requests/vacation_request/repo/vacation_request_repo.dart';
+import '../../features/contract/provider/contract_provider.dart';
+import '../../features/contract/repo/contract_repo.dart';
 import '../../features/covenant/provider/covenant_provider.dart';
 import '../../features/covenant/repo/covenant_repo.dart';
 import '../../features/language/provider/localization_provider.dart';
@@ -78,6 +80,9 @@ Future<void> init() async {
   sl.registerLazySingleton(
       () => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
 
+  sl.registerLazySingleton(
+      () => ContractRepo(sharedPreferences: sl(), dioClient: sl()));
+
   //use Case
 
   //provider
@@ -92,6 +97,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CovenantProvider(repo: sl()));
   sl.registerLazySingleton(() => AttendanceProvider(repo: sl()));
   sl.registerLazySingleton(() => RequestsProvider(repo: sl()));
+  sl.registerLazySingleton(() => ContractProvider(repo: sl()));
   sl.registerLazySingleton(() => NotificationsProvider(repo: sl()));
   sl.registerLazySingleton(() => ConfigProvider(repo: sl()));
 

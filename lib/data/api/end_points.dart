@@ -31,6 +31,9 @@ abstract class EndPoints {
   static deletePledgeRequest(id) => 'employee/loan/request/destroy/$id';
   static myCovenant(id) => 'employee/pledge/request/index/$id';
 
+
+  static myContracts(id) => 'employee/contract/index/$id';
+
   static const String permissionRequest = 'employee/permission/request/store';
   static const String permissionTypes = 'employee/permission/types/index';
 

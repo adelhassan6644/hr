@@ -22,4 +22,11 @@ class AppStrings {
     }
   }
 
+  static activationStatus(int? status) {
+    if (status == 1) {
+      return "active";
+    } else {
+      return "inactive";
+    }
+  }
 }
