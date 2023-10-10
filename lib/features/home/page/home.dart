@@ -12,6 +12,7 @@ import '../../../app/localization/language_constant.dart';
 import '../../../data/config/di.dart';
 import '../../../main_page/provider/dashboard_provider.dart';
 import '../../../navigation/routes.dart';
+import '../provider/home_provider.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -25,59 +26,62 @@ class Home extends StatelessWidget {
         children: [
           const HomeAppBar(),
           Expanded(
-              child: ListAnimator(
+              child: RefreshIndicator(
+                onRefresh: ()=>  Future.delayed(Duration.zero, () => sl<HomeProvider>().checkOnSchedule()),
+                child: ListAnimator(
             data: [
-              const CheckInCard(),
+                const CheckInCard(),
 
-              ///Add Request
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.h),
-                child: HomeCard(
-                  icon: const Icon(
-                    Icons.add,
-                    color: Styles.PRIMARY_COLOR,
+                ///Add Request
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.h),
+                  child: HomeCard(
+                    icon: const Icon(
+                      Icons.add,
+                      color: Styles.PRIMARY_COLOR,
+                    ),
+                    title: getTranslated("add_request", context),
+                    iconColor: Styles.PRIMARY_COLOR,
+                    onTap: () => CustomNavigator.push(Routes.ADD_REQUEST),
                   ),
-                  title: getTranslated("add_request", context),
-                  iconColor: Styles.PRIMARY_COLOR,
-                  onTap: () => CustomNavigator.push(Routes.ADD_REQUEST),
                 ),
-              ),
 
-              ///attendance_leaving
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.h),
-                child: HomeCard(
-                  icon: const Icon(
-                    Icons.fingerprint,
-                    color: Styles.PRIMARY_COLOR,
+                ///attendance_leaving
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.h),
+                  child: HomeCard(
+                    icon: const Icon(
+                      Icons.fingerprint,
+                      color: Styles.PRIMARY_COLOR,
+                    ),
+                    title: getTranslated("attendance_leaving", context),
+                    iconColor: Styles.PRIMARY_COLOR,
+                    onTap: () => sl<DashboardProvider>().updateDashboardIndex(2),
                   ),
-                  title: getTranslated("attendance_leaving", context),
-                  iconColor: Styles.PRIMARY_COLOR,
-                  onTap: () => sl<DashboardProvider>().updateDashboardIndex(2),
                 ),
-              ),
 
-              ///"salary_&_financial
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.h),
-                child: HomeCard(
-                  icon: Image.asset(
-                    Images.salaries,
-                    height: 25,
-                    color: const Color(0xff8fc44b),
+                ///"salary_&_financial
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.h),
+                  child: HomeCard(
+                    icon: Image.asset(
+                      Images.salaries,
+                      height: 25,
+                      color: const Color(0xff8fc44b),
+                    ),
+                    title: getTranslated("salary_&_financial", context),
+                    iconColor: const Color(0xff8fc44b),
+                    onTap: () =>
+                        CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL),
+
+                    // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SalariesScreen()));},
                   ),
-                  title: getTranslated("salary_&_financial", context),
-                  iconColor: const Color(0xff8fc44b),
-                  onTap: () =>
-                      CustomNavigator.push(Routes.SALARIES_AND_FINANCIAL),
-
-                  // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SalariesScreen()));},
                 ),
-              ),
 
-              SizedBox(height: 80.h),
+                SizedBox(height: 80.h),
             ],
-          ))
+          ),
+              ))
         ],
       ),
     );
