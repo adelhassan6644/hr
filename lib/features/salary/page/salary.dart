@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:yusrPlus/app/core/app_snack_bar.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/app/core/text_styles.dart';
 import 'package:yusrPlus/components/animated_widget.dart';
@@ -161,11 +162,20 @@ class _SalaryState extends State<Salary> {
                                           horizontal: Dimensions
                                               .PADDING_SIZE_DEFAULT.w),
                                       child: CustomButton(
-                                        onTap: () => CustomNavigator.push(
-                                            Routes.PDF,
-                                            arguments: provider
-                                                    .salaryModel?.salary?.url ??
-                                                ""),
+                                        onTap: ()
+                                        {
+                                          if (provider.salaryModel?.salary
+                                              ?.url ==
+                                              null) {
+                                            showToast(getTranslated(
+                                                "notـreleased", context));
+                                            return;
+                                          }
+                                          CustomNavigator.push(Routes.PDF,
+                                              arguments: provider.salaryModel
+                                                      ?.salary?.url ??
+                                                  "");
+                                        },
                                         text: getTranslated("details", context),
                                       ),
                                     ),
@@ -178,6 +188,13 @@ class _SalaryState extends State<Salary> {
                                             text: getTranslated(
                                                 "download", context),
                                             onTap: () async {
+                                              if (provider.salaryModel?.salary
+                                                      ?.url ==
+                                                  null) {
+                                                showToast(getTranslated(
+                                                    "notـreleased", context));
+                                                return;
+                                              }
                                               if (!downloadProvider
                                                   .downloaded) {
                                                 downloadProvider.download(
