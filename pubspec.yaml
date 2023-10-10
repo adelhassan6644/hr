@@ -26,7 +26,6 @@ dependencies:
   shared_preferences:
   get_it:
   pretty_dio_logger:
-  #    firebase_messaging:
   provider:
   connectivity:
   flutter_styled_toast:
