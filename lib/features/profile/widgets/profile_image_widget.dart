@@ -25,7 +25,7 @@ class ProfileImageWidget extends StatelessWidget {
                 size: radius * 1.5,
               ))
             : CustomNetworkImage.circleNewWorkImage(
-                image: provider.user?.image!,
+                image: provider.user?.image,
                 radius: radius,
               ),
       );

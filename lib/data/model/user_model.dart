@@ -298,7 +298,7 @@ class UserModel {
   final String? enName;
   final String? arName;
   final String? email;
-  final dynamic image;
+  final String? image;
   final String? phone;
   final String? password;
   final String? address;

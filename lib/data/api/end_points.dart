@@ -1,7 +1,7 @@
 abstract class EndPoints {
   static const String baseUrl = 'https://erp.softwarecloud2.com/api/';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
-  static const String imageUrl = 'https://test.fitariki.com/';
+  static const String imageUrl = 'https://erp.softwarecloud2.com/';
   static const String apiKey = '123';
   static const String topic = 'fitariki';
 
@@ -31,7 +31,6 @@ abstract class EndPoints {
   static deletePledgeRequest(id) => 'employee/loan/request/destroy/$id';
   static myCovenant(id) => 'employee/pledge/request/index/$id';
 
-
   static myContracts(id) => 'employee/contract/index/$id';
 
   static const String permissionRequest = 'employee/permission/request/store';
@@ -42,9 +41,8 @@ abstract class EndPoints {
 
   ///Notification
   static getNotifications(id) => 'notification/$id';
-  static readNotification(userId,id) => 'notification/read/$userId/$id';
-  static deleteNotification(userId,id) => 'notification/delete/$userId/$id';
-
+  static readNotification(userId, id) => 'notification/read/$userId/$id';
+  static deleteNotification(userId, id) => 'notification/delete/$userId/$id';
 
   ///App Config
   static const String setting = '';
