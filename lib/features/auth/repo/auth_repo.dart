@@ -61,76 +61,95 @@ class AuthRepo extends BaseRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> getVerificationCode(
-      {required String email}) async {
+  Future<Either<ServerFailure, Response>> forgetPassword(
+      {required String mail}) async {
     try {
-      Response response = await dioClient
-          .post(uri: EndPoints.getVerificationCode, data: {"email": email});
+      Response response =
+          await dioClient.post(uri: EndPoints.forgetPassword, data: {
+        "email": mail,
+      });
+
       if (response.statusCode == 200) {
         return Right(response);
       } else {
-        return Left(ServerFailure(
-            ApiErrorHandler.getMessage(response.data["message"])));
+        return left(ServerFailure(response.data['message']));
       }
     } catch (error) {
-      return Left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
 
-  Future<Either<ServerFailure, Response>> sendVerificationCode(
-      {required String code}) async {
+  Future<Either<ServerFailure, Response>> resendCode(
+      {required String mail}) async {
     try {
-      Response response = await dioClient
-          .post(uri: EndPoints.sendVerificationCode, data: {"code": code});
+      Response response =
+          await dioClient.post(uri: EndPoints.forgetPassword, data: {
+        "email": mail,
+      });
+
       if (response.statusCode == 200) {
         return Right(response);
       } else {
-        return Left(ServerFailure(
-            ApiErrorHandler.getMessage(response.data["message"])));
+        return left(ServerFailure(response.data['message']));
       }
     } catch (error) {
-      return Left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
 
-  Future<Either<ServerFailure, Response>> resetPassword({
-    required String newPassword,
-  }) async {
+  Future<Either<ServerFailure, Response>> verifyMail(
+      {required String mail,
+      required String code,
+      bool updateHeader = false}) async {
+    try {
+      Response response = await dioClient.post(
+          uri: EndPoints.checkMailForResetPassword,
+          data: {"code": code, "email": mail});
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return left(ServerFailure(response.data['message']));
+      }
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+    }
+  }
+
+  Future<Either<ServerFailure, Response>> reset(
+      {required String password, required String email}) async {
     try {
       Response response =
           await dioClient.post(uri: EndPoints.resetPassword, data: {
-        "new_password": newPassword,
+        "email": email,
+        "newPassword": password,
       });
+
       if (response.statusCode == 200) {
         return Right(response);
       } else {
-        return Left(ServerFailure(
-            ApiErrorHandler.getMessage(response.data["message"])));
+        return left(ServerFailure(response.data['message']));
       }
     } catch (error) {
-      return Left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
 
-  Future<Either<ServerFailure, Response>> updatePassword(
-      {required String email,
-      required String password,
-      required String newPassword}) async {
+  Future<Either<ServerFailure, Response>> change(
+      {required String oldPassword, required String password}) async {
     try {
       Response response =
-          await dioClient.post(uri: EndPoints.updatePassword, data: {
-        "email": email,
-        "password": password,
-        "new_password": newPassword,
+          await dioClient.post(uri: EndPoints.changePassword(userId), data: {
+        "oldPassword": oldPassword,
+        "newPassword": password,
       });
+
       if (response.statusCode == 200) {
         return Right(response);
       } else {
-        return Left(ServerFailure(
-            ApiErrorHandler.getMessage(response.data["message"])));
+        return left(ServerFailure(response.data['message']));
       }
-    } catch (e) {
-      return Left(ServerFailure(ApiErrorHandler.getMessage(e.toString())));
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
 

@@ -65,11 +65,11 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     height: 35.h,
                   ),
                   CustomButton(
-                      isLoading: provider.isLoading,
+                      isLoading: provider.isForget,
                       onTap: () {
                         formKey.currentState!.save();
                         if (formKey.currentState!.validate()) {
-                          provider.getOTP();
+                          provider.forgetPassword();
                         }
                       },
                       textColor: Styles.WHITE,

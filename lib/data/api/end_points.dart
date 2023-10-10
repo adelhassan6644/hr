@@ -12,10 +12,10 @@ abstract class EndPoints {
   static daySchedules(id) => 'employee/attendance/day/schedules/$id';
   static const String register = '';
   static const String login = 'employee/login';
-  static const String updatePassword = '';
+  static changePassword(id) => 'changePassword/$id';
   static const String resetPassword = '';
-  static const String sendVerificationCode = '';
-  static const String getVerificationCode = '';
+  static const String checkMailForResetPassword = '';
+  static const String forgetPassword = 'forgetPassword';
   static salaryDetails(id) => 'employee/salary/details/index/$id';
 
   ///Requests

@@ -82,7 +82,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   height: 35.h,
                 ),
                 CustomButton(
-                    isLoading: provider.isLoading,
+                    isLoading: provider.isLogin,
                     onTap: () {
                       key.currentState!.save();
                       if (key.currentState!.validate()) {

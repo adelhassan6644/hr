@@ -49,7 +49,7 @@ abstract class CustomNavigator {
 
       case Routes.FORGET_PASSWORD:
         return _pageRoute(const ForgetPasswordScreen());
-      case Routes.VERIFICATION_CODE:
+      case Routes.VERIFICATION:
         return _pageRoute(const VerificationScreen());
       case Routes.RESET_PASSWORD:
         return _pageRoute(const ResetPasswordScreen());

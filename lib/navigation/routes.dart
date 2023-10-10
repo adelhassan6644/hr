@@ -3,7 +3,7 @@ abstract class Routes {
   static const SPLASH = "SPLASH";
   static const LOGIN = "LOGIN";
   static const FORGET_PASSWORD = "FORGET_PASSWORD";
-  static const VERIFICATION_CODE = "VERIFICATION_CODE";
+  static const VERIFICATION = "VERIFICATION_CODE";
   static const RESET_PASSWORD = "RESET_PASSWORD";
   static const DASHBOARD = "DASHBOARD";
   static const ADD_REQUEST = "ADD_REQUEST";

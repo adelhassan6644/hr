@@ -67,6 +67,7 @@ class DocumentsScreen extends StatelessWidget {
                         children: [
                           DocumentFileCard(
                             title: getTranslated("company_file", context),
+                            url: provider.user?.companyDocument,
                           )
                         ]),
                   ),

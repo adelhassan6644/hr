@@ -50,7 +50,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                         CustomTextFormField(
                           isPassword: true,
                           pSvgIcon: SvgImages.lockIcon,
-                          controller: authProvider.passwordTEC,
+                          controller: authProvider.currentPasswordTEC,
                           hint: getTranslated("enter_your_password", context),
                           valid: Validations.password,
                         ),
@@ -66,7 +66,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                           controller: authProvider.newPasswordTEC,
                           hint: getTranslated("enter_new_password", context),
                           valid: (v) => Validations.newPassword(
-                              authProvider.passwordTEC.text.trim(), v),
+                              authProvider.currentPasswordTEC.text.trim(), v),
                         ),
                         SizedBox(
                           height: 24.h,
@@ -87,11 +87,11 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                           height: 24.h,
                         ),
                         CustomButton(
-                            isLoading: authProvider.isLoading,
+                            isLoading: authProvider.isChange,
                             onTap: () {
                               key.currentState!.save();
                               if (key.currentState!.validate()) {
-                                authProvider.updatePassword();
+                                authProvider.changePassword();
                               }
                             },
                             textColor: Styles.WHITE,

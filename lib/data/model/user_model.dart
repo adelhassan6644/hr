@@ -266,6 +266,7 @@ class UserModel {
     this.createdAt,
     this.updatedAt,
     this.applicationDocument,
+    this.companyDocument,
     this.jobNumber,
     this.state,
     this.zipcode,
@@ -304,6 +305,7 @@ class UserModel {
   final String? password;
   final String? address;
   final String? applicationDocument;
+  final String? companyDocument;
   final dynamic description;
   final dynamic otp;
   final DateTime? dateOfBirth;
@@ -357,6 +359,7 @@ class UserModel {
         phone: json["phone"],
         password: json["password"],
         applicationDocument: json["application_document"],
+        companyDocument: json["company_document"],
         address: json["address"],
         description: json["description"],
         otp: json["otp"],
@@ -438,6 +441,7 @@ class UserModel {
         "phone": phone,
         "password": password,
         "application_document": applicationDocument,
+        "company_document": companyDocument,
         "address": address,
         "description": description,
         "otp": otp,

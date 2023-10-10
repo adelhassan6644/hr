@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         CustomTextFormField(
                           isPassword: true,
                           pSvgIcon: SvgImages.lockIcon,
-                          controller: authProvider.passwordTEC,
+                          controller: authProvider.currentPasswordTEC,
                           hint: getTranslated("enter_your_password", context),
                           valid: Validations.password,
                         ),
@@ -90,12 +90,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 35.h,
                   ),
                   CustomButton(
-                      isLoading: authProvider.isLoading,
+                      isLoading: authProvider.isLogin,
                       onTap: () {
                         formKey.currentState!.save();
                         if (formKey.currentState!.validate()) {
                           authProvider.logIn();
-                          // CustomNavigator.push(Routes.DASHBOARD, clean: true);
                         }
                       },
                       textColor: Styles.WHITE,

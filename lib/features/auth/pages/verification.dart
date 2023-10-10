@@ -62,7 +62,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             CountDown(
-                              onCount: () => provider.reSendOTP(),
+                              onCount: () => provider.resend(),
                             ),
                           ],
                         ),
@@ -73,11 +73,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     height: 35.h,
                   ),
                   CustomButton(
-                      isLoading: provider.isLoading,
+                      isLoading: provider.isVerify,
                       onTap: () {
                         formKey.currentState!.save();
                         if (formKey.currentState!.validate()) {
-                          provider.sendOTP();
+                          provider.verify();
                         }
                       },
                       textColor: Styles.WHITE,
