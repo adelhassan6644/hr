@@ -48,10 +48,10 @@ class DownloadProvider extends ChangeNotifier {
               HttpHeaders.acceptEncodingHeader: "*",
             },
           ),
-        );
-        OpenFilex.open("$path");
-        isLoading = false;
+        ); isLoading = false;
         downloaded = true;
+        OpenFilex.open("$path");
+
         notifyListeners();
       } catch (e) {
         log(e.toString());
