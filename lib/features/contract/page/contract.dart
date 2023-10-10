@@ -23,7 +23,7 @@ class ContractScreen extends StatefulWidget {
 class _ContractScreenState extends State<ContractScreen> {
   @override
   void initState() {
-    sl<ContractProvider>().getContracts();
+    Future.delayed(Duration.zero, () => sl<ContractProvider>().getContracts());
     super.initState();
   }
 
