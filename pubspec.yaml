@@ -15,11 +15,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_clean_architecture:
+  open_filex: ^4.3.4
   dio: ^5.0.0
   internet_connection_checker:
   audioplayers:
   geolocator: ^9.0.2
-  permission_handler:
+  permission_handler: ^11.0.1
   fluttertoast:
   dartz:
   equatable:

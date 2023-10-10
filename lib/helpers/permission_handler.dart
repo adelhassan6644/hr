@@ -5,13 +5,14 @@ abstract class PermissionHandler {
   static Future<bool> _checkPermissionIsGranted(Permission permission) async =>
       permission.isGranted;
   static Future<bool> _checkPermission(Permission permission) async {
+    await Permission.manageExternalStorage.request();
     if (!(await _checkPermissionIsGranted(permission))) {
       if (await permission.isPermanentlyDenied) {
         log("message1");
         return false;
       } else {
         PermissionStatus value = await permission.request();
-        log(value.name);
+        log(value.isDenied.toString());
         return await _checkPermissionIsGranted(permission);
       }
     } else {

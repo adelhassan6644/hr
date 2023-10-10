@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:yusrPlus/data/api/end_points.dart';
 import '../../../app/core/app_snack_bar.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/localization/language_constant.dart';
@@ -29,7 +30,8 @@ class DocumentFileCard extends StatelessWidget {
                 return;
               }
               if (!downloadProvider.downloaded) {
-                downloadProvider.download(url ?? "", url ?? "".split("/").last);
+
+                downloadProvider.download(EndPoints.imageUrl + url! ,  (url ?? "".split("/").last));
               }
             },
             isLoading: downloadProvider.isLoading,
