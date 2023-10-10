@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "914659102520",
+    "project_id": "yousrr-f917c",
+    "storage_bucket": "yousrr-f917c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914659102520:android:624f1ea199d575d7133bcd",
+        "android_client_info": {
+          "package_name": "com.softwareYusrPlus.yusrPlus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR5IaYlpXdOdJLqwu3EH3Rl3kIZ0sHtpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
