@@ -57,7 +57,7 @@ class HomeProvider extends ChangeNotifier {
       // try {
       loadingDialog();
       notifyListeners();
-      print(closestSchedule?.scheduleId);
+
       Either<ServerFailure, Response> response = await repo.checkIn(
           scheduleModel: closestSchedule!,
           isAttend: closestSchedule?.isAttend ?? true);
