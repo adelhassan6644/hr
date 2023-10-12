@@ -109,6 +109,7 @@ class _CancelPledgeRequestState extends State<CancelPledgeRequest> {
                                                 .map((e) => CustomSelectModel(
                                                       id: e.id,
                                                       name: e.name,
+                                                employeePledgeId:e.employeePledgeId
                                                     ))
                                                 .toList(),
                                             initialValue:

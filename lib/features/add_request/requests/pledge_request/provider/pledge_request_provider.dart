@@ -80,6 +80,7 @@ class PledgeRequestProvider extends ChangeNotifier {
 
   bool isLoading = false;
   onSubmit({bool isCancel = false}) async {
+
     try {
       isLoading = true;
       notifyListeners();
@@ -93,7 +94,8 @@ class PledgeRequestProvider extends ChangeNotifier {
       }
 
       var body = {
-        isCancel ? "employee_pledge_id" : "pledge_id": selectedType?.id,
+        isCancel ? "request_id" : "pledge_id": selectedType?.id,
+        if (isCancel) "employee_pledge_id": selectedType?.employeePledgeId,
         "employee_id": repo.userId,
         isCancel ? "reason" : "comment": reason.text.trim(),
         "photos[]": files

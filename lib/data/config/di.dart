@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:yusrPlus/features/profile/repo/profile_repo.dart';
 import '../../features/add_request/requests/expenses_request/repo/expenses_request_repo.dart';
 import '../../features/add_request/requests/loan_request/repo/loan_request_repo.dart';
 import '../../features/add_request/requests/permission_request/repo/permission_request_repo.dart';
@@ -19,6 +20,7 @@ import '../../features/home/provider/home_provider.dart';
 import '../../features/home/repo/home_repo.dart';
 import '../../features/notifications/provider/notifications_provider.dart';
 import '../../features/notifications/repo/notifications_repo.dart';
+import '../../features/profile/provider/profile_provider.dart';
 import '../../features/requests/provider/requests_provider.dart';
 import '../../features/requests/repo/requests_repo.dart';
 import '../../main_providers/user_provider.dart';
@@ -50,7 +52,8 @@ Future<void> init() async {
   sl.registerLazySingleton(
       () => HomeRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
-      () => SalaryRepo(sharedPreferences: sl(), dioClient: sl()));
+      () => SalaryRepo(sharedPreferences: sl(), dioClient: sl()));  sl.registerLazySingleton(
+      () => ProfileRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => CovenantRepo(sharedPreferences: sl(), dioClient: sl()));
 
@@ -90,9 +93,10 @@ Future<void> init() async {
   sl.registerLazySingleton(() => LocalizationProvider(sharedPreferences: sl()));
   sl.registerLazySingleton(() => SplashProvider(splashRepo: sl()));
   sl.registerLazySingleton(() => AuthProvider(authRepo: sl()));
-  sl.registerLazySingleton(() => UserProvider(repo: sl()));
+  sl.registerLazySingleton(() => UserProvider(repo: sl(), profileRepo: sl()));
   sl.registerLazySingleton(() => DashboardProvider());
   sl.registerLazySingleton(() => HomeProvider(repo: sl()));
+  sl.registerLazySingleton(() => ProfileProvider(repo: sl()));
   sl.registerLazySingleton(() => SalaryProvider(repo: sl()));
   sl.registerLazySingleton(() => CovenantProvider(repo: sl()));
   sl.registerLazySingleton(() => AttendanceProvider(repo: sl()));

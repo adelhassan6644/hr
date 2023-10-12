@@ -22,6 +22,7 @@ dependencies:
   geolocator: ^9.0.2
   permission_handler: ^11.0.1
   fluttertoast:
+  device_info_plus: ^9.0.3
   dartz:
   equatable:
   shared_preferences:

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import '../../../data/api/end_points.dart';
 import 'package:geolocator/geolocator.dart';
@@ -29,6 +30,9 @@ class HomeRepo extends BaseRepo {
   Future<Either<ServerFailure, Response>> checkIn(
       {required ScheduleModel scheduleModel, required bool isAttend}) async {
     try {
+      final deviceInfo = DeviceInfoPlugin();
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      print('Running on ${androidInfo.model}');
       final position = await getCurrentPosition();
       Response response = await dioClient.post(
           uri: isAttend
