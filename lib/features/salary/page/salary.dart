@@ -14,6 +14,7 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/loader_view.dart';
+import '../../../data/api/end_points.dart';
 import '../../../data/config/di.dart';
 import '../../../main_providers/download_provider.dart';
 import '../../../navigation/routes.dart';
@@ -172,8 +173,8 @@ class _SalaryState extends State<Salary> {
                                             return;
                                           }
                                           CustomNavigator.push(Routes.PDF,
-                                              arguments: provider.salaryModel
-                                                      ?.salary?.url ??
+                                              arguments:  EndPoints.imageUrl + provider.salaryModel
+                                                      !.salary!.url! ??
                                                   "");
                                         },
                                         text: getTranslated("details", context),
@@ -198,9 +199,8 @@ class _SalaryState extends State<Salary> {
                                               if (!downloadProvider
                                                   .downloaded) {
                                                 downloadProvider.download(
-                                                    provider.salaryModel?.salary
-                                                            ?.url ??
-                                                        "",
+                                                    EndPoints.imageUrl + provider.salaryModel!.salary
+                                                            !.url !,
                                                     provider.salaryModel?.salary
                                                             ?.url ??
                                                         "".split("/").last);

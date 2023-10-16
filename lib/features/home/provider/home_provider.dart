@@ -52,11 +52,12 @@ class HomeProvider extends ChangeNotifier {
 
   bool locationPermissionGranted = false;
   checkIn() async {
+
     if (await LocationHelper.checkLocation()) {
       // try {
       loadingDialog();
       notifyListeners();
-      print(closestSchedule?.scheduleId);
+
       Either<ServerFailure, Response> response = await repo.checkIn(
           scheduleModel: closestSchedule!,
           isAttend: closestSchedule?.isAttend ?? true);

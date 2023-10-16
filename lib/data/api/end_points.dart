@@ -13,6 +13,7 @@ abstract class EndPoints {
   static const String register = '';
   static const String login = 'employee/login';
   static changePassword(id) => 'changePassword/$id';
+  static profile(id) => 'employee/profile/index/$id';
   static const String resetPassword = '';
   static const String checkMailForResetPassword = '';
   static const String forgetPassword = 'forgetPassword';

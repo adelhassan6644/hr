@@ -28,7 +28,7 @@ class DownloadProvider extends ChangeNotifier {
             '${await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_DOCUMENTS)}/يسربلس.$name';
       } else {
         Directory documents = await getApplicationDocumentsDirectory();
-        path = '${documents.path}/يسربلس.$name}';
+        path = '${documents.path}/يسربلس.$name';
       }
       try {
         log(path);
@@ -48,10 +48,10 @@ class DownloadProvider extends ChangeNotifier {
               HttpHeaders.acceptEncodingHeader: "*",
             },
           ),
-        ); isLoading = false;
+        );
+       await OpenFilex.open("$path");
+        isLoading = false;
         downloaded = false;
-        OpenFilex.open("$path");
-
         notifyListeners();
       } catch (e) {
         log(e.toString());
