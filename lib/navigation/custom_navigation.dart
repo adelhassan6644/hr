@@ -48,11 +48,11 @@ abstract class CustomNavigator {
         return _pageRoute(const LoginScreen());
 
       case Routes.FORGET_PASSWORD:
-        return _pageRoute(const ForgetPasswordScreen());
+        return _pageRoute(const ForgetPassword());
       case Routes.VERIFICATION:
         return _pageRoute(const VerificationScreen());
       case Routes.RESET_PASSWORD:
-        return _pageRoute(const ResetPasswordScreen());
+        return _pageRoute(const ResetPassword());
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoardScreen());
       case Routes.REQUESTS_DETAILS:
@@ -83,7 +83,7 @@ abstract class CustomNavigator {
       case Routes.SETTINGS:
         return _pageRoute(const SettingsScreen());
       case Routes.CHANGE_PASSWORD:
-        return _pageRoute(const EditPasswordScreen());
+        return _pageRoute(const ChangePassword());
       case Routes.LANGUAGES:
         return _pageRoute(const LanguageBottomSheet());
       case Routes.PROFILE:

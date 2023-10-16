@@ -14,14 +14,14 @@ import '../provider/auth_provider.dart';
 import '../widgets/auth_header_widget.dart';
 import '../widgets/title_header_widget.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
-  const ForgetPasswordScreen({Key? key}) : super(key: key);
+class ForgetPassword extends StatefulWidget {
+  const ForgetPassword({Key? key}) : super(key: key);
 
   @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
+  State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+class _ForgetPasswordState extends State<ForgetPassword> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -53,8 +53,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                                 color: Styles.PRIMARY_COLOR)),
                         CustomTextFormField(
                           controller: provider.emailTEC,
-                          hint:
-                              getTranslated("enter_your_email_or_id", context),
+                          hint: getTranslated("enter_your_email_or_id", context),
                           valid: Validations.email,
                           pSvgIcon: SvgImages.mailIcon,
                         ),
