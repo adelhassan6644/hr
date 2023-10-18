@@ -27,12 +27,17 @@ class AuthRepo extends BaseRepo {
     sharedPreferences.setBool(AppStorageKey.isLogin, true);
   }
 
+  updateHeader(id) async {
+    await dioClient.updateHeader(id);
+  }
+
   Future<Either<ServerFailure, Response>> logIn(
       {required String email, required String password}) async {
     try {
       Response response = await dioClient.post(
           uri: EndPoints.login, data: {"email": email, "password": password});
       if (response.statusCode == 200) {
+        await updateHeader(response.data['data']['employee']['id'].toString());
         await saveUser(response.data['data']['employee']);
         await setLoggedIn();
         return Right(response);
@@ -82,8 +87,7 @@ class AuthRepo extends BaseRepo {
   Future<Either<ServerFailure, Response>> resendCode(
       {required String mail}) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.forgetPassword, data: {
+      Response response = await dioClient.post(uri: EndPoints.resend, data: {
         "email": mail,
       });
 
