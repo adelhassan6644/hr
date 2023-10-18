@@ -15,6 +15,7 @@ class DioClient extends ApiClient {
   final Dio dio;
 
   String get userId => sharedPreferences.getString(AppStorageKey.userID) ?? "";
+  String get token => sharedPreferences.getString(AppStorageKey.token) ?? "";
   bool get isLogin => sharedPreferences.containsKey(AppStorageKey.isLogin);
 
   DioClient(
@@ -32,7 +33,8 @@ class DioClient extends ApiClient {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
         'X-Api-Key': EndPoints.apiKey,
-        if (isLogin) 'user_id': userId
+        if (isLogin) 'user_id': userId,
+        if (isLogin) 'token': token
       };
     dio.interceptors.add(PrettyDioLogger(
         request: true,
@@ -41,12 +43,13 @@ class DioClient extends ApiClient {
         requestHeader: true));
   }
 
-  updateHeader(id) {
+  updateHeader(id, token) {
     dio.options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       "Accept": " application/json",
       'X-Api-Key': EndPoints.apiKey,
-      'user_id': id
+      'user_id': id,
+      'token': token,
     };
   }
 

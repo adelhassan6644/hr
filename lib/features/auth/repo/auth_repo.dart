@@ -1,7 +1,11 @@
 import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:yusrPlus/helpers/device_helper.dart';
 import 'package:yusrPlus/main_repos/base_repo.dart';
 import '../../../app/core/app_storage_keys.dart';
 import '../../../data/api/end_points.dart';
@@ -19,6 +23,20 @@ class AuthRepo extends BaseRepo {
     await sharedPreferences.setBool(AppStorageKey.firstTimeOnApp, true);
   }
 
+  Future<String?> saveDeviceToken() async {
+    String? deviceToken;
+    if (Platform.isIOS) {
+      deviceToken = await FirebaseMessaging.instance.getAPNSToken();
+    } else {
+      deviceToken = await FirebaseMessaging.instance.getToken();
+    }
+
+    if (deviceToken != null) {
+      log('--------Device Token---------- $deviceToken');
+    }
+    return deviceToken;
+  }
+
   bool isLoggedIn() {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
@@ -27,17 +45,24 @@ class AuthRepo extends BaseRepo {
     sharedPreferences.setBool(AppStorageKey.isLogin, true);
   }
 
-  updateHeader(id) async {
-    await dioClient.updateHeader(id);
+  updateHeader(id, token) async {
+    await dioClient.updateHeader(id, token);
   }
 
   Future<Either<ServerFailure, Response>> logIn(
       {required String email, required String password}) async {
     try {
-      Response response = await dioClient.post(
-          uri: EndPoints.login, data: {"email": email, "password": password});
+      Response response = await dioClient.post(uri: EndPoints.login, data: {
+        "email": email,
+        "password": password,
+        "fcm_token": await saveDeviceToken(),
+        "mac_id": await DeviceHelper.getDeviceInfo(),
+      });
       if (response.statusCode == 200) {
-        await updateHeader(response.data['data']['employee']['id'].toString());
+        await updateHeader(
+          response.data['data']['employee']['id'].toString(),
+          response.data['data']['employee']['remember_token'].toString(),
+        );
         await saveUser(response.data['data']['employee']);
         await setLoggedIn();
         return Right(response);
@@ -57,9 +82,16 @@ class AuthRepo extends BaseRepo {
         jsonEncode(jsonData),
       );
 
+      ///To Save User id
       await sharedPreferences.setString(
         AppStorageKey.userID,
         jsonData['id'].toString(),
+      );
+
+      ///To Save token
+      await sharedPreferences.setString(
+        AppStorageKey.token,
+        jsonData['remember_token'].toString(),
       );
     } catch (error) {
       return ServerFailure(ApiErrorHandler.getMessage(error));

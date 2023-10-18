@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:yusrPlus/app/core/un_focus.dart';
 import 'package:provider/provider.dart';
 import 'app/core/app_storage_keys.dart';
 import 'app/core/app_strings.dart';
 import 'app/localization/app_localization.dart';
+import 'app/notifications/my_notification.dart';
 import 'features/language/provider/localization_provider.dart';
 import 'app/theme/dark_theme.dart';
 import 'app/theme/light_theme.dart';
@@ -12,6 +14,7 @@ import 'data/config/di.dart';
 import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'firebase_options.dart';
 import 'navigation/custom_navigation.dart';
 import 'navigation/routes.dart';
 import 'package:yusrPlus/data/config/di.dart' as di;
@@ -19,11 +22,8 @@ import 'package:yusrPlus/data/config/di.dart' as di;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // await Firebase.initializeApp(
-  // options: DefaultFirebaseOptions.currentPlatform,
-  // );
-
-  // FirebaseNotifications.init();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseNotifications.init();
   await di.init();
   runApp(
       MultiProvider(providers: ProviderList.providers, child: const MyApp()));
