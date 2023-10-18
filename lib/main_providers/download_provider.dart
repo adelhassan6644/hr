@@ -18,7 +18,7 @@ class DownloadProvider extends ChangeNotifier {
   bool isLoading = false;
   bool downloaded = false;
   void download(url, name) async {
-   await PermissionHandler.checkFilePermission();
+    await PermissionHandler.checkFilePermission();
     {
       loadingDialog();
       isLoading = true;
@@ -49,7 +49,7 @@ class DownloadProvider extends ChangeNotifier {
             },
           ),
         );
-       await OpenFilex.open("$path");
+        await OpenFilex.open("$path");
         isLoading = false;
         downloaded = false;
         notifyListeners();
