@@ -15,14 +15,14 @@ import '../provider/auth_provider.dart';
 import '../widgets/auth_header_widget.dart';
 import '../widgets/title_header_widget.dart';
 
-class ResetPasswordScreen extends StatefulWidget {
-  const ResetPasswordScreen({Key? key}) : super(key: key);
+class ResetPassword extends StatefulWidget {
+  const ResetPassword({Key? key}) : super(key: key);
 
   @override
-  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
+  State<ResetPassword> createState() => _ResetPasswordState();
 }
 
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+class _ResetPasswordState extends State<ResetPassword> {
   final GlobalKey<FormState> key = GlobalKey<FormState>();
 
   @override
@@ -71,8 +71,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         controller: provider.confirmPasswordTEC,
                         hint:
                             getTranslated("enter_new_password_again", context),
-                        valid: (v) => Validations.confirmNewPassword(
-                            provider.newPasswordTEC.text.trim(), v),
+                        valid: (v) => Validations.confirmNewPassword(provider.newPasswordTEC.text.trim(), v),
                         pSvgIcon: SvgImages.lockIcon,
                       ),
                     ],
@@ -82,7 +81,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   height: 35.h,
                 ),
                 CustomButton(
-                    isLoading: provider.isLogin,
+                    isLoading: provider.isReset,
                     onTap: () {
                       key.currentState!.save();
                       if (key.currentState!.validate()) {

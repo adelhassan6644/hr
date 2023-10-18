@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yusrPlus/features/profile/provider/profile_provider.dart';
 import 'package:yusrPlus/main_page/provider/dashboard_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
@@ -22,6 +23,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   void initState() {
     NetworkInfo.checkConnectivity();
     Future.delayed(Duration.zero, () => sl<DashboardProvider>().init());
+    Future.delayed(
+        Duration.zero, () => sl<ProfileProvider>().getProfile());
     super.initState();
   }
 

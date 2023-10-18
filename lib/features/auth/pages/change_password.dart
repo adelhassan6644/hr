@@ -13,14 +13,14 @@ import '../../../components/custom_button.dart';
 import '../../../components/custom_text_form_field.dart';
 import '../provider/auth_provider.dart';
 
-class EditPasswordScreen extends StatefulWidget {
-  const EditPasswordScreen({Key? key}) : super(key: key);
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({Key? key}) : super(key: key);
 
   @override
-  State<EditPasswordScreen> createState() => _EditPasswordScreenState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _EditPasswordScreenState extends State<EditPasswordScreen> {
+class _ChangePasswordState extends State<ChangePassword> {
   final GlobalKey<FormState> key = GlobalKey<FormState>();
 
   @override
@@ -38,60 +38,68 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
                   vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
               data: [
-                Consumer<AuthProvider>(builder: (child, authProvider, _) {
+                Consumer<AuthProvider>(builder: (child, provider, _) {
                   return Form(
                     key: key,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+
+                        ///Current Password
                         Text(getTranslated("password", context),
                             style: titleTextStyle.copyWith(
                                 color: Styles.PRIMARY_COLOR)),
                         CustomTextFormField(
                           isPassword: true,
                           pSvgIcon: SvgImages.lockIcon,
-                          controller: authProvider.currentPasswordTEC,
+                          controller: provider.currentPasswordTEC,
                           hint: getTranslated("enter_your_password", context),
                           valid: Validations.password,
                         ),
                         SizedBox(
                           height: 24.h,
                         ),
+
+                        ///New Password
                         Text(getTranslated("new_password", context),
                             style: titleTextStyle.copyWith(
                                 color: Styles.PRIMARY_COLOR)),
                         CustomTextFormField(
                           isPassword: true,
                           pSvgIcon: SvgImages.lockIcon,
-                          controller: authProvider.newPasswordTEC,
+                          controller: provider.newPasswordTEC,
                           hint: getTranslated("enter_new_password", context),
                           valid: (v) => Validations.newPassword(
-                              authProvider.currentPasswordTEC.text.trim(), v),
+                              provider.currentPasswordTEC.text.trim(), v),
                         ),
                         SizedBox(
                           height: 24.h,
                         ),
+
+                        ///Confirm Password
                         Text(getTranslated("confirm_password", context),
                             style: titleTextStyle.copyWith(
                                 color: Styles.PRIMARY_COLOR)),
                         CustomTextFormField(
                           isPassword: true,
                           pSvgIcon: SvgImages.lockIcon,
-                          controller: authProvider.confirmPasswordTEC,
+                          controller: provider.confirmPasswordTEC,
                           hint: getTranslated(
                               "enter_new_password_again", context),
                           valid: (v) => Validations.confirmNewPassword(
-                              authProvider.newPasswordTEC.text.trim(), v),
+                              provider.newPasswordTEC.text.trim(), v),
                         ),
+
+                        ///Update Password
                         SizedBox(
                           height: 24.h,
                         ),
                         CustomButton(
-                            isLoading: authProvider.isChange,
+                            isLoading: provider.isChange,
                             onTap: () {
                               key.currentState!.save();
                               if (key.currentState!.validate()) {
-                                authProvider.changePassword();
+                                provider.changePassword();
                               }
                             },
                             textColor: Styles.WHITE,

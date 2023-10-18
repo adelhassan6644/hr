@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
+import '../../../helpers/device_helper.dart';
 import '../../../main_repos/base_repo.dart';
 import '../../attendance/model/schedules_model.dart';
 
@@ -29,6 +30,8 @@ class HomeRepo extends BaseRepo {
   Future<Either<ServerFailure, Response>> checkIn(
       {required ScheduleModel scheduleModel, required bool isAttend}) async {
     try {
+
+
       final position = await getCurrentPosition();
       Response response = await dioClient.post(
           uri: isAttend
@@ -37,7 +40,8 @@ class HomeRepo extends BaseRepo {
           data: {
             "schedule_id":scheduleModel.scheduleId,
             "lat": position.latitude,
-            "long": position.longitude
+            "long": position.longitude,
+            "mac_id":await DeviceHelper.getDeviceInfo(),
           }
           );
       if (response.statusCode == 200) {
