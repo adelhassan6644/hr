@@ -17,6 +17,7 @@ abstract class EndPoints {
   static const String resetPassword = '';
   static const String checkMailForResetPassword = '';
   static const String forgetPassword = 'forgetPassword';
+  static const String resend = '';
   static salaryDetails(id) => 'employee/salary/details/index/$id';
 
   ///Requests

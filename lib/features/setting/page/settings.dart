@@ -56,11 +56,12 @@ class SettingsScreen extends StatelessWidget {
                       }),
                 ),
 
-                // ///Change Password
-                // MoreNavigateCard(
-                //     name: getTranslated("change_password", context),
-                //     iconAsset: Images.lockIcon,
-                //     onTap: () => CustomNavigator.push(Routes.CHANGE_PASSWORD)),
+                ///Change Password
+                MoreNavigateCard(
+                    name: getTranslated("change_password", context),
+                    iconAsset: Images.lockIcon,
+                    onTap: () => CustomNavigator.push(Routes.CHANGE_PASSWORD)),
+
                 const Spacer(),
                 Consumer<AuthProvider>(
                     builder: (context, authProvider, widget) {
