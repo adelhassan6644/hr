@@ -71,7 +71,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                         controller: provider.confirmPasswordTEC,
                         hint:
                             getTranslated("enter_new_password_again", context),
-                        valid: (v) => Validations.confirmNewPassword(provider.newPasswordTEC.text.trim(), v),
+                        valid: (v) => Validations.confirmNewPassword(
+                            provider.newPasswordTEC.text.trim(), v),
                         pSvgIcon: SvgImages.lockIcon,
                       ),
                     ],

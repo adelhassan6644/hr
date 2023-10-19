@@ -119,7 +119,8 @@ class AuthRepo extends BaseRepo {
   Future<Either<ServerFailure, Response>> resendCode(
       {required String mail}) async {
     try {
-      Response response = await dioClient.post(uri: EndPoints.resend, data: {
+      Response response =
+          await dioClient.post(uri: EndPoints.forgetPassword, data: {
         "email": mail,
       });
 
