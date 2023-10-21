@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/components/custom_bottom_sheet.dart';
 import 'package:yusrPlus/navigation/custom_navigation.dart';
@@ -68,13 +69,20 @@ class SettingsScreen extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.only(
                         bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
-                    child: TextButton(
-                        onPressed: () => authProvider.logOut(),
-                        child: Text(
-                          getTranslated("log_out", context),
-                          style: titleTextStyle.copyWith(
-                              fontSize: 18, color: Styles.WARNING_COLOR),
-                        )),
+                    child: authProvider.isLogout
+                        ? const Center(
+                          child: SpinKitThreeBounce(
+                              color: Styles.WARNING_COLOR,
+                              size: 25,
+                            ),
+                        )
+                        : TextButton(
+                            onPressed: ()=> authProvider.logOut(),
+                            child: Text(
+                              getTranslated("log_out", context),
+                              style: titleTextStyle.copyWith(
+                                  fontSize: 18, color: Styles.WARNING_COLOR),
+                            )),
                   );
                 }),
               ],

@@ -206,6 +206,7 @@ class AuthRepo extends BaseRepo {
 
   Future<bool> clearSharedData() async {
     await sharedPreferences.remove(AppStorageKey.userKey);
+    await sharedPreferences.remove(AppStorageKey.token);
     await sharedPreferences.remove(AppStorageKey.isLogin);
     return true;
   }

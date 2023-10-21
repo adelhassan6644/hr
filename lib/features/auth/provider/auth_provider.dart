@@ -17,8 +17,8 @@ class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
   AuthProvider({required this.authRepo});
 
-  final TextEditingController _emailTEC =
-      TextEditingController(text: kDebugMode ? "ahmeedhassanali@outlook.com" : '');
+  final TextEditingController _emailTEC = TextEditingController(
+      text: kDebugMode ? "ahmeedhassanali@outlook.com" : '');
   final TextEditingController _currentPasswordTEC =
       TextEditingController(text: kDebugMode ? "123456789" : '');
   final TextEditingController _newPasswordTEC = TextEditingController();
@@ -241,8 +241,6 @@ class AuthProvider extends ChangeNotifier {
     _isLogout = true;
     notifyListeners();
     Either<ServerFailure, Response> response = await authRepo.logOut();
-    _isLogout = false;
-    notifyListeners();
     response.fold((fail) {
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
@@ -251,10 +249,11 @@ class AuthProvider extends ChangeNotifier {
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
     }, (success) async {
-
+      Future.delayed(Duration.zero, () async {
+        sl<DashboardProvider>().updateDashboardIndex(0);
         await authRepo.clearSharedData();
         clear();
-
+      });
       CustomNavigator.push(Routes.SPLASH, clean: true);
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
@@ -263,10 +262,9 @@ class AuthProvider extends ChangeNotifier {
               isFloating: true,
               backgroundColor: Styles.ACTIVE,
               borderColor: Styles.transparentColor));
-
-      clear();
     });
 
+    _isLogout = false;
     notifyListeners();
   }
 }
