@@ -61,9 +61,9 @@ class AuthRepo extends BaseRepo {
       if (response.statusCode == 200) {
         await updateHeader(
           response.data['data']['employee']['id'].toString(),
-          response.data['data']['employee']['remember_token'].toString(),
+          response.data['data']['token'],
         );
-        await saveUser(response.data['data']['employee']);
+        await saveUser(response.data['data']['employee'], response.data['data']['token']);
         await setLoggedIn();
         return Right(response);
       } else {
@@ -75,7 +75,7 @@ class AuthRepo extends BaseRepo {
     }
   }
 
-  saveUser(dynamic jsonData) async {
+  saveUser(dynamic jsonData,token) async {
     try {
       await sharedPreferences.setString(
         AppStorageKey.userKey,
@@ -91,7 +91,7 @@ class AuthRepo extends BaseRepo {
       ///To Save token
       await sharedPreferences.setString(
         AppStorageKey.token,
-        jsonData['remember_token'].toString(),
+        token,
       );
     } catch (error) {
       return ServerFailure(ApiErrorHandler.getMessage(error));
@@ -105,6 +105,20 @@ class AuthRepo extends BaseRepo {
           await dioClient.post(uri: EndPoints.forgetPassword, data: {
         "email": mail,
       });
+
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return left(ServerFailure(response.data['message']));
+      }
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+    }
+  }  Future<Either<ServerFailure, Response>> logOut(
+     ) async {
+    try {
+      Response response =
+          await dioClient.post(uri: EndPoints.logOut, );
 
       if (response.statusCode == 200) {
         return Right(response);

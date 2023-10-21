@@ -18,7 +18,7 @@ class AuthProvider extends ChangeNotifier {
   AuthProvider({required this.authRepo});
 
   final TextEditingController _emailTEC =
-      TextEditingController(text: kDebugMode ? "sadmin@sc2.com" : '');
+      TextEditingController(text: kDebugMode ? "ahmeedhassanali@outlook.com" : '');
   final TextEditingController _currentPasswordTEC =
       TextEditingController(text: kDebugMode ? "123456789" : '');
   final TextEditingController _newPasswordTEC = TextEditingController();
@@ -235,19 +235,38 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  bool _isLogout = false;
+  bool get isLogout => _isLogout;
   logOut() async {
-    Future.delayed(Duration.zero, () async {
-      sl<DashboardProvider>().updateDashboardIndex(0);
-      await authRepo.clearSharedData();
+    _isLogout = true;
+    notifyListeners();
+    Either<ServerFailure, Response> response = await authRepo.logOut();
+    _isLogout = false;
+    notifyListeners();
+    response.fold((fail) {
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: ApiErrorHandler.getMessage(fail.error),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+    }, (success) async {
+
+        await authRepo.clearSharedData();
+        clear();
+
+      CustomNavigator.push(Routes.SPLASH, clean: true);
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: getTranslated("logged_out_successfully",
+                  CustomNavigator.navigatorState.currentContext!),
+              isFloating: true,
+              backgroundColor: Styles.ACTIVE,
+              borderColor: Styles.transparentColor));
+
       clear();
     });
-    CustomSnackBar.showSnackBar(
-        notification: AppNotification(
-            message: getTranslated("logged_out_successfully",
-                CustomNavigator.navigatorState.currentContext!),
-            isFloating: true,
-            backgroundColor: Styles.ACTIVE,
-            borderColor: Styles.transparentColor));
+
     notifyListeners();
   }
 }

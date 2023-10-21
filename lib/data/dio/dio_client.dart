@@ -33,8 +33,8 @@ class DioClient extends ApiClient {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
         'X-Api-Key': EndPoints.apiKey,
+        if (isLogin) 'Authorization': "Bearer $token",
         if (isLogin) 'user_id': userId,
-        if (isLogin) 'token': token
       };
     dio.interceptors.add(PrettyDioLogger(
         request: true,
@@ -47,9 +47,7 @@ class DioClient extends ApiClient {
     dio.options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       "Accept": " application/json",
-      'X-Api-Key': EndPoints.apiKey,
-      'user_id': id,
-      'token': token,
+      'Authorization': "Bearer $token",
     };
   }
 
