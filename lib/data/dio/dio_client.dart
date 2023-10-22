@@ -14,6 +14,7 @@ class DioClient extends ApiClient {
 
   final Dio dio;
 
+  String get domain => sharedPreferences.getString(AppStorageKey.domain) ?? "";
   String get userId => sharedPreferences.getString(AppStorageKey.userID) ?? "";
   String get token => sharedPreferences.getString(AppStorageKey.token) ?? "";
   bool get isLogin => sharedPreferences.containsKey(AppStorageKey.isLogin);
@@ -25,7 +26,7 @@ class DioClient extends ApiClient {
     required this.sharedPreferences,
   }) {
     dio
-      ..options.baseUrl = baseUrl
+      ..options.baseUrl = EndPoints.baseUrlSubDomain(domain)
       ..options.connectTimeout = const Duration(seconds: 60)
       ..options.receiveTimeout = const Duration(seconds: 60)
       ..httpClientAdapter
@@ -44,11 +45,26 @@ class DioClient extends ApiClient {
   }
 
   updateHeader(id, token) {
+
     dio.options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       "Accept": " application/json",
       'Authorization': "Bearer $token",
     };
+  }
+  updateDomain( domain) {
+    dio
+      ..options.baseUrl = EndPoints.baseUrlSubDomain(domain)
+      ..options.connectTimeout = const Duration(seconds: 60)
+      ..options.receiveTimeout = const Duration(seconds: 60)
+      ..httpClientAdapter
+      ..options.headers = {
+        'Content-Type': 'application/json; charset=UTF-8',
+        "Accept": " application/json",
+        'X-Api-Key': EndPoints.apiKey,
+
+      };
+
   }
 
   @override
@@ -81,7 +97,7 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      dio.options.baseUrl = baseUrl;
+
       var response = await dio.post(
         uri,
         data: data,
@@ -101,7 +117,7 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      dio.options.baseUrl = baseUrl;
+
       var response = await dio.put(
         uri,
         data: data,
@@ -121,7 +137,7 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-      dio.options.baseUrl = baseUrl;
+
       var response = await dio.delete(
         uri,
         data: data,

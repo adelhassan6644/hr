@@ -119,6 +119,8 @@
   "sign_up": "إنشاء حساب",
   "sign_in": "التسجيل",
   "enter_your_password":"قم بإدخال كلمة المرور",
+  "enter_your_company_domain":"قم بإدخال معرف الشركة",
+  "your_company_domain":" معرف الشركة",
   "enter_new_password":"قم بإدخال كلمة المرور الجديدة",
   "enter_new_password_again":"قم بإعادة إدخال كلمة المرور الجديدة",
   "new_password":"كلمة المرور الجديدة",

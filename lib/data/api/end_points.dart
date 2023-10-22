@@ -1,5 +1,6 @@
 abstract class EndPoints {
   static const String baseUrl = 'https://erp.softwarecloud2.com/api/';
+  static baseUrlSubDomain(domain) => 'http://$domain.yousser-plus.com/api/';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
   static const String imageUrl = 'https://erp.softwarecloud2.com/';
   static const String apiKey = '123';

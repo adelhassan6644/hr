@@ -10,7 +10,9 @@ class SplashProvider extends ChangeNotifier {
   startTheApp() {
     Future.delayed(const Duration(milliseconds: 4500), () {
      if (!splashRepo.isLogin()) {
-        CustomNavigator.push(Routes.LOGIN, clean: true);
+
+        // CustomNavigator.push(Routes.LOGIN, clean: true);
+        CustomNavigator.push(Routes.AddDomain, clean: true);
       } else {
         CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
       }

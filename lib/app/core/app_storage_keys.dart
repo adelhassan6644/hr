@@ -2,6 +2,7 @@ import '../../features/language/model/language_model.dart';
 import 'images.dart';
 
 class AppStorageKey {
+  static const String domain = "domain";
   static const String userID = "user_id";
   static const String token = "token";
   static const String isLogin = "is_login";

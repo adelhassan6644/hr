@@ -7,6 +7,7 @@ import '../features/add_request/requests/permission_request/page/permission_requ
 import '../features/add_request/requests/pledge_request/page/cancel_pledge_request.dart';
 import '../features/add_request/requests/pledge_request/page/pledge_request.dart';
 import '../features/add_request/requests/vacation_request/page/vacation_request.dart';
+import '../features/auth/pages/add_domain.dart';
 import '../features/covenant/page/covenant.dart';
 import '../features/auth/pages/forget_password.dart';
 import '../features/auth/pages/login.dart';
@@ -46,6 +47,8 @@ abstract class CustomNavigator {
 
       case Routes.LOGIN:
         return _pageRoute(const LoginScreen());
+      case Routes.AddDomain:
+        return _pageRoute(const AddDomainScreen());
 
       case Routes.FORGET_PASSWORD:
         return _pageRoute(const ForgetPassword());

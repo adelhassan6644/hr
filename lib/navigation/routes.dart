@@ -2,6 +2,7 @@ abstract class Routes {
   static const APP = "APP";
   static const SPLASH = "SPLASH";
   static const LOGIN = "LOGIN";
+  static const AddDomain = "AddDomain";
   static const FORGET_PASSWORD = "FORGET_PASSWORD";
   static const VERIFICATION = "VERIFICATION_CODE";
   static const RESET_PASSWORD = "RESET_PASSWORD";

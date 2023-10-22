@@ -49,6 +49,14 @@ class AuthRepo extends BaseRepo {
     await dioClient.updateHeader(id, token);
   }
 
+  updateDomain(domain,) async {
+    await sharedPreferences.setString(
+      AppStorageKey.domain,
+      domain,
+    );
+    await dioClient.updateDomain(domain);
+  }
+
   Future<Either<ServerFailure, Response>> logIn(
       {required String email, required String password}) async {
     try {

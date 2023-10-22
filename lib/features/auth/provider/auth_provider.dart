@@ -19,6 +19,8 @@ class AuthProvider extends ChangeNotifier {
 
   final TextEditingController _emailTEC = TextEditingController(
       text: kDebugMode ? "ahmeedhassanali@outlook.com" : '');
+  final TextEditingController domain = TextEditingController(
+      text: kDebugMode ? "" : '');
   final TextEditingController _currentPasswordTEC =
       TextEditingController(text: kDebugMode ? "123456789" : '');
   final TextEditingController _newPasswordTEC = TextEditingController();
@@ -80,6 +82,27 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+
+
+  setAppDomain() async {
+    try {
+
+    final response = await authRepo.updateDomain(domain.text.trim()
+         );
+
+    CustomNavigator.push(Routes.LOGIN, clean: true);
+      notifyListeners();
+    } catch (e) {
+      _isLogin = false;
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Styles.transparentColor));
+      notifyListeners();
+    }
+  }
   resend() async {
     await authRepo.resendCode(
       mail: _emailTEC.text.trim(),
