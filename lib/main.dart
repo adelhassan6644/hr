@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'app/core/app_storage_keys.dart';
 import 'app/core/app_strings.dart';
 import 'app/localization/app_localization.dart';
-import 'app/notifications/my_notification.dart';
+import 'app/notifications/notification_helper.dart';
 import 'features/language/provider/localization_provider.dart';
 import 'app/theme/dark_theme.dart';
 import 'app/theme/light_theme.dart';
@@ -23,14 +23,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FirebaseNotifications.init();
+  await FirebaseNotifications.setUpFirebase();
   await di.init();
   runApp(
       MultiProvider(providers: ProviderList.providers, child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
