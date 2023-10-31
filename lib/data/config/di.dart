@@ -11,6 +11,8 @@ import '../../features/contract/provider/contract_provider.dart';
 import '../../features/contract/repo/contract_repo.dart';
 import '../../features/covenant/provider/covenant_provider.dart';
 import '../../features/covenant/repo/covenant_repo.dart';
+import '../../features/forced_attendance_form/provider/forced_attendance_form_provider.dart';
+import '../../features/forced_attendance_form/repo/forced_attendance_form_repo.dart';
 import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/attendance/provider/attendance_provider.dart';
@@ -86,6 +88,9 @@ Future<void> init() async {
   sl.registerLazySingleton(
       () => ContractRepo(sharedPreferences: sl(), dioClient: sl()));
 
+  sl.registerLazySingleton(
+      () => ForcedAttendanceFormRepo(sharedPreferences: sl(), dioClient: sl()));
+
   //use Case
 
   //provider
@@ -104,6 +109,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => ContractProvider(repo: sl()));
   sl.registerLazySingleton(() => NotificationsProvider(repo: sl()));
   sl.registerLazySingleton(() => ConfigProvider(repo: sl()));
+  // sl.registerLazySingleton(() => ForcedAttendanceFormProvider(repo: sl()));
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();

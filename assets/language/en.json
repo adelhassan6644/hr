@@ -19,6 +19,7 @@
   "work_start_at": "Work start at",
   "work_end_at":"Work end at",
   "confirm_password":"Confirm new password",
+  "check_in": "Check in",
   "check_in_attendance": "Check in attendance",
   "check_in_attendance_at": "Check in attendance at",
   "check_in_leaving": "Check in leaving",
@@ -388,5 +389,11 @@
   "logged_out_successfully": "You logged out successfully!",
   "something_went_wrong": "Something went wrong !",
   "notifications": "Notifications",
-  "there_are_no_notifications": "There are no notifications"
+  "there_are_no_notifications": "There are no notifications",
+  "pick_image": "Pick Image",
+  "you_must_pick_image": "Oops, You must pick image",
+  "confirm_exit_from_forced_attendance_title": "Are you sure about exit?",
+  "confirm_exit_from_forced_attendance_description": "Attendance will not be recorded when you confirm your exit!",
+  "get_back": "Get Back",
+  "pick_image_to_check_in": "Please, Pick image to check in"
 }

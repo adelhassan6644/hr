@@ -52,14 +52,11 @@ class _AddDomainScreenState extends State<AddDomainScreen> {
                                 color: Styles.PRIMARY_COLOR)),
                         CustomTextFormField(
                           controller: authProvider.domain,
-                          hint:
-                              getTranslated("enter_your_company_domain", context),
+                          hint: getTranslated(
+                              "enter_your_company_domain", context),
                           valid: Validations.name,
-
                           pSvgIcon: SvgImages.mailIcon,
                         ),
-
-
                       ],
                     ),
                   ),
@@ -69,10 +66,8 @@ class _AddDomainScreenState extends State<AddDomainScreen> {
                   CustomButton(
                       isLoading: authProvider.isLogin,
                       onTap: () {
-                        formKey.currentState!.save();
-                        if (formKey.currentState!.validate()) {
-                          authProvider.setAppDomain();
-                        }
+                        CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
+                            arguments: 0);
                       },
                       textColor: Styles.WHITE,
                       text: getTranslated("sign_in", context),

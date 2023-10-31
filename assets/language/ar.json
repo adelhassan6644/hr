@@ -85,6 +85,7 @@
   "reserved_tickets": "التذاكر المحجوزة",
   "next_trips": "الرحلات القادمة",
   "finished_trips": "الرحلات المنتهية",
+  "check_in": "تسجيل",
   "check_in_attendance": "تسجيل  حضور",
   "check_in_attendance_at": "تم تسجيل الحضور في الساعة",
   "check_in_leaving": "تسجيل انصراف",
@@ -365,6 +366,11 @@
   "not_supported_yet": "لم يتم الدعم بعد",
   "logged_in_successfully": "تم تسجيل الدخول بنجاح!",
   "logged_out_successfully": "تم تسجيل الخروج بنجاح!",
-  "something_went_wrong": "حدث خطأ ما !"
-
+  "something_went_wrong": "حدث خطأ ما !",
+  "pick_image": "التقاط صورة",
+  "you_must_pick_image": "عفوا، يجب عليك التقاط صورة",
+  "confirm_exit_from_forced_attendance_title": "هل انت متأكد من الخروج؟",
+  "confirm_exit_from_forced_attendance_description": "لن يتم تسجيل الحضور عند تأكيدك علي الخروج!",
+  "get_back": "رجوع",
+  "pick_image_to_check_in": "من فضلك، التقط صورة حتي يتم تسجيل حضورك"
 }

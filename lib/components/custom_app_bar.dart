@@ -11,7 +11,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? actionChild;
   final double? actionWidth;
   final Color? titleColor;
-  final bool fromAuth;
+  final bool fromAuth, canBack;
 
   const CustomAppBar(
       {Key? key,
@@ -19,6 +19,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.actionWidth,
       this.titleColor,
       this.fromAuth = false,
+      this.canBack = true,
       this.actionChild})
       : super(key: key);
 
@@ -42,28 +43,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              CustomNavigator.navigatorState.currentState!.canPop()
-                  ? InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {
-                        CustomNavigator.pop();
-                      },
-                      child: SizedBox(
-                        width: actionWidth ?? 40,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(Icons.arrow_back,
-                                color: fromAuth
-                                    ? Styles.WHITE
-                                    : Styles.PRIMARY_COLOR),
-                          ],
-                        ),
-                      ))
-                  : SizedBox(width: actionWidth ?? 40),
+              !canBack
+                  ? SizedBox(width: actionWidth ?? 40)
+                  : CustomNavigator.navigatorState.currentState!.canPop()
+                      ? InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () {
+                            CustomNavigator.pop();
+                          },
+                          child: SizedBox(
+                            width: actionWidth ?? 40,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(Icons.arrow_back,
+                                    color: fromAuth
+                                        ? Styles.WHITE
+                                        : Styles.PRIMARY_COLOR),
+                              ],
+                            ),
+                          ))
+                      : SizedBox(width: actionWidth ?? 40),
               const Expanded(child: SizedBox()),
               Text(
                 title ?? "",

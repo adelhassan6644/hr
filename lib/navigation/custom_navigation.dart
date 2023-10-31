@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yusrPlus/features/forced_attendance_form/page/forced_attendance_form.dart';
 import '../components/custom_pdf.dart';
 import '../features/add_request/page/add_request.dart';
 import '../features/add_request/requests/expenses_request/page/expense_request.dart';
@@ -95,18 +96,27 @@ abstract class CustomNavigator {
       case Routes.NOTIFICATIONS:
         return _pageRoute(const NotificationsPage());
 
+      case Routes.FORCED_ATTENDANCE_FORM:
+        return _pageRoute(ForcedAttendanceForm(id: settings.arguments as int));
+
       case Routes.ORGANIZATION:
         return _pageRoute(const Organization());
+
       case Routes.DOCUMENTS:
         return _pageRoute(const DocumentsScreen());
+
       case Routes.SALARIES_AND_FINANCIAL:
         return _pageRoute(const Salary());
+
       case Routes.SALARY_DETAILS:
         return _pageRoute(const SalaryDetailsScreen());
+
       case Routes.ASSETS:
         return _pageRoute(const Covenant());
+
       case Routes.CONTRACT:
         return _pageRoute(const ContractScreen());
+
       case Routes.PDF:
         return _pageRoute(CustomPDF(
           url: settings.arguments as String,

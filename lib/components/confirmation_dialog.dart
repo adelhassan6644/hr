@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
+import 'package:yusrPlus/app/localization/language_constant.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/color_resources.dart';
-import '../app/core/svg_images.dart';
+import '../app/core/images.dart';
 import '../app/core/text_styles.dart';
 import 'custom_button.dart';
 import 'custom_images.dart';
 
 class ConfirmationDialog extends StatelessWidget {
   const ConfirmationDialog(
-      {required this.txtBtn,
+      {this.txtBtn,
       this.txtBtn2,
       this.icon,
       this.description,
+      this.title,
       this.onContinue,
-      Key? key})
-      : super(key: key);
+      super.key});
+
   final void Function()? onContinue;
-  final String txtBtn;
-  final String? description, txtBtn2;
+  final String? title, description, txtBtn, txtBtn2;
   final String? icon;
   @override
   Widget build(BuildContext context) {
@@ -27,28 +28,48 @@ class ConfirmationDialog extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        customImageIconSVG(imageName: (icon ?? SvgImages.alarm)),
-        SizedBox(
-          height: 16.h,
-        ),
-        if (description != null)
-          Text(
-            description!,
+        ///Icon
+        customImageIcon(
+            imageName: (icon ?? Images.alert), height: 70, width: 70),
+        SizedBox(height: 16.h),
+
+        ///Title
+        Visibility(
+          visible: title != null,
+          child: Text(
+            title ?? "",
             textAlign: TextAlign.center,
-            style: AppTextStyles.w400.copyWith(
+            style: AppTextStyles.w700
+                .copyWith(fontSize: 16, color: Styles.PRIMARY_COLOR),
+          ),
+        ),
+        Visibility(
+          visible: title != null,
+          child: SizedBox(
+            height: 16.h,
+          ),
+        ),
+
+        ///Description
+        Visibility(
+          visible: description != null,
+          child: Text(
+            description ?? "",
+            textAlign: TextAlign.center,
+            style: AppTextStyles.w500.copyWith(
               fontSize: 14,
-              // color: ColorResources.DETAILS_COLOR
             ),
           ),
-        SizedBox(
-          height: 24.h,
         ),
+        SizedBox(height: 24.h),
+
+        ///Buttons Action
         Row(
           children: [
             Expanded(
                 child: CustomButton(
               onTap: onContinue,
-              text: txtBtn,
+              text: txtBtn ?? getTranslated("confirm", context),
             )),
             SizedBox(
               width: 16.w,
@@ -56,7 +77,7 @@ class ConfirmationDialog extends StatelessWidget {
             Expanded(
                 child: CustomButton(
               onTap: () => CustomNavigator.pop(),
-              text: txtBtn2 ?? "رجوع",
+              text: txtBtn2 ?? getTranslated("get_back", context),
               backgroundColor: Styles.PRIMARY_COLOR.withOpacity(0.1),
               textColor: Styles.PRIMARY_COLOR,
             ))

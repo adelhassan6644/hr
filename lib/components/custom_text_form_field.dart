@@ -116,8 +116,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         inputFormatters: widget.inputType == TextInputType.phone
             ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
             : widget.formatter,
-        style: AppTextStyles.w500.copyWith(color: Styles.TITLE, fontSize: 14),
-        cursorColor: Styles.TITLE,
+        style:
+            AppTextStyles.w500.copyWith(color: Styles.blackColor, fontSize: 14),
+        cursorColor: Styles.blackColor,
         onChanged: widget.onChanged,
         obscureText: widget.isPassword == true ? _isHidden : false,
         decoration: InputDecoration(

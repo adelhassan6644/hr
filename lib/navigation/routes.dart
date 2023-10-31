@@ -29,6 +29,7 @@ abstract class Routes {
   static const CONTRACT = "CONTRACT";
   static const NOTIFICATIONS = "NOTIFICATIONS";
   static const PDF = "PDF";
+  static const FORCED_ATTENDANCE_FORM = "FORCED_ATTENDANCE_FORM";
 }
 
 //

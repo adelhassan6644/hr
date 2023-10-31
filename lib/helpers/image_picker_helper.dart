@@ -24,6 +24,7 @@ abstract class ImagePickerHelper {
     );
   }
 
+
   static showOptionSheet({ValueChanged<File>? onGet}) {
     showCupertinoModalPopup(
         context: CustomNavigator.navigatorState.currentContext!,
@@ -57,8 +58,10 @@ abstract class ImagePickerHelper {
     onGet!(File(image!.path));
   }
 
-  static openCamera({ValueChanged<File>? onGet}) async {
-    CustomNavigator.pop();
+  static openCamera({ValueChanged<File>? onGet,bool back = true}) async {
+    if(back){
+      CustomNavigator.pop();
+    }
     var image = await ImagePicker().pickImage(source: ImageSource.camera);
     onGet!(File(image!.path));
   }

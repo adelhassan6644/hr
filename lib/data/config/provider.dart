@@ -4,6 +4,7 @@ import 'package:yusrPlus/data/config/di.dart' as di;
 
 import '../../features/contract/provider/contract_provider.dart';
 import '../../features/covenant/provider/covenant_provider.dart';
+import '../../features/forced_attendance_form/provider/forced_attendance_form_provider.dart';
 import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/home/provider/home_provider.dart';
@@ -35,5 +36,6 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (context) => di.sl<ContractProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<NotificationsProvider>()),
     ChangeNotifierProvider(create: (context) => di.sl<ConfigProvider>()),
+    // ChangeNotifierProvider(create: (context) => di.sl<ForcedAttendanceFormProvider>()),
   ];
 }

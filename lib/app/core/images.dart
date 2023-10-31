@@ -3,6 +3,7 @@ class Images {
   static const String appLogo = 'assets/app_logo.png';
   static const String authHeader = 'assets/images/auth_hederl.png';
   static const String home = 'assets/images/home.png';
+  static const String alert = 'assets/images/alert.png';
   static const String period = 'assets/images/period.png';
   static const String document = 'assets/images/document.png';
   static const String exit = 'assets/images/exit.png';

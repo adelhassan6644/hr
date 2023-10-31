@@ -13,13 +13,13 @@ import 'marquee_widget.dart';
 
 class CustomButtonImagePicker extends StatelessWidget {
   const CustomButtonImagePicker({
-    Key? key,
+    super.key,
     this.imageFile,
     this.imageUrl,
     this.canEdit = true,
     required this.title,
     required this.onTap,
-  }) : super(key: key);
+  });
   final File? imageFile;
   final String? imageUrl;
   final String title;
