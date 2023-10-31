@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/components/animated_widget.dart';
-import 'package:yusrPlus/navigation/custom_navigation.dart';
-import 'package:yusrPlus/navigation/routes.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/constant.dart';
@@ -66,8 +64,10 @@ class _AddDomainScreenState extends State<AddDomainScreen> {
                   CustomButton(
                       isLoading: authProvider.isLogin,
                       onTap: () {
-                        CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
-                            arguments: 0);
+                        formKey.currentState!.save();
+                        if (formKey.currentState!.validate()) {
+                          authProvider.setAppDomain();
+                        }
                       },
                       textColor: Styles.WHITE,
                       text: getTranslated("sign_in", context),
