@@ -42,7 +42,7 @@ class ForcedAttendanceFormRepo extends BaseRepo {
         "mac_id": await DeviceHelper.getDeviceInfo(),
       };
       Response response = await dioClient.post(
-          uri: EndPoints.checkAttend(userId), data: FormData.fromMap(body));
+          uri: EndPoints.forcedCheckAttendance(userId), data: FormData.fromMap(body));
       if (response.statusCode == 200) {
         return Right(response);
       } else {

@@ -37,11 +37,6 @@ void handlePath(Map dataMap) {
 updateUserFunctions({@required notify}) async {
   Future.delayed(Duration.zero, () {
     sl<NotificationsProvider>().getNotifications();
-    if (notify["type"] == "check_in" &&
-        !sl<ForcedAttendanceFormRepo>().isInPage()) {
-      CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
-          arguments: int.parse(notify["id"].toString()));
-    }
   });
 }
 

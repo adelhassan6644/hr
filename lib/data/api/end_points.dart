@@ -6,6 +6,7 @@ abstract class EndPoints {
   static const String apiKey = '123';
   static const String topic = 'fitariki';
 
+  static forcedCheckAttendance(id) => 'employee/attendance/attend/$id';
   static checkAttend(id) => 'employee/attendance/attend/$id';
   static checkLeave(id) => 'employee/attendance/leave/$id';
   static checkOnSchedule(id) => 'employee/attendance/closest/schedule/$id';
