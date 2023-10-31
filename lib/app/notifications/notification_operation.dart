@@ -37,7 +37,7 @@ void handlePath(Map dataMap) {
 updateUserFunctions({@required notify}) async {
   Future.delayed(Duration.zero, () {
     sl<NotificationsProvider>().getNotifications();
-    if (notify["type"] == "check" &&
+    if (notify["type"] == "check_in" &&
         !sl<ForcedAttendanceFormRepo>().isInPage()) {
       CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
           arguments: int.parse(notify["id"].toString()));
@@ -46,10 +46,11 @@ updateUserFunctions({@required notify}) async {
 }
 
 Future<void> handlePathByRoute(Map notify) async {
-  if (notify["type"] == "check" && !sl<ForcedAttendanceFormRepo>().isInPage()) {
+  if (notify["type"] == "check_in" &&
+      !sl<ForcedAttendanceFormRepo>().isInPage()) {
     CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
         arguments: int.parse(notify["id"].toString()));
-  } else if (notify["type"] != "check") {
+  } else if (notify["type"] != "check_in") {
     CustomNavigator.push(Routes.NOTIFICATIONS);
   }
 }
