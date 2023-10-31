@@ -52,7 +52,6 @@ class HomeProvider extends ChangeNotifier {
 
   bool locationPermissionGranted = false;
   checkIn() async {
-
     if (await LocationHelper.checkLocation()) {
       // try {
       loadingDialog();

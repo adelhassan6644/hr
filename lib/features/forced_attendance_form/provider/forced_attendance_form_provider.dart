@@ -4,10 +4,12 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:yusrPlus/features/forced_attendance_form/repo/forced_attendance_form_repo.dart';
+import 'package:yusrPlus/features/home/provider/home_provider.dart';
 import 'package:yusrPlus/navigation/custom_navigation.dart';
 import '../../../app/core/app_snack_bar.dart';
 import '../../../app/core/color_resources.dart';
 import '../../../components/loading_dialog.dart';
+import '../../../data/config/di.dart';
 import '../../../data/error/failures.dart';
 import '../../../helpers/alert_helper.dart';
 import '../../../helpers/location_helper.dart';
@@ -41,6 +43,7 @@ class ForcedAttendanceFormProvider extends ChangeNotifier {
         }, (success) {
           AlertHelper.startAlarm(isEnter: true);
           CustomNavigator.pop();
+          sl<HomeProvider>().checkOnSchedule();
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: success.data["message"] ?? "",

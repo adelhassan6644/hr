@@ -37,9 +37,19 @@ void handlePath(Map dataMap) {
 updateUserFunctions({@required notify}) async {
   Future.delayed(Duration.zero, () {
     sl<NotificationsProvider>().getNotifications();
+    if (notify["type"] == "check" &&
+        !sl<ForcedAttendanceFormRepo>().isInPage()) {
+      CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
+          arguments: int.parse(notify["id"].toString()));
+    }
   });
 }
 
 Future<void> handlePathByRoute(Map notify) async {
-  CustomNavigator.push(Routes.NOTIFICATIONS);
+  if (notify["type"] == "check" && !sl<ForcedAttendanceFormRepo>().isInPage()) {
+    CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
+        arguments: int.parse(notify["id"].toString()));
+  } else if (notify["type"] != "check") {
+    CustomNavigator.push(Routes.NOTIFICATIONS);
+  }
 }

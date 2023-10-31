@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yusrPlus/features/forced_attendance_form/provider/forced_attendance_form_provider.dart';
@@ -12,9 +14,33 @@ import '../../../navigation/custom_navigation.dart';
 import '../widget/forced_attendance_form_body.dart';
 import '../widget/forced_attendance_submit.dart';
 
-class ForcedAttendanceForm extends StatelessWidget {
+class ForcedAttendanceForm extends StatefulWidget {
   const ForcedAttendanceForm({super.key, required this.id});
   final int id;
+
+  @override
+  State<ForcedAttendanceForm> createState() => _ForcedAttendanceFormState();
+}
+
+class _ForcedAttendanceFormState extends State<ForcedAttendanceForm> {
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () async {
+      await sl<ForcedAttendanceFormRepo>().setInPage();
+      log("=====>init ${sl<ForcedAttendanceFormRepo>().isInPage()}");
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    Future.delayed(Duration.zero, () async {
+      await sl<ForcedAttendanceFormRepo>().setOutPage();
+      log("=====>dispose ${sl<ForcedAttendanceFormRepo>().isInPage()}");
+    });
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +75,7 @@ class ForcedAttendanceForm extends StatelessWidget {
             canBack: false,
           ),
           body: const ForcedAttendanceFormBody(),
-          bottomNavigationBar: ForcedAttendanceSubmit(id: id),
+          bottomNavigationBar: ForcedAttendanceSubmit(id: widget.id),
         ),
       ),
     );
