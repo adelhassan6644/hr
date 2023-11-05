@@ -95,14 +95,16 @@ class CustomButton extends StatelessWidget {
                         SizedBox(
                           width: 8.w,
                         ),
-                      Text(
-                        text,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.w600.copyWith(
-                          height: 1,
-                          fontSize: textSize ?? 16,
-                          overflow: TextOverflow.ellipsis,
-                          color: textColor ?? Styles.WHITE,
+                      Expanded(
+                        child: Text(
+                          text,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.w600.copyWith(
+                            height: 1,
+                            fontSize: textSize ?? 16,
+                            overflow: TextOverflow.ellipsis,
+                            color: textColor ?? Styles.WHITE,
+                          ),
                         ),
                       ),
                       if (assetIcon != null ||
