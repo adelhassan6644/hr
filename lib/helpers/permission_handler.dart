@@ -34,6 +34,8 @@ abstract class PermissionHandler {
       await _checkPermission(Permission.photos);
   static Future<bool> checkFilePermission() async =>
       await _checkPermission(Permission.manageExternalStorage);
+  static Future<bool> checkNotificationsPermission() async =>
+      await _checkPermission(Permission.notification);
   static Future<bool> checkStoragePermission() async =>
       await _checkPermission(Permission.storage);
 }
