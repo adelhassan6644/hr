@@ -35,14 +35,16 @@ class ForcedAttendanceFormRepo extends BaseRepo {
       final position = await getCurrentPosition();
 
       var body = {
-        "schedule_id": id,
-        "image": MultipartFile.fromFileSync(image.path),
+        "employee_id":dioClient.userId,
+        "check_attendance_id": id,
+        "mac_id": await DeviceHelper.getDeviceInfo(),
+        "image":await MultipartFile.fromFileSync(image.path),
         "lat": position.latitude,
         "long": position.longitude,
-        "mac_id": await DeviceHelper.getDeviceInfo(),
+
       };
       Response response = await dioClient.post(
-          uri: EndPoints.forcedCheckAttendance(userId),
+          uri: EndPoints.forcedCheckAttendance(),
           data: FormData.fromMap(body));
       if (response.statusCode == 200) {
         return Right(response);
