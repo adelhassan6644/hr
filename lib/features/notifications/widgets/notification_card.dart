@@ -6,15 +6,14 @@ import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
 import '../../../components/custom_images.dart';
 import '../../../data/config/di.dart';
+import '../../../navigation/custom_navigation.dart';
+import '../../../navigation/routes.dart';
 import '../model/notifications_model.dart';
 import '../provider/notifications_provider.dart';
 
 class NotificationCard extends StatefulWidget {
-  const NotificationCard({
-    Key? key,
-    this.notification,
-    this.withBorder = true,
-  }) : super(key: key);
+  const NotificationCard(
+      {super.key, this.notification, this.withBorder = true});
   final NotificationItem? notification;
   final bool withBorder;
 
@@ -35,6 +34,14 @@ class _NotificationCardState extends State<NotificationCard> {
           sl<NotificationsProvider>()
               .readNotification(widget.notification?.id ?? 0);
           setState(() => widget.notification?.isRead = true);
+          if (widget.notification?.notificationBody?.checkAttendanceId !=
+              null) {
+            CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
+                arguments: int.parse(
+                    (widget.notification?.notificationBody?.checkAttendanceId ??
+                            "")
+                        .toString()));
+          }
         }
       },
       child: Container(
