@@ -8,11 +8,12 @@ abstract class EndPoints {
   static baseUrlSubDomain(domain) => 'http://$domain.yousser-plus.com/api/';
   // static imageUrl = 'http://$domain.yousser-plus.com/api/';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
-  static  String imageUrl = 'http://${sl.get<SharedPreferences>().getString(AppStorageKey.domain)}.yousser-plus.com/';
+  static String imageUrl =
+      'http://${sl.get<SharedPreferences>().getString(AppStorageKey.domain)}.yousser-plus.com/';
   static const String apiKey = '123';
   static const String topic = 'fitariki';
 
-  static forcedCheckAttendance() => 'employee/checkAttendance/attend';
+  static const String forcedCheckAttendance = 'employee/checkAttendance/attend';
   static checkAttend(id) => 'employee/attendance/attend/$id';
   static checkLeave(id) => 'employee/attendance/leave/$id';
   static checkOnSchedule(id) => 'employee/attendance/closest/schedule/$id';
