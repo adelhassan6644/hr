@@ -16,16 +16,16 @@ class NotificationsModel {
         data: json["data"] == null
             ? []
             : List<NotificationItem>.from(
-                json["data"]!.map((x) => NotificationItem.fromJson(x))),
+            json["data"]!.map((x) => NotificationItem.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
-      };
+    "status": status,
+    "message": message,
+    "data": data == null
+        ? []
+        : List<dynamic>.from(data!.map((x) => x.toJson())),
+  };
 }
 
 class NotificationItem {
@@ -68,28 +68,28 @@ class NotificationItem {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "type": type,
-        "notifiable_type": notifiableType,
-        "notifiable_id": notifiableId,
-        "data": notificationBody?.toJson(),
-        "read_at": isRead,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
-      };
+    "id": id,
+    "type": type,
+    "notifiable_type": notifiableType,
+    "notifiable_id": notifiableId,
+    "data": notificationBody?.toJson(),
+    "read_at": isRead,
+    "created_at": createdAt?.toIso8601String(),
+    "updated_at": updatedAt?.toIso8601String(),
+  };
 }
 
 class NotificationBody {
   String? title;
   String? message;
   int? status;
-  int? reservationId;
+  int? checkAttendanceId;
 
   NotificationBody({
     this.title,
     this.message,
     this.status,
-    this.reservationId,
+    this.checkAttendanceId,
   });
 
   factory NotificationBody.fromJson(Map<String, dynamic> json) =>
@@ -97,13 +97,13 @@ class NotificationBody {
         title: json["title"],
         message: json["message"],
         status: json["status"],
-        reservationId: json["reservation_id"],
+        checkAttendanceId: json["check_attendance_id"],
       );
 
   Map<String, dynamic> toJson() => {
-        "title": title,
-        "message": message,
-        "status": status,
-        "reservation_id": reservationId,
-      };
+    "title": title,
+    "message": message,
+    "status": status,
+    "check_attendance_id": checkAttendanceId,
+  };
 }
