@@ -30,9 +30,9 @@ class _NotificationCardState extends State<NotificationCard> {
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       onTap: () {
-        if (widget.notification?.isRead != true) {
-          sl<NotificationsProvider>()
-              .readNotification(widget.notification?.id ?? 0);
+        // if (widget.notification?.isRead != true) {
+          // sl<NotificationsProvider>()
+          //     .readNotification(widget.notification?.id ?? 0);
           setState(() => widget.notification?.isRead = true);
           if (widget.notification?.notificationBody?.checkAttendanceId !=
               null) {
@@ -42,7 +42,7 @@ class _NotificationCardState extends State<NotificationCard> {
                             "")
                         .toString()));
           }
-        }
+        // }
       },
       child: Container(
         width: context.width,

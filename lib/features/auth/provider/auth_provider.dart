@@ -17,10 +17,10 @@ class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
   AuthProvider({required this.authRepo});
 
-  final TextEditingController _emailTEC = TextEditingController(
-      text: kDebugMode ? "mma1999250@gmail.com" : '');
-  final TextEditingController domain = TextEditingController(
-      text: kDebugMode ? "" : '');
+  final TextEditingController _emailTEC =
+      TextEditingController(text: kDebugMode ? "mma1999250@gmail.com" : '');
+  final TextEditingController domain =
+      TextEditingController(text: kDebugMode ? "" : '');
   final TextEditingController _currentPasswordTEC =
       TextEditingController(text: kDebugMode ? "123456789" : '');
   final TextEditingController _newPasswordTEC = TextEditingController();
@@ -82,15 +82,11 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-
-
   setAppDomain() async {
     try {
+      final response = await authRepo.updateDomain(domain.text.trim());
 
-    final response = await authRepo.updateDomain(domain.text.trim()
-         );
-
-    CustomNavigator.push(Routes.LOGIN, clean: true);
+      CustomNavigator.push(Routes.LOGIN, clean: true);
       notifyListeners();
     } catch (e) {
       _isLogin = false;
@@ -103,6 +99,7 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
   resend() async {
     await authRepo.resendCode(
       mail: _emailTEC.text.trim(),
@@ -271,6 +268,12 @@ class AuthProvider extends ChangeNotifier {
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
+      Future.delayed(Duration.zero, () async {
+        sl<DashboardProvider>().updateDashboardIndex(0);
+        await authRepo.clearSharedData();
+        clear();
+        CustomNavigator.push(Routes.SPLASH, clean: true);
+      });
     }, (success) async {
       Future.delayed(Duration.zero, () async {
         sl<DashboardProvider>().updateDashboardIndex(0);
