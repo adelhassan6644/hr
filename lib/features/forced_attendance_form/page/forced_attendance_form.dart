@@ -72,7 +72,27 @@ class _ForcedAttendanceFormState extends State<ForcedAttendanceForm> {
         child: Scaffold(
           appBar: CustomAppBar(
             title: getTranslated("check_in_attendance", context),
-            canBack: false,
+            canBack: true,
+            onBack: () async {
+              Future.delayed(
+                Duration.zero,
+                () => CustomSimpleDialog.parentSimpleDialog(
+                  customListWidget: [
+                    ConfirmationDialog(
+                      title: getTranslated(
+                          "confirm_exit_from_forced_attendance_title", context),
+                      description: getTranslated(
+                          "confirm_exit_from_forced_attendance_description",
+                          context),
+                      onContinue: () {
+                        CustomNavigator.pop();
+                        CustomNavigator.pop();
+                      },
+                    )
+                  ],
+                ),
+              );
+            },
           ),
           body: const ForcedAttendanceFormBody(),
           bottomNavigationBar: ForcedAttendanceSubmit(id: widget.id),

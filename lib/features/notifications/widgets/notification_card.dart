@@ -30,19 +30,18 @@ class _NotificationCardState extends State<NotificationCard> {
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       onTap: () {
-        // if (widget.notification?.isRead != true) {
-          // sl<NotificationsProvider>()
-          //     .readNotification(widget.notification?.id ?? 0);
+        if (widget.notification?.isRead != true) {
+          sl<NotificationsProvider>()
+              .readNotification(widget.notification?.id ?? 0);
           setState(() => widget.notification?.isRead = true);
-          if (widget.notification?.notificationBody?.checkAttendanceId !=
-              null) {
-            CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
-                arguments: int.parse(
-                    (widget.notification?.notificationBody?.checkAttendanceId ??
-                            "")
-                        .toString()));
-          }
-        // }
+        }
+        if (widget.notification?.notificationBody?.checkAttendanceId != null) {
+          CustomNavigator.push(Routes.FORCED_ATTENDANCE_FORM,
+              arguments: int.parse(
+                  (widget.notification?.notificationBody?.checkAttendanceId ??
+                          "")
+                      .toString()));
+        }
       },
       child: Container(
         width: context.width,

@@ -12,16 +12,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? actionWidth;
   final Color? titleColor;
   final bool fromAuth, canBack;
+  final Function()? onBack;
 
   const CustomAppBar(
-      {Key? key,
+      {super.key,
       this.title,
       this.actionWidth,
       this.titleColor,
       this.fromAuth = false,
       this.canBack = true,
-      this.actionChild})
-      : super(key: key);
+      this.actionChild,
+      this.onBack});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () {
-                            CustomNavigator.pop();
+                            if (onBack != null) {
+                              onBack?.call();
+                            } else {
+                              CustomNavigator.pop();
+                            }
                           },
                           child: SizedBox(
                             width: actionWidth ?? 40,

@@ -30,7 +30,7 @@ class ForcedAttendanceSubmit extends StatelessWidget {
                   notification: AppNotification(
                       message: getTranslated("you_must_pick_image", context),
                       isFloating: true,
-                      backgroundColor: Styles.ACTIVE,
+                      backgroundColor: Styles.IN_ACTIVE,
                       borderColor: Styles.transparentColor));
             }
           },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:yusrPlus/app/core/dimensions.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/components/loader_view.dart';
 import '../../../app/core/color_resources.dart';
@@ -35,25 +36,27 @@ class _NotificationsPageState extends State<NotificationsPage> {
         appBar: CustomAppBar(
           title: getTranslated("notifications", context),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            children: [
-              Expanded(child:
-                  Consumer<NotificationsProvider>(builder: (_, provider, child) {
-                return provider.isLoading
-                    ? const LoaderView()
-                    : provider.model != null &&
-                            provider.model?.data != null &&
-                            provider.model!.data!.isNotEmpty
-                        ? RefreshIndicator(
-                            color: Styles.PRIMARY_COLOR,
-                            onRefresh: () async {
-                              sl<NotificationsProvider>().getNotifications();
-                            },
-                            child: Column(
-                              children: [
-                                ListAnimator(
+        body: Column(
+          children: [
+            Expanded(child:
+                Consumer<NotificationsProvider>(builder: (_, provider, child) {
+              return provider.isLoading
+                  ? const LoaderView()
+                  : provider.model != null &&
+                          provider.model?.data != null &&
+                          provider.model!.data!.isNotEmpty
+                      ? RefreshIndicator(
+                          color: Styles.PRIMARY_COLOR,
+                          onRefresh: () async {
+                            sl<NotificationsProvider>().getNotifications();
+                          },
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: ListAnimator(
+                                    customPadding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            Dimensions.PADDING_SIZE_DEFAULT.w),
                                     data: List.generate(
                                         provider.model?.data?.length ?? 0,
                                         (index) => Dismissible(
@@ -87,34 +90,40 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                               },
                                               child: NotificationCard(
                                                 withBorder: index != 9,
-                                                notification:
-                                                    provider.model?.data?[index],
+                                                notification: provider
+                                                    .model?.data?[index],
                                               ),
                                             ))),
-                              ],
-                            ),
-                          )
-                        : RefreshIndicator(
-                            color: Styles.PRIMARY_COLOR,
-                            onRefresh: () async {
-                              sl<NotificationsProvider>().getNotifications();
-                            },
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: ListAnimator(data: [
-                                    EmptyState(
-                                      txt: getTranslated(
-                                          "there_are_no_notifications", context),
-                                    )
-                                  ]),
-                                ),
-                              ],
-                            ),
-                          );
-              }))
-            ],
-          ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : RefreshIndicator(
+                          color: Styles.PRIMARY_COLOR,
+                          onRefresh: () async {
+                            sl<NotificationsProvider>().getNotifications();
+                          },
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: ListAnimator(data: [
+                                  SizedBox(
+                                    height: 100.h,
+                                  ),
+                                  EmptyState(
+                                    txt: getTranslated(
+                                        "there_are_no_notifications", context),
+                                  ),
+                                  SizedBox(
+                                    height: 100.h,
+                                  ),
+                                ]),
+                              ),
+                            ],
+                          ),
+                        );
+            }))
+          ],
         ),
       ),
     );
