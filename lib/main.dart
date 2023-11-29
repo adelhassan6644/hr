@@ -23,7 +23,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   await FirebaseNotifications.setUpFirebase();
+
   await di.init();
   runApp(
       MultiProvider(providers: ProviderList.providers, child: const MyApp()));
