@@ -12,7 +12,7 @@ import '../../features/requests/page/requests.dart';
 import '../widget/nav_bar.dart';
 
 class DashBoardScreen extends StatefulWidget {
-  const DashBoardScreen({Key? key}) : super(key: key);
+  const DashBoardScreen({super.key});
 
   @override
   State<DashBoardScreen> createState() => _DashBoardScreenState();
@@ -23,8 +23,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   void initState() {
     NetworkInfo.checkConnectivity();
     Future.delayed(Duration.zero, () => sl<DashboardProvider>().init());
-    Future.delayed(
-        Duration.zero, () => sl<ProfileProvider>().getProfile());
+    Future.delayed(Duration.zero, () => sl<ProfileProvider>().getProfile());
     super.initState();
   }
 

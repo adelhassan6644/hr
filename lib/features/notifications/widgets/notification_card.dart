@@ -6,6 +6,7 @@ import '../../../app/core/images.dart';
 import '../../../app/core/text_styles.dart';
 import '../../../components/custom_images.dart';
 import '../../../data/config/di.dart';
+import '../../../main_page/provider/dashboard_provider.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
 import '../model/notifications_model.dart';
@@ -41,6 +42,9 @@ class _NotificationCardState extends State<NotificationCard> {
                   (widget.notification?.notificationBody?.checkAttendanceId ??
                           "")
                       .toString()));
+        } else {
+          sl<DashboardProvider>().updateDashboardIndex(1);
+          CustomNavigator.pop();
         }
       },
       child: Container(
