@@ -14,6 +14,8 @@ import '../../features/forced_attendance_form/repo/forced_attendance_form_repo.d
 import '../../features/notifications/provider/notifications_provider.dart';
 import '../../navigation/custom_navigation.dart';
 import '../../navigation/routes.dart';
+@pragma('vm:entry-point')
+
 part 'firebase_notification_helper.dart';
 part 'notification_operation.dart';
 part 'local_notification.dart';
