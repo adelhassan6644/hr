@@ -12,7 +12,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     scheduleNotification(message.notification!.title ?? "",
         message.notification!.body ?? "", json.encode(message.data));
   }
-  updateUserFunctions(notify: message.data);
+  handlePath(message.data);
 }
 
 
