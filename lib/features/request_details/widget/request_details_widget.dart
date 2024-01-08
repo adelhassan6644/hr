@@ -52,7 +52,11 @@ class RequestDetailsWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 8.h),
+                Container(
+                  height: 1,
+                  color: Styles.BORDER_COLOR,
+                  margin: EdgeInsets.symmetric(vertical: 8.h),
+                ),
                 Row(
                   children: [
                     Expanded(
@@ -74,58 +78,10 @@ class RequestDetailsWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                      child: Row(
-                        children: [
-                          customImageIcon(
-                            imageName: Images.document,
-                            height: 20.h,
-                            width: 20.w,
-                            color: Styles.HEADER,
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Expanded(
-                            child: Text(
-                              getTranslated("request_type", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
-                            ),
-                          ),
-                          titleContainer(title: "", color: Styles.PRIMARY_COLOR, textColor: Colors.white),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
                 Container(
-                  height: 1.h,
+                  height: 1,
                   color: Styles.BORDER_COLOR,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                  child: Row(
-                    children: [
-                      Icon(Icons.access_time_rounded, color: Styles.HEADER, size: 20.w),
-                      SizedBox(
-                        width: 8.w,
-                      ),
-                      Expanded(
-                        child: Text(
-                          getTranslated("status", context),
-                          style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
-                        ),
-                      ),
-                      titleContainer(title: "", textColor: Colors.white),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 1.h,
-                  color: Styles.BORDER_COLOR,
+                  margin: EdgeInsets.symmetric(vertical: 8.h),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
