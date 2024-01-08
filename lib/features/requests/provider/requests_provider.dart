@@ -28,8 +28,7 @@ class RequestsProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (success.data["data"] != null) {
-          requests = List<RequestModel>.from(
-              success.data["data"].map((x) => RequestModel.fromJson(x)));
+          requests = List<RequestModel>.from(success.data["data"].map((x) => RequestModel.fromJson(x)));
         }
       });
       isLoading = false;
@@ -46,3 +45,5 @@ class RequestsProvider extends ChangeNotifier {
     }
   }
 }
+
+enum RequestType { vacation, loan, pledge, permission, pledgeRelease }

@@ -17,12 +17,8 @@ class RequestModel {
         id: json["id"],
         type: json["type"],
         status: json["status"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        images: json["images"] == null
-            ? []
-            : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),
+        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+        images: json["images"] == null ? [] : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -30,9 +26,7 @@ class RequestModel {
         "type": type,
         "status": status,
         "created_at": createdAt?.toIso8601String(),
-        "images": images == null
-            ? []
-            : List<dynamic>.from(images!.map((x) => x.toJson())),
+        "images": images == null ? [] : List<dynamic>.from(images!.map((x) => x.toJson())),
       };
 }
 

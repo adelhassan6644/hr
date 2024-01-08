@@ -3,7 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../app/core/images.dart';
 
 class LoaderView extends StatelessWidget {
-  const LoaderView({Key? key}) : super(key: key);
+  const LoaderView({super.key});
 
   @override
   Widget build(BuildContext context) {

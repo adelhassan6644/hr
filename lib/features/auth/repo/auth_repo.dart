@@ -49,7 +49,9 @@ class AuthRepo extends BaseRepo {
     await dioClient.updateHeader(id, token);
   }
 
-  updateDomain(domain,) async {
+  updateDomain(
+    domain,
+  ) async {
     await sharedPreferences.setString(
       AppStorageKey.domain,
       domain,
@@ -57,8 +59,7 @@ class AuthRepo extends BaseRepo {
     await dioClient.updateDomain(domain);
   }
 
-  Future<Either<ServerFailure, Response>> logIn(
-      {required String email, required String password}) async {
+  Future<Either<ServerFailure, Response>> logIn({required String email, required String password}) async {
     try {
       Response response = await dioClient.post(uri: EndPoints.login, data: {
         "email": email,
@@ -75,15 +76,14 @@ class AuthRepo extends BaseRepo {
         await setLoggedIn();
         return Right(response);
       } else {
-        return left(ServerFailure(
-            ApiErrorHandler.getMessage(response.data['message'])));
+        return left(ServerFailure(ApiErrorHandler.getMessage(response.data['message'])));
       }
     } catch (error) {
       return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
 
-  saveUser(dynamic jsonData,token) async {
+  saveUser(dynamic jsonData, token) async {
     try {
       await sharedPreferences.setString(
         AppStorageKey.userKey,
@@ -106,11 +106,9 @@ class AuthRepo extends BaseRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> forgetPassword(
-      {required String mail}) async {
+  Future<Either<ServerFailure, Response>> forgetPassword({required String mail}) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.forgetPassword, data: {
+      Response response = await dioClient.post(uri: EndPoints.forgetPassword, data: {
         "email": mail,
       });
 
@@ -122,11 +120,13 @@ class AuthRepo extends BaseRepo {
     } catch (error) {
       return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
-  }  Future<Either<ServerFailure, Response>> logOut(
-     ) async {
+  }
+
+  Future<Either<ServerFailure, Response>> logOut() async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.logOut, );
+      Response response = await dioClient.post(
+        uri: EndPoints.logOut,
+      );
 
       if (response.statusCode == 200) {
         return Right(response);
@@ -138,11 +138,9 @@ class AuthRepo extends BaseRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> resendCode(
-      {required String mail}) async {
+  Future<Either<ServerFailure, Response>> resendCode({required String mail}) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.forgetPassword, data: {
+      Response response = await dioClient.post(uri: EndPoints.forgetPassword, data: {
         "email": mail,
       });
 
@@ -157,13 +155,10 @@ class AuthRepo extends BaseRepo {
   }
 
   Future<Either<ServerFailure, Response>> verifyMail(
-      {required String mail,
-      required String code,
-      bool updateHeader = false}) async {
+      {required String mail, required String code, bool updateHeader = false}) async {
     try {
-      Response response = await dioClient.post(
-          uri: EndPoints.checkMailForResetPassword,
-          data: {"code": code, "email": mail});
+      Response response =
+          await dioClient.post(uri: EndPoints.checkMailForResetPassword, data: {"code": code, "email": mail});
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -174,11 +169,9 @@ class AuthRepo extends BaseRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> reset(
-      {required String password, required String email}) async {
+  Future<Either<ServerFailure, Response>> reset({required String password, required String email}) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.resetPassword, data: {
+      Response response = await dioClient.post(uri: EndPoints.resetPassword, data: {
         "email": email,
         "newPassword": password,
       });
@@ -193,11 +186,9 @@ class AuthRepo extends BaseRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> change(
-      {required String oldPassword, required String password}) async {
+  Future<Either<ServerFailure, Response>> change({required String oldPassword, required String password}) async {
     try {
-      Response response =
-          await dioClient.post(uri: EndPoints.changePassword(userId), data: {
+      Response response = await dioClient.post(uri: EndPoints.changePassword(userId), data: {
         "oldPassword": oldPassword,
         "newPassword": password,
       });

@@ -17,12 +17,9 @@ class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
   AuthProvider({required this.authRepo});
 
-  final TextEditingController _emailTEC =
-      TextEditingController(text: kDebugMode ? "mma1999250@gmail.com" : '');
-  final TextEditingController domain =
-      TextEditingController(text: kDebugMode ? "" : '');
-  final TextEditingController _currentPasswordTEC =
-      TextEditingController(text: kDebugMode ? "123456789" : '');
+  final TextEditingController _emailTEC = TextEditingController(text: kDebugMode ? "mma1999250@gmail.com" : '');
+  final TextEditingController domain = TextEditingController(text: kDebugMode ? "" : '');
+  final TextEditingController _currentPasswordTEC = TextEditingController(text: kDebugMode ? "123456789" : '');
   final TextEditingController _newPasswordTEC = TextEditingController();
   final TextEditingController _confirmPasswordTEC = TextEditingController();
   final TextEditingController codeTEC = TextEditingController();
@@ -46,9 +43,8 @@ class AuthProvider extends ChangeNotifier {
     try {
       _isLogin = true;
       notifyListeners();
-      Either<ServerFailure, Response> response = await authRepo.logIn(
-          email: _emailTEC.text.trim(),
-          password: _currentPasswordTEC.text.trim());
+      Either<ServerFailure, Response> response =
+          await authRepo.logIn(email: _emailTEC.text.trim(), password: _currentPasswordTEC.text.trim());
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -56,12 +52,10 @@ class AuthProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Styles.transparentColor));
-        notifyListeners();
       }, (success) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
-                message: getTranslated("logged_in_successfully",
-                    CustomNavigator.navigatorState.currentContext!),
+                message: getTranslated("logged_in_successfully", CustomNavigator.navigatorState.currentContext!),
                 isFloating: true,
                 backgroundColor: Styles.ACTIVE,
                 borderColor: Styles.transparentColor));
@@ -179,8 +173,8 @@ class AuthProvider extends ChangeNotifier {
     try {
       _isReset = true;
       notifyListeners();
-      Either<ServerFailure, Response> response = await authRepo.reset(
-          password: _newPasswordTEC.text.trim(), email: _emailTEC.text.trim());
+      Either<ServerFailure, Response> response =
+          await authRepo.reset(password: _newPasswordTEC.text.trim(), email: _emailTEC.text.trim());
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -191,8 +185,8 @@ class AuthProvider extends ChangeNotifier {
       }, (success) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
-                message: getTranslated("your_password_reset_successfully",
-                    CustomNavigator.navigatorState.currentContext!),
+                message:
+                    getTranslated("your_password_reset_successfully", CustomNavigator.navigatorState.currentContext!),
                 isFloating: true,
                 backgroundColor: Styles.ACTIVE,
                 borderColor: Colors.transparent));
@@ -220,9 +214,8 @@ class AuthProvider extends ChangeNotifier {
       _isChange = true;
       notifyListeners();
 
-      Either<ServerFailure, Response> response = await authRepo.change(
-          oldPassword: _currentPasswordTEC.text.trim(),
-          password: _newPasswordTEC.text.trim());
+      Either<ServerFailure, Response> response =
+          await authRepo.change(oldPassword: _currentPasswordTEC.text.trim(), password: _newPasswordTEC.text.trim());
 
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
@@ -234,8 +227,8 @@ class AuthProvider extends ChangeNotifier {
       }, (success) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
-                message: getTranslated("your_password_changed_successfully",
-                    CustomNavigator.navigatorState.currentContext!),
+                message:
+                    getTranslated("your_password_changed_successfully", CustomNavigator.navigatorState.currentContext!),
                 isFloating: true,
                 backgroundColor: Styles.ACTIVE,
                 borderColor: Colors.transparent));
@@ -283,8 +276,7 @@ class AuthProvider extends ChangeNotifier {
       CustomNavigator.push(Routes.SPLASH, clean: true);
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
-              message: getTranslated("logged_out_successfully",
-                  CustomNavigator.navigatorState.currentContext!),
+              message: getTranslated("logged_out_successfully", CustomNavigator.navigatorState.currentContext!),
               isFloating: true,
               backgroundColor: Styles.ACTIVE,
               borderColor: Styles.transparentColor));

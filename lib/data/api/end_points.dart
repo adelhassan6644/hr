@@ -31,6 +31,7 @@ abstract class EndPoints {
 
   ///Requests
   static allRequest(id) => 'employee/request/index/$id';
+  static requestDetails(id) => 'employee/request/show/$id';
 
   static const String loanRequest = 'employee/loan/request/store';
   static const String loanTypes = 'employee/loan/types/index';

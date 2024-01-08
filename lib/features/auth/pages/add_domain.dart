@@ -34,8 +34,7 @@ class _AddDomainScreenState extends State<AddDomainScreen> {
           Consumer<AuthProvider>(builder: (child, authProvider, _) {
             return Expanded(
               child: ListAnimator(
-                customPadding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                customPadding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
                 data: [
                   Form(
                     key: formKey,
@@ -46,12 +45,10 @@ class _AddDomainScreenState extends State<AddDomainScreen> {
                           height: 24.h,
                         ),
                         Text(getTranslated("your_company_domain", context),
-                            style: titleTextStyle.copyWith(
-                                color: Styles.PRIMARY_COLOR)),
+                            style: titleTextStyle.copyWith(color: Styles.PRIMARY_COLOR)),
                         CustomTextFormField(
                           controller: authProvider.domain,
-                          hint: getTranslated(
-                              "enter_your_company_domain", context),
+                          hint: getTranslated("enter_your_company_domain", context),
                           valid: Validations.name,
                           pSvgIcon: SvgImages.mailIcon,
                         ),
@@ -62,7 +59,6 @@ class _AddDomainScreenState extends State<AddDomainScreen> {
                     height: 35.h,
                   ),
                   CustomButton(
-                      isLoading: authProvider.isLogin,
                       onTap: () {
                         formKey.currentState!.save();
                         if (formKey.currentState!.validate()) {

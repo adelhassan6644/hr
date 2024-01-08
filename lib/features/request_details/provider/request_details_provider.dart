@@ -7,19 +7,22 @@ import 'package:yusrPlus/app/core/color_resources.dart';
 import '../../../app/core/app_snack_bar.dart';
 
 import '../../../data/error/failures.dart';
-import '../repo/profile_repo.dart';
+import '../../requests/model/request_model.dart';
+import '../repo/request_details_repo.dart';
 
-class ProfileProvider extends ChangeNotifier {
-  final ProfileRepo repo;
-  ProfileProvider({required this.repo});
+class RequestDetailsProvider extends ChangeNotifier {
+  final RequestDetailsRepo repo;
+  RequestDetailsProvider({required this.repo});
 
-  bool _isLogin = false;
-  bool get isLogin => _isLogin;
-  getProfile() async {
+
+  RequestModel? model;
+  bool isLoading = false;
+  getRequestDetails(id) async {
     try {
-      _isLogin = true;
+      model =null;
+      isLoading = true;
       notifyListeners();
-      Either<ServerFailure, Response> response = await repo.getProfile();
+      Either<ServerFailure, Response> response = await repo.getRequestDetails(id);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -27,9 +30,11 @@ class ProfileProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Styles.transparentColor));
-        notifyListeners();
-      }, (success) {});
+      }, (success) {
+        model = RequestModel.fromJson(success.data["data"]);
+      });
 
+      isLoading = false;
       notifyListeners();
     } catch (e) {
       CustomSnackBar.showSnackBar(
@@ -38,6 +43,7 @@ class ProfileProvider extends ChangeNotifier {
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Styles.transparentColor));
+      isLoading = false;
       notifyListeners();
     }
   }

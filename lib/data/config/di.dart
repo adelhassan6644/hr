@@ -11,7 +11,6 @@ import '../../features/contract/provider/contract_provider.dart';
 import '../../features/contract/repo/contract_repo.dart';
 import '../../features/covenant/provider/covenant_provider.dart';
 import '../../features/covenant/repo/covenant_repo.dart';
-import '../../features/forced_attendance_form/provider/forced_attendance_form_provider.dart';
 import '../../features/forced_attendance_form/repo/forced_attendance_form_repo.dart';
 import '../../features/language/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
@@ -23,6 +22,7 @@ import '../../features/home/repo/home_repo.dart';
 import '../../features/notifications/provider/notifications_provider.dart';
 import '../../features/notifications/repo/notifications_repo.dart';
 import '../../features/profile/provider/profile_provider.dart';
+import '../../features/request_details/repo/request_details_repo.dart';
 import '../../features/requests/provider/requests_provider.dart';
 import '../../features/requests/repo/requests_repo.dart';
 import '../../main_providers/user_provider.dart';
@@ -43,53 +43,44 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   // Core
-  sl.registerLazySingleton(() => DioClient(EndPoints.baseUrl,
-      dio: sl(), loggingInterceptor: sl(), sharedPreferences: sl()));
+  sl.registerLazySingleton(
+      () => DioClient(EndPoints.baseUrl, dio: sl(), loggingInterceptor: sl(), sharedPreferences: sl()));
 
   // Repository
   sl.registerLazySingleton(() => UserRepo(sharedPreferences: sl()));
   sl.registerLazySingleton(() => SplashRepo(sharedPreferences: sl()));
-  sl.registerLazySingleton(
-      () => AuthRepo(sharedPreferences: sl(), dioClient: sl()));
-  sl.registerLazySingleton(
-      () => HomeRepo(sharedPreferences: sl(), dioClient: sl()));
-  sl.registerLazySingleton(
-      () => SalaryRepo(sharedPreferences: sl(), dioClient: sl()));  sl.registerLazySingleton(
-      () => ProfileRepo(sharedPreferences: sl(), dioClient: sl()));
-  sl.registerLazySingleton(
-      () => CovenantRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => AuthRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => AttendanceRepo(sharedPreferences: sl(), dioClient: sl()));
-  sl.registerLazySingleton(
-      () => ConfigRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => HomeRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => RequestsRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => SalaryRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => LoanRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => ProfileRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => PledgeRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => CovenantRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => PermissionRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => AttendanceRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => ConfigRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => VacationRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => RequestsRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => ExpensesRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => RequestDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => LoanRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => ContractRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => PledgeRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
-  sl.registerLazySingleton(
-      () => ForcedAttendanceFormRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => PermissionRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(() => VacationRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(() => ExpensesRequestRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(() => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(() => ContractRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(() => ForcedAttendanceFormRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //use Case
 

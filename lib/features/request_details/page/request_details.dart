@@ -1,64 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yusrPlus/components/loader_view.dart';
 import 'package:yusrPlus/features/request_details/widget/request_details_widget.dart';
-import 'package:yusrPlus/navigation/custom_navigation.dart';
 
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
-import '../../../components/custom_tab_bar_2.dart';
+import '../../../data/config/di.dart';
+import '../provider/request_details_provider.dart';
+import '../repo/request_details_repo.dart';
 
 class RequestDetails extends StatefulWidget {
-  const RequestDetails({super.key});
+  final int id;
+  const RequestDetails({super.key, required this.id});
 
   @override
   State<RequestDetails> createState() => _RequestDetailsState();
 }
 
 class _RequestDetailsState extends State<RequestDetails> {
-  int currentIndex = 0;
-
-  final List<String> tabs = [
-    getTranslated(
-        "request_details", CustomNavigator.navigatorState.currentContext!),
-    getTranslated(
-        "workflow_comments", CustomNavigator.navigatorState.currentContext!)
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title:
-            "${getTranslated("request", context)} ",
+        title: "${getTranslated("request", context)} #${widget.id}",
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(color: Colors.grey.withOpacity(.1)))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                tabs.length,
-                (index) => Expanded(
-                  child: TabWidget(
-                    expand: true,
-                    title: tabs[index],
-                    isSelected: index == currentIndex ? true : false,
-                    onTab: () {
-                      setState(() => currentIndex = index);
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-              child: currentIndex == 0
-                  ? RequestDetailsWidget()
-                  : const SizedBox()),
-        ],
+      body: ChangeNotifierProvider(
+        create: (_) => RequestDetailsProvider(repo: sl<RequestDetailsRepo>())..getRequestDetails(widget.id),
+        child: Consumer<RequestDetailsProvider>(builder: (_, provider, child) {
+          return Column(
+            children: [provider.isLoading ? const LoaderView() : RequestDetailsWidget(
+              request: provider.model,
+            )],
+          );
+        }),
       ),
     );
   }

@@ -31,12 +31,9 @@ import '../features/splash/page/splash.dart';
 import 'routes.dart';
 
 abstract class CustomNavigator {
-  static final GlobalKey<NavigatorState> navigatorState =
-      GlobalKey<NavigatorState>();
-  static final RouteObserver<PageRoute> routeObserver =
-      RouteObserver<PageRoute>();
-  static final GlobalKey<ScaffoldMessengerState> scaffoldState =
-      GlobalKey<ScaffoldMessengerState>();
+  static final GlobalKey<NavigatorState> navigatorState = GlobalKey<NavigatorState>();
+  static final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+  static final GlobalKey<ScaffoldMessengerState> scaffoldState = GlobalKey<ScaffoldMessengerState>();
 
   static Route<dynamic> onCreateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -60,7 +57,9 @@ abstract class CustomNavigator {
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoardScreen());
       case Routes.REQUESTS_DETAILS:
-        return _pageRoute(const RequestDetails());
+        return _pageRoute(RequestDetails(
+          id: settings.arguments as int,
+        ));
 
       ///Requests
       case Routes.ADD_REQUEST:
@@ -133,8 +132,7 @@ abstract class CustomNavigator {
         var begin = const Offset(1.0, 0.0);
         var end = Offset.zero;
         var tween = Tween(begin: begin, end: end);
-        var curveAnimation =
-            CurvedAnimation(parent: anim, curve: Curves.linearToEaseOut);
+        var curveAnimation = CurvedAnimation(parent: anim, curve: Curves.linearToEaseOut);
         return SlideTransition(
           position: tween.animate(curveAnimation),
           child: child,
@@ -149,20 +147,16 @@ abstract class CustomNavigator {
     }
   }
 
-  static push(String routeName,
-      {arguments, bool replace = false, bool clean = false}) {
+  static push(String routeName, {arguments, bool replace = false, bool clean = false}) {
     if (clean) {
-      return navigatorState.currentState!.pushNamedAndRemoveUntil(
-          routeName, (_) => false,
-          arguments: arguments);
+      return navigatorState.currentState!.pushNamedAndRemoveUntil(routeName, (_) => false, arguments: arguments);
     } else if (replace) {
       return navigatorState.currentState!.pushReplacementNamed(
         routeName,
         arguments: arguments,
       );
     } else {
-      return navigatorState.currentState!
-          .pushNamed(routeName, arguments: arguments);
+      return navigatorState.currentState!.pushNamed(routeName, arguments: arguments);
     }
   }
 }

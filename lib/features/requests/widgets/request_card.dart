@@ -8,6 +8,9 @@ import 'package:yusrPlus/features/requests/model/request_model.dart';
 
 import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
+import '../../../navigation/custom_navigation.dart';
+import '../../../navigation/routes.dart';
+import '../provider/requests_provider.dart';
 
 class RequestCard extends StatelessWidget {
   const RequestCard({this.request, super.key});
@@ -16,29 +19,24 @@ class RequestCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // onTap: () => CustomNavigator.push(Routes.REQUESTS_DETAILS),
+      onTap: () => CustomNavigator.push(Routes.REQUESTS_DETAILS, arguments: request?.id),
       splashColor: Colors.transparent,
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       child: Container(
         width: context.width,
-        margin: EdgeInsets.symmetric(
-            vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
+        margin: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
         padding: EdgeInsets.symmetric(
-            vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
-            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-        decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                spreadRadius: 2,
-                blurRadius: 4,
-                offset: const Offset(0, 2),
-              )
-            ],
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
-            color: Styles.FILL_COLOR),
+            vertical: Dimensions.PADDING_SIZE_DEFAULT.h, horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          )
+        ], borderRadius: const BorderRadius.all(Radius.circular(12)), color: Styles.FILL_COLOR),
         child: Column(
           children: [
             Row(
@@ -46,12 +44,12 @@ class RequestCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     getTranslated("request_type", context),
-                    style: AppTextStyles.w600
-                        .copyWith(color: Styles.HEADER, fontSize: 14),
+                    style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
                   ),
                 ),
                 CustomButton(
-                  text: getTranslated(requestType(request?.type), context),
+                  text: getTranslated(RequestType.values[request?.type ?? 0].name, context),
+                  // text: getTranslated( requestType(request?.type), context),
                   width: 110,
                   radius: 6,
                   height: 30,
@@ -68,20 +66,17 @@ class RequestCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     getTranslated("request_status", context),
-                    style: AppTextStyles.w600
-                        .copyWith(color: Styles.HEADER, fontSize: 14),
+                    style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
                   ),
                 ),
                 CustomButton(
-                  text: getTranslated(
-                      AppStrings.status(request?.status), context),
+                  text: getTranslated(AppStrings.status(request?.status), context),
                   width: 110,
                   radius: 6,
                   height: 30,
                   textColor: Styles.requestStatus(request?.status),
                   textSize: 14,
-                  backgroundColor:
-                      Styles.requestStatus(request?.status).withOpacity(0.1),
+                  backgroundColor: Styles.requestStatus(request?.status).withOpacity(0.1),
                   withBorderColor: true,
                   borderColor: Styles.requestStatus(request?.status),
                 )
@@ -93,14 +88,12 @@ class RequestCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     getTranslated("request_date", context),
-                    style: AppTextStyles.w600
-                        .copyWith(color: Styles.HEADER, fontSize: 14),
+                    style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
                   ),
                 ),
                 Text(
                   request?.createdAt?.format("EEEE, d/MMM/yyy") ?? "",
-                  style: AppTextStyles.w400
-                      .copyWith(color: Styles.SUBTITLE, fontSize: 12),
+                  style: AppTextStyles.w400.copyWith(color: Styles.SUBTITLE, fontSize: 12),
                 ),
               ],
             ),
@@ -108,22 +101,5 @@ class RequestCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  requestType(type) {
-    switch (type) {
-      case 1:
-        return "vacation";
-      case 2:
-        return "loan";
-      case 3:
-        return "pledge";
-      case 4:
-        return "permission";
-      case 5:
-        return "pledge_release";
-      default:
-        return "non";
-    }
   }
 }
