@@ -10,12 +10,12 @@ import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_button.dart';
-import '../../requests/model/request_model.dart';
 import '../../requests/provider/requests_provider.dart';
+import '../model/request_details_model.dart';
 
 class RequestDetailsWidget extends StatelessWidget {
   const RequestDetailsWidget({super.key, this.request});
-  final RequestModel? request;
+  final RequestDetailsModel? request;
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +98,34 @@ class RequestDetailsWidget extends StatelessWidget {
                         ),
                       ),
                       titleContainer(title: "", color: Styles.GREEN_COLOR.withOpacity(0.2)),
+                    ],
+                  ),
+                ),
+
+                ///Loan
+                Visibility(
+                  visible: request?.type == RequestType.loan.index,
+                  child: Row(
+                    children: [
+                      customImageIcon(
+                        imageName: Images.cash,
+                        height: 20.h,
+                        width: 20.w,
+                        color: Styles.HEADER,
+                      ),
+                      SizedBox(
+                        width: 8.w,
+                      ),
+                      Expanded(
+                        child: Text(
+                          getTranslated("loan_amount", context),
+                          style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
+                        ),
+                      ),
+                      Text(
+                        "${request?.loan} SAR",
+                        style: AppTextStyles.w500.copyWith(color: Styles.SUB_TEXT, fontSize: 12),
+                      ),
                     ],
                   ),
                 ),

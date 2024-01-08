@@ -7,19 +7,18 @@ import 'package:yusrPlus/app/core/color_resources.dart';
 import '../../../app/core/app_snack_bar.dart';
 
 import '../../../data/error/failures.dart';
-import '../../requests/model/request_model.dart';
+import '../model/request_details_model.dart';
 import '../repo/request_details_repo.dart';
 
 class RequestDetailsProvider extends ChangeNotifier {
   final RequestDetailsRepo repo;
   RequestDetailsProvider({required this.repo});
 
-
-  RequestModel? model;
+  RequestDetailsModel? model;
   bool isLoading = false;
   getRequestDetails(id) async {
     try {
-      model =null;
+      model = null;
       isLoading = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await repo.getRequestDetails(id);
@@ -31,7 +30,7 @@ class RequestDetailsProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Styles.transparentColor));
       }, (success) {
-        model = RequestModel.fromJson(success.data["data"]);
+        model = RequestDetailsModel.fromJson(success.data["data"]);
       });
 
       isLoading = false;

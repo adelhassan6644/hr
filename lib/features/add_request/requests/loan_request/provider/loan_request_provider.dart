@@ -31,13 +31,9 @@ class LoanRequestProvider extends ChangeNotifier {
 
   List<CustomSelectModel> installmentMethods = [
     CustomSelectModel(
-        id: 1,
-        name: getTranslated("specified_number_of_months",
-            CustomNavigator.navigatorState.currentContext!)),
+        id: 1, name: getTranslated("specified_number_of_months", CustomNavigator.navigatorState.currentContext!)),
     CustomSelectModel(
-        id: 2,
-        name: getTranslated("A_specified_monthly_amount",
-            CustomNavigator.navigatorState.currentContext!)),
+        id: 2, name: getTranslated("A_specified_monthly_amount", CustomNavigator.navigatorState.currentContext!)),
   ];
   CustomSelectModel? selectedInstallmentMethods;
   onSelectInstallmentMethods(v) {
@@ -80,8 +76,7 @@ class LoanRequestProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (success.data["data"] != null) {
-          loanTypes = List<CustomSelectModel>.from(
-              success.data["data"].map((x) => CustomSelectModel.fromJson(x)));
+          loanTypes = List<CustomSelectModel>.from(success.data["data"].map((x) => CustomSelectModel.fromJson(x)));
         }
       });
       isGetting = false;
@@ -116,8 +111,7 @@ class LoanRequestProvider extends ChangeNotifier {
       List<dynamic> files = [];
       if (attachments.isNotEmpty) {
         for (int i = 0; i < attachments.length; i++) {
-          files.add(MultipartFile.fromFileSync(attachments[i].path,
-              filename: attachments[i].path.split('/').last));
+          files.add(MultipartFile.fromFileSync(attachments[i].path, filename: attachments[i].path.split('/').last));
         }
       }
 
@@ -132,8 +126,7 @@ class LoanRequestProvider extends ChangeNotifier {
         "photos[]": files
       };
 
-      Either<ServerFailure, Response> response =
-          await repo.sendLoadRequest(body);
+      Either<ServerFailure, Response> response = await repo.sendLoadRequest(body);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -146,8 +139,7 @@ class LoanRequestProvider extends ChangeNotifier {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
                 message: getTranslated(
-                    "your_request_has_been_sent_successfully",
-                    CustomNavigator.navigatorState.currentContext!),
+                    "your_request_has_been_sent_successfully", CustomNavigator.navigatorState.currentContext!),
                 isFloating: true,
                 backgroundColor: Styles.ACTIVE,
                 borderColor: Colors.transparent));
