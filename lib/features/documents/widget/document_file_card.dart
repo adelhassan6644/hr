@@ -16,21 +16,16 @@ class DocumentFileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => DownloadProvider(),
-      child:
-          Consumer<DownloadProvider>(builder: (_, downloadProvider, child) {
+      child: Consumer<DownloadProvider>(builder: (_, downloadProvider, child) {
         return CustomButton(
           text: title,
           onTap: () async {
-
-            if (url==
-                null) {
-              showToast(getTranslated(
-                  "notـreleased", context));
+            if (url == null) {
+              showToast(getTranslated("notـreleased", context));
               return;
             }
             if (!downloadProvider.downloaded) {
-
-              downloadProvider.download(EndPoints.imageUrl + url! ,  (url ?? "".split("/").last));
+              downloadProvider.download(EndPoints.imageUrl + url!, (url ?? "".split("/").last));
             }
           },
           isLoading: downloadProvider.isLoading,

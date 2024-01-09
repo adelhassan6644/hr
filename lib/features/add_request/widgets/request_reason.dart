@@ -16,13 +16,7 @@ import '../../../components/file_container.dart';
 import '../../../helpers/file_picker_helper.dart';
 
 class RequestReason extends StatelessWidget {
-  const RequestReason(
-      {Key? key,
-      required this.reasonController,
-      this.attachments,
-      this.onRemove,
-      this.onGet})
-      : super(key: key);
+  const RequestReason({super.key, required this.reasonController, this.attachments, this.onRemove, this.onGet});
   final TextEditingController reasonController;
   final Function(File)? onGet;
   final Function(List<File>?)? onRemove;
@@ -39,8 +33,7 @@ class RequestReason extends StatelessWidget {
           maxLine: 5,
           autoValidateMode: AutovalidateMode.onUserInteraction,
           keyboardAction: TextInputAction.newline,
-          valid: (v) =>
-              Validations.required(v, getTranslated("enter_reason", context)),
+          valid: (v) => Validations.required(v, getTranslated("enter_reason", context)),
         ),
         SizedBox(
           height: 16.h,
@@ -52,8 +45,7 @@ class RequestReason extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 12.h),
               child: GestureDetector(
-                onTap: () => FilePickerHelper.pickFile(
-                    onSelected: onGet, type: FileType.image),
+                onTap: () => FilePickerHelper.pickFile(onSelected: onGet, type: FileType.image),
                 child: DottedBorder(
                   color: Styles.PRIMARY_COLOR,
                   strokeCap: StrokeCap.square,
@@ -61,8 +53,7 @@ class RequestReason extends StatelessWidget {
                   dashPattern: const [10, 10],
                   radius: const Radius.circular(12),
                   child: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 24.w, vertical: 24.h),
+                      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                       width: context.width,
                       decoration: BoxDecoration(
                         color: Styles.PRIMARY_COLOR.withOpacity(0.05),
@@ -80,8 +71,7 @@ class RequestReason extends StatelessWidget {
                             Text(
                               getTranslated("upload_attachment", context),
                               textAlign: TextAlign.center,
-                              style: AppTextStyles.w500.copyWith(
-                                  color: Styles.PRIMARY_COLOR, fontSize: 14),
+                              style: AppTextStyles.w500.copyWith(color: Styles.PRIMARY_COLOR, fontSize: 14),
                             )
                           ],
                         ),

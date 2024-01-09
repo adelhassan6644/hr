@@ -10,8 +10,7 @@ import '../helpers/file_picker_helper.dart';
 import 'custom_images.dart';
 
 class FileContainer extends StatelessWidget {
-  const FileContainer({Key? key, this.attachments, required this.onRemove})
-      : super(key: key);
+  const FileContainer({super.key, this.attachments, required this.onRemove});
   final List<File>? attachments;
   final Function(List<File>?) onRemove;
 
@@ -39,9 +38,7 @@ class FileContainer extends StatelessWidget {
                             height: 48,
                             width: 48,
                             padding: const EdgeInsets.all(14),
-                            decoration: BoxDecoration(
-                                color: Styles.WHITE,
-                                borderRadius: BorderRadius.circular(12)),
+                            decoration: BoxDecoration(color: Styles.WHITE, borderRadius: BorderRadius.circular(12)),
                             child: customImageIconSVG(
                               imageName: SvgImages.documentFile,
                               height: 24,
@@ -57,27 +54,21 @@ class FileContainer extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                FilePickerHelper.getName(
-                                    attachments![index].path),
+                                FilePickerHelper.getName(attachments![index].path),
                                 maxLines: 2,
-                                style: AppTextStyles.w700.copyWith(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: Styles.HEADER,
-                                    fontSize: 12),
+                                style: AppTextStyles.w700
+                                    .copyWith(overflow: TextOverflow.ellipsis, color: Styles.HEADER, fontSize: 12),
                               ),
                               SizedBox(
                                 height: 8.h,
                               ),
                               FutureBuilder(
-                                future: FilePickerHelper.getFileSize(
-                                    attachments![index], 1),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<dynamic> snapshot) {
+                                future: FilePickerHelper.getFileSize(attachments![index], 1),
+                                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                                   return Text(
                                     snapshot.hasData ? "${snapshot.data}" : "",
-                                    style: AppTextStyles.w700.copyWith(
-                                        color: Styles.HEADER.withOpacity(0.4),
-                                        fontSize: 10),
+                                    style: AppTextStyles.w700
+                                        .copyWith(color: Styles.HEADER.withOpacity(0.4), fontSize: 10),
                                   );
                                 },
                               )
@@ -101,8 +92,7 @@ class FileContainer extends StatelessWidget {
                         visible: index != attachments!.length - 1,
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12.w),
-                          child: const Divider(
-                              color: Color(0xFFEBF1F4), thickness: 1.0),
+                          child: const Divider(color: Color(0xFFEBF1F4), thickness: 1.0),
                         )),
                     Visibility(
                       visible: index == attachments!.length - 1,

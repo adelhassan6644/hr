@@ -375,5 +375,6 @@
   "date_of_permission": "تاريخ الإذن",
   "get_back": "رجوع",
   "amount_per_month": "المبلغ في الشهر",
-  "pick_image_to_check_in": "من فضلك، التقط صورة حتي يتم تسجيل حضورك"
+  "pick_image_to_check_in": "من فضلك، التقط صورة حتي يتم تسجيل حضورك",
+  "attachments": "المرفقات"
 }

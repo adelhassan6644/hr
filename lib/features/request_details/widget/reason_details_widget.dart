@@ -5,6 +5,7 @@ import '../../../app/core/color_resources.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
+import '../../../components/download_attachments.dart';
 
 class ReasonDetailsWidget extends StatelessWidget {
   const ReasonDetailsWidget({super.key, this.reason, this.documents});
@@ -34,6 +35,14 @@ class ReasonDetailsWidget extends StatelessWidget {
             Text(
               reason ?? "",
               style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
+            ),
+
+            ///Attachments
+            Visibility(
+              visible: documents != null,
+              child: DownLoadAttachments(
+                attachments: documents,
+              ),
             ),
           ],
         ));

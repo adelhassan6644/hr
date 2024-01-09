@@ -398,5 +398,6 @@
   "get_back": "Get Back",
   "pick_image_to_check_in": "Please, Pick image to check in",
   "amount_per_month": "Amount per month",
-  "date_of_permission": "Date od permission"
+  "date_of_permission": "Date od permission",
+  "attachments": "Attachments"
 }
