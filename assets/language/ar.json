@@ -76,7 +76,7 @@
   "start": "البداية",
   "end": "النهاية",
   "end_date": "تاريخ الانتهاء",
-  "installment_start_date":"بداية استقطاع الخصم(شهر)",
+  "installment_start_date":"بداية استقطاع الخصم(شهري)",
   "start_end": "تاريخ النهاية",
   "duration":"المدة",
   "delete_all":  "إزالة الكل ",

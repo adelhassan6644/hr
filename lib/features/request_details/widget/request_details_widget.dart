@@ -4,6 +4,7 @@ import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/app/core/text_styles.dart';
 import 'package:yusrPlus/components/animated_widget.dart';
 import 'package:yusrPlus/components/custom_images.dart';
+import 'package:yusrPlus/features/request_details/widget/vacation_details_widget.dart';
 import '../../../app/core/app_strings.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
@@ -11,6 +12,7 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_button.dart';
 import '../../requests/provider/requests_provider.dart';
 import '../model/request_details_model.dart';
+import 'loan_details_widget.dart';
 
 class RequestDetailsWidget extends StatelessWidget {
   const RequestDetailsWidget({super.key, this.request});
@@ -87,196 +89,10 @@ class RequestDetailsWidget extends StatelessWidget {
                 ),
 
                 ///Vacation
-                Visibility(
-                  visible: request?.type == (RequestType.vacation.index + 1),
-                  child: Column(
-                    children: [
-                      ///Vacation Type
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              getTranslated("vacation_type", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "${request?.requestType}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 1,
-                        color: Styles.BORDER_COLOR,
-                        margin: EdgeInsets.symmetric(vertical: 8.h),
-                      ),
-
-                      ///Start Date
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              getTranslated("start_date", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "${request?.startAt?.format("dd / MM / yyyy")}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 1,
-                        color: Styles.BORDER_COLOR,
-                        margin: EdgeInsets.symmetric(vertical: 8.h),
-                      ),
-
-                      ///End Date
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              getTranslated("end_date", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "${request?.endAt?.format("dd / MM / yyyy")}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                VacationDetailsWidget(request: request,),
 
                 ///Loan
-                Visibility(
-                  visible: request?.type == (RequestType.loan.index + 1),
-                  child: Column(
-                    children: [
-                      ///Loan Type
-                      Row(
-                        children: [
-                          customImageIcon(
-                            imageName: Images.salaryIcon,
-                            height: 20.h,
-                            width: 20.w,
-                            color: Styles.HEADER,
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Expanded(
-                            child: Text(
-                              getTranslated("loan_type", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "${request?.requestType}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 1,
-                        color: Styles.BORDER_COLOR,
-                        margin: EdgeInsets.symmetric(vertical: 8.h),
-                      ),
-
-                      ///Loan Amount
-                      Row(
-                        children: [
-                          customImageIcon(
-                            imageName: Images.cash,
-                            height: 20.h,
-                            width: 20.w,
-                            color: Styles.HEADER,
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Expanded(
-                            child: Text(
-                              getTranslated("loan_amount", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "${request?.loanAmount} ${getTranslated("sar", context)}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 1,
-                        color: Styles.BORDER_COLOR,
-                        margin: EdgeInsets.symmetric(vertical: 8.h),
-                      ),
-
-                      ///Start Date
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              getTranslated("installment_start_date", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "${request?.startDate?.format("dd / MM / yyyy")}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 1,
-                        color: Styles.BORDER_COLOR,
-                        margin: EdgeInsets.symmetric(vertical: 8.h),
-                      ),
-
-                      ///Number Per Months
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              getTranslated("number_of_months", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "${request?.numberOfMonths}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 1,
-                        color: Styles.BORDER_COLOR,
-                        margin: EdgeInsets.symmetric(vertical: 8.h),
-                      ),
-
-                      ///Amount Per Months
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              getTranslated("amount_per_month", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
-                            ),
-                          ),
-                          Text(
-                            "${request?.amountPerMonth} ${getTranslated("sar", context)}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                LoanDetailsWidget(request: request,),
               ],
             ),
           ),
