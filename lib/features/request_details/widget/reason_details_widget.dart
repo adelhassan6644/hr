@@ -41,7 +41,7 @@ class ReasonDetailsWidget extends StatelessWidget {
             Visibility(
               visible: documents != null,
               child: DownLoadAttachments(
-                attachments: documents,
+                attachments: ["h.ert4wu", "rth.rst"],
               ),
             ),
           ],

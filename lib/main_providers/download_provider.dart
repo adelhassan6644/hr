@@ -24,8 +24,7 @@ class DownloadProvider extends ChangeNotifier {
       isLoading = true;
       String path = "";
       if (Platform.isAndroid) {
-        path =
-            '${await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_DOCUMENTS)}/يسربلس.$name';
+        path = '${await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_DOCUMENTS)}/يسربلس.$name';
       } else {
         Directory documents = await getApplicationDocumentsDirectory();
         path = '${documents.path}/يسربلس.$name';
@@ -55,8 +54,7 @@ class DownloadProvider extends ChangeNotifier {
         notifyListeners();
       } catch (e) {
         log(e.toString());
-        showToast(getTranslated("something_went_wrong",
-            CustomNavigator.navigatorState.currentContext!));
+        showToast(getTranslated("something_went_wrong", CustomNavigator.navigatorState.currentContext!));
         isLoading = false;
         notifyListeners();
       }

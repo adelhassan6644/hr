@@ -57,28 +57,16 @@ class DownLoadAttachments extends StatelessWidget {
                                   width: 12.w,
                                 ),
                                 Expanded(
-                                    child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      attachments?[index].split("/").last ?? "",
-                                      maxLines: 2,
-                                      style: AppTextStyles.w700.copyWith(
-                                          overflow: TextOverflow.ellipsis, color: Styles.HEADER, fontSize: 12),
-                                    ),
-                                    SizedBox(
-                                      height: 8.h,
-                                    ),
-                                  ],
+                                    child: Text(
+                                  attachments?[index].split("/").last ?? "",
+                                  maxLines: 2,
+                                  style: AppTextStyles.w700
+                                      .copyWith(overflow: TextOverflow.ellipsis, color: Styles.HEADER, fontSize: 12),
                                 )),
                                 SizedBox(
                                   width: 12.w,
                                 ),
-                                customImageIconSVG(
-                                  imageName: SvgImages.documentFile,
-                                  height: 20,
-                                  width: 20,
+                                InkWell(
                                   onTap: () async {
                                     if (attachments?[index] == null) {
                                       return showToast(getTranslated("notـreleased", context));
@@ -88,6 +76,11 @@ class DownLoadAttachments extends StatelessWidget {
                                           (attachments?[index].split("/").last ?? ""));
                                     }
                                   },
+                                  child: const Icon(
+                                    Icons.download,
+                                    color: Styles.PRIMARY_COLOR,
+                                    size: 20,
+                                  ),
                                 ),
                               ],
                             );
