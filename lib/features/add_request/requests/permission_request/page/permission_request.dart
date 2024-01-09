@@ -24,7 +24,7 @@ import '../provider/permission_request_provider.dart';
 import '../repo/permission_request_repo.dart';
 
 class PermissionRequest extends StatefulWidget {
-  const PermissionRequest({Key? key}) : super(key: key);
+  const PermissionRequest({super.key});
 
   @override
   State<PermissionRequest> createState() => _PermissionRequestState();
@@ -36,13 +36,10 @@ class _PermissionRequestState extends State<PermissionRequest> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) =>
-          PermissionRequestProvider(repo: sl<PermissionRequestRepo>()),
-      child: Consumer<PermissionRequestProvider>(
-          builder: (context, provider, child) {
+      create: (_) => PermissionRequestProvider(repo: sl<PermissionRequestRepo>()),
+      child: Consumer<PermissionRequestProvider>(builder: (context, provider, child) {
         return Scaffold(
-          appBar:
-              CustomAppBar(title: getTranslated("permission_request", context)),
+          appBar: CustomAppBar(title: getTranslated("permission_request", context)),
           body: Form(
             key: formKey,
             child: Column(
@@ -50,8 +47,7 @@ class _PermissionRequestState extends State<PermissionRequest> {
                 Expanded(
                   child: ListAnimator(
                     customPadding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                        vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w, vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                     data: [
                       /// The Expense Claim Details
                       Padding(
@@ -65,47 +61,37 @@ class _PermissionRequestState extends State<PermissionRequest> {
                                 color: Styles.disabledColor,
                                 size: 18,
                               ),
-                              controller: TextEditingController(
-                                  text: provider.selectedPermissionType?.name ??
-                                      ""),
+                              controller: TextEditingController(text: provider.selectedPermissionType?.name ?? ""),
                               hint: getTranslated("permission_type", context),
                               read: true,
                               onTap: () {
                                 if (provider.isGetting) {
                                   CustomSnackBar.showSnackBar(
                                       notification: AppNotification(
-                                          message: getTranslated(
-                                              "please_wait", context),
+                                          message: getTranslated("please_wait", context),
                                           isFloating: true,
                                           backgroundColor: Styles.PENDING,
                                           borderColor: Colors.transparent));
-                                } else if (!provider.isGetting &&
-                                    provider.types.isEmpty) {
+                                } else if (!provider.isGetting && provider.types.isEmpty) {
                                   CustomSnackBar.showSnackBar(
                                       notification: AppNotification(
-                                          message: getTranslated(
-                                              "there_is_no_data", context),
+                                          message: getTranslated("there_is_no_data", context),
                                           isFloating: true,
                                           backgroundColor: Styles.PENDING,
                                           borderColor: Colors.transparent));
                                 } else {
                                   CustomBottomSheet.show(
-                                      label: getTranslated(
-                                          "permission_type", context),
+                                      label: getTranslated("permission_type", context),
                                       height: 400.h,
                                       list: CustomSingleSelector(
                                         onConfirm: provider.onSelectLoanType,
                                         list: provider.types,
-                                        initialValue:
-                                            provider.selectedPermissionType?.id,
+                                        initialValue: provider.selectedPermissionType?.id,
                                       ),
                                       onConfirm: () => CustomNavigator.pop());
                                 }
                               },
-                              valid: (v) => Validations.required(
-                                  v,
-                                  getTranslated(
-                                      "select_permission_type", context)),
+                              valid: (v) => Validations.required(v, getTranslated("select_permission_type", context)),
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 16.h),
@@ -118,17 +104,13 @@ class _PermissionRequestState extends State<PermissionRequest> {
                               children: [
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 8.0.w),
+                                        padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                                         child: Text(
                                           getTranslated("start_time", context),
-                                          style: AppTextStyles.w500.copyWith(
-                                              fontSize: 13,
-                                              color: Styles.SUBTITLE),
+                                          style: AppTextStyles.w500.copyWith(fontSize: 13, color: Styles.SUBTITLE),
                                         ),
                                       ),
                                       SizedBox(
@@ -138,10 +120,8 @@ class _PermissionRequestState extends State<PermissionRequest> {
                                           startDateTime: provider.startDate,
                                           mode: CupertinoDatePickerMode.time,
                                           format: "hh:mm a",
-                                          valueChanged:
-                                              provider.onSelectStartDate,
-                                          label:
-                                              getTranslated("from", context)),
+                                          valueChanged: provider.onSelectStartDate,
+                                          label: getTranslated("from", context)),
                                     ],
                                   ),
                                 ),
@@ -150,17 +130,13 @@ class _PermissionRequestState extends State<PermissionRequest> {
                                 ),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 8.0.w),
+                                        padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                                         child: Text(
                                           getTranslated("end_time", context),
-                                          style: AppTextStyles.w500.copyWith(
-                                              fontSize: 13,
-                                              color: Styles.SUBTITLE),
+                                          style: AppTextStyles.w500.copyWith(fontSize: 13, color: Styles.SUBTITLE),
                                         ),
                                       ),
                                       SizedBox(
@@ -170,8 +146,7 @@ class _PermissionRequestState extends State<PermissionRequest> {
                                           startDateTime: provider.endDate,
                                           mode: CupertinoDatePickerMode.time,
                                           format: "hh:mm a",
-                                          valueChanged:
-                                              provider.onSelectEndDate,
+                                          valueChanged: provider.onSelectEndDate,
                                           label: getTranslated("to", context)),
                                     ],
                                   ),

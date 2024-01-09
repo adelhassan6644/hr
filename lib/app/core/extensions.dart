@@ -120,7 +120,7 @@ extension PostDateExtention on DateTime {
 
 extension PostTimeExtention on DateTime {
   String postTimeFormat() {
-    return DateFormat("hh:mm:ss",'en_US').format(this);
+    return DateFormat("HH:mm:ss",'en_US').format(this);
   }
 }
 

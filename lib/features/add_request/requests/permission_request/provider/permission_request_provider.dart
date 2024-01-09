@@ -82,8 +82,7 @@ class PermissionRequestProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (success.data["data"] != null) {
-          types = List<CustomSelectModel>.from(
-              success.data["data"].map((x) => CustomSelectModel.fromJson(x)));
+          types = List<CustomSelectModel>.from(success.data["data"].map((x) => CustomSelectModel.fromJson(x)));
         }
       });
       isGetting = false;
@@ -110,8 +109,7 @@ class PermissionRequestProvider extends ChangeNotifier {
 
       if (attachments.isNotEmpty) {
         for (int i = 0; i < attachments.length; i++) {
-          files.add(MultipartFile.fromFileSync(attachments[i].path,
-              filename: attachments[i].path.split('/').last));
+          files.add(MultipartFile.fromFileSync(attachments[i].path, filename: attachments[i].path.split('/').last));
         }
       }
 
@@ -138,8 +136,7 @@ class PermissionRequestProvider extends ChangeNotifier {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
                 message: getTranslated(
-                    "your_request_has_been_sent_successfully",
-                    CustomNavigator.navigatorState.currentContext!),
+                    "your_request_has_been_sent_successfully", CustomNavigator.navigatorState.currentContext!),
                 isFloating: true,
                 backgroundColor: Styles.ACTIVE,
                 borderColor: Colors.transparent));

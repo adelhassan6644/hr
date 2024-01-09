@@ -397,5 +397,6 @@
   "confirm_exit_from_forced_attendance_description": "Attendance will not be recorded when you confirm your exit!",
   "get_back": "Get Back",
   "pick_image_to_check_in": "Please, Pick image to check in",
-  "amount_per_month": "Amount per month"
+  "amount_per_month": "Amount per month",
+  "date_of_permission": "Date od permission"
 }

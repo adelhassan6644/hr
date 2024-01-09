@@ -3,16 +3,16 @@ import 'package:yusrPlus/app/core/color_resources.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/app/core/text_styles.dart';
 import 'package:yusrPlus/components/animated_widget.dart';
-import 'package:yusrPlus/components/custom_images.dart';
+import 'package:yusrPlus/features/request_details/widget/permission_details_widget.dart';
 import 'package:yusrPlus/features/request_details/widget/vacation_details_widget.dart';
 import '../../../app/core/app_strings.dart';
 import '../../../app/core/dimensions.dart';
-import '../../../app/core/images.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_button.dart';
 import '../../requests/provider/requests_provider.dart';
 import '../model/request_details_model.dart';
 import 'loan_details_widget.dart';
+import 'reason_details_widget.dart';
 
 class RequestDetailsWidget extends StatelessWidget {
   const RequestDetailsWidget({super.key, this.request});
@@ -89,12 +89,63 @@ class RequestDetailsWidget extends StatelessWidget {
                 ),
 
                 ///Vacation
-                VacationDetailsWidget(request: request,),
+                VacationDetailsWidget(
+                  request: request,
+                ),
+
+                ///Permission
+                PermissionDetailsWidget(
+                  request: request,
+                ),
 
                 ///Loan
-                LoanDetailsWidget(request: request,),
+                LoanDetailsWidget(
+                  request: request,
+                ),
+
+                ///Pledge
+                Visibility(
+                  visible: request?.type == (RequestType.pledge.index + 1),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          getTranslated("pledge_type", context),
+                          style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                        ),
+                      ),
+                      Text(
+                        "${request?.requestType}",
+                        style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+
+                ///Pledge Release
+                Visibility(
+                  visible: request?.type == (RequestType.pledgeRelease.index + 1),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          getTranslated("pledge_release_request", context),
+                          style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                        ),
+                      ),
+                      Text(
+                        "${request?.requestType}",
+                        style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
+          ),
+          ReasonDetailsWidget(
+            reason: request?.reason,
+            documents: request?.documents,
           ),
         ],
       ),
