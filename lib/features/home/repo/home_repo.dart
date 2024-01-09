@@ -41,7 +41,7 @@ class HomeRepo extends BaseRepo {
             "schedule_id":scheduleModel.scheduleId,
             "lat": position.latitude,
             "long": position.longitude,
-            "mac_id":await DeviceHelper.getDeviceInfo(),
+            "mac_id":await DeviceHelper.getDeviceIdentifier(),
           }
           );
       if (response.statusCode == 200) {

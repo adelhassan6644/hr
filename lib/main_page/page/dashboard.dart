@@ -21,7 +21,7 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   void initState() {
-    NetworkInfo.checkConnectivity();
+    NetworkInfoServices.checkConnectivity();
     Future.delayed(Duration.zero, () => sl<DashboardProvider>().init());
     Future.delayed(Duration.zero, () => sl<ProfileProvider>().getProfile());
     super.initState();

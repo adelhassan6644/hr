@@ -2,7 +2,7 @@ name: yusrPlus
 description: A new Flutter project.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+8
+version: 1.0.0+9
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
@@ -24,6 +24,7 @@ dependencies:
   fluttertoast:
   device_info_plus: ^9.0.3
   dartz:
+  network_info_plus: ^4.1.0
   equatable:
   shared_preferences:
   get_it:

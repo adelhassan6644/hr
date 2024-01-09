@@ -121,6 +121,8 @@ PODS:
     - nanopb/encode (= 2.30909.1)
   - nanopb/decode (2.30909.1)
   - nanopb/encode (2.30909.1)
+  - network_info_plus (0.0.1):
+    - Flutter
   - open_file_plus (1.0.0):
     - Flutter
   - open_filex (0.0.2):
@@ -172,6 +174,7 @@ DEPENDENCIES:
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
+  - network_info_plus (from `.symlinks/plugins/network_info_plus/ios`)
   - open_file_plus (from `.symlinks/plugins/open_file_plus/ios`)
   - open_filex (from `.symlinks/plugins/open_filex/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
@@ -236,6 +239,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
+  network_info_plus:
+    :path: ".symlinks/plugins/network_info_plus/ios"
   open_file_plus:
     :path: ".symlinks/plugins/open_file_plus/ios"
   open_filex:
@@ -287,6 +292,7 @@ SPEC CHECKSUMS:
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
+  network_info_plus: 6d0c3eb8367b8164fa3fb0c19875e3f59d49697f
   open_file_plus: 05737718530c14cf02868e3b7754d7fe4df76d8b
   open_filex: 6e26e659846ec990262224a12ef1c528bb4edbe4
   package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
@@ -306,4 +312,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 70850ec609d1cd6364de663b4820d1ee2a20890a
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.14.2

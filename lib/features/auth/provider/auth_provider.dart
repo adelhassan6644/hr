@@ -17,7 +17,7 @@ class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
   AuthProvider({required this.authRepo});
 
-  final TextEditingController _emailTEC = TextEditingController(text: kDebugMode ? "mma1999250@gmail.com" : '');
+  final TextEditingController _emailTEC = TextEditingController(text: kDebugMode ? "ahmeedhassanali@outlook.com" : '');
   final TextEditingController domain = TextEditingController(text: kDebugMode ? "" : '');
   final TextEditingController _currentPasswordTEC = TextEditingController(text: kDebugMode ? "123456789" : '');
   final TextEditingController _newPasswordTEC = TextEditingController();

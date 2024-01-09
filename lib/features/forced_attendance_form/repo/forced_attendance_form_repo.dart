@@ -37,7 +37,7 @@ class ForcedAttendanceFormRepo extends BaseRepo {
       var body = {
         "employee_id": dioClient.userId,
         "check_attendance_id": id,
-        "mac_id": await DeviceHelper.getDeviceInfo(),
+        "mac_id": await DeviceHelper.getDeviceIdentifier(),
         "image": MultipartFile.fromFileSync(image.path),
         "lat": position.latitude,
         "long": position.longitude,

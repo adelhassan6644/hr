@@ -6,9 +6,9 @@ import '../../app/localization/language_constant.dart';
 import '../../navigation/custom_navigation.dart';
 
 
- class  NetworkInfo {
+ class  NetworkInfoServices {
   final Connectivity connectivity;
-  NetworkInfo(this.connectivity);
+  NetworkInfoServices(this.connectivity);
 
    Future<bool> get isConnected async {
     ConnectivityResult result = await connectivity.checkConnectivity();

@@ -1,9 +1,13 @@
 import 'dart:io';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:network_info_plus/network_info_plus.dart';
+
+import '../data/network/netwok_info.dart';
 
 abstract class DeviceHelper {
-  static Future<String> getDeviceInfo() async {
+  static Future<String> getDeviceIdentifier() async {
     String deviceIdentifier = '';
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (kIsWeb) {
@@ -23,6 +27,43 @@ abstract class DeviceHelper {
         deviceIdentifier = linuxInfo.machineId!;
       }
     }
+    return deviceIdentifier;
+  }
+
+  static Future<String?> getWifiGatewayIP() async {
+
+
+    final info= NetworkInfo();
+
+  return await info.getWifiBroadcast();
+
+  }
+  static Future<String?> getWifiIP() async {
+
+
+    final info= NetworkInfo();
+
+  return await info.getWifiIP();
+
+  }
+
+  static Future<IosDeviceInfo?> getDeviceInfoIos() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    IosDeviceInfo? deviceIdentifier;
+    if (Platform.isIOS) {
+      deviceIdentifier = await deviceInfo.iosInfo;
+    }
+
+    return deviceIdentifier;
+  }
+
+  static Future<AndroidDeviceInfo?> getDeviceInfoAndroid() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo? deviceIdentifier;
+    if (Platform.isAndroid) {
+      deviceIdentifier = await deviceInfo.androidInfo;
+    }
+
     return deviceIdentifier;
   }
 }
