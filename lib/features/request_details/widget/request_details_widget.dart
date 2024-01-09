@@ -4,7 +4,6 @@ import 'package:yusrPlus/app/core/extensions.dart';
 import 'package:yusrPlus/app/core/text_styles.dart';
 import 'package:yusrPlus/components/animated_widget.dart';
 import 'package:yusrPlus/components/custom_images.dart';
-import 'package:yusrPlus/features/requests/widgets/title_container.dart';
 import '../../../app/core/app_strings.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../app/core/images.dart';
@@ -32,6 +31,7 @@ class RequestDetailsWidget extends StatelessWidget {
                 border: Border.all(color: Styles.BORDER_COLOR, width: 0.5, style: BorderStyle.solid)),
             child: Column(
               children: [
+                ///Request Type
                 Row(
                   children: [
                     Expanded(
@@ -41,7 +41,7 @@ class RequestDetailsWidget extends StatelessWidget {
                       ),
                     ),
                     CustomButton(
-                      text: getTranslated(RequestType.values[request?.type ?? 0].name, context),
+                      text: getTranslated(RequestType.values[(request?.type ?? 0) - 1].name, context),
                       width: 110,
                       radius: 6,
                       height: 30,
@@ -57,6 +57,8 @@ class RequestDetailsWidget extends StatelessWidget {
                   color: Styles.BORDER_COLOR,
                   margin: EdgeInsets.symmetric(vertical: 8.h),
                 ),
+
+                ///Request Status
                 Row(
                   children: [
                     Expanded(
@@ -83,59 +85,110 @@ class RequestDetailsWidget extends StatelessWidget {
                   color: Styles.BORDER_COLOR,
                   margin: EdgeInsets.symmetric(vertical: 8.h),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                  child: Row(
+
+                ///Vacation
+                Visibility(
+                  visible: request?.type == (RequestType.vacation.index + 1),
+                  child: Column(
                     children: [
-                      const Icon(Icons.timelapse_outlined),
-                      SizedBox(
-                        width: 8.w,
+                      ///Vacation Type
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              getTranslated("vacation_type", context),
+                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                            ),
+                          ),
+                          Text(
+                            "${request?.requestType}",
+                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                          ),
+                        ],
                       ),
-                      Expanded(
-                        child: Text(
-                          getTranslated("asset_items", context),
-                          style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
-                        ),
+                      Container(
+                        height: 1,
+                        color: Styles.BORDER_COLOR,
+                        margin: EdgeInsets.symmetric(vertical: 8.h),
                       ),
-                      titleContainer(title: "", color: Styles.GREEN_COLOR.withOpacity(0.2)),
+
+                      ///Start Date
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              getTranslated("start_date", context),
+                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                            ),
+                          ),
+                          Text(
+                            "${request?.startAt?.format("dd / MM / yyyy")}",
+                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 1,
+                        color: Styles.BORDER_COLOR,
+                        margin: EdgeInsets.symmetric(vertical: 8.h),
+                      ),
+
+                      ///End Date
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              getTranslated("end_date", context),
+                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                            ),
+                          ),
+                          Text(
+                            "${request?.endAt?.format("dd / MM / yyyy")}",
+                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
 
                 ///Loan
                 Visibility(
-                  visible: request?.type == RequestType.loan.index,
-                  child: Row(
+                  visible: request?.type == (RequestType.loan.index + 1),
+                  child: Column(
                     children: [
-                      customImageIcon(
-                        imageName: Images.cash,
-                        height: 20.h,
-                        width: 20.w,
-                        color: Styles.HEADER,
+                      ///Loan Type
+                      Row(
+                        children: [
+                          customImageIcon(
+                            imageName: Images.salaryIcon,
+                            height: 20.h,
+                            width: 20.w,
+                            color: Styles.HEADER,
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Expanded(
+                            child: Text(
+                              getTranslated("loan_type", context),
+                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                            ),
+                          ),
+                          Text(
+                            "${request?.requestType}",
+                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        width: 8.w,
+                      Container(
+                        height: 1,
+                        color: Styles.BORDER_COLOR,
+                        margin: EdgeInsets.symmetric(vertical: 8.h),
                       ),
-                      Expanded(
-                        child: Text(
-                          getTranslated("loan_amount", context),
-                          style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
-                        ),
-                      ),
-                      Text(
-                        "${request?.loan} SAR",
-                        style: AppTextStyles.w500.copyWith(color: Styles.SUB_TEXT, fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                      child: Row(
+
+                      ///Loan Amount
+                      Row(
                         children: [
                           customImageIcon(
                             imageName: Images.cash,
@@ -149,105 +202,80 @@ class RequestDetailsWidget extends StatelessWidget {
                           Expanded(
                             child: Text(
                               getTranslated("loan_amount", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
+                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
                             ),
                           ),
                           Text(
-                            "2500.00 SAR",
-                            style: AppTextStyles.w500.copyWith(color: Styles.SUB_TEXT, fontSize: 12),
+                            "${request?.loanAmount} ${getTranslated("sar", context)}",
+                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
                           ),
                         ],
                       ),
-                    ),
-                    Container(
-                      height: 1.h,
-                      color: Styles.BORDER_COLOR,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                      child: Row(
+                      Container(
+                        height: 1,
+                        color: Styles.BORDER_COLOR,
+                        margin: EdgeInsets.symmetric(vertical: 8.h),
+                      ),
+
+                      ///Start Date
+                      Row(
                         children: [
-                          Icon(
-                            Icons.numbers_rounded,
-                            size: 20.w,
-                            color: Styles.HEADER,
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
                           Expanded(
                             child: Text(
-                              getTranslated("num_of_installment", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
+                              getTranslated("installment_start_date", context),
+                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
                             ),
                           ),
                           Text(
-                            "15",
-                            style: AppTextStyles.w500.copyWith(color: Styles.SUBTITLE, fontSize: 12),
+                            "${request?.startDate?.format("dd / MM / yyyy")}",
+                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
                           ),
                         ],
                       ),
-                    ),
-                    Container(
-                      height: 1.h,
-                      color: Styles.BORDER_COLOR,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                      child: Row(
+                      Container(
+                        height: 1,
+                        color: Styles.BORDER_COLOR,
+                        margin: EdgeInsets.symmetric(vertical: 8.h),
+                      ),
+
+                      ///Number Per Months
+                      Row(
                         children: [
-                          Icon(
-                            Icons.money_off,
-                            size: 20.h,
-                            color: Styles.HEADER,
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
                           Expanded(
                             child: Text(
-                              getTranslated("monthly_installment", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
+                              getTranslated("number_of_months", context),
+                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
                             ),
                           ),
                           Text(
-                            "170.00 SAR",
-                            style: AppTextStyles.w500.copyWith(color: Styles.SUBTITLE, fontSize: 12),
+                            "${request?.numberOfMonths}",
+                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
                           ),
                         ],
                       ),
-                    ),
-                    Container(
-                      height: 1.h,
-                      color: Styles.BORDER_COLOR,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                      child: Row(
+                      Container(
+                        height: 1,
+                        color: Styles.BORDER_COLOR,
+                        margin: EdgeInsets.symmetric(vertical: 8.h),
+                      ),
+
+                      ///Amount Per Months
+                      Row(
                         children: [
-                          customImageIcon(
-                            imageName: Images.calenderIcon,
-                            height: 20.h,
-                            width: 20.w,
-                            color: Styles.HEADER,
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
                           Expanded(
                             child: Text(
-                              getTranslated("period_of_installment", context),
-                              style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
+                              getTranslated("amount_per_month", context),
+                              style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
                             ),
                           ),
                           Text(
-                            "${DateTime.now().format("MMM yyyy")}-${DateTime.now().format("MMM yyyy")}",
-                            style: AppTextStyles.w500.copyWith(color: Styles.SUBTITLE, fontSize: 12),
+                            "${request?.amountPerMonth} ${getTranslated("sar", context)}",
+                            style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

@@ -3,16 +3,30 @@ import '../../requests/model/request_model.dart';
 class RequestDetailsModel {
   final int? id;
   final int? type;
-  final String? loan;
+  final String? requestType;
+  final String? loanAmount;
+  final String? reason;
   final int? status;
+  final String? numberOfMonths;
+  final String? amountPerMonth;
   final DateTime? createdAt;
+  final DateTime? startDate;
+  final DateTime? startAt;
+  final DateTime? endAt;
   final List<Image>? images;
 
   RequestDetailsModel({
     this.id,
     this.type,
     this.status,
-    this.loan,
+    this.loanAmount,
+    this.requestType,
+    this.numberOfMonths,
+    this.amountPerMonth,
+    this.reason,
+    this.startAt,
+    this.endAt,
+    this.startDate,
     this.createdAt,
     this.images,
   });
@@ -21,7 +35,14 @@ class RequestDetailsModel {
         id: json["id"],
         type: json["type"],
         status: json["status"],
-        loan: json["loan"],
+        requestType: json["request_type"],
+        loanAmount: json["amount"].toString(),
+        numberOfMonths: json["number_of_months"].toString(),
+        amountPerMonth: json["amount_per_month"].toString(),
+        reason: json["reason"],
+        startDate: json["start_date"] == null ? null : DateTime.parse(json["start_date"]),
+        startAt: json["start_at"] == null ? null : DateTime.parse(json["start_at"]),
+        endAt: json["end_at"] == null ? null : DateTime.parse(json["end_at"]),
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         images: json["images"] == null ? [] : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),
       );
@@ -30,7 +51,11 @@ class RequestDetailsModel {
         "id": id,
         "type": type,
         "status": status,
-        "loan": loan,
+        "loan_type": requestType,
+        "amount": loanAmount,
+        "request_type": requestType,
+        "reason": reason,
+        "start_date": startDate?.toIso8601String(),
         "created_at": createdAt?.toIso8601String(),
         "images": images == null ? [] : List<dynamic>.from(images!.map((x) => x.toJson())),
       };

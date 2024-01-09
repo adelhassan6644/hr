@@ -48,7 +48,7 @@ class RequestCard extends StatelessWidget {
                   ),
                 ),
                 CustomButton(
-                  text: getTranslated(RequestType.values[request?.type ?? 0].name, context),
+                  text: getTranslated(RequestType.values[(request?.type ?? 0) - 1].name, context),
                   // text: getTranslated( requestType(request?.type), context),
                   width: 110,
                   radius: 6,
