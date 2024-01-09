@@ -46,7 +46,7 @@ class ReasonDetailsWidget extends StatelessWidget {
 
             ///Attachments
             Visibility(
-              visible: images != null || images!.isNotEmpty,
+              visible: images != null && images!.isNotEmpty,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: Dimensions.PADDING_SIZE_DEFAULT.h),

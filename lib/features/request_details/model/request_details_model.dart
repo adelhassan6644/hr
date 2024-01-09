@@ -57,7 +57,7 @@ class RequestDetailsModel {
             : DateTime.parse(json["created_at"]),
         images: json["images"] == null
             ? null
-            : List<String>.from(json["images"]!.map((x) => x["image"])),
+            : List<String>.from(json["images"]!.map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
