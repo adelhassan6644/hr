@@ -23,7 +23,9 @@ abstract class EndPoints {
   static const String login = 'employee/login';
   static profile(id) => 'employee/profile/index/$id';
   static const String forgetPassword = 'resetPassword/email';
-  static const String logOut = 'employee/logout';
+  // static const String logOut = 'employee/logout';
+  static logout(id) => 'employee/employeeActivity/logoutActivity/$id';
+
   static const String checkMailForResetPassword = 'resetPassword/checkCode';
   static const String resetPassword = 'resetPassword/newPassword';
   static changePassword(id) => 'changePassword/$id';
@@ -38,8 +40,7 @@ abstract class EndPoints {
 
   static const String covenantTypes = 'employee/pledge/types/index';
   static const String pledgeRequest = 'employee/pledge/request/store';
-  static const String cancelPledgeRequest =
-      'employee/pledge/transfer/request/store';
+  static const String cancelPledgeRequest = 'employee/pledge/transfer/request/store';
   static deletePledgeRequest(id) => 'employee/loan/request/destroy/$id';
   static myCovenant(id) => 'employee/pledge/request/index/$id';
 
