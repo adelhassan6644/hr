@@ -24,12 +24,14 @@ class PermissionDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("permission_type", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${request?.typeName}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -45,12 +47,14 @@ class PermissionDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("date_of_permission", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${request?.dayOfPermission}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -66,12 +70,14 @@ class PermissionDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("start_time", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${Methods.convertStringToTime(request?.comeTime, withFormat: true)}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -87,12 +93,14 @@ class PermissionDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("end_time", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${Methods.convertStringToTime(request?.leaveTime, withFormat: true)}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),

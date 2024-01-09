@@ -34,12 +34,14 @@ class LoanDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("loan_type", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
-                "${request?.requestType}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                "${request?.typeName}",
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -64,12 +66,14 @@ class LoanDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("loan_amount", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${request?.loanAmount} ${getTranslated("sar", context)}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -85,12 +89,14 @@ class LoanDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("installment_start_date", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${request?.startDate?.format("dd / MM / yyyy")}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -106,12 +112,14 @@ class LoanDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("number_of_months", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${request?.numberOfMonths}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -127,12 +135,14 @@ class LoanDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("amount_per_month", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${request?.amountPerMonth} ${getTranslated("sar", context)}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),

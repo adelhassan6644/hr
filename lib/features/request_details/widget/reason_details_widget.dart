@@ -8,9 +8,9 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/download_attachments.dart';
 
 class ReasonDetailsWidget extends StatelessWidget {
-  const ReasonDetailsWidget({super.key, this.reason, this.documents});
+  const ReasonDetailsWidget({super.key, this.reason, this.images});
   final String? reason;
-  final List<String>? documents;
+  final List<String>? images;
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +46,12 @@ class ReasonDetailsWidget extends StatelessWidget {
 
             ///Attachments
             Visibility(
-              visible: documents != null,
+              visible: images != null || images!.isNotEmpty,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                 child: DownLoadAttachments(
-                  attachments: ["h.ert4wu", "rth.rst"],
+                  attachments: images,
                 ),
               ),
             ),

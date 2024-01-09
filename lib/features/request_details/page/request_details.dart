@@ -25,12 +25,17 @@ class _RequestDetailsState extends State<RequestDetails> {
         title: "${getTranslated("request", context)} #${widget.id}",
       ),
       body: ChangeNotifierProvider(
-        create: (_) => RequestDetailsProvider(repo: sl<RequestDetailsRepo>())..getRequestDetails(widget.id),
+        create: (_) => RequestDetailsProvider(repo: sl<RequestDetailsRepo>())
+          ..getRequestDetails(widget.id),
         child: Consumer<RequestDetailsProvider>(builder: (_, provider, child) {
           return Column(
-            children: [provider.isLoading ? const LoaderView() : RequestDetailsWidget(
-              request: provider.model,
-            )],
+            children: [
+              provider.isLoading
+                  ? const LoaderView()
+                  : RequestDetailsWidget(
+                      request: provider.model,
+                    )
+            ],
           );
         }),
       ),

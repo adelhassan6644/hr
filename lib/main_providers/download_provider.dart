@@ -17,30 +17,35 @@ class DownloadProvider extends ChangeNotifier {
 
   bool isLoading = false;
   bool downloaded = false;
-  void download(url, name) async {
+  void download(url, name, {bool withDialog = true}) async {
     await PermissionHandler.checkFilePermission();
     {
-      loadingDialog();
+      if (withDialog) {
+        loadingDialog();
+      }
       isLoading = true;
+      notifyListeners();
+
       String path = "";
       if (Platform.isAndroid) {
-        path = '${await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_DOCUMENTS)}/يسربلس.$name';
+        path =
+            '${await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_DOCUMENTS)}/يسربلس.$name';
       } else {
         Directory documents = await getApplicationDocumentsDirectory();
         path = '${documents.path}/يسربلس.$name';
       }
+
       try {
         log(path);
         log(url);
 
-        await _dio.download(
+        Response response = await _dio.download(
           url ?? "",
           path,
           onReceiveProgress: (v1, v2) {
-            // if (v2.abs() == 100) {
-            //   downloaded = true;
-            //   notifyListeners();
-            // }
+            if (v2.abs() >= 100) {
+              downloaded = true;
+            }
           },
           options: Options(
             headers: {
@@ -48,17 +53,30 @@ class DownloadProvider extends ChangeNotifier {
             },
           ),
         );
-        await OpenFilex.open("$path");
+        if (withDialog) {
+          CustomNavigator.pop();
+        }
+
+        // if (response.statusCode == 200) {
+        //   downloaded = true;
+        // } else {
+        //   downloaded = false;
+        // }
+
+        await OpenFilex.open(path);
+
         isLoading = false;
-        downloaded = false;
         notifyListeners();
       } catch (e) {
         log(e.toString());
-        showToast(getTranslated("something_went_wrong", CustomNavigator.navigatorState.currentContext!));
+        showToast(getTranslated("something_went_wrong",
+            CustomNavigator.navigatorState.currentContext!));
         isLoading = false;
         notifyListeners();
       }
-      CustomNavigator.pop();
+      if (withDialog) {
+        CustomNavigator.pop();
+      }
     }
   }
 }

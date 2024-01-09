@@ -23,12 +23,14 @@ class VacationDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("vacation_type", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
-                "${request?.requestType}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                "${request?.typeName}",
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -44,12 +46,14 @@ class VacationDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("start_date", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${request?.startAt?.format("dd / MM / yyyy")}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),
@@ -65,12 +69,14 @@ class VacationDetailsWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   getTranslated("end_date", context),
-                  style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                  style: AppTextStyles.w600
+                      .copyWith(color: Styles.HEADER, fontSize: 14),
                 ),
               ),
               Text(
                 "${request?.endAt?.format("dd / MM / yyyy")}",
-                style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                style: AppTextStyles.w500
+                    .copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
           ),

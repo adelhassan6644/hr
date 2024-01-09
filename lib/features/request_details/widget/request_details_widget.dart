@@ -23,14 +23,19 @@ class RequestDetailsWidget extends StatelessWidget {
     return Expanded(
       child: ListAnimator(
         customPadding: EdgeInsets.symmetric(
-            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w, vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+            vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
         data: [
           Container(
             padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w, vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.w),
-                border: Border.all(color: Styles.BORDER_COLOR, width: 0.5, style: BorderStyle.solid)),
+                border: Border.all(
+                    color: Styles.BORDER_COLOR,
+                    width: 0.5,
+                    style: BorderStyle.solid)),
             child: Column(
               children: [
                 ///Request Type
@@ -39,11 +44,14 @@ class RequestDetailsWidget extends StatelessWidget {
                     Expanded(
                       child: Text(
                         getTranslated("request_type", context),
-                        style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
+                        style: AppTextStyles.w600
+                            .copyWith(color: Styles.HEADER, fontSize: 14),
                       ),
                     ),
                     CustomButton(
-                      text: getTranslated(RequestType.values[(request?.type ?? 0) - 1].name, context),
+                      text: getTranslated(
+                          RequestType.values[(request?.type ?? 0) - 1].name,
+                          context),
                       width: 110,
                       radius: 6,
                       height: 30,
@@ -66,20 +74,46 @@ class RequestDetailsWidget extends StatelessWidget {
                     Expanded(
                       child: Text(
                         getTranslated("request_status", context),
-                        style: AppTextStyles.w600.copyWith(color: Styles.HEADER, fontSize: 14),
+                        style: AppTextStyles.w600
+                            .copyWith(color: Styles.HEADER, fontSize: 14),
                       ),
                     ),
                     CustomButton(
-                      text: getTranslated(AppStrings.status(request?.status), context),
+                      text: getTranslated(
+                          AppStrings.status(request?.status), context),
                       width: 110,
                       radius: 6,
                       height: 30,
                       textColor: Styles.requestStatus(request?.status),
                       textSize: 14,
-                      backgroundColor: Styles.requestStatus(request?.status).withOpacity(0.1),
+                      backgroundColor: Styles.requestStatus(request?.status)
+                          .withOpacity(0.1),
                       withBorderColor: true,
                       borderColor: Styles.requestStatus(request?.status),
                     )
+                  ],
+                ),
+                Container(
+                  height: 1,
+                  color: Styles.BORDER_COLOR,
+                  margin: EdgeInsets.symmetric(vertical: 8.h),
+                ),
+
+                ///Request Date
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        getTranslated("request_date", context),
+                        style: AppTextStyles.w600
+                            .copyWith(color: Styles.HEADER, fontSize: 14),
+                      ),
+                    ),
+                    Text(
+                      request?.createdAt?.format("EEEE, d/MMM/yyy") ?? "",
+                      style: AppTextStyles.w500
+                          .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 12),
+                    ),
                   ],
                 ),
                 Container(
@@ -111,12 +145,14 @@ class RequestDetailsWidget extends StatelessWidget {
                       Expanded(
                         child: Text(
                           getTranslated("pledge_type", context),
-                          style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                          style: AppTextStyles.w600
+                              .copyWith(color: Styles.HEADER, fontSize: 14),
                         ),
                       ),
                       Text(
-                        "${request?.requestType}",
-                        style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                        "${request?.typeName}",
+                        style: AppTextStyles.w500
+                            .copyWith(color: Styles.HEADER, fontSize: 14),
                       ),
                     ],
                   ),
@@ -124,18 +160,21 @@ class RequestDetailsWidget extends StatelessWidget {
 
                 ///Pledge Release
                 Visibility(
-                  visible: request?.type == (RequestType.pledgeRelease.index + 1),
+                  visible:
+                      request?.type == (RequestType.pledgeRelease.index + 1),
                   child: Row(
                     children: [
                       Expanded(
                         child: Text(
                           getTranslated("pledge_release_request", context),
-                          style: AppTextStyles.w600.copyWith(color: Styles.TITLE, fontSize: 14),
+                          style: AppTextStyles.w600
+                              .copyWith(color: Styles.HEADER, fontSize: 14),
                         ),
                       ),
                       Text(
-                        "${request?.requestType}",
-                        style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
+                        "${request?.typeName}",
+                        style: AppTextStyles.w500
+                            .copyWith(color: Styles.HEADER, fontSize: 14),
                       ),
                     ],
                   ),
@@ -144,8 +183,8 @@ class RequestDetailsWidget extends StatelessWidget {
             ),
           ),
           ReasonDetailsWidget(
-            reason: request?.reason,
-            documents: request?.documents,
+            reason: request?.comment,
+            images: request?.images,
           ),
         ],
       ),
