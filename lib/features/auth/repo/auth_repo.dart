@@ -136,20 +136,20 @@ class AuthRepo extends BaseRepo {
 
   Future<Either<ServerFailure, Response>> logOut() async {
     try {
-      Response response = await dioClient.post(
+      Response response = await dioClient.get(
         uri: EndPoints.logout(userId),
-        data: FormData.fromMap({
+        queryParameters: {
           "fcm_token": await saveDeviceToken(),
           "mac_id": await DeviceHelper.getDeviceIdentifier(),
           "os": Platform.isIOS ? "ios" : "android",
           "phone_brand_name": Platform.isIOS
               ? await DeviceHelper.getDeviceInfoIos()
-                  .then((value) => value!.name)
+              .then((value) => value!.name)
               : await DeviceHelper.getDeviceInfoAndroid()
-                  .then((value) => value!.brand),
+              .then((value) => value!.brand),
           "wifi_gateway_IP": await DeviceHelper.getWifiGatewayIP(),
           "wifi_IP": await DeviceHelper.getWifiIP(),
-        }),
+        },
       );
 
       if (response.statusCode == 200) {
