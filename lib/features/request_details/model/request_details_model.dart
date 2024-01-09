@@ -2,6 +2,7 @@ class RequestDetailsModel {
   final int? id;
   final int? type;
   final String? requestType;
+  final String? typeName;
   final String? loanAmount;
   final String? reason;
   final int? status;
@@ -23,6 +24,7 @@ class RequestDetailsModel {
     this.numberOfMonths,
     this.amountPerMonth,
     this.reason,
+    this.typeName,
     this.startAt,
     this.comeTime,
     this.leaveTime,
@@ -37,6 +39,7 @@ class RequestDetailsModel {
         id: json["id"],
         type: json["type"],
         status: json["status"],
+    typeName: json["type_name"],
         requestType: json["request_type"],
         loanAmount: json["amount"].toString(),
         numberOfMonths: json["number_of_months"].toString(),

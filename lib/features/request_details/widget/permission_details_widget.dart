@@ -28,7 +28,7 @@ class PermissionDetailsWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "${request?.requestType}",
+                "${request?.typeName}",
                 style: AppTextStyles.w500.copyWith(color: Styles.HEADER, fontSize: 14),
               ),
             ],
