@@ -46,7 +46,7 @@ class AuthRepo extends BaseRepo {
   }
 
   updateHeader(id, token) async {
-    await dioClient.updateHeader(id, token);
+    await dioClient.updateHeader( token);
   }
 
   updateDomain(

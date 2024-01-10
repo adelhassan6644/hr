@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../app/core/app_storage_keys.dart';
+import '../../helpers/device_helper.dart';
 import '../api/end_points.dart';
 import 'api_client.dart';
 import 'logging_interceptor.dart';
@@ -42,17 +43,26 @@ class DioClient extends ApiClient {
         responseBody: true,
         requestBody: true,
         requestHeader: true));
+
   }
 
-  updateHeader(id, token) {
-
+  updateHeader(token) async {
     dio.options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       "Accept": " application/json",
-      'Authorization': "Bearer $token",
+      if (isLogin)    'Authorization': "Bearer $token",
+      "mac_id": await DeviceHelper.getDeviceIdentifier(),
+      "os": Platform.isIOS ? "ios" : "android",
+      "phone_brand_name": Platform.isIOS
+          ? await DeviceHelper.getDeviceInfoIos().then((value) => value!.name)
+          : await DeviceHelper.getDeviceInfoAndroid()
+              .then((value) => value!.brand),
+      "wifi_gateway_IP": await DeviceHelper.getWifiGatewayIP(),
+      "wifi_IP": await DeviceHelper.getWifiIP(),
     };
   }
-  updateDomain( domain) {
+
+  updateDomain(domain) async {
     dio
       ..options.baseUrl = EndPoints.baseUrlSubDomain(domain)
       ..options.connectTimeout = const Duration(seconds: 60)
@@ -62,9 +72,15 @@ class DioClient extends ApiClient {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
         'X-Api-Key': EndPoints.apiKey,
-
+        "mac_id": await DeviceHelper.getDeviceIdentifier(),
+        "os": Platform.isIOS ? "ios" : "android",
+        "phone_brand_name": Platform.isIOS
+            ? await DeviceHelper.getDeviceInfoIos().then((value) => value!.name)
+            : await DeviceHelper.getDeviceInfoAndroid()
+                .then((value) => value!.brand),
+        "wifi_gateway_IP": await DeviceHelper.getWifiGatewayIP(),
+        "wifi_IP": await DeviceHelper.getWifiIP(),
       };
-
   }
 
   @override
@@ -74,7 +90,7 @@ class DioClient extends ApiClient {
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
-
+      updateHeader(token);
       var response = await dio.get(uri, queryParameters: queryParameters);
 
       return response;
@@ -93,7 +109,7 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-
+      updateHeader(token);
       var response = await dio.post(
         uri,
         data: data,
@@ -112,7 +128,7 @@ class DioClient extends ApiClient {
       {required String uri,
       Map<String, dynamic>? queryParameters,
       data}) async {
-    try {
+    try { updateHeader(token);
 
       var response = await dio.put(
         uri,
@@ -133,7 +149,7 @@ class DioClient extends ApiClient {
       Map<String, dynamic>? queryParameters,
       data}) async {
     try {
-
+      updateHeader(token);
       var response = await dio.delete(
         uri,
         data: data,
