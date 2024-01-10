@@ -38,6 +38,7 @@ class DioClient extends ApiClient {
         if (isLogin) 'Authorization': "Bearer $token",
         if (isLogin) 'user_id': userId,
       };
+    updateHeader(token);
     dio.interceptors.add(PrettyDioLogger(
         request: true,
         responseBody: true,

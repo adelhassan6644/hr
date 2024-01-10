@@ -18,8 +18,7 @@ abstract class Methods {
       if (withFormat) {
         return dateTime
             .format("m : h aa")
-            .replaceAll("AM", "صباحاً")
-            .replaceAll("PM", "مساءً")
+
             .replaceAll("ص", "صباحاً")
             .replaceAll("م", "مساءً");
       } else {
@@ -28,8 +27,7 @@ abstract class Methods {
     } else {
       return DateTime.now()
           .format("m : h aa")
-          .replaceAll("AM", "صباحاً")
-          .replaceAll("PM", "مساءً")
+
           .replaceAll("ص", "صباحاً")
           .replaceAll("م", "مساءً");
     }

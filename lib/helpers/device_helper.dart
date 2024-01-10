@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:connectivity/connectivity.dart';
+import 'package:dart_ipify/dart_ipify.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:network_info_plus/network_info_plus.dart';
@@ -41,9 +42,7 @@ abstract class DeviceHelper {
   static Future<String?> getWifiIP() async {
 
 
-    final info= NetworkInfo();
-
-  return await info.getWifiIP();
+  return await  Ipify.ipv4();
 
   }
 
