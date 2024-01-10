@@ -52,14 +52,14 @@ class DioClient extends ApiClient {
       'Content-Type': 'application/json; charset=UTF-8',
       "Accept": " application/json",
       if (isLogin)    'Authorization': "Bearer $token",
-      "mac_id": await DeviceHelper.getDeviceIdentifier(),
+      "mac-id": await DeviceHelper.getDeviceIdentifier(),
       "os": Platform.isIOS ? "ios" : "android",
-      "phone_brand_name": Platform.isIOS
+      "phone-brand-name": Platform.isIOS
           ? await DeviceHelper.getDeviceInfoIos().then((value) => value!.name)
           : await DeviceHelper.getDeviceInfoAndroid()
               .then((value) => value!.brand),
-      "wifi_gateway_IP": await DeviceHelper.getWifiGatewayIP(),
-      "wifi_IP": await DeviceHelper.getWifiIP(),
+      "wifi-gateway-IP": await DeviceHelper.getWifiGatewayIP(),
+      "wifi-IP": await DeviceHelper.getWifiIP(),
     };
   }
 
@@ -73,14 +73,14 @@ class DioClient extends ApiClient {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
         'X-Api-Key': EndPoints.apiKey,
-        "mac_id": await DeviceHelper.getDeviceIdentifier(),
+        "mac-id": await DeviceHelper.getDeviceIdentifier(),
         "os": Platform.isIOS ? "ios" : "android",
-        "phone_brand_name": Platform.isIOS
+        "phone-brand-name": Platform.isIOS
             ? await DeviceHelper.getDeviceInfoIos().then((value) => value!.name)
             : await DeviceHelper.getDeviceInfoAndroid()
                 .then((value) => value!.brand),
-        "wifi_gateway_IP": await DeviceHelper.getWifiGatewayIP(),
-        "wifi_IP": await DeviceHelper.getWifiIP(),
+        "wifi-gateway-IP": await DeviceHelper.getWifiGatewayIP(),
+        "wifi-IP": await DeviceHelper.getWifiIP(),
       };
   }
 
