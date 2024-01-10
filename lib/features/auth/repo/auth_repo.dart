@@ -140,6 +140,9 @@ class AuthRepo extends BaseRepo {
     try {
       Response response = await dioClient.post(
         uri: EndPoints.logOut,
+        data: {
+      "employee_id":userId
+        }
       );
 
       if (response.statusCode == 200) {
