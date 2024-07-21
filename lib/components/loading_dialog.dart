@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:yusrPlus/app/core/color_resources.dart';
 import 'package:yusrPlus/app/core/extensions.dart';
@@ -13,7 +12,7 @@ import '../app/localization/language_constant.dart';
 import '../navigation/custom_navigation.dart';
 
 loadingDialog() {
-  return showAnimatedDialog(
+  return showDialog(
     context: CustomNavigator.navigatorState.currentContext!,
     barrierDismissible: false,
     builder: (BuildContext context) {
@@ -58,10 +57,7 @@ loadingDialog() {
         ),
       );
     },
-    animationType: DialogTransitionType.fadeScale,
-    curve: Curves.easeInOutBack,
-    barrierColor: Colors.grey.withOpacity(0.25),
-    duration: const Duration(milliseconds: 700),
+
   );
 }
 

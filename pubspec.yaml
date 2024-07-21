@@ -2,7 +2,7 @@ name: yusrPlus
 description: A new Flutter project.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+9
+version: 1.0.0+2
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
@@ -33,7 +33,7 @@ dependencies:
   provider:
   connectivity:
   flutter_styled_toast:
-  flutter_animated_dialog:
+#  flutter_animated_dialog:
   url_launcher:
   flutter_svg:
   upgrader:
@@ -50,7 +50,7 @@ dependencies:
   platform: ^3.1.0
   flutter_staggered_animations:
   percent_indicator: ^4.2.2
-  pin_code_fields: ^7.4.0
+  pin_code_fields: ^8.0.1
   app_settings: ^5.1.1
   table_calendar: ^3.0.9
   image_picker: ^1.0.4
@@ -70,6 +70,8 @@ dependencies:
   open_file_plus: ^3.4.1
   advance_pdf_viewer_fork: any
 
+dependency_overrides:
+  intl: ^0.18.1
 
 
 dev_dependencies:
